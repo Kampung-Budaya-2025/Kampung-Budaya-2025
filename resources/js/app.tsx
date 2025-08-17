@@ -5,6 +5,7 @@ import LandingPage from './Pages/LandingPage/Page';
 import FAQPages from './Pages/FAQ/Page';
 import RegisterEvent from './Pages/RegisterEvent/Page';
 import './bootstrap';
+import '../css/app.css';
 
 const container = document.getElementById('app');
 if (container) {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const LandingPage = () => (
   <div>
-    <h1>Welcome to Kampung Budaya</h1>
+    <h1 className="text-4xl font-bold">Welcome to Kampung Budaya</h1>
     <nav>
       <ul>
         <li><Link to="/faq">FAQ</Link></li>
