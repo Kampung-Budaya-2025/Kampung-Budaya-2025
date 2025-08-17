@@ -43,6 +43,31 @@ const FAQCard: React.FC<CardProps> = ({
       id: 5,
       question: "Apakah ada pertunjukan khusus?",
       answer: "Ya, setiap hari terdapat pertunjukan tari tradisional pada pukul 10.00, 14.00, dan 16.00. Pada weekend ada pertunjukan musik gamelan dan workshop membatik."
+    },
+    {
+      id: 6,
+      question: "Bagaimana cara menuju ke Kampung Budaya?",
+      answer: "Kampung Budaya dapat diakses melalui transportasi umum seperti bus, angkot, atau kendaraan pribadi. Tersedia juga layanan shuttle bus dari pusat kota pada akhir pekan."
+    },
+    {
+      id: 7,
+      question: "Apakah ada paket wisata yang tersedia?",
+      answer: "Ya, tersedia berbagai paket wisata mulai dari paket half day, full day, hingga paket 2 hari 1 malam yang termasuk akomodasi dan makan."
+    },
+    {
+      id: 8,
+      question: "Bolehkah membawa makanan dari luar?",
+      answer: "Pengunjung diperbolehkan membawa makanan ringan dan minuman sendiri. Namun untuk menjaga kebersihan, harap membuang sampah pada tempatnya."
+    },
+    {
+      id: 9,
+      question: "Apakah ada guide atau pemandu wisata?",
+      answer: "Ya, tersedia layanan pemandu wisata professional yang dapat menjelaskan sejarah dan budaya setiap atraksi dengan biaya tambahan Rp 50.000 per grup."
+    },
+    {
+      id: 10,
+      question: "Bagaimana cara booking tiket secara online?",
+      answer: "Tiket dapat dibeli secara online melalui website resmi atau aplikasi mobile Kampung Budaya. Pembayaran dapat dilakukan via transfer bank atau e-wallet."
     }
   ];
 
@@ -84,7 +109,7 @@ const FAQCard: React.FC<CardProps> = ({
             {/* Down Arrow Icon */}
             <div className="flex items-center justify-center pr-6">
               <img
-                src="/icon/DownArrow.svg" 
+                src="/icon/down-arrow.svg"
                 alt="Down Arrow"
                 width={20}
                 height={10}
@@ -103,7 +128,7 @@ const FAQCard: React.FC<CardProps> = ({
             style={{ marginTop: '-12px' }}
           >
             <div
-              className="px-6 py-4 bg-white border border-[#CD9C1A] border-t-0 relative z-10"
+              className="px-6 py-4 bg-white border-1 border-[#CD9C1A] border-t-0 relative z-10"
               style={{ 
                 width: '648px',
                 borderRadius: '0 0 16px 16px',
