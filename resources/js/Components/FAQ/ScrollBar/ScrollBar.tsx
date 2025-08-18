@@ -228,7 +228,7 @@ const Slider: React.FC<SliderProps> = ({
 
                 {/* SVG Bunga Handle */}
                 <img
-                    src="/icon/bunga-scroll.svg"
+                    src="/icon/bunga.svg"
                     alt="Bunga Handle"
                     className="absolute w-12 h-12 z-30 opacity-100"
                     style={{

@@ -8,7 +8,11 @@ module.exports = {
     './resources/**/*.tsx',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'samsktrigrama': ['SamsktriGrama', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      }
+    }
   },
   plugins: [],
 }
