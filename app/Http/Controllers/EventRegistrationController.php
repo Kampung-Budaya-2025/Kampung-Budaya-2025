@@ -197,6 +197,22 @@ class EventRegistrationController extends Controller
 
     public function index(Request $request)
     {
+        $request->headers->set('Accept', 'application/json');
+        
+        if (!$request->has('pin') || empty($request->pin)) {
+            return response()->json([
+                'error' => 'PIN diperlukan untuk mengakses endpoint ini.',
+                'message' => 'Parameter PIN tidak ditemukan. Silakan sertakan parameter ?pin=YOUR_PIN',
+            ], 400);
+        }
+
+        if ($request->pin !== self::EXPORT_PIN) {
+            return response()->json([
+                'error' => 'PIN tidak valid. Akses ditolak.',
+                'message' => 'PIN yang Anda masukkan salah.'
+            ], 403);
+        }
+
         $query = EventRegistration::orderBy('created_at', 'desc');
         
         if ($request->has('event_type') && $request->event_type) {
