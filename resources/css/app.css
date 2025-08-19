@@ -20,4 +20,39 @@
     --font-samsktrigrama: 'SamsktriGrama', ui-sans-serif, system-ui, sans-serif;
 }
 
+.scrollbar-hide {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+
+.animate-spin-clockwise {
+    animation: spin-clockwise 20s linear infinite;
+}
+
+.animate-spin-counter {
+    animation: spin-counter 20s linear infinite;
+}
+
+@keyframes spin-clockwise {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-counter {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
 
