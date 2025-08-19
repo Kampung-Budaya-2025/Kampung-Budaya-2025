@@ -180,11 +180,8 @@ const BatikBackground: React.FC = () => (
 // Main Footer Component
 const Footer: React.FC = () => {
     return (
-        <footer 
-            className="relative h-[852px] lg:h-[280px] text-white rounded-t-[20px] overflow-hidden"
-            style={{
-                background: "linear-gradient(180deg, #3F170D 0%, #5F3313 100%)",
-            }}
+        <footer
+            className="relative h-[852px] lg:h-[280px] text-white rounded-t-[20px] bg-[linear-gradient(180deg,#3F170D_0%,#5F3313_100%)] overflow-hidden"
         >
             <BatikBackground />
             

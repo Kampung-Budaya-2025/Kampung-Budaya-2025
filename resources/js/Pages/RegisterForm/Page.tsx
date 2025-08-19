@@ -143,7 +143,7 @@ const RegisterForm = () => {
           variants={floatingVariants}
           animate="animate"
         >
-          <img src="/mascot-left.png" alt="Maskot kiri" />
+          <img src="/mascot/mascot-cowok.svg" alt="Maskot kiri" />
         </motion.div>
 
         {/* Maskot kanan (delay offset) */}
@@ -162,7 +162,7 @@ const RegisterForm = () => {
           }}
           animate="animate"
         >
-          <img src="/mascot-right.png" alt="Maskot kanan" />
+          <img src="/mascot/mascot-cewek.svg" alt="Maskot kanan" />
         </motion.div>
 
         {/* Card Putih */}
