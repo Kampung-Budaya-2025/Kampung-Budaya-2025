@@ -46,7 +46,7 @@ const SearchField: React.FC<SearchFieldProps> = ({
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
         placeholder={placeholder}
-        className="flex-1 h-full px-6 text-base text-gray-800 placeholder-gray-500 bg-transparent border-none outline-none"
+        className="flex-1 h-full px-6 text-base text-gray-800 placeholder-[#3F170D] bg-transparent border-none outline-none"
         style={{
           borderRadius: '13.089px 0 0 13.089px'
         }}

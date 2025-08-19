@@ -7,11 +7,15 @@ interface FAQItem {
 }
 
 interface CardProps {
+  faqs?: FAQItem[];
+  searchQuery?: string;
   onToggle?: (id: number) => void;
   openItemId?: number | null;
 }
 
 const FAQCard: React.FC<CardProps> = ({
+  faqs,
+  searchQuery = "",
   onToggle,
   openItemId = null
 }) => {
@@ -71,6 +75,9 @@ const FAQCard: React.FC<CardProps> = ({
     }
   ];
 
+  // Gunakan faqs dari props atau fallback ke default
+  const displayFaqs = faqs || faqData;
+
   const handleToggle = (id: number) => {
     if (onToggle) {
       onToggle(id);
@@ -83,15 +90,32 @@ const FAQCard: React.FC<CardProps> = ({
     return onToggle ? openItemId === id : internalOpenId === id;
   };
 
+  // Function to highlight search query in text
+  const highlightText = (text: string, query: string) => {
+    if (!query) return text;
+    
+    const regex = new RegExp(`(${query})`, 'gi');
+    const parts = text.split(regex);
+    
+    return parts.map((part, index) =>
+      regex.test(part) ? (
+        <span key={index} className="bg-yellow-200 font-semibold">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+
   return (
     <div className="w-full space-y-10">
-      {faqData.map((item) => (
+      {displayFaqs.map((item) => (
         <div key={item.id} className="w-full relative">
-          {/* FAQ Card Header */}
+          {/* FAQ Card Header - Menyamakan dengan lebar SearchField */}
           <div
-            className="relative flex items-center justify-between cursor-pointer z-20"
+            className="relative flex items-center justify-between cursor-pointer z-20 w-full max-w-[648px]"
             style={{
-              width: '648px',
               height: '49px',
               borderRadius: '16px',
               background: '#E1B01B',
@@ -102,7 +126,7 @@ const FAQCard: React.FC<CardProps> = ({
             {/* Question Text */}
             <div className="flex-1 px-6 text-left">
               <p className="text-sm font-medium text-[#3F170D] truncate">
-                {item.question}
+                {highlightText(item.question, searchQuery)}
               </p>
             </div>
 
@@ -120,7 +144,7 @@ const FAQCard: React.FC<CardProps> = ({
             </div>
           </div>
 
-          {/* FAQ Answer (Expandable) */}
+          {/* FAQ Answer (Expandable) - Menyamakan dengan lebar SearchField */}
           <div
             className={`relative overflow-hidden transition-all duration-700 ${
               isExpanded(item.id) ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
@@ -128,15 +152,14 @@ const FAQCard: React.FC<CardProps> = ({
             style={{ marginTop: '-12px' }}
           >
             <div
-              className="px-6 py-4 bg-white border-1 border-[#CD9C1A] border-t-0 relative z-10"
+              className="px-6 py-4 bg-white border-1 border-[#CD9C1A] border-t-0 relative z-10 w-full max-w-[648px]"
               style={{ 
-                width: '648px',
                 borderRadius: '0 0 16px 16px',
                 paddingTop: '20px'
               }}
             >
-              <p className="text-sm text-[#3F170D] leading-relaxed">
-                {item.answer}
+              <p className="text-sm text-[#CD9C1A] leading-relaxed">
+                {highlightText(item.answer, searchQuery)}
               </p>
             </div>
           </div>
