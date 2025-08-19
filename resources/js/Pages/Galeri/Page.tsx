@@ -1,10 +1,10 @@
 import React from 'react';
 
-const RegisterEvent = () => (
+const Galeri = () => (
   <div>
     <h1>Register Event</h1>
     <p>Form pendaftaran event akan tersedia di sini.</p>
   </div>
 );
 
-export default RegisterEvent;
+export default Galeri;
