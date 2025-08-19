@@ -24,6 +24,11 @@ class EventRegistration extends Model
         'birthdate' => 'date',
     ];
 
+    protected $appends = [
+        'registration_form_url',
+        'payment_proof_url',
+    ];
+
     public function getRegistrationFormUrlAttribute(): ?string
     {
         return $this->registration_form_path 

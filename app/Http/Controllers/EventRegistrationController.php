@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\EventRegistration;
+use App\Exports\EventRegistrationExport;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rule;
 
 class EventRegistrationController extends Controller
@@ -95,9 +97,6 @@ class EventRegistrationController extends Controller
         ]);
     }
 
-    /**
-     * Check if email is already registered.
-     */
     public function checkEmail(Request $request)
     {
         $request->validate([
@@ -110,5 +109,60 @@ class EventRegistrationController extends Controller
             'exists' => $exists,
             'message' => $exists ? 'Email sudah terdaftar' : 'Email tersedia'
         ]);
+    }
+
+    public function export(Request $request)
+    {
+        $request->validate([
+            'event_type' => 'nullable|string'
+        ]);
+
+        $eventType = $request->get('event_type');
+        $export = new EventRegistrationExport($eventType);
+        
+        $filename = 'event_registrations_' . date('Y-m-d_H-i-s') . '.csv';
+        
+        if ($eventType) {
+            $filename = 'event_registrations_' . str_replace(' ', '_', strtolower($eventType)) . '_' . date('Y-m-d_H-i-s') . '.csv';
+        }
+
+        $data = $export->getData();
+       
+        $csvContent = '';
+        foreach ($data as $row) {
+            $csvContent .= implode(',', array_map(function($field) {
+                if (strpos($field, ',') !== false || strpos($field, '"') !== false || strpos($field, "\n") !== false) {
+                    return '"' . str_replace('"', '""', $field) . '"';
+                }
+                return $field;
+            }, $row)) . "\n";
+        }
+
+        return Response::make($csvContent, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+        ]);
+    }
+
+    public function index(Request $request)
+    {
+        $query = EventRegistration::orderBy('created_at', 'desc');
+        
+        if ($request->has('event_type') && $request->event_type) {
+            $query->where('event_type', $request->event_type);
+        }
+        
+        if ($request->has('search') && $request->search) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhere('affiliation', 'like', "%{$search}%");
+            });
+        }
+        
+        $registrations = $query->paginate(20);
+        
+        return response()->json($registrations);
     }
 }
