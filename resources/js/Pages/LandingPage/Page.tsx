@@ -1,16 +1,16 @@
+import FilosofiLogi from '@/Components/LandingPage/FilosofiLogo/Page';
+import Hero from '@/Components/LandingPage/Hero/Page';
+import PengengalanMaskot from '@/Components/LandingPage/PengenalanMaskot/Page';
+import RangkaianKegiatan from '@/Components/LandingPage/RangkaianKegiatan/Page';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => (
-  <div>
-    <h1 className="text-4xl font-bold">Welcome to Kampung Budaya</h1>
-    <nav>
-      <ul>
-        <li><Link to="/faq">FAQ</Link></li>
-        <li><Link to="/register-event">Register Event</Link></li>
-      </ul>
-    </nav>
-    <p>This is the landing page.</p>
+  <div className='overflow-x-hidden overflow-y-hidden'>
+    <Hero/>
+    <RangkaianKegiatan/>
+    <PengengalanMaskot/>
+    <FilosofiLogi/>
   </div>
 );
 
