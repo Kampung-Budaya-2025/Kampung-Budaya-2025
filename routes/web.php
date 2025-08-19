@@ -9,6 +9,7 @@ Route::prefix('api')->group(function () {
     Route::get('/event-registrations/export', [EventRegistrationController::class, 'export']);
     Route::post('/event-registrations/{registration}/attachments', [EventRegistrationController::class, 'updateAttachments']);
     Route::post('/event-registrations/check-email', [EventRegistrationController::class, 'checkEmail']);
+    Route::get('/event-registrations/email-registrations', [EventRegistrationController::class, 'getEmailRegistrations']);
 });
 
 Route::get('/{any}', function () {

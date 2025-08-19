@@ -58,8 +58,29 @@ class EventRegistration extends Model
         return static::where('email', $email)->exists();
     }
 
+    public static function isEmailRegisteredForEventType(string $email, string $eventType): bool
+    {
+        return static::where('email', $email)
+                    ->where('event_type', $eventType)
+                    ->exists();
+    }
+
     public static function getByEmail(string $email): ?self
     {
         return static::where('email', $email)->first();
+    }
+
+    public static function getByEmailAndEventType(string $email, string $eventType): ?self
+    {
+        return static::where('email', $email)
+                    ->where('event_type', $eventType)
+                    ->first();
+    }
+
+    public static function getEventTypesByEmail(string $email): array
+    {
+        return static::where('email', $email)
+                    ->pluck('event_type')
+                    ->toArray();
     }
 }

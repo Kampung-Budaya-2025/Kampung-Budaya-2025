@@ -20,11 +20,20 @@ class EventRegistrationController extends Controller
             'birthdate' => 'required|date',
             'affiliation' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',
-            'email' => 'required|email|max:255|unique:event_registrations,email',
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                Rule::unique('event_registrations')->where(function ($query) use ($request) {
+                    return $query->where('event_type', $request->event_type);
+                })
+            ],
             'instagram_username' => 'nullable|string|max:255',
             'id_line' => 'nullable|string|max:255',
             'registration_form' => 'nullable|file|mimes:pdf|max:2048', 
             'payment_proof' => 'nullable|file|mimes:jpeg,png,jpg|max:2048', 
+        ], [
+            'email.unique' => 'Email sudah terdaftar untuk event type ini. Anda dapat mendaftar dengan email yang sama untuk event type yang berbeda.'
         ]);
 
         $data = $request->only([
@@ -100,14 +109,38 @@ class EventRegistrationController extends Controller
     public function checkEmail(Request $request)
     {
         $request->validate([
-            'email' => 'required|email'
+            'email' => 'required|email',
+            'event_type' => 'required|string'
         ]);
 
-        $exists = EventRegistration::where('email', $request->email)->exists();
+        $exists = EventRegistration::isEmailRegisteredForEventType(
+            $request->email, 
+            $request->event_type
+        );
 
         return response()->json([
             'exists' => $exists,
-            'message' => $exists ? 'Email sudah terdaftar' : 'Email tersedia'
+            'message' => $exists 
+                ? 'Email sudah terdaftar untuk event type ini' 
+                : 'Email tersedia untuk event type ini'
+        ]);
+    }
+
+    public function getEmailRegistrations(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+        $eventTypes = EventRegistration::getEventTypesByEmail($request->email);
+        $registrations = EventRegistration::where('email', $request->email)
+                                        ->get(['event_type', 'name', 'created_at']);
+
+        return response()->json([
+            'email' => $request->email,
+            'registered_event_types' => $eventTypes,
+            'registrations' => $registrations,
+            'total_registrations' => count($eventTypes)
         ]);
     }
 
