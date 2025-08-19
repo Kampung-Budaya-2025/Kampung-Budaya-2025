@@ -11,6 +11,8 @@ use Illuminate\Validation\Rule;
 
 class EventRegistrationController extends Controller
 {
+    private const EXPORT_PIN = 'Kampung-Budaya-2025-Jaya';
+
     public function store(Request $request)
     {
         $request->validate([
@@ -146,6 +148,22 @@ class EventRegistrationController extends Controller
 
     public function export(Request $request)
     {
+        $request->headers->set('Accept', 'application/json');
+        
+        if (!$request->has('pin') || empty($request->pin)) {
+            return response()->json([
+                'error' => 'PIN diperlukan untuk mengakses endpoint export.',
+                'message' => 'Parameter PIN tidak ditemukan. Silakan sertakan parameter ?pin=YOUR_PIN',
+            ], 400);
+        }
+
+        if ($request->pin !== self::EXPORT_PIN) {
+            return response()->json([
+                'error' => 'PIN tidak valid. Akses ditolak.',
+                'message' => 'PIN yang Anda masukkan salah.'
+            ], 403);
+        }
+
         $request->validate([
             'event_type' => 'nullable|string'
         ]);
