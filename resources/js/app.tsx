@@ -1,3 +1,4 @@
+
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -10,8 +11,10 @@ import RegisterForm from "./Pages/RegisterForm/Page";
 import RegisterUpload from "./Pages/RegisterUpload/Page";
 import RegisterConfirmation from "./Pages/RegisterConfirmation/Page";
 
+
 const container = document.getElementById("app");
 if (container) {
+
     const root = createRoot(container);
     root.render(
         <BrowserRouter>
@@ -26,4 +29,5 @@ if (container) {
             </Routes>
         </BrowserRouter>
     );
+
 }

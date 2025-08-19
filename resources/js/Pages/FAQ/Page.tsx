@@ -90,7 +90,7 @@ const FAQPages = () => {
     };
 
     return (
-        <div className="relative min-h-screen">
+        <div className="relative min-h-screen overflow-hidden">
             {/* Background Batik - Full width layar */}
             <img
                 ref={batikTopRef}
