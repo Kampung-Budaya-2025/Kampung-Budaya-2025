@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventRegistrationController;
+
+Route::prefix('api')->group(function () {
+    Route::post('/event-registrations', [EventRegistrationController::class, 'store']);
+    Route::post('/event-registrations/{registration}/attachments', [EventRegistrationController::class, 'updateAttachments']);
+    Route::post('/event-registrations/check-email', [EventRegistrationController::class, 'checkEmail']);
+});
 
 Route::get('/{any}', function () {
     return view('app'); // atau ganti dengan view utama kamu, misal 'app'
