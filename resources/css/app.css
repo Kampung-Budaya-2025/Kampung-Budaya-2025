@@ -1,6 +1,46 @@
 @import 'tailwindcss';
 
 @font-face {
+    font-family: 'Amaranth';
+    src: url('/fonts/Amaranth/Amaranth-Regular.woff2') format('woff2'),
+         url('/fonts/Amaranth/Amaranth-Regular.woff') format('woff'),
+         url('/fonts/Amaranth/Amaranth-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Amaranth';
+    src: url('/fonts/Amaranth/Amaranth-Bold.woff2') format('woff2'),
+         url('/fonts/Amaranth/Amaranth-Bold.woff') format('woff'),
+         url('/fonts/Amaranth/Amaranth-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Amaranth';
+    src: url('/fonts/Amaranth/Amaranth-Italic.woff2') format('woff2'),
+         url('/fonts/Amaranth/Amaranth-Italic.woff') format('woff'),
+         url('/fonts/Amaranth/Amaranth-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Amaranth';
+    src: url('/fonts/Amaranth/Amaranth-BoldItalic.woff2') format('woff2'),
+         url('/fonts/Amaranth/Amaranth-BoldItalic.woff') format('woff'),
+         url('/fonts/Amaranth/Amaranth-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'SamsktriGrama';
     src: url('/fonts/SamsktriGrama-Regular.otf') format('opentype'),
          url('/fonts/SamsktriGrama-Regular.ttf') format('truetype');
@@ -15,7 +55,7 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Amaranth', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
     --font-samsktrigrama: 'SamsktriGrama', ui-sans-serif, system-ui, sans-serif;
 }

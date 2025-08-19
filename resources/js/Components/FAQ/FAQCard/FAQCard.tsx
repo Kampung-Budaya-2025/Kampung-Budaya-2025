@@ -158,7 +158,7 @@ const FAQCard: React.FC<CardProps> = ({
                 paddingTop: '20px'
               }}
             >
-              <p className="text-sm text-[#3F170D] leading-relaxed">
+              <p className="text-sm text-[#CD9C1A] leading-relaxed">
                 {highlightText(item.answer, searchQuery)}
               </p>
             </div>
