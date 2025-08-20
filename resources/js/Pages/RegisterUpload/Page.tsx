@@ -148,7 +148,7 @@ const RegisterUpload: React.FC = () => {
     if (!isFormValid) return;
  
     console.log('Berkas siap diunggah:', uploadData);
-    navigate('/register-review'); 
+    navigate('/register-confirmation'); 
   };
 
   const handleBack = () => {
