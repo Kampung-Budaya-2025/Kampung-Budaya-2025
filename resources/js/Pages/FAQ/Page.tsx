@@ -9,56 +9,25 @@ import "../../../css/app.css";
 import useScrollSync from "@/Components/FAQ/Hooks/page";
 import { useFlowerAnimations } from "@/Components/FAQ/Refs/page";
 
-// Types
-
 const FlowerDecorations: React.FC = () => {
     const flowers = useFlowerAnimations();
 
     return (
         <>
             {/* Bunga Besar */}
-            <div
-                ref={flowers.besar.kiri.ref}
-                className={`absolute top-0 -left-5 
-    ${
-        flowers.besar.kiri.isInView
-            ? "opacity-100 translate-x-0"
-            : "opacity-0 -translate-x-[60px]"
-    } 
-    transition-[opacity,transform] [transition-duration:1.2s] [transition-timing-function:cubic-bezier(.4,0,.2,1)]`}
-            >
-                <img
-                    src="/icon/bunga.svg"
-                    alt="Bunga Besar Kiri"
-                    width={230}
-                    className="animate-spin-clockwise"
-                />
-            </div>
-
-            <div
-                ref={flowers.besar.kanan.ref}
-                className={`absolute top-0 -right-5 
-    ${
-        flowers.besar.kanan.isInView
-            ? "opacity-100 translate-x-0"
-            : "opacity-0 translate-x-[60px]"
-    } 
-    transition-[opacity,transform] [transition-duration:1.2s] [transition-timing-function:cubic-bezier(.4,0,.2,1)]`}
-            >
-                <img
-                    src="/icon/bunga.svg"
-                    alt="Bunga Besar Kanan"
-                    width={230}
-                    className="animate-spin-counter"
-                />
-            </div>
+            <FlowerPair
+                level="Besar"
+                flowers={flowers.besar}
+                containerClass="absolute -top-3 left-0 w-full h-[230px] z-0"
+                wrapperClass="flex justify-between items-start w-full relative"
+            />
 
             {/* Bunga Sedang */}
             <FlowerPair
                 level="Sedang"
                 flowers={flowers.sedang}
                 containerClass="absolute top-0 left-0 w-full h-[130px] mt-1 z-0"
-                wrapperClass="flex justify-between items-center w-full px-46"
+                wrapperClass="flex justify-between items-center w-full px-52"
             />
 
             {/* Bunga Kecil-1 */}
@@ -66,7 +35,7 @@ const FlowerDecorations: React.FC = () => {
                 level="Kecil-1"
                 flowers={flowers.kecil1}
                 containerClass="absolute top-0 left-0 w-full h-[50px] mt-18 z-0"
-                wrapperClass="flex justify-between items-center w-full px-86"
+                wrapperClass="flex justify-between items-center w-full px-94"
             />
 
             {/* Bunga Kecil-2 */}
@@ -74,7 +43,7 @@ const FlowerDecorations: React.FC = () => {
                 level="Kecil-2"
                 flowers={flowers.kecil2}
                 containerClass="absolute top-0 left-0 w-full h-[50px] mt-36 z-0"
-                wrapperClass="flex justify-between items-center w-full px-48"
+                wrapperClass="flex justify-between items-center w-full px-54"
             />
         </>
     );
@@ -113,8 +82,7 @@ const FAQSection: React.FC = () => {
                 {/* Scrollable FAQ Container */}
                 <div
                     ref={faqContainerRef}
-                    className="overflow-y-scroll overflow-x-hidden pl-11 scrollbar-hide"
-                    style={{ maxHeight: "300px" }}
+                    className="overflow-y-scroll overflow-x-hidden pl-11 scrollbar-hide max-h-[300px]"
                     onScroll={handleContainerScroll}
                 >
                     <FAQCard />

@@ -1,3 +1,10 @@
+interface FlowerInitialPosition {
+    x: number;
+    y: number;
+    rotation?: number;
+    scale?: number;
+}
+
 interface FlowerPosition {
     ref: React.RefObject<HTMLImageElement | null>;
     isInView: boolean;
@@ -5,6 +12,7 @@ interface FlowerPosition {
     translateDistance: number;
     transitionDuration: string;
     animationClass: string;
+    initialPosition?: FlowerInitialPosition;
 }
 
 // Components
@@ -22,9 +30,19 @@ const FlowerPair: React.FC<{
                 style={{
                     opacity: flowers.kiri.isInView ? 1 : 0,
                     transform: flowers.kiri.isInView
-                        ? "translateX(0)"
+                        ? "translateX(-25px)"
                         : `translateX(-${flowers.kiri.translateDistance}px)`,
                     transition: `opacity 1.2s cubic-bezier(.4,0,.2,1), transform ${flowers.kiri.transitionDuration} cubic-bezier(.4,0,.2,1)`,
+                    ...(flowers.kiri.initialPosition && {
+                        left: flowers.kiri.initialPosition.x,
+                        top: flowers.kiri.initialPosition.y,
+                        transform: `
+                            translateX(${flowers.kiri.isInView ? -15 : -flowers.kiri.translateDistance}px)
+                            translateY(${flowers.kiri.initialPosition.y}px)
+                            ${flowers.kiri.initialPosition.rotation ? `rotate(${flowers.kiri.initialPosition.rotation}deg)` : ''}
+                            ${flowers.kiri.initialPosition.scale ? `scale(${flowers.kiri.initialPosition.scale})` : ''}
+                        `.trim(),
+                    })
                 }}
             >
                 <img
@@ -41,9 +59,19 @@ const FlowerPair: React.FC<{
                 style={{
                     opacity: flowers.kanan.isInView ? 1 : 0,
                     transform: flowers.kanan.isInView
-                        ? "translateX(0)"
+                        ? "translateX(25px)"
                         : `translateX(${flowers.kanan.translateDistance}px)`,
                     transition: `opacity 1.2s cubic-bezier(.4,0,.2,1), transform ${flowers.kanan.transitionDuration} cubic-bezier(.4,0,.2,1)`,
+                    ...(flowers.kanan.initialPosition && {
+                        left: flowers.kanan.initialPosition.x,
+                        top: flowers.kanan.initialPosition.y,
+                        transform: `
+                            translateX(${flowers.kanan.isInView ? 15 : flowers.kanan.translateDistance}px)
+                            translateY(${flowers.kanan.initialPosition.y}px)
+                            ${flowers.kanan.initialPosition.rotation ? `rotate(${flowers.kanan.initialPosition.rotation}deg)` : ''}
+                            ${flowers.kanan.initialPosition.scale ? `scale(${flowers.kanan.initialPosition.scale})` : ''}
+                        `.trim(),
+                    })
                 }}
             >
                 <img
