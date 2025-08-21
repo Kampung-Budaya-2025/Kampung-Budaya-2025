@@ -28,6 +28,8 @@ interface ElementPosition {
     translateDistance: number;
     transitionDuration: string;
     transitionDelay: string;
+    floatDuration: string;
+    floatDistance: number;
 }
 
 interface ElementPair {
@@ -35,11 +37,11 @@ interface ElementPair {
     kanan: ElementPosition;
 }
 
-// Constants untuk konfigurasi elemen
+// Constants untuk konfigurasi elemen dengan timing yang lebih smooth
 const ELEMENT_CONFIGS = {
-    orangBertapa: { translateDistance: 120, duration: "1.5s", delay: "0s" },
-    daun: { translateDistance: 100, duration: "2s", delay: "0.2s" },
-    wayang: { translateDistance: 80, duration: "2.5s", delay: "0.4s" },
+    orangBertapa: { translateDistance: 120, duration: "1.8s", delay: "0s", floatDuration: "3s", floatDistance: 8 },
+    daun: { translateDistance: 100, duration: "2.2s", delay: "0.2s", floatDuration: "4s", floatDistance: 12 },
+    wayang: { translateDistance: 80, duration: "3s", delay: "0.4s", floatDuration: "6s", floatDistance: 8 },
 } as const;
 
 const BackgroundImage: React.FC<BackgroundImageProps> = ({
@@ -100,9 +102,14 @@ const ElementPairComponent: React.FC<{
             style={{
                 opacity: pair.kiri.isInView ? 1 : 0,
                 transform: pair.kiri.isInView
-                    ? "translateX(0)"
-                    : `translateX(-${pair.kiri.translateDistance}px)`,
-                transition: `opacity 1.2s cubic-bezier(.4,0,.2,1) ${pair.kiri.transitionDelay}, transform ${pair.kiri.transitionDuration} cubic-bezier(.4,0,.2,1) ${pair.kiri.transitionDelay}`,
+                    ? "translateX(0) translateY(0)"
+                    : `translateX(-${pair.kiri.translateDistance}px) translateY(0)`,
+                transition: `opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${pair.kiri.transitionDelay}, transform ${pair.kiri.transitionDuration} cubic-bezier(0.25, 0.46, 0.45, 0.94) ${pair.kiri.transitionDelay}`,
+                animation: pair.kiri.isInView 
+                    ? `floatSmooth-${pair.kiri.floatDistance} ${pair.kiri.floatDuration} ease-in-out infinite` 
+                    : 'none',
+                animationDelay: pair.kiri.isInView ? `calc(${pair.kiri.transitionDuration} + 0.3s)` : '0s',
+                animationFillMode: 'both',
             }}
         />
 
@@ -115,9 +122,14 @@ const ElementPairComponent: React.FC<{
             style={{
                 opacity: pair.kanan.isInView ? 1 : 0,
                 transform: pair.kanan.isInView
-                    ? "translateX(0)"
-                    : `translateX(-${pair.kanan.translateDistance}px)`,
-                transition: `opacity 1.2s cubic-bezier(.4,0,.2,1) ${pair.kanan.transitionDelay}, transform ${pair.kanan.transitionDuration} cubic-bezier(.4,0,.2,1) ${pair.kanan.transitionDelay}`,
+                    ? "translateX(0) translateY(0)"
+                    : `translateX(-${pair.kanan.translateDistance}px) translateY(0)`,
+                transition: `opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${pair.kanan.transitionDelay}, transform ${pair.kanan.transitionDuration} cubic-bezier(0.25, 0.46, 0.45, 0.94) ${pair.kanan.transitionDelay}`,
+                animation: pair.kanan.isInView 
+                    ? `floatSmoothRight-${pair.kanan.floatDistance} ${pair.kanan.floatDuration} ease-in-out infinite` 
+                    : 'none',
+                animationDelay: pair.kanan.isInView ? `calc(${pair.kanan.transitionDuration} + 0.3s)` : '0s',
+                animationFillMode: 'both',
             }}
         />
     </>
@@ -156,6 +168,8 @@ const GaleriHero: React.FC = () => {
             translateDistance: ELEMENT_CONFIGS.orangBertapa.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.orangBertapa.duration,
             transitionDelay: ELEMENT_CONFIGS.orangBertapa.delay,
+            floatDuration: ELEMENT_CONFIGS.orangBertapa.floatDuration,
+            floatDistance: ELEMENT_CONFIGS.orangBertapa.floatDistance,
         },
         kanan: {
             ref: orangBertapaKananRef,
@@ -166,6 +180,8 @@ const GaleriHero: React.FC = () => {
             translateDistance: ELEMENT_CONFIGS.orangBertapa.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.orangBertapa.duration,
             transitionDelay: ELEMENT_CONFIGS.orangBertapa.delay,
+            floatDuration: ELEMENT_CONFIGS.orangBertapa.floatDuration,
+            floatDistance: ELEMENT_CONFIGS.orangBertapa.floatDistance,
         },
     };
 
@@ -179,6 +195,8 @@ const GaleriHero: React.FC = () => {
             translateDistance: ELEMENT_CONFIGS.daun.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.daun.duration,
             transitionDelay: ELEMENT_CONFIGS.daun.delay,
+            floatDuration: ELEMENT_CONFIGS.daun.floatDuration,
+            floatDistance: ELEMENT_CONFIGS.daun.floatDistance,
         },
         kanan: {
             ref: daunKananRef,
@@ -189,6 +207,8 @@ const GaleriHero: React.FC = () => {
             translateDistance: ELEMENT_CONFIGS.daun.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.daun.duration,
             transitionDelay: ELEMENT_CONFIGS.daun.delay,
+            floatDuration: ELEMENT_CONFIGS.daun.floatDuration,
+            floatDistance: ELEMENT_CONFIGS.daun.floatDistance,
         },
     };
 
@@ -202,6 +222,8 @@ const GaleriHero: React.FC = () => {
             translateDistance: ELEMENT_CONFIGS.wayang.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.wayang.duration,
             transitionDelay: ELEMENT_CONFIGS.wayang.delay,
+            floatDuration: ELEMENT_CONFIGS.wayang.floatDuration,
+            floatDistance: ELEMENT_CONFIGS.wayang.floatDistance,
         },
         kanan: {
             ref: wayangKananRef,
@@ -212,6 +234,8 @@ const GaleriHero: React.FC = () => {
             translateDistance: ELEMENT_CONFIGS.wayang.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.wayang.duration,
             transitionDelay: ELEMENT_CONFIGS.wayang.delay,
+            floatDuration: ELEMENT_CONFIGS.wayang.floatDuration,
+            floatDistance: ELEMENT_CONFIGS.wayang.floatDistance,
         },
     };
 
