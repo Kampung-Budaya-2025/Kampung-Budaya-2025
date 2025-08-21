@@ -375,33 +375,28 @@ const RegisterForm = () => {
                                 >
                                     No. Handphone
                                 </label>
-                                <div className="relative">
-                                    <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none select-none left-3 top-1/2">
-                                        +62
-                                    </span>
-                                    <input
-                                        id="hp"
-                                        type="tel"
-                                        inputMode="tel"
-                                        pattern="^(\+62|62|0)8[1-9][0-9]{6,10}$"
-                                        value={formData.noHandphone}
-                                        onChange={(e) =>
-                                            handleChange(
-                                                "noHandphone",
-                                                e.target.value
-                                            )
-                                        }
-                                        placeholder="812345678"
-                                        autoComplete="tel"
-                                        className="w-full rounded-xl border border-gray-300 py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-amber-300 sm:py-3"
-                                        aria-invalid={!!errors.noHandphone}
-                                        aria-describedby={
-                                            errors.noHandphone
-                                                ? "hp-error"
-                                                : undefined
-                                        }
-                                    />
-                                </div>
+                                <input
+                                    id="hp"
+                                    type="tel"
+                                    inputMode="tel"
+                                    pattern="^(\+62|62|0)8[1-9][0-9]{6,10}$"
+                                    value={formData.noHandphone}
+                                    onChange={(e) =>
+                                        handleChange(
+                                            "noHandphone",
+                                            e.target.value
+                                        )
+                                    }
+                                    placeholder="081234567890"
+                                    autoComplete="tel"
+                                    className="w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:ring-2 focus:ring-amber-300 sm:py-3"
+                                    aria-invalid={!!errors.noHandphone}
+                                    aria-describedby={
+                                        errors.noHandphone
+                                            ? "hp-error"
+                                            : undefined
+                                    }
+                                />
                                 {errors.noHandphone && (
                                     <motion.p
                                         id="hp-error"

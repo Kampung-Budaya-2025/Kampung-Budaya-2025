@@ -9,6 +9,7 @@ import "../css/app.css";
 import RegisterForm from "./Pages/RegisterForm/Page";
 import RegisterUpload from "./Pages/RegisterUpload/Page";
 import RegisterConfirmation from "./Pages/RegisterConfirmation/Page";
+import RegisterSuccess from "./Pages/RegisterSuccess/Page";
 
 const container = document.getElementById("app");
 if (container) {
@@ -22,6 +23,7 @@ if (container) {
                 <Route path="/register-form" element={<RegisterForm />} />
                 <Route path="/register-upload" element={<RegisterUpload />} />
                 <Route path="/register-confirmation" element={<RegisterConfirmation />} />
+                <Route path="/register-success" element={<RegisterSuccess />} />
                
             </Routes>
         </BrowserRouter>
