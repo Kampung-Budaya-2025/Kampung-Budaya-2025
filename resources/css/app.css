@@ -143,4 +143,42 @@
                     transform: translateX(0) translateY(-12px);
                 }
             }
+            
+/* Animasi float dengan rotasi untuk elemen kiri */
+@keyframes floatWithRotate-12-3 {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(4deg);
+    }
+}
+
+@keyframes floatWithRotate-8-2 {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(2deg);
+    }
+}
+
+/* Animasi float dengan rotasi untuk elemen kanan */
+@keyframes floatWithRotateRight-12-3 {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(-4deg);
+    }
+}
+
+@keyframes floatWithRotateRight-8-2 {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(-2deg);
+    }
+}
 
