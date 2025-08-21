@@ -12,6 +12,7 @@ module.exports = {
       fontFamily: {
         'samsktrigrama': ['SamsktriGrama', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       }
+      
     }
   },
   plugins: [],
