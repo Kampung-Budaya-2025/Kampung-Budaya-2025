@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useInView } from "framer-motion";
+import { ANIMATION_CONFIG } from '@/Components/FAQ/Refs/page';
 
 interface BackgroundImageProps {
     src: string;
@@ -17,26 +19,57 @@ interface SubTitleProps {
     className?: string;
 }
 
-interface BackgroundImageConfig {
+interface ElementPosition {
+    ref: React.RefObject<HTMLImageElement | null>;
+    isInView: boolean;
     src: string;
     alt: string;
     className: string;
+    translateDistance: number;
+    transitionDuration: string;
+    transitionDelay: string;
 }
+
+interface ElementPair {
+    kiri: ElementPosition;
+    kanan: ElementPosition;
+}
+
+// Constants untuk konfigurasi elemen
+const ELEMENT_CONFIGS = {
+    orangBertapa: { translateDistance: 120, duration: "1.5s", delay: "0s" },
+    daun: { translateDistance: 100, duration: "2s", delay: "0.2s" },
+    wayang: { translateDistance: 80, duration: "2.5s", delay: "0.4s" },
+} as const;
 
 const BackgroundImage: React.FC<BackgroundImageProps> = ({
     src,
     alt,
     className,
     width,
-}) => (
-    <img
-        src={src}
-        alt={alt}
-        className={`absolute pointer-events-none ${className}`}
-        width={width}
-        loading="lazy"
-    />
-);
+}) => {
+    const batikRef = useRef<HTMLImageElement | null>(null);
+    const isBatikInView = useInView(batikRef, ANIMATION_CONFIG);
+
+    return (
+        <img
+            ref={batikRef}
+            src={src}
+            alt={alt}
+            className={`absolute pointer-events-none ${className}`}
+            width={width}
+            loading="lazy"
+            style={{
+                opacity: isBatikInView ? 1 : 0,
+                transform: isBatikInView
+                    ? "translateY(0)"
+                    : "translateY(-40px)",
+                transition:
+                    "opacity 1.2s cubic-bezier(.9,0,.2,1), transform 1.2s cubic-bezier(.4,0,.2,1)",
+            }}
+        />
+    );
+};
 
 const Title: React.FC<TitleProps> = ({ children, className = "" }) => (
     <h1
@@ -54,47 +87,133 @@ const SubTitle: React.FC<SubTitleProps> = ({ children, className = "" }) => (
     </h2>
 );
 
+const ElementPairComponent: React.FC<{
+    pair: ElementPair;
+}> = ({ pair }) => (
+    <>
+        {/* Element Kiri */}
+        <img
+            ref={pair.kiri.ref}
+            src={pair.kiri.src}
+            alt={pair.kiri.alt}
+            className={pair.kiri.className}
+            style={{
+                opacity: pair.kiri.isInView ? 1 : 0,
+                transform: pair.kiri.isInView
+                    ? "translateX(0)"
+                    : `translateX(-${pair.kiri.translateDistance}px)`,
+                transition: `opacity 1.2s cubic-bezier(.4,0,.2,1) ${pair.kiri.transitionDelay}, transform ${pair.kiri.transitionDuration} cubic-bezier(.4,0,.2,1) ${pair.kiri.transitionDelay}`,
+            }}
+        />
+
+        {/* Element Kanan */}
+        <img
+            ref={pair.kanan.ref}
+            src={pair.kanan.src}
+            alt={pair.kanan.alt}
+            className={pair.kanan.className}
+            style={{
+                opacity: pair.kanan.isInView ? 1 : 0,
+                transform: pair.kanan.isInView
+                    ? "translateX(0)"
+                    : `translateX(-${pair.kanan.translateDistance}px)`,
+                transition: `opacity 1.2s cubic-bezier(.4,0,.2,1) ${pair.kanan.transitionDelay}, transform ${pair.kanan.transitionDuration} cubic-bezier(.4,0,.2,1) ${pair.kanan.transitionDelay}`,
+            }}
+        />
+    </>
+);
+
 const GaleriHero: React.FC = () => {
-    const BACKGROUND_IMAGES: BackgroundImageConfig[] = [
-        {
-            src: "/background/batik-horizontal-galeri.svg",
-            alt: "Batik Background",
-            className: "-top-[20vh] left-0 w-auto h-auto z-0",
-        },
-        {
+    // Refs untuk semua elemen
+    const orangBertapaKiriRef = useRef<HTMLImageElement | null>(null);
+    const orangBertapaKananRef = useRef<HTMLImageElement | null>(null);
+    const daunKiriRef = useRef<HTMLImageElement | null>(null);
+    const daunKananRef = useRef<HTMLImageElement | null>(null);
+    const wayangKiriRef = useRef<HTMLImageElement | null>(null);
+    const wayangKananRef = useRef<HTMLImageElement | null>(null);
+
+    // InView hooks
+    const isOrangBertapaKiriInView = useInView(orangBertapaKiriRef, ANIMATION_CONFIG);
+    const isOrangBertapaKananInView = useInView(orangBertapaKananRef, ANIMATION_CONFIG);
+    const isDaunKiriInView = useInView(daunKiriRef, ANIMATION_CONFIG);
+    const isDaunKananInView = useInView(daunKananRef, ANIMATION_CONFIG);
+    const isWayangKiriInView = useInView(wayangKiriRef, ANIMATION_CONFIG);
+    const isWayangKananInView = useInView(wayangKananRef, ANIMATION_CONFIG);
+
+    const BATIK_BACKGROUND = {
+        src: "/background/batik-horizontal-galeri.svg",
+        alt: "Batik Background",
+        className: "-top-[20vh] left-0 w-auto h-auto z-0",
+    };
+
+    const ORANG_BERTAPA_PAIR: ElementPair = {
+        kiri: {
+            ref: orangBertapaKiriRef,
+            isInView: isOrangBertapaKiriInView,
             src: "/background/orang-bertapa.svg",
             alt: "Orang Bertapa Kiri",
             className: "absolute bottom-0 -left-[9%] z-10 w-[370px] h-auto",
+            translateDistance: ELEMENT_CONFIGS.orangBertapa.translateDistance,
+            transitionDuration: ELEMENT_CONFIGS.orangBertapa.duration,
+            transitionDelay: ELEMENT_CONFIGS.orangBertapa.delay,
         },
-        {
+        kanan: {
+            ref: orangBertapaKananRef,
+            isInView: isOrangBertapaKananInView,
             src: "/background/orang-bertapa.svg",
             alt: "Orang Bertapa Kanan",
-            className:
-                "absolute bottom-0 -right-[9%] z-10 transform scale-x-[-1] w-[370px] h-auto",
+            className: "absolute bottom-0 -right-[9%] z-10 transform scale-x-[-1] w-[370px] h-auto",
+            translateDistance: ELEMENT_CONFIGS.orangBertapa.translateDistance,
+            transitionDuration: ELEMENT_CONFIGS.orangBertapa.duration,
+            transitionDelay: ELEMENT_CONFIGS.orangBertapa.delay,
         },
-        {
+    };
+
+    const DAUN_PAIR: ElementPair = {
+        kiri: {
+            ref: daunKiriRef,
+            isInView: isDaunKiriInView,
             src: "/background/daun.svg",
             alt: "Daun Kiri",
             className: "absolute bottom-[30%] left-[4.5%] z-0 w-[220px] h-auto",
+            translateDistance: ELEMENT_CONFIGS.daun.translateDistance,
+            transitionDuration: ELEMENT_CONFIGS.daun.duration,
+            transitionDelay: ELEMENT_CONFIGS.daun.delay,
         },
-        {
+        kanan: {
+            ref: daunKananRef,
+            isInView: isDaunKananInView,
             src: "/background/daun.svg",
             alt: "Daun Kanan",
-            className:
-                "absolute bottom-[30%] right-[4.5%] z-0 transform scale-x-[-1] w-[220px] h-auto",
+            className: "absolute bottom-[30%] right-[4.5%] z-0 transform scale-x-[-1] w-[220px] h-auto",
+            translateDistance: ELEMENT_CONFIGS.daun.translateDistance,
+            transitionDuration: ELEMENT_CONFIGS.daun.duration,
+            transitionDelay: ELEMENT_CONFIGS.daun.delay,
         },
-        {
+    };
+
+    const WAYANG_PAIR: ElementPair = {
+        kiri: {
+            ref: wayangKiriRef,
+            isInView: isWayangKiriInView,
             src: "/background/wayang.svg",
             alt: "Wayang Kiri",
             className: "absolute bottom-[17%] left-[5.5%] z-0 w-[230px] h-auto",
+            translateDistance: ELEMENT_CONFIGS.wayang.translateDistance,
+            transitionDuration: ELEMENT_CONFIGS.wayang.duration,
+            transitionDelay: ELEMENT_CONFIGS.wayang.delay,
         },
-        {
+        kanan: {
+            ref: wayangKananRef,
+            isInView: isWayangKananInView,
             src: "/background/wayang.svg",
             alt: "Wayang Kanan",
-            className:
-                "absolute bottom-[17%] right-[5.5%] z-0 transform scale-x-[-1] w-[230px] h-auto",
+            className: "absolute bottom-[17%] right-[5.5%] z-0 transform scale-x-[-1] w-[230px] h-auto",
+            translateDistance: ELEMENT_CONFIGS.wayang.translateDistance,
+            transitionDuration: ELEMENT_CONFIGS.wayang.duration,
+            transitionDelay: ELEMENT_CONFIGS.wayang.delay,
         },
-    ];
+    };
 
     const containerClassName =
         "flex justify-center items-center mb-12 relative w-full min-h-screen";
@@ -112,15 +231,13 @@ const GaleriHero: React.FC = () => {
         "flex flex-col items-center gap-2 sm:gap-4 md:gap-6 -mt-4";
     const buttonImageClassName = "w-[40vw] min-w-[200px] max-w-[250px] h-auto";
 
-    const renderBackgroundImages = () =>
-        BACKGROUND_IMAGES.map((image, index) => (
-            <BackgroundImage
-                key={`${image.src}-${index}`}
-                src={image.src}
-                alt={image.alt}
-                className={image.className}
-            />
-        ));
+    const renderBatikBackground = () => (
+        <BackgroundImage
+            src={BATIK_BACKGROUND.src}
+            alt={BATIK_BACKGROUND.alt}
+            className={BATIK_BACKGROUND.className}
+        />
+    );
 
     const renderPatternImage = () => (
         <img
@@ -151,9 +268,8 @@ const GaleriHero: React.FC = () => {
         <div className={contentWrapperClassName}>
             <div className="w-full">
                 <SubTitle>
-                    Panggung terbesar untuk Forda dan komunitas
-                    budaya untuk unjuk kemampuan dan meraih
-                    prestasi.
+                    Panggung terbesar untuk Forda dan komunitas budaya untuk
+                    unjuk kemampuan dan meraih prestasi.
                 </SubTitle>
             </div>
             <button type="button">
@@ -168,7 +284,10 @@ const GaleriHero: React.FC = () => {
 
     return (
         <div className={containerClassName}>
-            {renderBackgroundImages()}
+            {renderBatikBackground()}
+            <ElementPairComponent pair={ORANG_BERTAPA_PAIR} />
+            <ElementPairComponent pair={DAUN_PAIR} />
+            <ElementPairComponent pair={WAYANG_PAIR} />
             {renderPatternImage()}
 
             <div className={mainContentClassName}>
