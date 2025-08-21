@@ -25,7 +25,7 @@ const NavbarLogo: React.FC = () => (
         <img
             src="/icon/logo-kampung-budaya.svg"
             alt="Kampung Budaya Logo"
-            className="h-16 w-auto"
+            className="h-12 w-auto"
             loading="lazy"
         />
     </Link>
@@ -180,7 +180,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
 
     return (
         <nav
-            className={`h-auto py-4 fixed top-0 left-0 right-0 rounded-b-[20px] z-50 
+            className={`h-auto py-3 fixed top-0 left-0 right-0 rounded-b-[20px] z-50 
                 bg-[linear-gradient(90deg,#FFF_0%,#FFF_47.12%,#E1B01B_100%)] 
                 lg:bg-[linear-gradient(90deg,#E1B01B_0%,#FFF_25%,#FFF_75%,#E1B01B_100%)] 
     shadow-[0_5px_16px_0_rgba(8,15,52,0.12)] 

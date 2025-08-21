@@ -8,6 +8,12 @@ const ANIMATION_CONFIG = {
     amount: 0.2,
 } as const;
 
+const ANIMATION_ONCE_CONFIGG = {
+    once: true,
+    margin: "0px",
+    amount: 0.2,
+} as const;
+
 const FLOWER_CONFIGS = {
     besar: { size: 230, translateDistance: 60, duration: "1.2s" },
     sedang: { size: 140, translateDistance: 80, duration: "2s" },
@@ -116,4 +122,4 @@ const useFlowerAnimations = () => {
     ]);
 };
 
-export { useFlowerAnimations, ANIMATION_CONFIG, FLOWER_CONFIGS };
+export { useFlowerAnimations, ANIMATION_CONFIG, ANIMATION_ONCE_CONFIGG, FLOWER_CONFIGS };

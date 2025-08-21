@@ -1,10 +1,12 @@
-import React from 'react';
+import GaleriHero from "@/Components/Galeri/GaleriHero/page";
+import React from "react";
 
-const Galeri = () => (
-  <div>
-    <h1>Register Event</h1>
-    <p>Form pendaftaran event akan tersedia di sini.</p>
-  </div>
-);
+const GaleriPage: React.FC = () => {
+    return (
+        <>
+           <GaleriHero />
+        </>
+    );
+};
 
-export default Galeri;
+export default GaleriPage;
