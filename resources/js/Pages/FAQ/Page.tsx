@@ -1,13 +1,13 @@
-import FAQCard from "@/Components/FAQ/UI/FAQCard/Page";
-import Scrollbar from "@/Components/FAQ/UI/ScrollBar/Page";
-import SearchField from "@/Components/FAQ/UI/SearchField/Page";
-import FlowerPair from "@/Components/FAQ/UI/FlowerPair/Page";
-import BatikBackground from "@/Components/FAQ/UI/BatikBackground/Page";
-import DecorationSection from "@/Components/FAQ/UI/DecorationSection/Page";
+import FAQCard from "@/Components/FAQ/UI/FaqCard";
+import Scrollbar from "@/Components/FAQ/UI/ScrollBar";
+import SearchField from "@/Components/FAQ/UI/SearchField";
+import FlowerPair from "@/Components/FAQ/UI/FlowerPair";
+import BatikBackground from "@/Components/FAQ/UI/BatikBackground.tsx";
+import DecorationSection from "@/Components/FAQ/UI/Decoration";
 import React, { useRef, useState, useMemo } from "react";
 import "../../../css/app.css";
-import useScrollSync from "@/Components/FAQ/Hooks/page";
-import { useFlowerAnimations } from "@/Components/FAQ/Refs/page";
+import { useScrollSync } from "@/Components/FAQ/hooks/page";
+import { useFlowerAnimations } from "@/Components/FAQ/refs/page";
 
 // Interface untuk FAQ Item
 interface FAQItem {

@@ -1,11 +1,10 @@
 import React, { useRef } from "react";
 import { useInView } from "framer-motion";
-import { ANIMATION_CONFIG } from "../../Refs/page";
+import { ANIMATION_CONFIG } from "../refs/page";
 
 const BatikBackground: React.FC = () => {
     const batikTopRef = useRef<HTMLImageElement | null>(null);
     const batikBottomRef = useRef<HTMLImageElement | null>(null);
-
     const isBatikTopInView = useInView(batikTopRef, ANIMATION_CONFIG);
     const isBatikBottomInView = useInView(batikBottomRef, ANIMATION_CONFIG);
 
