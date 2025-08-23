@@ -89,7 +89,7 @@ const buttonData: ButtonData[] = [
         id: 'bunga-mahkota',
         src: '/icon/bunga-mahkota.svg',
         alt: 'Bunga Mahkota',
-        className: 'absolute -bottom-2 left-1/2 transform -translate-x-1/2 translate-y-1/4 z-0'
+        className: 'absolute w-[610px] -bottom-2 left-1/2 transform -translate-x-1/2 translate-y-1/4 z-0'
     } as const;
 
     export { buttonData, cardData, bungaMahkotaDecoration, batikDecorations, bungaDecorations };
