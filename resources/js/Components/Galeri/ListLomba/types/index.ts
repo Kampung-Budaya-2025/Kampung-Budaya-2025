@@ -17,4 +17,17 @@ interface CardData {
     description: string; // Tambahan untuk deskripsi
 }
 
+export interface DecorationItem {
+    id: string;
+    src: string;
+    alt: string;
+    className: string;
+}
+
+export interface DecorationGroup {
+    id: string;
+    containerClassName: string;
+    items: DecorationItem[];
+}
+
 export type { ButtonProps, ButtonData, CardData };

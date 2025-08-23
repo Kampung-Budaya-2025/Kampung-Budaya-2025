@@ -1,4 +1,5 @@
 import { ButtonData, CardData } from "../types";
+import { DecorationGroup, DecorationItem } from '../types';
 
 const buttonData: ButtonData[] = [
         {
@@ -46,4 +47,49 @@ const buttonData: ButtonData[] = [
         }
     ] as const;
 
-    export { buttonData, cardData };
+    const bungaDecorations: DecorationGroup = {
+        id: 'bunga-group',
+        containerClassName: 'absolute top-110 left-0 w-full flex justify-between pt-4 pointer-events-none opacity-30',
+        items: [
+            {
+                id: 'bunga-kiri',
+                src: '/icon/bunga.svg',
+                alt: 'Bunga Kiri',
+                className: 'absolute -left-30 w-[240px] h-[240px]'
+            },
+            {
+                id: 'bunga-kanan',
+                src: '/icon/bunga.svg',
+                alt: 'Bunga Kanan',
+                className: 'absolute -right-30 w-[240px] h-[240px] scale-x-[-1]'
+            }
+        ]
+    } as const;
+
+    const batikDecorations: DecorationGroup = {
+        id: 'batik-group',
+        containerClassName: 'absolute bottom-50 left-0 w-full flex justify-between pb-4 pointer-events-none overflow-visible z-0',
+        items: [
+            {
+                id: 'batik-kiri',
+                src: '/icon/batik.svg',
+                alt: 'Batik Kiri',
+                className: 'absolute left-0 w-[305px] h-auto'
+            },
+            {
+                id: 'batik-kanan',
+                src: '/icon/batik.svg',
+                alt: 'Batik Kanan',
+                className: 'absolute right-0 w-[305px] h-auto scale-x-[-1]'
+            }
+        ]
+    } as const;
+
+    const bungaMahkotaDecoration: DecorationItem = {
+        id: 'bunga-mahkota',
+        src: '/icon/bunga-mahkota.svg',
+        alt: 'Bunga Mahkota',
+        className: 'absolute -bottom-2 left-1/2 transform -translate-x-1/2 translate-y-1/4 z-0'
+    } as const;
+
+    export { buttonData, cardData, bungaMahkotaDecoration, batikDecorations, bungaDecorations };
