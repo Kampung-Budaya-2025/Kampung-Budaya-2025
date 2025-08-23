@@ -9,6 +9,23 @@ import { BATIK_BACKGROUND, CSS_CLASSES } from './config/constants';
 const GaleriHero: React.FC = () => {
     const { ORANG_BERTAPA_PAIR, DAUN_PAIR, WAYANG_PAIR } = useElementRefs();
 
+    const handleScrollToListLomba = () => {
+        // Scroll ke elemen dengan ID 'list-lomba' atau class tertentu
+        const listLombaElement = document.getElementById('list-lomba');
+        if (listLombaElement) {
+            listLombaElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        } else {
+            // Alternatif: scroll berdasarkan tinggi viewport jika element tidak ditemukan
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        }
+    };
+
     const renderBatikBackground = () => (
         <BackgroundImage
             src={BATIK_BACKGROUND.src}
@@ -50,12 +67,15 @@ const GaleriHero: React.FC = () => {
                     unjuk kemampuan dan meraih prestasi.
                 </SubTitle>
             </div>
-            <button type="button">
-                <img
-                    src="/icon/button-daftar.svg"
-                    alt="Daftar"
-                    className={CSS_CLASSES.buttonImage}
-                />
+            <button 
+                type="button" 
+                onClick={handleScrollToListLomba}
+                className="relative cursor-pointer transition-transform duration-200 hover:scale-105 rounded-lg pt-6 pb-5 active:scale-95 bg-no-repeat bg-center bg-contain w-[250px] h-auto flex items-center justify-center text-[#FFDA88] font-samsktrigrama text-3xl tracking-[0.1]"
+                style={{
+                    backgroundImage: "url('/icon/button-daftar.svg')"
+                }}
+            >
+                Daftar
             </button>
         </div>
     );
