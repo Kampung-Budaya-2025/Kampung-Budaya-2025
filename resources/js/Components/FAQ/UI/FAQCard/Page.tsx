@@ -21,7 +21,7 @@ const FAQCard: React.FC<CardProps> = ({
 }) => {
   const [internalOpenId, setInternalOpenId] = useState<number | null>(null);
 
-  // Data FAQ
+  // Data FAQ default (fallback)
   const faqData: FAQItem[] = [
     {
       id: 1,
