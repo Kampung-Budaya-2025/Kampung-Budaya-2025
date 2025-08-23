@@ -14,6 +14,7 @@ interface CardData {
     id: string;
     title: string;
     icon: string;
+    description: string; // Tambahan untuk deskripsi
 }
 
 export type { ButtonProps, ButtonData, CardData };
