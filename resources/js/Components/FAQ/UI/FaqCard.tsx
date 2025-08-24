@@ -38,14 +38,14 @@ const FAQCard: React.FC<CardProps> = ({
   };
 
   return (
-    <div className="w-full space-y-10">
+    <div className="w-full space-y-6 lg:space-y-10">
       {displayFaqs.map((item) => (
         <div key={item.id} className="w-full relative">
           {/* FAQ Card Header - Menyamakan dengan lebar SearchField */}
           <div
-            className="relative flex items-center justify-between cursor-pointer z-20 w-full max-w-[648px]"
+            className="relative flex items-center justify-between cursor-pointer z-20 w-full max-w-[340px] md:max-w-[648px] py-3 lg:py-4"
             style={{
-              height: '49px',
+              // height: '49px', // HAPUS baris ini agar tinggi mengikuti isi
               borderRadius: '16px',
               background: '#E1B01B',
               boxShadow: '0 1.775px 3.55px 0 rgba(0, 0, 0, 0.07) inset'
@@ -53,8 +53,8 @@ const FAQCard: React.FC<CardProps> = ({
             onClick={() => handleToggle(item.id)}
           >
             {/* Question Text */}
-            <div className="flex-1 px-6 text-left">
-              <p className="text-sm font-medium text-[#3F170D] truncate">
+            <div className="flex-1 px-6 text-left max-w-[330px] lg:max-w-[570px]">
+              <p className="text-sm font-medium text-[#3F170D] break-words max-w-[310px] lg:max-w-[540px]">
                 {highlightText(item.question, searchQuery)}
               </p>
             </div>
@@ -81,7 +81,7 @@ const FAQCard: React.FC<CardProps> = ({
             style={{ marginTop: '-12px' }}
           >
             <div
-              className="px-6 py-4 bg-white border-1 border-[#CD9C1A] border-t-0 relative z-10 w-full max-w-[648px]"
+              className="px-6 py-4 bg-white border-1 border-[#CD9C1A] border-t-0 relative z-10 w-full max-w-[340px] md:max-w-[648px]"
               style={{ 
                 borderRadius: '0 0 16px 16px',
                 paddingTop: '20px'
