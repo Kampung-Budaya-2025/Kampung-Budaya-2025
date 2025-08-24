@@ -151,42 +151,34 @@ const RegisterForm = () => {
                 </h1>
             </motion.header>
 
-            <div className="relative max-w-5xl mx-auto">
-                {/* Maskot kiri */}
-                <motion.div
-                    className="absolute hidden -translate-y-1/2 -left-40 top-1/2 lg:block"
-                    variants={floatingVariants}
-                    animate="animate"
-                >
-                    <img
-                        src="mascot/mascot-cowok.svg"
-                        alt="Maskot kiri"
-                        className="h-auto w-28 sm:w-36 lg:w-48 xl:w-56"
-                    />
-                </motion.div>
+      <div className="relative max-w-5xl mx-auto">
+        {/* Maskot kiri */}
+        <motion.div
+          className="absolute hidden w-32 -left-2 top-16 lg:block"
+          variants={floatingVariants}
+          animate="animate"
+        >
+          <img src="/mascot/mascot-cowok.svg" alt="Maskot kiri" />
+        </motion.div>
 
-                {/* Maskot kanan */}
-                <motion.div
-                    className="absolute hidden -translate-y-1/2 -right-40 top-1/2 lg:block"
-                    variants={{
-                        animate: {
-                            y: [0, -8, 0],
-                            transition: {
-                                duration: 4.5,
-                                ease: easeInOut,
-                                repeat: Infinity,
-                                delay: 2.25,
-                            },
-                        },
-                    }}
-                    animate="animate"
-                >
-                    <img
-                        src="mascot/mascot-cewek.svg"
-                        alt="Maskot kanan"
-                        className="h-auto w-28 sm:w-36 lg:w-48 xl:w-56"
-                    />
-                </motion.div>
+        {/* Maskot kanan (delay offset) */}
+        <motion.div
+          className="absolute hidden w-32 -right-2 top-16 lg:block"
+          variants={{
+            animate: {
+              y: [0, -8, 0],
+              transition: {
+                duration: 4.5,
+                ease: easeInOut,
+                repeat: Infinity,
+                delay: 2.25,
+              },
+            },
+          }}
+          animate="animate"
+        >
+          <img src="/mascot/mascot-cewek.svg" alt="Maskot kanan" />
+        </motion.div>
 
                 {/* Card Putih */}
                 <motion.div
