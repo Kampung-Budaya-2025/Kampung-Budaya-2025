@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 /* Override cursor untuk semua elemen agar selalu pakai custom cursor */
+
 *, *:hover, *:active, *:focus {
     cursor: url('/icon/mouse-arrow.svg') 0 0, auto !important;
 }
