@@ -40,9 +40,9 @@ const BatikBackground: React.FC = () => {
                     opacity: isBatikBottomInView ? 1 : 0,
                     transform: isBatikBottomInView
                         ? "translateY(0)"
-                        : "translateY(-80px)",
+                        : "translateY(-80px)", // Samakan dengan batik top
                     transition:
-                        "opacity 1.2s cubic-bezier(.4,0,.2,1), transform 1.2s cubic-bezier(.4,0,.2,1)",
+                        "opacity 1.2s cubic-bezier(.9,0,.2,1), transform 1.2s cubic-bezier(.4,0,.2,1)", // Samakan dengan batik top
                 }}
             />
 

@@ -1,4 +1,8 @@
 @import 'tailwindcss';
+/* Override cursor untuk semua elemen agar selalu pakai custom cursor */
+*, *:hover, *:active, *:focus {
+    cursor: url('/icon/mouse-arrow.svg') 0 0, auto !important;
+}
 
 @font-face {
     font-family: 'Amaranth';
@@ -48,6 +52,7 @@
     font-style: normal;
     font-display: swap;
 }
+
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -205,5 +210,3 @@
 }
 
 
-
-/* Animasi text jatuh satu per satu  */
