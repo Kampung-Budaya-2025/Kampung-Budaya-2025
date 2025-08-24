@@ -12,6 +12,7 @@ import GaleriPage from "./Pages/Galeri/Page";
 import "./bootstrap";
 import "../css/app.css";
 
+
 const container = document.getElementById("app");
 if (container) {
     const root = createRoot(container);
