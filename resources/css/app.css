@@ -182,6 +182,7 @@
     }
 }
 
+/* Animasi Flip pada card register */
 .perspective-1000 {
     perspective: 1000px;
 }
@@ -202,3 +203,5 @@
     transform: rotateY(180deg);
 }
 
+
+/* Animasi text jatuh satu per satu  */
