@@ -26,6 +26,7 @@ const GaleriHero: React.FC = () => {
         }
     };
 
+
     const renderBatikBackground = () => (
         <BackgroundImage
             src={BATIK_BACKGROUND.src}
@@ -39,6 +40,7 @@ const GaleriHero: React.FC = () => {
             src="/icon/pattern-galeri.svg"
             alt="pattern"
             className={CSS_CLASSES.patternImage}
+
         />
     );
 
@@ -55,6 +57,7 @@ const GaleriHero: React.FC = () => {
     const renderTitles = () => (
         <div className={CSS_CLASSES.titleWrapper}>
             <Title className={CSS_CLASSES.titleSpacing}>Lomba Umum</Title>
+
             <Title>Forum Daerah</Title>
         </div>
     );
@@ -67,6 +70,7 @@ const GaleriHero: React.FC = () => {
                     unjuk kemampuan dan meraih prestasi.
                 </SubTitle>
             </div>
+
             <button 
                 type="button" 
                 onClick={handleScrollToListLomba}
@@ -88,8 +92,10 @@ const GaleriHero: React.FC = () => {
             <ElementPairComponent pair={WAYANG_PAIR} />
             {renderPatternImage()}
 
+
             <div className={CSS_CLASSES.mainContent}>
                 <div className={CSS_CLASSES.titleContainer}>
+
                     {renderGradientBackground()}
                     {renderTitles()}
                     {renderContent()}
