@@ -269,7 +269,7 @@ const RegisterUpload: React.FC = () => {
       <div className="relative max-w-5xl mx-auto">
         {/* Maskot kiri - positioning dan ukuran sama persis dengan RegisterForm */}
         <motion.div
-          className="absolute hidden -translate-y-1/2 -left-40 top-1/2 lg:block"
+          className="absolute hidden -translate-y-1/2 -left-60 top-1/2 lg:block"
           variants={floatVariants}
           animate="animate"
         >
@@ -282,7 +282,7 @@ const RegisterUpload: React.FC = () => {
 
         {/* Maskot kanan - positioning dan ukuran sama persis dengan RegisterForm */}
         <motion.div
-          className="absolute hidden -translate-y-1/2 -right-40 top-1/2 lg:block"
+          className="absolute hidden -translate-y-1/2 -right-60 top-1/2 lg:block"
           variants={{
             animate: {
               y: [0, -8, 0],
