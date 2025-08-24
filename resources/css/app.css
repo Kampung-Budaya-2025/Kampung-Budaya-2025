@@ -143,6 +143,7 @@
                     transform: translateX(0) translateY(-12px);
                 }
             }
+
             
 /* Animasi float dengan rotasi untuk elemen kiri */
 @keyframes floatWithRotate-12-3 {
@@ -202,6 +203,7 @@
 .group:hover .group-hover\:rotate-y-180 {
     transform: rotateY(180deg);
 }
+
 
 
 /* Animasi text jatuh satu per satu  */
