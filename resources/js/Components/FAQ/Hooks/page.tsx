@@ -1,5 +1,10 @@
 
 import React, {useState, useEffect} from "react";
+
+type UseFaqToggleProps = {
+  onToggle?: (id: number) => void;
+  openItemId?: number | null;
+};
 const useScrollSync = (containerRef: React.RefObject<HTMLDivElement>) => {
     const [scrollValue, setScrollValue] = useState(0);
     const [maxScrollValue, setMaxScrollValue] = useState(100);
@@ -51,4 +56,22 @@ const useScrollSync = (containerRef: React.RefObject<HTMLDivElement>) => {
     };
 };
 
-export default useScrollSync;
+function useFaqToggle({ onToggle, openItemId }: UseFaqToggleProps) {
+  const [internalOpenId, setInternalOpenId] = useState<number | null>(null);
+
+  const handleToggle = (id: number) => {
+    if (onToggle) {
+      onToggle(id);
+    } else {
+      setInternalOpenId(internalOpenId === id ? null : id);
+    }
+  };
+
+  const isExpanded = (id: number) => {
+    return onToggle ? openItemId === id : internalOpenId === id;
+  };
+
+  return { handleToggle, isExpanded };
+}
+
+export { useScrollSync, useFaqToggle };

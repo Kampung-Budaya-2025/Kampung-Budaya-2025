@@ -6,6 +6,27 @@
 *.md diff=markdown
 *.php diff=php
 
+# Ensure shell scripts have proper line endings
+*.sh text eol=lf
+
+# Ensure build assets are treated as binary
+public/build/* binary
+
+# Font files (binary)
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+
+# Image files (binary)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore

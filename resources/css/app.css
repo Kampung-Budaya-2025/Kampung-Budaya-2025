@@ -1,49 +1,51 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @font-face {
-    font-family: 'Amaranth';
-    src: url('/fonts/Amaranth/Amaranth-Regular.woff2') format('woff2'),
-         url('/fonts/Amaranth/Amaranth-Regular.woff') format('woff'),
-         url('/fonts/Amaranth/Amaranth-Regular.ttf') format('truetype');
+    font-family: "Amaranth";
+    src: url("../assets/fonts/Amaranth/Amaranth-Regular.woff2") format("woff2"),
+        url("../assets/fonts/Amaranth/Amaranth-Regular.woff") format("woff"),
+        url("../assets/fonts/Amaranth/Amaranth-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Amaranth';
-    src: url('/fonts/Amaranth/Amaranth-Bold.woff2') format('woff2'),
-         url('/fonts/Amaranth/Amaranth-Bold.woff') format('woff'),
-         url('/fonts/Amaranth/Amaranth-Bold.ttf') format('truetype');
+    font-family: "Amaranth";
+    src: url("../assets/fonts/Amaranth/Amaranth-Bold.woff2") format("woff2"),
+        url("../assets/fonts/Amaranth/Amaranth-Bold.woff") format("woff"),
+        url("../assets/fonts/Amaranth/Amaranth-Bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Amaranth';
-    src: url('/fonts/Amaranth/Amaranth-Italic.woff2') format('woff2'),
-         url('/fonts/Amaranth/Amaranth-Italic.woff') format('woff'),
-         url('/fonts/Amaranth/Amaranth-Italic.ttf') format('truetype');
+    font-family: "Amaranth";
+    src: url("../assets/fonts/Amaranth/Amaranth-Italic.woff2") format("woff2"),
+        url("../assets/fonts/Amaranth/Amaranth-Italic.woff") format("woff"),
+        url("../assets/fonts/Amaranth/Amaranth-Italic.ttf") format("truetype");
     font-weight: 400;
     font-style: italic;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Amaranth';
-    src: url('/fonts/Amaranth/Amaranth-BoldItalic.woff2') format('woff2'),
-         url('/fonts/Amaranth/Amaranth-BoldItalic.woff') format('woff'),
-         url('/fonts/Amaranth/Amaranth-BoldItalic.ttf') format('truetype');
+    font-family: "Amaranth";
+    src: url("../assets/fonts/Amaranth/Amaranth-BoldItalic.woff2")
+            format("woff2"),
+        url("../assets/fonts/Amaranth/Amaranth-BoldItalic.woff") format("woff"),
+        url("../assets/fonts/Amaranth/Amaranth-BoldItalic.ttf")
+            format("truetype");
     font-weight: 700;
     font-style: italic;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'SamsktriGrama';
-    src: url('/fonts/SamsktriGrama-Regular.otf') format('opentype'),
-         url('/fonts/SamsktriGrama-Regular.ttf') format('truetype');
+    font-family: "SamsktriGrama";
+    src: url("../assets/fonts/SamsktriGrama-Regular.otf") format("opentype"),
+        url("../assets/fonts/SamsktriGrama-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -55,9 +57,10 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Amaranth', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-samsktrigrama: 'SamsktriGrama', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Amaranth", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-samsktrigrama: "SamsktriGrama", ui-sans-serif, system-ui, sans-serif;
 }
 
 .scrollbar-hide {
@@ -95,4 +98,119 @@
     }
 }
 
+@keyframes floatSmooth-8 {
+    0%,
+    100% {
+        transform: translateX(0) translateY(0px);
+    }
+    50% {
+        transform: translateX(0) translateY(-8px);
+    }
+}
+@keyframes floatSmooth-10 {
+    0%,
+    100% {
+        transform: translateX(0) translateY(0px);
+    }
+    50% {
+        transform: translateX(0) translateY(-10px);
+    }
+}
+@keyframes floatSmooth-12 {
+    0%,
+    100% {
+        transform: translateX(0) translateY(0px);
+    }
+    50% {
+        transform: translateX(0) translateY(-12px);
+    }
+}
+@keyframes floatSmoothRight-8 {
+    0%,
+    100% {
+        transform: translateX(0) translateY(0px);
+    }
+    50% {
+        transform: translateX(0) translateY(-8px);
+    }
+}
+@keyframes floatSmoothRight-10 {
+    0%,
+    100% {
+        transform: translateX(0) translateY(0px);
+    }
+    50% {
+        transform: translateX(0) translateY(-10px);
+    }
+}
+@keyframes floatSmoothRight-12 {
+    0%,
+    100% {
+        transform: translateX(0) translateY(0px);
+    }
+    50% {
+        transform: translateX(0) translateY(-12px);
+    }
+}
 
+/* Animasi float dengan rotasi untuk elemen kiri */
+@keyframes floatWithRotate-12-3 {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(4deg);
+    }
+}
+
+@keyframes floatWithRotate-8-2 {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(2deg);
+    }
+}
+
+/* Animasi float dengan rotasi untuk elemen kanan */
+@keyframes floatWithRotateRight-12-3 {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(-4deg);
+    }
+}
+
+@keyframes floatWithRotateRight-8-2 {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(-2deg);
+    }
+}
+
+.perspective-1000 {
+    perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+    transform-style: preserve-3d;
+}
+
+.backface-hidden {
+    backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+    transform: rotateY(180deg);
+}
+
+.group:hover .group-hover\:rotate-y-180 {
+    transform: rotateY(180deg);
+}
