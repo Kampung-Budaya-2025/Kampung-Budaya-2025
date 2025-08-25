@@ -4,16 +4,15 @@ import SearchField from "@/Components/FAQ/UI/SearchField";
 import FlowerPair from "@/Components/FAQ/UI/FlowerPair";
 import BatikBackground from "@/Components/FAQ/UI/BatikBackground.tsx";
 import DecorationSection from "@/Components/FAQ/UI/Decoration";
-import React, { useRef, useState, useMemo } from "react";
+import React, { useRef, useState, useMemo, useEffect } from "react";
 import "../../../css/app.css";
-import { useScrollSync } from "@/Components/FAQ/hooks/page";
-import { useFlowerAnimations } from "@/Components/FAQ/refs/page";
+import { useFlowerAnimations } from "@/Components/FAQ/Refs/page";
 
 // Interface untuk FAQ Item
 interface FAQItem {
-  id: number;
-  question: string;
-  answer: string;
+    id: number;
+    question: string;
+    answer: string;
 }
 
 const FlowerDecorations: React.FC = () => {
@@ -60,66 +59,102 @@ const FAQSection: React.FC = () => {
     const faqContainerRef = useRef<HTMLDivElement>(null!);
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [openItemId, setOpenItemId] = useState<number | null>(null);
-    
-    const {
-        scrollValue,
-        maxScrollValue,
-        handleScrollChange,
-        handleContainerScroll,
-    } = useScrollSync(faqContainerRef);
+    const [scrollValue, setScrollValue] = useState(0);
+    const [maxScrollValue, setMaxScrollValue] = useState(100);
+
+    useEffect(() => {
+        const updateMaxScroll = () => {
+            if (faqContainerRef.current) {
+                const container = faqContainerRef.current;
+                const scrollHeight = container.scrollHeight;
+                const clientHeight = container.clientHeight;
+                const maxScroll = Math.max(0, scrollHeight - clientHeight);
+                setMaxScrollValue(maxScroll);
+            }
+        };
+
+        updateMaxScroll();
+        window.addEventListener("resize", updateMaxScroll);
+        return () => window.removeEventListener("resize", updateMaxScroll);
+    }, []);
+
+    const handleScrollChange = (value: number) => {
+        setScrollValue(value);
+        if (faqContainerRef.current) {
+            const scrollPosition =
+                (value / maxScrollValue) *
+                (faqContainerRef.current.scrollHeight -
+                    faqContainerRef.current.clientHeight);
+            faqContainerRef.current.scrollTop = scrollPosition;
+        }
+    };
+
+    const handleContainerScroll = () => {
+        if (faqContainerRef.current) {
+            const container = faqContainerRef.current;
+            const scrollTop = container.scrollTop;
+            const maxScroll = container.scrollHeight - container.clientHeight;
+
+            if (maxScroll > 0) {
+                const scrollPercentage =
+                    (scrollTop / maxScroll) * maxScrollValue;
+                setScrollValue(scrollPercentage);
+            }
+        }
+    };
 
     // Data FAQ - dipindahkan ke sini untuk bisa difilter
     const faqData: FAQItem[] = [
         {
             id: 1,
             question: "Apa itu Kampung Budaya?",
-            answer: "Kampung Budaya adalah tempat wisata yang menampilkan kekayaan budaya Indonesia dengan berbagai atraksi tradisional, rumah adat, dan pertunjukan seni budaya."
+            answer: "Kampung Budaya adalah tempat wisata yang menampilkan kekayaan budaya Indonesia dengan berbagai atraksi tradisional, rumah adat, dan pertunjukan seni budaya.",
         },
         {
             id: 2,
             question: "Berapa harga tiket masuk Kampung Budaya?",
-            answer: "Harga tiket masuk mulai dari Rp 25.000 untuk dewasa dan Rp 15.000 untuk anak-anak. Tersedia juga paket family dan paket grup dengan harga khusus."
+            answer: "Harga tiket masuk mulai dari Rp 25.000 untuk dewasa dan Rp 15.000 untuk anak-anak. Tersedia juga paket family dan paket grup dengan harga khusus.",
         },
         {
             id: 3,
             question: "Jam operasional Kampung Budaya?",
-            answer: "Kampung Budaya buka setiap hari mulai pukul 08.00 - 17.00 WIB. Pada hari libur nasional dan weekend, jam operasional dapat diperpanjang hingga 18.00 WIB."
+            answer: "Kampung Budaya buka setiap hari mulai pukul 08.00 - 17.00 WIB. Pada hari libur nasional dan weekend, jam operasional dapat diperpanjang hingga 18.00 WIB.",
         },
         {
             id: 4,
             question: "Apa saja fasilitas yang tersedia?",
-            answer: "Fasilitas yang tersedia meliputi area parkir luas, toilet, mushola, food court dengan makanan tradisional, toko souvenir, dan area bermain anak."
+            answer: "Fasilitas yang tersedia meliputi area parkir luas, toilet, mushola, food court dengan makanan tradisional, toko souvenir, dan area bermain anak.",
         },
         {
             id: 5,
             question: "Apakah ada pertunjukan khusus?",
-            answer: "Ya, setiap hari terdapat pertunjukan tari tradisional pada pukul 10.00, 14.00, dan 16.00. Pada weekend ada pertunjukan musik gamelan dan workshop membatik."
+            answer: "Ya, setiap hari terdapat pertunjukan tari tradisional pada pukul 10.00, 14.00, dan 16.00. Pada weekend ada pertunjukan musik gamelan dan workshop membatik.",
         },
         {
             id: 6,
             question: "Bagaimana cara menuju ke Kampung Budaya?",
-            answer: "Kampung Budaya dapat diakses melalui transportasi umum seperti bus, angkot, atau kendaraan pribadi. Tersedia juga layanan shuttle bus dari pusat kota pada akhir pekan."
+            answer: "Kampung Budaya dapat diakses melalui transportasi umum seperti bus, angkot, atau kendaraan pribadi. Tersedia juga layanan shuttle bus dari pusat kota pada akhir pekan.",
         },
         {
             id: 7,
             question: "Apakah ada paket wisata yang tersedia?",
-            answer: "Ya, tersedia berbagai paket wisata mulai dari paket half day, full day, hingga paket 2 hari 1 malam yang termasuk akomodasi dan makan."
+            answer: "Ya, tersedia berbagai paket wisata mulai dari paket half day, full day, hingga paket 2 hari 1 malam yang termasuk akomodasi dan makan.",
         },
         {
             id: 8,
             question: "Bolehkah membawa makanan dari luar?",
-            answer: "Pengunjung diperbolehkan membawa makanan ringan dan minuman sendiri. Namun untuk menjaga kebersihan, harap membuang sampah pada tempatnya."
+            answer: "Pengunjung diperbolehkan membawa makanan ringan dan minuman sendiri. Namun untuk menjaga kebersihan, harap membuang sampah pada tempatnya.",
         },
         {
             id: 9,
             question: "Apakah ada guide atau pemandu wisata?",
-            answer: "Ya, tersedia layanan pemandu wisata professional yang dapat menjelaskan sejarah dan budaya setiap atraksi dengan biaya tambahan Rp 50.000 per grup."
+            answer: "Ya, tersedia layanan pemandu wisata professional yang dapat menjelaskan sejarah dan budaya setiap atraksi dengan biaya tambahan Rp 50.000 per grup.",
         },
         {
             id: 10,
             question: "Bagaimana cara booking tiket secara online?",
-            answer: "Tiket dapat dibeli secara online melalui website resmi atau aplikasi mobile Kampung Budaya. Pembayaran dapat dilakukan via transfer bank atau e-wallet."
-        }
+            answer: "Tiket dapat dibeli secara online melalui website resmi atau aplikasi mobile Kampung Budaya. Pembayaran dapat dilakukan via transfer bank atau e-wallet.",
+        },
     ];
 
     // Filter FAQ berdasarkan search query
@@ -127,10 +162,13 @@ const FAQSection: React.FC = () => {
         if (!searchQuery.trim()) {
             return faqData;
         }
-        
-        return faqData.filter(faq => 
-            faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+
+        return faqData.filter(
+            (faq) =>
+                faq.question
+                    .toLowerCase()
+                    .includes(searchQuery.toLowerCase()) ||
+                faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
         );
     }, [searchQuery]);
 
@@ -142,7 +180,7 @@ const FAQSection: React.FC = () => {
 
     const handleSearch = () => {
         // Optional: bisa ditambahkan logic tambahan saat tombol search diklik
-        console.log('Searching for:', searchQuery);
+        console.log("Searching for:", searchQuery);
     };
 
     const handleFAQToggle = (id: number) => {
@@ -153,7 +191,7 @@ const FAQSection: React.FC = () => {
         <div className="lg:col-span-3 flex flex-col relative">
             {/* Search Field */}
             <div className="mb-8 mx-11">
-                <SearchField 
+                <SearchField
                     value={searchQuery}
                     onChange={handleSearchChange}
                     onSearch={handleSearch}
@@ -182,7 +220,7 @@ const FAQSection: React.FC = () => {
                     onScroll={handleContainerScroll}
                 >
                     {filteredFaqs.length > 0 ? (
-                        <FAQCard 
+                        <FAQCard
                             faqs={filteredFaqs}
                             searchQuery={searchQuery}
                             onToggle={handleFAQToggle}
@@ -191,7 +229,8 @@ const FAQSection: React.FC = () => {
                     ) : (
                         <div className="flex items-center justify-center h-full">
                             <p className="text-[#CD9C1A] text-sm">
-                                Tidak ada FAQ yang ditemukan untuk "{searchQuery}"
+                                Tidak ada FAQ yang ditemukan untuk "
+                                {searchQuery}"
                             </p>
                         </div>
                     )}
