@@ -1,4 +1,9 @@
 @import 'tailwindcss';
+/* Override cursor untuk semua elemen agar selalu pakai custom cursor */
+
+*, *:hover, *:active, *:focus {
+    cursor: url('/icon/mouse-arrow.svg') 0 0, auto !important;
+}
 
 @font-face {
     font-family: 'Amaranth';
@@ -48,6 +53,7 @@
     font-style: normal;
     font-display: swap;
 }
+
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -143,6 +149,7 @@
                     transform: translateX(0) translateY(-12px);
                 }
             }
+
             
 /* Animasi float dengan rotasi untuk elemen kiri */
 @keyframes floatWithRotate-12-3 {
@@ -182,6 +189,7 @@
     }
 }
 
+/* Animasi Flip pada card register */
 .perspective-1000 {
     perspective: 1000px;
 }
@@ -201,4 +209,5 @@
 .group:hover .group-hover\:rotate-y-180 {
     transform: rotateY(180deg);
 }
+
 

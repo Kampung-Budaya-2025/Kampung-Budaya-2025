@@ -1,19 +1,4 @@
-interface FlowerInitialPosition {
-    x: number;
-    y: number;
-    rotation?: number;
-    scale?: number;
-}
-
-interface FlowerPosition {
-    ref: React.RefObject<HTMLImageElement | null>;
-    isInView: boolean;
-    size: number;
-    translateDistance: number;
-    transitionDuration: string;
-    animationClass: string;
-    initialPosition?: FlowerInitialPosition;
-}
+import { FlowerPosition } from "../types";
 
 // Components
 const FlowerPair: React.FC<{

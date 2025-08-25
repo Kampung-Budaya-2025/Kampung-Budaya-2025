@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { SliderProps } from "../types";
 import {
     animate,
     motion,
@@ -6,53 +7,9 @@ import {
     useMotionValueEvent,
     useTransform,
 } from "motion/react";
+import { decay } from "../utils/decay";
 
 const MAX_OVERFLOW = 50;
-
-interface ScrollBarProps {
-    defaultValue?: number;
-    startingValue?: number;
-    maxValue?: number;
-    className?: string;
-    isStepped?: boolean;
-    stepSize?: number;
-    onValueChange?: (value: number) => void;
-}
-
-const Scrollbar: React.FC<ScrollBarProps> = ({
-    defaultValue = 50,
-    startingValue = 0,
-    maxValue = 100,
-    className = "",
-    isStepped = false,
-    stepSize = 1,
-    onValueChange,
-}) => {
-    return (
-        <div
-            className={`flex flex-col items-center justify-center gap-4 h-[300px] ${className}`}
-        >
-            <Slider
-                defaultValue={defaultValue}
-                startingValue={startingValue}
-                maxValue={maxValue}
-                isStepped={isStepped}
-                stepSize={stepSize}
-                onValueChange={onValueChange}
-            />
-        </div>
-    );
-};
-
-interface SliderProps {
-    defaultValue: number;
-    startingValue: number;
-    maxValue: number;
-    isStepped: boolean;
-    stepSize: number;
-    onValueChange?: (value: number) => void;
-}
-
 const Slider: React.FC<SliderProps> = ({
     defaultValue,
     startingValue,
@@ -131,7 +88,10 @@ const Slider: React.FC<SliderProps> = ({
                 startingValue +
                 ((e.clientY - top) / height) * (maxValue - startingValue);
 
-            if (currentPosition >= startingValue && currentPosition <= maxValue) {
+            if (
+                currentPosition >= startingValue &&
+                currentPosition <= maxValue
+            ) {
                 setIsDragging(true);
                 handlePointerMove(e);
                 e.currentTarget.setPointerCapture(e.pointerId);
@@ -244,13 +204,4 @@ const Slider: React.FC<SliderProps> = ({
     );
 };
 
-function decay(value: number, max: number): number {
-    if (max === 0) {
-        return 0;
-    }
-    const entry = value / max;
-    const sigmoid = 2 * (1 / (1 + Math.exp(-entry)) - 0.5);
-    return sigmoid * max;
-}
-
-export default Scrollbar;
+export default Slider;

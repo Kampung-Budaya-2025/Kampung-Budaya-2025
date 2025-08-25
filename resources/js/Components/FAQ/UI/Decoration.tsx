@@ -1,5 +1,5 @@
 const DecorationSection: React.FC = () => (
-    <div className="lg:col-span-2 flex items-start justify-center py-4">
+    <div className="lg:col-span-2 hidden lg:flex items-start justify-center py-4">
         <div className="relative">
             {/* Candi Decoration */}
             <img
