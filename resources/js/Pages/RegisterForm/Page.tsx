@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, easeInOut, Variants } from "framer-motion";
+import backgroundHeroSvg from "@assets/images/background-hero.svg?url";
 
 interface FormData {
     namaLengkap: string;
@@ -35,11 +36,7 @@ const RegisterForm = () => {
     const [isFormValid, setIsFormValid] = useState(false);
     const [errors, setErrors] = useState<FormErrors>({});
 
-    const kategoriOptions = [
-        "Pelajar",
-        "Mahasiswa",
-        
-    ];
+    const kategoriOptions = ["Pelajar", "Mahasiswa"];
 
     useEffect(() => {
         const saved = localStorage.getItem("registrationData");
@@ -138,7 +135,15 @@ const RegisterForm = () => {
     };
 
     return (
-        <div className="relative min-h-screen px-4 py-8 bg-[url('/background/background-hero.svg')] sm:py-10">
+        <div
+            className="relative min-h-screen px-4 py-8 sm:py-10"
+            style={{
+                backgroundImage: `url(${backgroundHeroSvg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+            }}
+        >
             {/* Header */}
             <motion.header
                 className="mb-4 text-center sm:mb-6"
@@ -151,34 +156,34 @@ const RegisterForm = () => {
                 </h1>
             </motion.header>
 
-      <div className="relative max-w-5xl mx-auto">
-        {/* Maskot kiri */}
-        <motion.div
-          className="absolute hidden w-32 -left-2 top-16 lg:block"
-          variants={floatingVariants}
-          animate="animate"
-        >
-          <img src="/mascot/mascot-cowok.svg" alt="Maskot kiri" />
-        </motion.div>
+            <div className="relative max-w-5xl mx-auto">
+                {/* Maskot kiri */}
+                <motion.div
+                    className="absolute hidden w-32 -left-2 top-16 lg:block"
+                    variants={floatingVariants}
+                    animate="animate"
+                >
+                    <img src="/mascot/mascot-cowok.svg" alt="Maskot kiri" />
+                </motion.div>
 
-        {/* Maskot kanan (delay offset) */}
-        <motion.div
-          className="absolute hidden w-32 -right-2 top-16 lg:block"
-          variants={{
-            animate: {
-              y: [0, -8, 0],
-              transition: {
-                duration: 4.5,
-                ease: easeInOut,
-                repeat: Infinity,
-                delay: 2.25,
-              },
-            },
-          }}
-          animate="animate"
-        >
-          <img src="/mascot/mascot-cewek.svg" alt="Maskot kanan" />
-        </motion.div>
+                {/* Maskot kanan (delay offset) */}
+                <motion.div
+                    className="absolute hidden w-32 -right-2 top-16 lg:block"
+                    variants={{
+                        animate: {
+                            y: [0, -8, 0],
+                            transition: {
+                                duration: 4.5,
+                                ease: easeInOut,
+                                repeat: Infinity,
+                                delay: 2.25,
+                            },
+                        },
+                    }}
+                    animate="animate"
+                >
+                    <img src="/mascot/mascot-cewek.svg" alt="Maskot kanan" />
+                </motion.div>
 
                 {/* Card Putih */}
                 <motion.div
