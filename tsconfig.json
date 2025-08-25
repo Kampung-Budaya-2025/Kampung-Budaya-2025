@@ -13,7 +13,8 @@
         "allowJs": true,
         "baseUrl": ".",
         "paths": {
-            "@/*": ["resources/js/*"]
+            "@/*": ["resources/js/*"],
+            "@assets/*": ["resources/assets/*"]
         },
         "outDir": "dist"
     },
