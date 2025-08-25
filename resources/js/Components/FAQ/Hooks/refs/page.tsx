@@ -8,7 +8,7 @@ const ANIMATION_CONFIG = {
     amount: 0.2,
 } as const;
 
-const ANIMATION_ONCE_CONFIGG = {
+const ANIMATION_ONCE_CONFIG = {
     once: true,
     margin: "0px",
     amount: 0.2,
@@ -148,4 +148,4 @@ const useFlowerAnimations = () => {
     ]);
 };
 
-export { useFlowerAnimations, ANIMATION_CONFIG, ANIMATION_ONCE_CONFIGG, FLOWER_CONFIGS };
+export { useFlowerAnimations, ANIMATION_CONFIG, ANIMATION_ONCE_CONFIG, FLOWER_CONFIGS };

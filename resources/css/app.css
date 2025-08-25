@@ -2,7 +2,7 @@
 /* Override cursor untuk semua elemen agar selalu pakai custom cursor */
 
 *, *:hover, *:active, *:focus {
-    cursor: url('/icon/mouse-arrow.svg') 0 0, auto !important;
+    cursor: url('/icon/mouse-arrow.svg') 32 0, auto !important;
 }
 
 @font-face {
@@ -75,6 +75,7 @@
     display: none; /* Safari and Chrome */
 }
 
+
 .animate-spin-clockwise {
     animation: spin-clockwise 20s linear infinite;
 }
@@ -101,7 +102,7 @@
     }
 }
 
-            @keyframes floatSmooth-8 {
+@keyframes floatSmooth-8 {
                 0%, 100% { 
                     transform: translateX(0) translateY(0px);
                 }

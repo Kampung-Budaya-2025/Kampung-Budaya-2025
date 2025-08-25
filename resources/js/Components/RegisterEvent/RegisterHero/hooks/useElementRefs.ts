@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
-import { ANIMATION_CONFIG } from '@/Components/FAQ/hooks/refs/page';
+import { ANIMATION_CONFIG, ANIMATION_ONCE_CONFIG } from '@/Components/FAQ/hooks/refs/page';
 import { ElementPair } from '../types';
 import { ELEMENT_CONFIGS } from '../config/constants';
 
@@ -13,6 +13,10 @@ export const useElementRefs = () => {
     const wayangKiriRef = useRef<HTMLImageElement | null>(null);
     const wayangKananRef = useRef<HTMLImageElement | null>(null);
 
+    // Pattern ref (struktur mirip dengan elemen lain)
+    const patternRef = useRef<HTMLImageElement | null>(null);
+
+    
     // InView hooks
     const isOrangBertapaKiriInView = useInView(orangBertapaKiriRef, ANIMATION_CONFIG);
     const isOrangBertapaKananInView = useInView(orangBertapaKananRef, ANIMATION_CONFIG);
@@ -20,6 +24,10 @@ export const useElementRefs = () => {
     const isDaunKananInView = useInView(daunKananRef, ANIMATION_CONFIG);
     const isWayangKiriInView = useInView(wayangKiriRef, ANIMATION_CONFIG);
     const isWayangKananInView = useInView(wayangKananRef, ANIMATION_CONFIG);
+
+    // Pattern inView menggunakan ANIMATION_ONCE_CONFIG (sama seperti import)
+    const isPatternInView = useInView(patternRef, ANIMATION_ONCE_CONFIG);
+    
 
     const ORANG_BERTAPA_PAIR: ElementPair = {
         kiri: {
@@ -106,9 +114,20 @@ export const useElementRefs = () => {
         },
     };
 
+    // Pattern object mirip struktur elemen lain (ref + isInView + src/alt)
+    const PATTERN = {
+        ref: patternRef,
+        isInView: isPatternInView,
+        src: "/icon/pattern-galeri.svg",
+        alt: "pattern-galeri",
+    };
+
+
+
     return {
         ORANG_BERTAPA_PAIR,
         DAUN_PAIR,
         WAYANG_PAIR,
+        PATTERN,
     };
 };

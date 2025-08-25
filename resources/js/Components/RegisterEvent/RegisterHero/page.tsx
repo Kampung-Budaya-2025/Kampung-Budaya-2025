@@ -1,4 +1,5 @@
 import React from "react";
+import { useInView } from "framer-motion";
 import BackgroundImage from "./UI/BackgroundImage.";
 import Title from './UI/Title';
 import SubTitle from "./UI/Subtitle";
@@ -6,8 +7,9 @@ import ElementPairComponent from './UI/ElementPairComponent';
 import { useElementRefs } from './hooks/useElementRefs';
 import { BATIK_BACKGROUND, CSS_CLASSES } from './config/constants';
 
+
 const GaleriHero: React.FC = () => {
-    const { ORANG_BERTAPA_PAIR, DAUN_PAIR, WAYANG_PAIR } = useElementRefs();
+    const { ORANG_BERTAPA_PAIR, DAUN_PAIR, WAYANG_PAIR, PATTERN } = useElementRefs();
 
     const handleScrollToListLomba = () => {
         // Scroll ke elemen dengan ID 'list-lomba' atau class tertentu
@@ -35,12 +37,13 @@ const GaleriHero: React.FC = () => {
         />
     );
 
+    // render pattern menggunakan struktur dari useElementRefs (ref + isInView + src)
     const renderPatternImage = () => (
         <img
-            src="/icon/pattern-galeri.svg"
-            alt="pattern"
-            className={CSS_CLASSES.patternImage}
-
+            ref={PATTERN.ref}
+            src={PATTERN.src}
+            alt={PATTERN.alt}
+            className={`${CSS_CLASSES.patternImage} transition-opacity duration-1000 ease-out ${PATTERN.isInView ? 'opacity-100' : 'opacity-0'}`}
         />
     );
 
