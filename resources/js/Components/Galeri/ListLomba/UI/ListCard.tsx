@@ -1,4 +1,5 @@
 import React from "react";
+import cardBackgroundSvg from "@assets/images/card-list-lomba.svg?url";
 
 interface ListCardProps {
     title: string;
@@ -24,7 +25,15 @@ const ListCard: React.FC<ListCardProps> = ({
         >
             <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
                 {/* Front Side - Tampilan Original */}
-                <div className="absolute inset-0 w-full h-full backface-hidden bg-[url('/decoration/card-list-lomba.svg')] bg-contain bg-center bg-no-repeat flex flex-col items-center justify-center overflow-hidden">
+                <div
+                    className="absolute inset-0 w-full h-full backface-hidden flex flex-col items-center justify-center overflow-hidden"
+                    style={{
+                        backgroundImage: `url(${cardBackgroundSvg})`,
+                        backgroundSize: "contain",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                    }}
+                >
                     {/* Icon */}
                     <div className="flex items-center justify-center mb-4 z-10">
                         <img
@@ -41,7 +50,15 @@ const ListCard: React.FC<ListCardProps> = ({
                 </div>
 
                 {/* Back Side - Tampilan Baru */}
-                <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[url('/decoration/card-list-lomba.svg')] bg-contain bg-center bg-no-repeat flex flex-col overflow-hidden p-6">
+                <div
+                    className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 flex flex-col overflow-hidden p-6"
+                    style={{
+                        backgroundImage: `url(${cardBackgroundSvg})`,
+                        backgroundSize: "contain",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                    }}
+                >
                     {/* Title - Fixed position */}
                     <div className="flex-shrink-0 pt-20">
                         <h2 className="text-center text-[#3F170D] text-2xl mb-2 z-10 tracking-[-0.7px]">
