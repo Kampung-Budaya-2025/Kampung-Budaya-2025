@@ -35,7 +35,7 @@ const RegisterButton: React.FC<{ isMobile?: boolean }> = ({
     isMobile = false,
 }) => (
     <Link
-        to="/register-form"
+        to="/register-event"
         className={`text-white font-medium transition-all duration-200 hover:opacity-90 hover:scale-105 ${
             isMobile
                 ? "w-full px-6 py-2 rounded-lg mt-4 text-center block"
