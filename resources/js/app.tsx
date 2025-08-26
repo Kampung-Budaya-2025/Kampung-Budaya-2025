@@ -5,13 +5,10 @@ import Layout from "./Layouts/Layout";
 import LandingPage from "./Pages/LandingPage/Page";
 import FAQPages from "./Pages/FAQ/Page";
 import RegisterForm from "./Pages/RegisterForm/Page";
-import RegisterUpload from "./Pages/RegisterConfirmation/RegisterUpload/Page";
-import RegisterConfirmation from "./Pages/RegisterConfirmation/Page";
 import GaleriPage from "./Pages/Galeri/Page";
 
 import "./bootstrap";
 import "../css/app.css";
-import RegisterSuccess from "./Pages/RegisterSuccess/Page";
 
 const container = document.getElementById("app");
 if (container) {
@@ -24,9 +21,6 @@ if (container) {
                     <Route path="/faq" element={<FAQPages />} />
                     <Route path="/galeri" element={<GaleriPage />} />
                     <Route path="/register-form" element={<RegisterForm />} />
-                    <Route path="/register-upload" element={<RegisterUpload />} />
-                    <Route path="/register-confirmation" element={<RegisterConfirmation />} />
-                <Route path="/register-success" element={<RegisterSuccess />} />
                 </Routes>
             </Layout>
         </BrowserRouter>

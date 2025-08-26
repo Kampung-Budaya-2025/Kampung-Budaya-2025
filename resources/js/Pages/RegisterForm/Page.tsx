@@ -1,527 +1,465 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { motion, easeInOut, Variants } from "framer-motion";
-
-interface FormData {
-    namaLengkap: string;
-    kategori: string;
-    tanggalLahir: string;
-    asalInstansi: string;
-    noHandphone: string;
-    email: string;
-    instagram: string;
-    idLine: string;
-}
-
-interface FormErrors {
-    email?: string;
-    noHandphone?: string;
-}
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { useRegistration } from '../../Hooks/useRegistration';
+import FloatingMascots from '../../Components/RegisterForm/UI/FloatingMascots';
+import RegisterDataDiri from '../../Components/RegisterForm/Registration/RegisterDataDiri';
+import RegisterUpload from '../../Components/RegisterForm/Registration/RegisterUpload';
+import RegisterConfirmation from '../../Components/RegisterForm/Registration/RegisterConfirmation';
+import RegisterSuccess from '../../Components/RegisterForm/Registration/RegisterSuccess';
+import { MdArrowBack } from "react-icons/md";
+import ManualStepper from "@/Components/RegisterForm/UI/ManualStepper";
+import { useRef, useState } from "react";
 
 const RegisterForm = () => {
-    const navigate = useNavigate();
+    const {
+        formData,
+        uploadData,
+        errors,
+        currentStep,
+        handleDataChange,
+        handleFileUpload,
+        nextStep,
+        prevStep,
+        handleSubmit,
+        isStep1Valid,
+        isStep2Valid,
+        isStep3Valid,
+    } = useRegistration();
 
-    const [formData, setFormData] = useState<FormData>({
-        namaLengkap: "",
-        kategori: "",
-        tanggalLahir: "",
-        asalInstansi: "",
-        noHandphone: "",
-        email: "",
-        instagram: "",
-        idLine: "",
-    });
+    const [submitting, setSubmitting] = useState(false);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
 
-    const [isFormValid, setIsFormValid] = useState(false);
-    const [errors, setErrors] = useState<FormErrors>({});
-
-    const kategoriOptions = [
-        "Pelajar",
-        "Mahasiswa",
+    const handleNext = async () => {
+        if (isTransitioning) return;
         
-    ];
-
-    useEffect(() => {
-        const saved = localStorage.getItem("registrationData");
-        if (saved) {
-            const parsed = JSON.parse(saved);
-            if (parsed.formData) setFormData(parsed.formData as FormData);
+        setIsTransitioning(true);
+        
+        const originalScrollBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        
+        const scrollPosition = window.pageYOffset;
+        
+        if (currentStep === 1 && isStep1Valid()) {
+            nextStep();
+        } else if (currentStep === 2 && isStep2Valid()) {
+            nextStep();
+        } else if (currentStep === 3 && isStep3Valid()) {
+            await handleFinalSubmit();
         }
-    }, []);
-
-    useEffect(() => {
-        const newErr: FormErrors = {};
-        const required: (keyof FormData)[] = [
-            "namaLengkap",
-            "kategori",
-            "tanggalLahir",
-            "asalInstansi",
-            "noHandphone",
-            "email",
-            "instagram",
-            "idLine",
-        ];
-        const filled = required.every((k) => String(formData[k]).trim() !== "");
-
-        const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (formData.email && !emailRx.test(formData.email)) {
-            newErr.email = "Format email tidak valid";
-        }
-
-        const phoneRx = /^(\+62|62|0)8[1-9][0-9]{6,10}$/;
-        if (
-            formData.noHandphone &&
-            !phoneRx.test(formData.noHandphone.replace(/\s+/g, ""))
-        ) {
-            newErr.noHandphone = "Format nomor handphone tidak valid";
-        }
-
-        setErrors(newErr);
-        setIsFormValid(filled && Object.keys(newErr).length === 0);
-    }, [formData]);
-
-    const handleChange = (field: keyof FormData, value: string) => {
-        setFormData((prev) => ({ ...prev, [field]: value }));
+        
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        window.scrollTo(0, scrollPosition);
+        
+        document.documentElement.style.scrollBehavior = originalScrollBehavior;
+        
+        setTimeout(() => {
+            if (cardRef.current) {
+                cardRef.current.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center',
+                    inline: 'nearest'
+                });
+            }
+        }, 200);
+        
+        setIsTransitioning(false);
     };
 
-    const handleNext = () => {
-        if (!isFormValid) return;
-        const existing = JSON.parse(
-            localStorage.getItem("registrationData") || "{}"
-        );
-        localStorage.setItem(
-            "registrationData",
-            JSON.stringify({ ...existing, formData, step: 1 })
-        );
-        navigate("/register-upload");
+    const handlePrev = async () => {
+        if (isTransitioning) return;
+        
+        setIsTransitioning(true);
+        
+        const originalScrollBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        
+        const scrollPosition = window.pageYOffset;
+        
+        prevStep();
+        
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        window.scrollTo(0, scrollPosition);
+        
+        document.documentElement.style.scrollBehavior = originalScrollBehavior;
+        
+        setTimeout(() => {
+            if (cardRef.current) {
+                cardRef.current.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center',
+                    inline: 'nearest'
+                });
+            }
+        }, 200);
+        
+        setIsTransitioning(false);
     };
 
-    const floatingVariants: Variants = {
-        animate: {
-            y: [0, -8, 0],
-            transition: {
-                duration: 4.5,
-                ease: easeInOut,
-                repeat: Infinity,
-            },
+    const handleFinalSubmit = async () => {
+        setSubmitting(true);
+        await new Promise((r) => setTimeout(r, 1500));
+        await handleSubmit();
+        setSubmitting(false);
+    };
+
+    const canProceed = () => {
+        switch (currentStep) {
+            case 1: return isStep1Valid();
+            case 2: return isStep2Valid();
+            case 3: return isStep3Valid();
+            default: return false;
+        }
+    };
+
+    const renderCurrentStep = () => {
+        const stepKey = `step-${currentStep}`;
+        
+        switch (currentStep) {
+            case 1:
+                return (
+                    <RegisterDataDiri 
+                        key={stepKey}
+                        formData={formData}
+                        errors={errors}
+                        onDataChange={handleDataChange}
+                    />
+                );
+            case 2:
+                return (
+                    <RegisterUpload 
+                        key={stepKey}
+                        uploadData={uploadData}
+                        onFileUpload={handleFileUpload}
+                    />
+                );
+            case 3:
+                return (
+                    <RegisterConfirmation 
+                        key={stepKey}
+                        formData={formData}
+                        uploadData={uploadData}
+                    />
+                );
+            case 4:
+                return <RegisterSuccess key={stepKey} />;
+            default:
+                return null;
+        }
+    };
+
+    const getNextButtonText = () => {
+        if (currentStep === 3) {
+            return submitting ? "Mengirim..." : "Submit";
+        }
+        return "Selanjutnya";
+    };
+
+    const pageTransition: Variants = {
+        initial: { 
+            opacity: 0, 
+            x: 30,
+            scale: 0.98,
         },
+        animate: { 
+            opacity: 1, 
+            x: 0,
+            scale: 1,
+            transition: { 
+                duration: 0.5,
+                ease: "easeOut",
+                opacity: { duration: 0.3 },
+                scale: { duration: 0.5 },
+            }
+        },
+        exit: { 
+            opacity: 0, 
+            x: -30,
+            scale: 0.98,
+            transition: { 
+                duration: 0.3,
+                ease: "easeOut",
+            }
+        }
     };
 
-    const cardVariants: Variants = {
-        hidden: { opacity: 0, y: 30, scale: 0.95 },
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30, scale: 0.98 },
         visible: {
             opacity: 1,
             y: 0,
             scale: 1,
-            transition: { duration: 0.6, ease: easeInOut },
+            transition: { 
+                duration: 0.8,
+                ease: "easeOut" as const,
+                delay: 0.1
+            }
         },
-    };
-
-    const stepperVariants: Variants = {
-        hidden: { opacity: 0 },
-        visible: {
+        success: {
             opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.3,
-            },
-        },
-    };
-
-    const stepVariants: Variants = {
-        hidden: { opacity: 0, x: -20 },
-        visible: {
-            opacity: 1,
-            x: 0,
-            transition: { duration: 0.4, ease: easeInOut },
-        },
+            y: 0,
+            scale: currentStep === 4 ? 1.02 : 1,
+            transition: { 
+                duration: 1,
+                ease: "easeOut" as const,
+                delay: 0.2
+            }
+        }
     };
 
     return (
-        <div className="relative min-h-screen px-4 py-8 bg-[url('/background/background-hero.svg')] sm:py-10">
-            {/* Header */}
-            <motion.header
-                className="mb-4 text-center sm:mb-6"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: easeInOut }}
-            >
-                <h1 className="text-xl font-extrabold text-amber-800 sm:text-2xl md:text-3xl">
-                    Pendaftaran Lomba Videografi
-                </h1>
-            </motion.header>
-
-      <div className="relative max-w-5xl mx-auto">
-        {/* Maskot kiri */}
-        <motion.div
-          className="absolute hidden w-32 -left-2 top-16 lg:block"
-          variants={floatingVariants}
-          animate="animate"
+        <div 
+            className="relative min-h-screen px-4 py-4 sm:py-6 lg:py-8"
+            style={{
+                backgroundImage: "url('/background/background-hero.svg')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundAttachment: 'fixed',
+                overflow: 'visible'
+            }}
         >
-          <img src="/mascot/mascot-cowok.svg" alt="Maskot kiri" />
-        </motion.div>
-
-        {/* Maskot kanan (delay offset) */}
-        <motion.div
-          className="absolute hidden w-32 -right-2 top-16 lg:block"
-          variants={{
-            animate: {
-              y: [0, -8, 0],
-              transition: {
-                duration: 4.5,
-                ease: easeInOut,
-                repeat: Infinity,
-                delay: 2.25,
-              },
-            },
-          }}
-          animate="animate"
-        >
-          <img src="/mascot/mascot-cewek.svg" alt="Maskot kanan" />
-        </motion.div>
-
-                {/* Card Putih */}
-                <motion.div
-                    className="relative w-full max-w-xl p-4 mx-auto bg-white border shadow-lg rounded-2xl border-amber-100 sm:max-w-2xl sm:rounded-3xl md:max-w-3xl md:p-8"
-                    variants={cardVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    {/* Stepper */}
-                    <motion.div
-                        className="flex items-center justify-center gap-3 mb-4 sm:mb-6 sm:gap-6"
-                        variants={stepperVariants}
-                        initial="hidden"
-                        animate="visible"
-                    >
-                        <motion.div
-                            className="flex items-center gap-2"
-                            variants={stepVariants}
-                        >
-                            <div className="flex items-center justify-center text-xs font-bold text-white rounded-full h-7 w-7 bg-amber-500 sm:h-8 sm:w-8 sm:text-sm">
-                                1
-                            </div>
-                            <span className="text-xs font-semibold text-amber-700 sm:text-sm">
-                                Data Diri
-                            </span>
-                        </motion.div>
-                        <motion.div
-                            className="w-8 h-px bg-amber-200 sm:w-10"
-                            variants={stepVariants}
-                        />
-                        <motion.div
-                            className="flex items-center gap-2 opacity-70"
-                            variants={stepVariants}
-                        >
-                            <div className="flex items-center justify-center text-xs font-bold rounded-full h-7 w-7 bg-amber-100 text-amber-400 sm:h-8 sm:w-8 sm:text-sm">
-                                2
-                            </div>
-                            <span className="text-xs text-amber-400 sm:text-sm">
-                                Upload Berkas
-                            </span>
-                        </motion.div>
-                        <motion.div
-                            className="w-8 h-px bg-amber-100 sm:w-10"
-                            variants={stepVariants}
-                        />
-                        <motion.div
-                            className="flex items-center gap-2 opacity-70"
-                            variants={stepVariants}
-                        >
-                            <div className="flex items-center justify-center text-xs font-bold rounded-full h-7 w-7 bg-amber-100 text-amber-400 sm:h-8 sm:w-8 sm:text-sm">
-                                3
-                            </div>
-                            <span className="text-xs text-amber-400 sm:text-sm">
-                                Konfirmasi
-                            </span>
-                        </motion.div>
-                    </motion.div>
-
-                    <motion.div
-                        className="mb-2 text-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{
-                            delay: 0.4,
-                            duration: 0.5,
-                            ease: easeInOut,
+            {/* Header - HANYA TAMPIL JIKA BUKAN SUCCESS */}
+            <AnimatePresence>
+                {currentStep !== 4 && (
+                    <motion.header
+                        className="relative z-20 pt-12 mb-4 text-center sm:mb-6 lg:mb-8 sm:pt-16 lg:pt-20"
+                        initial={{ opacity: 1, y: 0 }}
+                        exit={{ 
+                            opacity: 0, 
+                            y: -50,
+                            transition: { duration: 0.6, ease: "easeInOut" }
                         }}
+                        transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
                     >
-                        <h2 className="text-base font-bold text-amber-800 sm:text-lg">
-                            Data Diri
-                        </h2>
-                        <p className="text-xs text-amber-600 sm:text-sm">
-                            Harap isi formulir ini dengan benar
-                        </p>
-                    </motion.div>
-
-                    {/* Form */}
-                    <motion.div
-                        className="mt-5 space-y-4 sm:space-y-5"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{
-                            delay: 0.6,
-                            duration: 0.5,
-                            ease: easeInOut,
-                        }}
-                    >
-                        {/* Nama */}
-                        <div>
-                            <label
-                                htmlFor="nama"
-                                className="block mb-1 text-sm font-medium text-gray-700 sm:mb-2"
-                            >
-                                Nama
-                            </label>
-                            <input
-                                id="nama"
-                                type="text"
-                                value={formData.namaLengkap}
-                                onChange={(e) =>
-                                    handleChange("namaLengkap", e.target.value)
-                                }
-                                placeholder="Rangga Raras"
-                                autoComplete="name"
-                                className="w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:ring-2 focus:ring-amber-300 sm:py-3"
-                            />
-                        </div>
-
-                        {/* Kategori */}
-                        <div>
-                            <label
-                                htmlFor="kategori"
-                                className="block mb-1 text-sm font-medium text-gray-700 sm:mb-2"
-                            >
-                                Kategori
-                            </label>
-                            <select
-                                id="kategori"
-                                value={formData.kategori}
-                                onChange={(e) =>
-                                    handleChange("kategori", e.target.value)
-                                }
-                                className="w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:ring-2 focus:ring-amber-300 sm:py-3"
-                            >
-                                <option value="">Pilih Kategori</option>
-                                {kategoriOptions.map((opt) => (
-                                    <option key={opt} value={opt}>
-                                        {opt}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-
-                        {/* Tanggal lahir + Instansi */}
-                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                            <div>
-                                <label
-                                    htmlFor="tgl"
-                                    className="block mb-1 text-sm font-medium text-gray-700 sm:mb-2"
+                        <div className="relative px-2 mx-auto sm:px-4 max-w-fit">
+                            <div className="relative flex items-center self-stretch justify-center">
+                                {/* Icon Kiri */}
+                                <motion.div
+                                    className="flex-shrink-0 mr-1 md:mr-2 lg:mr-3"
+                                    initial={{ opacity: 0, x: -30, rotate: -15 }}
+                                    animate={{ opacity: 1, x: 0, rotate: 0 }}
+                                    transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                                 >
-                                    Tanggal Lahir
-                                </label>
-                                <input
-                                    id="tgl"
-                                    type="date"
-                                    value={formData.tanggalLahir}
-                                    onChange={(e) =>
-                                        handleChange(
-                                            "tanggalLahir",
-                                            e.target.value
-                                        )
-                                    }
-                                    className="w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:ring-2 focus:ring-amber-300 sm:py-3"
-                                />
+                                    <div className="relative">
+                                        <img 
+                                            src="/decoration/leaf-left.svg"
+                                            alt="Icon"
+                                            className="object-contain w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 drop-shadow-lg"
+                                            style={{
+                                                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.15))'
+                                            }}
+                                        />
+                                    </div>
+                                </motion.div>
+
+                                {/* Title */}
+                                <motion.h1 
+                                    className="text-center font-amaranth font-normal leading-tight tracking-[-0.03125rem] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl bg-gradient-to-b from-[#FFC411] via-[#CD9C1A] via-[36.22%] to-[#BD6229] to-[101%] bg-clip-text text-transparent whitespace-nowrap"
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                                >
+                                    Pendaftaran Lomba Kolaborasi Musik
+                                </motion.h1>
+
+                                {/* Icon Kanan */}
+                                <motion.div
+                                    className="flex-shrink-0 ml-1 md:ml-2 lg:ml-3"
+                                    initial={{ opacity: 0, x: 30, rotate: 15 }}
+                                    animate={{ opacity: 1, x: 0, rotate: 0 }}
+                                    transition={{ duration: 1.2, delay: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+                                >
+                                    <div className="relative">
+                                        <img 
+                                            src="/decoration/leaf-right.svg"
+                                            alt="Icon"
+                                            className="object-contain w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 drop-shadow-lg"
+                                            style={{
+                                                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.15))'
+                                            }}
+                                        />
+                                    </div>
+                                </motion.div>
                             </div>
-                            <div>
-                                <label
-                                    htmlFor="instansi"
-                                    className="block mb-1 text-sm font-medium text-gray-700 sm:mb-2"
-                                >
-                                    Asal Instansi
-                                </label>
-                                <input
-                                    id="instansi"
-                                    type="text"
-                                    value={formData.asalInstansi}
-                                    onChange={(e) =>
-                                        handleChange(
-                                            "asalInstansi",
-                                            e.target.value
-                                        )
-                                    }
-                                    placeholder="Universitas Brawijaya"
-                                    autoComplete="organization"
-                                    className="w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:ring-2 focus:ring-amber-300 sm:py-3"
-                                />
-                            </div>
-                        </div>
 
-                        {/* HP + Email */}
-                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                            <div>
-                                <label
-                                    htmlFor="hp"
-                                    className="block mb-1 text-sm font-medium text-gray-700 sm:mb-2"
+                        </div>
+                    </motion.header>
+                )}
+            </AnimatePresence>
+
+            <div className="relative z-10 max-w-4xl mx-auto">
+                {/* Floating Mascots - SELALU TAMPIL & RESPONSIVE KE STEP */}
+                <FloatingMascots currentStep={currentStep} />
+
+                {/* Container Form - HANYA TAMPIL JIKA BUKAN SUCCESS */}
+                <AnimatePresence>
+                    {currentStep !== 4 && (
+                        <>
+                            {/* Card Putih */}
+                            <motion.div
+                                ref={cardRef}
+                                className="relative w-full max-w-lg p-3 mx-auto border shadow-xl bg-white/95 backdrop-blur-sm rounded-2xl border-amber-100 sm:max-w-xl sm:rounded-3xl sm:p-4 md:max-w-2xl md:p-5 lg:max-w-2xl lg:p-5 xl:max-w-3xl xl:p-6"
+                                variants={cardVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit={{ 
+                                    opacity: 0, 
+                                    scale: 0.8, 
+                                    y: 50,
+                                    transition: { duration: 0.6, ease: "easeInOut" }
+                                }}
+                                style={{
+                                    transformOrigin: "center",
+                                    backfaceVisibility: "hidden",
+                                    willChange: "transform",
+                                    zIndex: 30
+                                }}
+                            >
+                                {/* Loading Overlay */}
+                                <AnimatePresence>
+                                    {isTransitioning && (
+                                        <motion.div
+                                            className="absolute inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl"
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
+                                            <motion.div
+                                                className="w-6 h-6 border-2 rounded-full border-amber-500 border-t-transparent"
+                                                animate={{ rotate: 360 }}
+                                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                            />
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+
+                                {/* Stepper */}
+                                <motion.div
+                                    initial={{ opacity: 1, height: "auto" }}
+                                    className="mb-3 sm:mb-4"
                                 >
-                                    No. Handphone
-                                </label>
-                                <input
-                                    id="hp"
-                                    type="tel"
-                                    inputMode="tel"
-                                    pattern="^(\+62|62|0)8[1-9][0-9]{6,10}$"
-                                    value={formData.noHandphone}
-                                    onChange={(e) =>
-                                        handleChange(
-                                            "noHandphone",
-                                            e.target.value
-                                        )
-                                    }
-                                    placeholder="081234567890"
-                                    autoComplete="tel"
-                                    className="w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:ring-2 focus:ring-amber-300 sm:py-3"
-                                    aria-invalid={!!errors.noHandphone}
-                                    aria-describedby={
-                                        errors.noHandphone
-                                            ? "hp-error"
-                                            : undefined
-                                    }
-                                />
-                                {errors.noHandphone && (
-                                    <motion.p
-                                        id="hp-error"
-                                        className="mt-1 text-xs text-red-500"
-                                        initial={{ opacity: 0, y: -5 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{
-                                            duration: 0.3,
-                                            ease: easeInOut,
-                                        }}
+                                    <ManualStepper currentStep={currentStep} />
+                                </motion.div>
+
+                                {/* Content */}
+                                <div className="relative overflow-hidden">
+                                    <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={currentStep}
+                                            variants={pageTransition}
+                                            initial="initial"
+                                            animate="animate"
+                                            exit="exit"
+                                            className="w-full"
+                                            style={{
+                                                backfaceVisibility: "hidden",
+                                                willChange: "transform"
+                                            }}
+                                        >
+                                            {renderCurrentStep()}
+                                        </motion.div>
+                                    </AnimatePresence>
+                                </div>
+                            </motion.div>
+
+                            {/* Navigation Buttons */}
+                            <motion.div
+                                className={`relative flex items-center max-w-lg gap-3 mx-auto mt-4 sm:max-w-xl sm:gap-4 sm:mt-5 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl z-40 ${
+                                    currentStep === 1 
+                                        ? 'justify-center' 
+                                        : 'flex-col-reverse sm:flex-row sm:justify-between'
+                                }`}
+                                initial={{ opacity: 1, y: 0 }}
+                                exit={{ 
+                                    opacity: 0, 
+                                    y: 50,
+                                    transition: { duration: 0.4, ease: "easeInOut" }
+                                }}
+                                transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
+                            >
+                                {/* Back Button */}
+                                {currentStep > 1 && (
+                                    <motion.button
+                                        type="button"
+                                        onClick={handlePrev}
+                                        disabled={isTransitioning}
+                                        className="inline-flex items-center justify-center w-full gap-2 px-4 py-2 text-sm font-medium transition-all border rounded-full shadow-md sm:w-auto sm:px-5 sm:py-2 sm:text-base border-amber-300 text-amber-700 hover:bg-amber-50 disabled:opacity-50 hover:shadow-lg backdrop-blur-sm bg-white/90"
+                                        whileHover={!isTransitioning ? { scale: 1.02, backgroundColor: '#fffbeb', y: -2 } : {}}
+                                        whileTap={!isTransitioning ? { scale: 0.98 } : {}}
+                                        layout
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 1, duration: 0.5 }}
                                     >
-                                        {errors.noHandphone}
-                                    </motion.p>
+                                        <MdArrowBack className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        Kembali
+                                    </motion.button>
                                 )}
-                            </div>
 
-                            <div>
-                                <label
-                                    htmlFor="email"
-                                    className="block mb-1 text-sm font-medium text-gray-700 sm:mb-2"
+                                {/* Next/Submit Button */}
+                                <motion.button
+                                    type="button"
+                                    onClick={handleNext}
+                                    disabled={!canProceed() || submitting || isTransitioning}
+                                    className={`rounded-full px-6 py-2 text-sm font-semibold transition-all sm:px-8 sm:py-3 sm:text-base lg:px-10 lg:py-3 lg:text-lg shadow-lg hover:shadow-xl ${
+                                        currentStep === 1 
+                                            ? 'w-auto' 
+                                            : 'w-full sm:w-auto'
+                                    } ${
+                                        canProceed() && !submitting && !isTransitioning
+                                            ? "bg-gradient-to-r from-[#CE9C17] via-[#CD9514] to-[#CC8F12] text-white hover:from-[#CC8F12] hover:via-[#CD9514] hover:to-[#CE9C17] hover:shadow-2xl"
+                                            : "cursor-not-allowed bg-gray-300 text-gray-600 shadow-sm"
+                                    }`}
+                                    whileHover={canProceed() && !submitting && !isTransitioning ? { 
+                                        scale: 1.05, 
+                                        y: -4,
+                                        boxShadow: "0 25px 50px rgba(206, 156, 23, 0.4)"
+                                    } : {}}
+                                    whileTap={canProceed() && !submitting && !isTransitioning ? { scale: 0.98 } : {}}
+                                    layout
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{
+                                        delay: currentStep === 1 ? 1 : 1.2,
+                                        duration: 0.6,
+                                        layout: { duration: 0.3, ease: "easeOut" },
+                                        type: "spring",
+                                        stiffness: 300,
+                                        damping: 20,
+                                    }}
                                 >
-                                    Email
-                                </label>
-                                <input
-                                    id="email"
-                                    type="email"
-                                    value={formData.email}
-                                    onChange={(e) =>
-                                        handleChange("email", e.target.value)
-                                    }
-                                    placeholder="ranggarraras@gmail.com"
-                                    autoComplete="email"
-                                    className="w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:ring-2 focus:ring-amber-300 sm:py-3"
-                                    aria-invalid={!!errors.email}
-                                    aria-describedby={
-                                        errors.email ? "email-error" : undefined
-                                    }
-                                />
-                                {errors.email && (
-                                    <motion.p
-                                        id="email-error"
-                                        className="mt-1 text-xs text-red-500"
-                                        initial={{ opacity: 0, y: -5 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{
-                                            duration: 0.3,
-                                            ease: easeInOut,
-                                        }}
-                                    >
-                                        {errors.email}
-                                    </motion.p>
-                                )}
-                            </div>
-                        </div>
+                                    <div className="flex items-center justify-center gap-2">
+                                        {submitting && (
+                                            <motion.div
+                                                className="w-4 h-4 border-2 border-white rounded-full border-t-transparent sm:w-5 sm:h-5"
+                                                animate={{ rotate: 360 }}
+                                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                            />
+                                        )}
+                                        {getNextButtonText()}
+                                    </div>
+                                </motion.button>
+                            </motion.div>
+                        </>
+                    )}
+                </AnimatePresence>
 
-                        {/* IG + Line */}
-                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                            <div>
-                                <label
-                                    htmlFor="ig"
-                                    className="block mb-1 text-sm font-medium text-gray-700 sm:mb-2"
-                                >
-                                    Instagram
-                                </label>
-                                <input
-                                    id="ig"
-                                    type="text"
-                                    value={formData.instagram}
-                                    onChange={(e) =>
-                                        handleChange(
-                                            "instagram",
-                                            e.target.value
-                                        )
-                                    }
-                                    placeholder="@ranggarraras"
-                                    autoComplete="off"
-                                    className="w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:ring-2 focus:ring-amber-300 sm:py-3"
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    htmlFor="line"
-                                    className="block mb-1 text-sm font-medium text-gray-700 sm:mb-2"
-                                >
-                                    ID Line
-                                </label>
-                                <input
-                                    id="line"
-                                    type="text"
-                                    value={formData.idLine}
-                                    onChange={(e) =>
-                                        handleChange("idLine", e.target.value)
-                                    }
-                                    placeholder="@ranggarraras25"
-                                    autoComplete="off"
-                                    className="w-full rounded-xl border border-gray-300 px-4 py-2.5 focus:ring-2 focus:ring-amber-300 sm:py-3"
-                                />
-                            </div>
-                        </div>
-
-                        <p className="mt-1 text-xs text-red-500">
-                            *Form Wajib Diisi
-                        </p>
-                    </motion.div>
-                </motion.div>
-
-                {/* Tombol */}
-                <motion.div
-                    className="flex justify-center max-w-xl mx-auto mt-5 sm:mt-6 md:max-w-3xl"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8, duration: 0.5, ease: easeInOut }}
-                >
-                    <motion.button
-                        type="button"
-                        onClick={handleNext}
-                        disabled={!isFormValid}
-                        className={`w-full rounded-full px-6 py-3 text-base font-semibold transition sm:w-auto sm:px-10 sm:text-lg ${
-                            isFormValid
-                                ? "bg-gradient-to-r from-[#CE9C17] via-[#CD9514] to-[#CC8F12] text-white shadow-lg hover:from-[#CC8F12] hover:via-[#CD9514] hover:to-[#CE9C17]"
-                                : "cursor-not-allowed bg-gray-300 text-gray-600"
-                        }`}
-                        whileHover={isFormValid ? { scale: 1.05, y: -2 } : {}}
-                        whileTap={isFormValid ? { scale: 0.98 } : {}}
-                        transition={{
-                            type: "spring",
-                            stiffness: 400,
-                            damping: 17,
-                        }}
-                    >
-                        Selanjutnya
-                    </motion.button>
-                </motion.div>
+                {/* Success Content - TAMPIL HANYA SAAT SUCCESS */}
+                <AnimatePresence>
+                    {currentStep === 4 && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                            className="relative z-40"
+                        >
+                            {renderCurrentStep()}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </div>
     );
