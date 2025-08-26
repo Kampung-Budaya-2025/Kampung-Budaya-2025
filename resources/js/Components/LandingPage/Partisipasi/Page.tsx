@@ -1,6 +1,6 @@
 import GradientText from '@/Components/Common/GradientText'
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link } from "@inertiajs/react";
 
 const Partisipasi = () => {
     return (
@@ -22,7 +22,7 @@ const Partisipasi = () => {
                             Jangan lewatkan lomba-lomba dan forum daerah!
                         </p>
                         <Link
-                            to="/register-form"
+                            href="/register-form"
                             className='my-12 transition-all duration-200 hover:opacity-90 hover:scale-105 text-2xl px-6 py-3 rounded-full'
                             style={{
                                 background: "linear-gradient(180deg, #CE9C17 0%, #CD9514 52.04%, #CC8F12 100%)",

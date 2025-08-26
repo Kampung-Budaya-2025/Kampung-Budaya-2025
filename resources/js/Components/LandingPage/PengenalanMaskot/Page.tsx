@@ -1,7 +1,7 @@
 import React from 'react'
 import Mascot from './UI/Mascot'
 
-const PengengalanMaskot = () => {
+const PengenalanMaskot = () => {
     return (
         <section className='h-[85vh] relative px-72'>
             <div className='flex flex-row h-full justify-center items-center'>
@@ -43,4 +43,4 @@ const PengengalanMaskot = () => {
     )
 }
 
-export default PengengalanMaskot
+export default PengenalanMaskot

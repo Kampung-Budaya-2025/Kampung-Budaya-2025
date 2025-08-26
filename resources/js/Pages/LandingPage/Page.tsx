@@ -1,8 +1,8 @@
 
-import FilosofiLogi from '@/Components/LandingPage/FilosofiLogo/Page';
+import FilosofiLogo from '@/Components/LandingPage/FilosofiLogo/Page';
 import Hero from '@/Components/LandingPage/Hero/Page';
 import KilasBalik from '@/Components/LandingPage/KilasBalik/Page';
-import PengengalanMaskot from '@/Components/LandingPage/PengenalanMaskot/Page';
+import PengenalanMaskot from '@/Components/LandingPage/PengenalanMaskot/Page';
 import RangkaianKegiatanPB from '@/Components/LandingPage/RangkaianKegiatanPB/Page';
 import RangkaianKegiatan from '@/Components/LandingPage/RangkaianKegiatan/Page';
 import VisiMisi from '@/Components/LandingPage/VisiMisi/Page';
@@ -15,8 +15,8 @@ const LandingPage = () => (
   <div className='overflow-x-hidden overflow-y-hidden'>
     <Hero />
     <RangkaianKegiatanPB />
-    <PengengalanMaskot />
-    <FilosofiLogi />
+    <PengenalanMaskot />
+    <FilosofiLogo />
     <VisiMisi />
     <KilasBalik />
     <RangkaianKegiatan />
