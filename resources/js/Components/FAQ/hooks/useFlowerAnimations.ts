@@ -1,25 +1,7 @@
 import React, { useRef,useMemo } from "react";
 import { useInView } from "framer-motion";
+import {  ANIMATION_CONFIG, ANIMATION_ONCE_CONFIGG, FLOWER_CONFIGS } from "../config/contants";
 
-// Constants
-const ANIMATION_CONFIG = {
-    once: false,
-    margin: "0px",
-    amount: 0.2,
-} as const;
-
-const ANIMATION_ONCE_CONFIGG = {
-    once: true,
-    margin: "0px",
-    amount: 0.2,
-} as const;
-
-const FLOWER_CONFIGS = {
-    besar: { size: 230, translateDistance: 60, duration: "1.2s" },
-    sedang: { size: 140, translateDistance: 80, duration: "2s" },
-    kecil1: { size: 50, translateDistance: 100, duration: "2.5s" },
-    kecil2: { size: 50, translateDistance: 80, duration: "3.5s" },
-} as const;
 const useFlowerAnimations = () => {
     // Refs
     const bungaBesarKiriRef = useRef<HTMLImageElement>(null);
@@ -148,4 +130,4 @@ const useFlowerAnimations = () => {
     ]);
 };
 
-export { useFlowerAnimations, ANIMATION_CONFIG, ANIMATION_ONCE_CONFIGG, FLOWER_CONFIGS };
+export { useFlowerAnimations };

@@ -53,4 +53,24 @@ const faqData: FAQItem[] = [
     }
   ] as const;
 
-  export { faqData };
+  // Constants
+const ANIMATION_CONFIG = {
+    once: false,
+    margin: "0px",
+    amount: 0.2,
+} as const;
+
+const ANIMATION_ONCE_CONFIGG = {
+    once: true,
+    margin: "0px",
+    amount: 0.2,
+} as const;
+
+const FLOWER_CONFIGS = {
+    besar: { size: 230, translateDistance: 60, duration: "1.2s" },
+    sedang: { size: 140, translateDistance: 80, duration: "2s" },
+    kecil1: { size: 50, translateDistance: 100, duration: "2.5s" },
+    kecil2: { size: 50, translateDistance: 80, duration: "3.5s" },
+} as const;
+
+  export { faqData, ANIMATION_CONFIG, ANIMATION_ONCE_CONFIGG, FLOWER_CONFIGS };
