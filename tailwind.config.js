@@ -24,6 +24,7 @@ module.exports = {
       rotate: {
         'y-180': 'rotateY(180deg)',
       }
+      
     }
   },
   plugins: [],
