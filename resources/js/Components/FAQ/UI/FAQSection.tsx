@@ -1,5 +1,5 @@
 import React, { useRef, useState, useMemo } from "react";
-import { useScrollSync } from "../hooks/page";
+import { useScrollSync } from "../Hooks/page";
 import { faqData } from "../config/contants";
 import SearchField from "./SearchField";
 import Scrollbar from "./ScrollBar";

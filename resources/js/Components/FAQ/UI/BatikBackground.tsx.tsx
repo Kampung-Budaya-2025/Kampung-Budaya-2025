@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useInView } from "framer-motion";
-import { ANIMATION_CONFIG } from "../hooks/refs/page";
+import { ANIMATION_CONFIG } from "../Hooks/refs/page";
 
 const BatikBackground: React.FC = () => {
     const batikTopRef = useRef<HTMLImageElement | null>(null);

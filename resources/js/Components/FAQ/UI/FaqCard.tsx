@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CardProps } from '../types';
-import { useFaqToggle } from '../hooks/page';
+import { useFaqToggle } from '../Hooks/page';
 import { faqData } from '../config/contants';
 
 const FAQCard: React.FC<CardProps> = ({
