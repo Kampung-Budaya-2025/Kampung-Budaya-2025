@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "@inertiajs/react";
 
 interface NavbarProps {
     className?: string;
@@ -21,7 +21,7 @@ const NAVIGATION_LINKS: NavigationLink[] = [
 
 // Sub-components untuk better organization
 const NavbarLogo: React.FC = () => (
-    <Link to="/" className="flex items-center rounded">
+    <Link href="/" className="flex items-center rounded">
         <img
             src="/icon/logo-kampung-budaya.svg"
             alt="Kampung Budaya Logo"
@@ -35,7 +35,7 @@ const RegisterButton: React.FC<{ isMobile?: boolean }> = ({
     isMobile = false,
 }) => (
     <Link
-        to="/register-form"
+        href="/register-form"
         className={`text-white font-medium transition-all duration-200 hover:opacity-90 hover:scale-105 ${
             isMobile
                 ? "w-full px-6 py-2 rounded-lg mt-4 text-center block"
@@ -93,7 +93,7 @@ const DesktopNavigation: React.FC<{
         {links.map((link) => (
             <Link
                 key={link.id}
-                to={link.href}
+                href={link.href}
                 className={`text-2xl transition-all duration-200 rounded px-3 py-2 font-medium ${
                     currentPath === link.href
                         ? "text-[#CE9C17] font-semibold"
@@ -120,7 +120,7 @@ const MobileNavigation: React.FC<{
                 {links.map((link) => (
                     <Link
                         key={link.id}
-                        to={link.href}
+                        href={link.href}
                         className={`block font-medium transition-colors duration-200 rounded px-3 py-2 ${
                             currentPath === link.href
                                 ? "text-[#CE9C17] font-semibold"
@@ -157,12 +157,8 @@ const BatikPattern: React.FC<{ side: "left" | "right" }> = ({ side }) => (
 );
 
 // Main Navbar Component
-const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
+const Navbar: React.FC<NavbarProps> = ({ className = "", currentPath }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const location = useLocation();
-
-    // Memoized values
-    const currentPath = useMemo(() => location.pathname, [location.pathname]);
 
     // Callbacks
     const toggleMobileMenu = useCallback(() => {
