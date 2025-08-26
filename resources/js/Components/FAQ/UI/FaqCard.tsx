@@ -4,38 +4,47 @@ import { useFaqToggle } from '../Hooks/page';
 import { faqData } from '../config/contants';
 
 const FAQCard: React.FC<CardProps> = ({
-  faqs,
-  searchQuery = "",
-  onToggle,
-  openItemId = null
+    faqs,
+    searchQuery = "",
+    onToggle,
+    openItemId = null,
 }) => {
-  // const [internalOpenId, setInternalOpenId] = useState<number | null>(null);
+    const [internalOpenId, setInternalOpenId] = useState<number | null>(null);
 
-  const { handleToggle, isExpanded } = useFaqToggle({ onToggle, openItemId });
-  // Data FAQ default (fallback)
-  
+    // Inline toggle logic (replacing useFaqToggle hook)
+    const handleToggle = (id: number) => {
+        if (onToggle) {
+            onToggle(id);
+        } else {
+            setInternalOpenId(internalOpenId === id ? null : id);
+        }
+    };
 
-  // Gunakan faqs dari props atau fallback ke default
-  const displayFaqs = faqs || faqData;
+    const isExpanded = (id: number) => {
+        return onToggle ? openItemId === id : internalOpenId === id;
+    };
+    // Data FAQ default (fallback)
 
+    // Gunakan faqs dari props atau fallback ke default
+    const displayFaqs = faqs || faqData;
 
-  // Function to highlight search query in text
-  const highlightText = (text: string, query: string) => {
-    if (!query) return text;
-    
-    const regex = new RegExp(`(${query})`, 'gi');
-    const parts = text.split(regex);
-    
-    return parts.map((part, index) =>
-      regex.test(part) ? (
-        <span key={index} className="bg-yellow-200 font-semibold">
-          {part}
-        </span>
-      ) : (
-        part
-      )
-    );
-  };
+    // Function to highlight search query in text
+    const highlightText = (text: string, query: string) => {
+        if (!query) return text;
+
+        const regex = new RegExp(`(${query})`, "gi");
+        const parts = text.split(regex);
+
+        return parts.map((part, index) =>
+            regex.test(part) ? (
+                <span key={index} className="bg-yellow-200 font-semibold">
+                    {part}
+                </span>
+            ) : (
+                part
+            )
+        );
+    };
 
   return (
     <div className="w-full space-y-6 lg:space-y-10">
@@ -59,19 +68,21 @@ const FAQCard: React.FC<CardProps> = ({
               </p>
             </div>
 
-            {/* Down Arrow Icon */}
-            <div className="flex items-center justify-center pr-6">
-              <img
-                src="/icon/down-arrow.svg"
-                alt="Down Arrow"
-                width={20}
-                height={10}
-                className={`object-contain transition-transform duration-500 ${
-                  isExpanded(item.id) ? 'rotate-180' : 'rotate-0'
-                }`}
-              />
-            </div>
-          </div>
+                        {/* Down Arrow Icon */}
+                        <div className="flex items-center justify-center pr-6">
+                            <img
+                                src="/icon/down-arrow.svg"
+                                alt="Down Arrow"
+                                width={20}
+                                height={10}
+                                className={`object-contain transition-transform duration-500 ${
+                                    isExpanded(item.id)
+                                        ? "rotate-180"
+                                        : "rotate-0"
+                                }`}
+                            />
+                        </div>
+                    </div>
 
           {/* FAQ Answer (Expandable) - Menyamakan dengan lebar SearchField */}
           <div
