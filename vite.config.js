@@ -3,11 +3,11 @@ import laravel from "laravel-vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import { resolve } from "path";
 
-export default defineConfig({
+export default defineConfig(({ command, mode }) => ({
     plugins: [
         laravel({
             input: ["resources/css/app.css", "resources/js/app.tsx"],
-            refresh: true,
+            refresh: mode === "development",
         }),
         tailwindcss(),
     ],
@@ -40,4 +40,8 @@ export default defineConfig({
         },
     },
     publicDir: "public",
-});
+    server: {
+        host: true,
+        port: 5173,
+    },
+}));
