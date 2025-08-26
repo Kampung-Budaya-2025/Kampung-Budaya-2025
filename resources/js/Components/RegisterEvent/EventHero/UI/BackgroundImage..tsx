@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useInView } from "framer-motion";
-import { ANIMATION_CONFIG } from '@/Components/FAQ/Refs/page';
+import { ANIMATION_CONFIG } from '@/Components/FAQ/Hooks/refs/page';
 import { BackgroundImageProps } from '../types';
 
 const BackgroundImage: React.FC<BackgroundImageProps> = ({

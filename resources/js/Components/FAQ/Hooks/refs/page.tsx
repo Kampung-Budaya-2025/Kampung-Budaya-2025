@@ -24,6 +24,9 @@ const useFlowerAnimations = () => {
     // Refs
     const bungaBesarKiriRef = useRef<HTMLImageElement>(null);
     const bungaBesarKananRef = useRef<HTMLImageElement>(null);
+    // Tambahan untuk mobile
+    const bungaBesarMobileKiriRef = useRef<HTMLImageElement>(null);
+    const bungaBesarMobileKananRef = useRef<HTMLImageElement>(null);
     const bungaSedangKiriRef = useRef<HTMLImageElement>(null);
     const bungaSedangKananRef = useRef<HTMLImageElement>(null);
     const bungaKecil1KiriRef = useRef<HTMLImageElement>(null);
@@ -34,6 +37,9 @@ const useFlowerAnimations = () => {
     // InView hooks
     const isBungaBesarKiriInView = useInView(bungaBesarKiriRef, ANIMATION_CONFIG);
     const isBungaBesarKananInView = useInView(bungaBesarKananRef, ANIMATION_CONFIG);
+    // Tambahan untuk mobile
+    const isBungaBesarMobileKiriInView = useInView(bungaBesarMobileKiriRef, ANIMATION_CONFIG);
+    const isBungaBesarMobileKananInView = useInView(bungaBesarMobileKananRef, ANIMATION_CONFIG);
     const isBungaSedangKiriInView = useInView(bungaSedangKiriRef, ANIMATION_CONFIG);
     const isBungaSedangKananInView = useInView(bungaSedangKananRef, ANIMATION_CONFIG);
     const isBungaKecil1KiriInView = useInView(bungaKecil1KiriRef, ANIMATION_CONFIG);
@@ -54,6 +60,25 @@ const useFlowerAnimations = () => {
             kanan: {
                 ref: bungaBesarKananRef,
                 isInView: isBungaBesarKananInView,
+                size: FLOWER_CONFIGS.besar.size,
+                translateDistance: FLOWER_CONFIGS.besar.translateDistance,
+                transitionDuration: FLOWER_CONFIGS.besar.duration,
+                animationClass: "animate-spin-counter",
+            },
+        },
+        // Tambahan untuk mobile
+        besarMobile: {
+            kiri: {
+                ref: bungaBesarMobileKiriRef,
+                isInView: isBungaBesarMobileKiriInView,
+                size: FLOWER_CONFIGS.besar.size,
+                translateDistance: FLOWER_CONFIGS.besar.translateDistance,
+                transitionDuration: FLOWER_CONFIGS.besar.duration,
+                animationClass: "animate-spin-clockwise",
+            },
+            kanan: {
+                ref: bungaBesarMobileKananRef,
+                isInView: isBungaBesarMobileKananInView,
                 size: FLOWER_CONFIGS.besar.size,
                 translateDistance: FLOWER_CONFIGS.besar.translateDistance,
                 transitionDuration: FLOWER_CONFIGS.besar.duration,
@@ -116,6 +141,7 @@ const useFlowerAnimations = () => {
         },
     }), [
         isBungaBesarKiriInView, isBungaBesarKananInView,
+        isBungaBesarMobileKiriInView, isBungaBesarMobileKananInView,
         isBungaSedangKiriInView, isBungaSedangKananInView,
         isBungaKecil1KiriInView, isBungaKecil1KananInView,
         isBungaKecil2KiriInView, isBungaKecil2KananInView
