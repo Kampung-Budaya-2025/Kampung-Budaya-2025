@@ -1,3 +1,4 @@
+
 import FilosofiLogi from '@/Components/LandingPage/FilosofiLogo/Page';
 import Hero from '@/Components/LandingPage/Hero/Page';
 import KilasBalik from '@/Components/LandingPage/KilasBalik/Page';
@@ -22,6 +23,7 @@ const LandingPage = () => (
     <Partisipasi />
     <MediaPartner />
   </div>
+
 );
 
 export default LandingPage;

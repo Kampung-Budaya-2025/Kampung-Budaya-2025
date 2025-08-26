@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
-import { ANIMATION_CONFIG } from '@/Components/FAQ/Refs/page';
+import { ANIMATION_CONFIG } from '@/Components/FAQ/config/contants';
 import { ElementPair } from '../types';
 import { ELEMENT_CONFIGS } from '../config/constants';
 

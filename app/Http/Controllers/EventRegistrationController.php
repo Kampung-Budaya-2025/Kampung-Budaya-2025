@@ -8,6 +8,7 @@ use App\Exports\EventRegistrationExport;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rule;
+use Inertia\Inertia;
 
 class EventRegistrationController extends Controller
 {
