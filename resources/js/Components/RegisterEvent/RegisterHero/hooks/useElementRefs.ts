@@ -12,9 +12,8 @@ export const useElementRefs = () => {
     const daunKananRef = useRef<HTMLImageElement | null>(null);
     const wayangKiriRef = useRef<HTMLImageElement | null>(null);
     const wayangKananRef = useRef<HTMLImageElement | null>(null);
-
-    // Pattern ref (struktur mirip dengan elemen lain)
     const patternRef = useRef<HTMLImageElement | null>(null);
+    const gradientBackgroundRef = useRef<HTMLImageElement | null>(null);
 
     
     // InView hooks
@@ -24,10 +23,8 @@ export const useElementRefs = () => {
     const isDaunKananInView = useInView(daunKananRef, ANIMATION_CONFIG);
     const isWayangKiriInView = useInView(wayangKiriRef, ANIMATION_CONFIG);
     const isWayangKananInView = useInView(wayangKananRef, ANIMATION_CONFIG);
-
-    // Pattern inView menggunakan ANIMATION_ONCE_CONFIG (sama seperti import)
     const isPatternInView = useInView(patternRef, ANIMATION_ONCE_CONFIG);
-    
+    const isGradientBackgroundInView = useInView(gradientBackgroundRef, ANIMATION_ONCE_CONFIG);
 
     const ORANG_BERTAPA_PAIR: ElementPair = {
         kiri: {
@@ -122,6 +119,12 @@ export const useElementRefs = () => {
         alt: "pattern-galeri",
     };
 
+    const GRADIENT_BACKGROUND = {
+        ref: gradientBackgroundRef,
+        isInView: isGradientBackgroundInView,
+        src: "/background/gradasi-event.svg",
+        alt: "gradient-background",
+    };
 
 
     return {
@@ -129,5 +132,6 @@ export const useElementRefs = () => {
         DAUN_PAIR,
         WAYANG_PAIR,
         PATTERN,
+        GRADIENT_BACKGROUND,
     };
 };
