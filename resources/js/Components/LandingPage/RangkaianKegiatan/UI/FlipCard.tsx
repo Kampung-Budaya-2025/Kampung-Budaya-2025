@@ -1,21 +1,25 @@
-import GradientText from '@/Components/Common/GradientText'
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 interface FlipCardProps {
-  frontImage: string
-  backImage: string
-  index: number
+  frontImage: string;
+  backImage: string;
+  index: number;
 }
 
 const FlipCard: React.FC<FlipCardProps> = ({ frontImage, backImage, index }) => {
-  const [isFlipped, setIsFlipped] = useState(false)
+  const [isFlipped, setIsFlipped] = useState(false);
 
   const handleFlip = () => {
-    setIsFlipped(!isFlipped)
-  }
+    setIsFlipped(!isFlipped);
+  };
+
+  const animationDelay = `${index * 0.5}s`; // Menghitung delay berdasarkan indeks
 
   return (
-    <div className="flip-card-container">
+    <div 
+      className="flip-card-container" 
+      style={{ animationDelay: animationDelay }}
+    >
       <div 
         className={`flip-card ${isFlipped ? 'flipped' : ''}`}
         onClick={handleFlip}
@@ -42,6 +46,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ frontImage, backImage, index }) => 
         {`
         .flip-card-container {
           perspective: 1000px;
+          animation: floatSmooth-10 2s ease-in-out infinite;
         }
         
         .flip-card {
@@ -82,10 +87,20 @@ const FlipCard: React.FC<FlipCardProps> = ({ frontImage, backImage, index }) => 
         .flip-card.flipped:hover {
           transform: rotateY(180deg) scale(1.02);
         }
+        
+        @keyframes floatSmooth-10 {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
         `}
       </style>
     </div>
-  )
-}
+  );
+};
 
-export { FlipCard }
+export { FlipCard };
