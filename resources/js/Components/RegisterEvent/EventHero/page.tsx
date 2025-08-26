@@ -3,8 +3,8 @@ import BackgroundImage from "./UI/BackgroundImage.";
 import Title from "./UI/Title";
 import SubTitle from "./UI/Subtitle";
 import ElementPairComponent from "./UI/ElementPairComponent";
-import { useElementRefs } from "./Hooks/useElementRefs";
 import { BATIK_BACKGROUND, CSS_CLASSES } from "./config/constants";
+import { useElementRefs } from "./hooks/useElementRefs";
 
 const GaleriHero: React.FC = () => {
     const { ORANG_BERTAPA_PAIR, DAUN_PAIR, WAYANG_PAIR } = useElementRefs();

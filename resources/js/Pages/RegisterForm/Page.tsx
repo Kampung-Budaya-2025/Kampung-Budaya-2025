@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { router } from "@inertiajs/react";
 import { motion, easeInOut, Variants } from "framer-motion";
 import backgroundHeroSvg from "@assets/images/background-hero.svg?url";
 
@@ -20,8 +20,6 @@ interface FormErrors {
 }
 
 const RegisterForm = () => {
-    const navigate = useNavigate();
-
     const [formData, setFormData] = useState<FormData>({
         namaLengkap: "",
         kategori: "",
@@ -90,7 +88,7 @@ const RegisterForm = () => {
             "registrationData",
             JSON.stringify({ ...existing, formData, step: 1 })
         );
-        navigate("/register-upload");
+        router.visit("/register-upload");
     };
 
     const floatingVariants: Variants = {
