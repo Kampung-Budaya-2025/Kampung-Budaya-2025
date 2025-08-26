@@ -2,11 +2,11 @@ import FAQCard from "@/Components/FAQ/UI/FaqCard";
 import Scrollbar from "@/Components/FAQ/UI/ScrollBar";
 import SearchField from "@/Components/FAQ/UI/SearchField";
 import FlowerPair from "@/Components/FAQ/UI/FlowerPair";
-import BatikBackground from "@/Components/FAQ/UI/BatikBackground.tsx";
 import DecorationSection from "@/Components/FAQ/UI/Decoration";
 import React, { useRef, useState, useMemo, useEffect } from "react";
 import "../../../css/app.css";
 import { useFlowerAnimations } from "@/Components/FAQ/Refs/page";
+import BatikBackground from "@/Components/FAQ/UI/BatikBackground";
 
 // Interface untuk FAQ Item
 interface FAQItem {
