@@ -1,4 +1,4 @@
-import BatikBackground from "@/Components/FAQ/UI/BatikBackground.tsx";
+import BatikBackground from "@/Components/FAQ/UI/BatikBackground";
 import DecorationSection from "@/Components/FAQ/UI/Decoration";
 import FAQSection from "@/Components/FAQ/UI/FAQSection";
 import React from "react";

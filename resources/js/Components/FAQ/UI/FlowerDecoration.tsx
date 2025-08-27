@@ -1,4 +1,4 @@
-import { useFlowerAnimations } from "../Hooks/refs/page";
+import { useFlowerAnimations } from "../hooks/useFlowerAnimations";
 import FlowerPair from "./FlowerPair";
 
 const FlowerDecorations: React.FC = () => {

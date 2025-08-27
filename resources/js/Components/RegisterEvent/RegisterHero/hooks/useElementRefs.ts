@@ -1,10 +1,10 @@
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
-import { ANIMATION_CONFIG, ANIMATION_ONCE_CONFIG } from '@/Components/FAQ/Hooks/refs/page';
-import { ElementPair } from '../types';
+import { ANIMATION_CONFIG, ANIMATION_ONCE_CONFIG } from '@/Components/FAQ/config/constants';
 import { ELEMENT_CONFIGS } from '../config/constants';
+import { ElementPair } from '../types';
 
-export const useElementRefs = () => {
+const useElementRefs = () => {
     // Refs untuk semua elemen
     const orangBertapaKiriRef = useRef<HTMLImageElement | null>(null);
     const orangBertapaKananRef = useRef<HTMLImageElement | null>(null);
@@ -131,3 +131,5 @@ export const useElementRefs = () => {
         PATTERN,
     };
 };
+
+export { useElementRefs };

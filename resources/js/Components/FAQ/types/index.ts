@@ -59,4 +59,8 @@ interface SearchFieldProps {
   onSearch?: () => void;
 }
 
-export type { FAQItem, CardProps, FlowerPosition, ScrollBarProps, SliderProps, SearchFieldProps };
+type UseFaqToggleProps = {
+  onToggle?: (id: number) => void;
+  openItemId?: number | null;
+};
+export type { FAQItem, CardProps, FlowerPosition, ScrollBarProps, SliderProps, SearchFieldProps, UseFaqToggleProps };
