@@ -11,7 +11,7 @@ type FlowerDecorationProps = {
 const FlowerDecoration = ({ 
   position, 
   size = 'w-64', 
-  animation = 'animate-spin-ccw', 
+  animation = 'animate-spin-clockwise', 
   zIndex = 'z-10',
   decorationSrc = 'bunga.svg'
 }: FlowerDecorationProps) => (

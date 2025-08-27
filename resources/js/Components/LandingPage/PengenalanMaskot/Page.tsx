@@ -4,6 +4,8 @@ import Mascot from './UI/Mascot'
 const PengenalanMaskot = () => {
     return (
         <section className='h-[85vh] relative px-72'>
+            <img className='absolute left-0 bottom-0 z-30 transform rotate-x-180 translate-y-1/2' src="img/background/batik-triangle.svg" alt="" />
+            <img className='absolute right-0 bottom-0 z-30 rotate-180 transform translate-y-1/2' src="img/background/batik-triangle.svg" alt="" />
             <div className='flex flex-row h-full justify-center items-center'>
                 <div className='flex flex-3 relative h-full '>
                     <img 
@@ -36,8 +38,7 @@ const PengenalanMaskot = () => {
                     <img className='rotate-180' src="img/decoration/ukiran.svg" alt="" />
                 </div>
             </div>
-            <img className='absolute left-0 bottom-0 z-30 transform rotate-x-180 translate-y-1/2' src="img/background/batik-triangle.svg" alt="" />
-            <img className='absolute right-0 bottom-0 z-30 rotate-y-180 rotate-x-180 transform translate-y-1/2' src="img/background/batik-triangle.svg" alt="" />
+            
 
         </section>
     )

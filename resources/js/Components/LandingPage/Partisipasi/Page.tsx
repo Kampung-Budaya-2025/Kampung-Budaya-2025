@@ -5,11 +5,16 @@ import { Link } from "@inertiajs/react";
 const Partisipasi = () => {
     return (
         <div>
-            <div className='relative h-screen'>
-                <img className='absolute z-0 transform -translate-x-1/3 left-0' src="img/decoration/daun.svg" alt="" />
-                <img className='absolute z-0 w-72 transform -translate-x-1/3 left-0 top-96 rotate-30' src="img/decoration/daun.svg" alt="" />
-                <img className='absolute z-0 transform translate-x-1/3 right-0 rotate-y-180' src="img/decoration/daun.svg" alt="" />
-                <img className='absolute z-0 w-72 transform translate-x-1/3 right-0 top-96 rotate-y-180 -rotate-30' src="img/decoration/daun.svg" alt="" />
+            <div className='relative py-36'>
+                <img className='absolute z-0 transform bottom-80 -translate-x-1/3 left-0 animate-[floatWithRotateRight-12-3_3s_ease-in-out_infinite]' src="img/decoration/daun.svg" alt="" />
+                <img className='absolute z-0 w-72 transform -translate-x-1/3 left-0 top-96 rotate-30 animate-[floatWithRotateRight-12-3_2s_ease-in-out_infinite]' src="img/decoration/daun.svg" alt="" />
+                <div className="absolute z-0 transform bottom-80 translate-x-1/3 right-0 rotate-y-180">
+                    <img className="animate-[floatWithRotateRight-12-3_3s_ease-in-out_infinite]" src="img/decoration/daun.svg" alt="" />
+                </div>
+
+                <div className="absolute z-0 w-72 transform translate-x-1/3 right-0 top-96 rotate-y-180 -rotate-30">
+                    <img className="animate-[floatWithRotateRight-12-3_3s_ease-in-out_infinite]" src="img/decoration/daun.svg" alt="" />
+                </div>
                 <div className=' flex flex-row h-full px-48'>
                     <div className='flex flex-1 flex-col items-center justify-center'>
                         <GradientText className='font-samsktrigrama text-8xl'>
@@ -42,7 +47,7 @@ const Partisipasi = () => {
                     </div>
                 </div>
             </div >
-                <img className='w-full rotate-x-180' src="img/decoration/visi-footer.svg" alt="" />
+            <img className='w-full rotate-x-180' src="img/decoration/visi-footer.svg" alt="" />
         </div>
     )
 }

@@ -8,7 +8,7 @@ const GaleriBatikBackground: React.FC = () => {
         once: false,
         margin: "0px",
         amount: 0.2,
-    });
+    }); 
 
     return (
         <>
