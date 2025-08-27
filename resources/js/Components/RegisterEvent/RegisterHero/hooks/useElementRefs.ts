@@ -3,7 +3,7 @@ import { useInView } from 'framer-motion';
 import { ANIMATION_CONFIG, ANIMATION_ONCE_CONFIG } from '@/Components/FAQ/config/constants';
 import { ELEMENT_CONFIGS } from '../config/constants';
 import { ElementPair } from '../types';
-import { ref } from 'process';
+
 
 const useElementRefs = () => {
     // Refs untuk semua elemen
