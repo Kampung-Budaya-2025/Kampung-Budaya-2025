@@ -46,7 +46,7 @@ const FAQSection: React.FC = () => {
     return (
         <div className="lg:col-span-3 w-full flex flex-col relative">
             {/* Search Field */}
-            <div className="mb-8 pl-11"> 
+            <div className="mb-8 pl:0 lg:pl-11"> 
                 <SearchField 
                     value={searchQuery}
                     onChange={handleSearchChange}

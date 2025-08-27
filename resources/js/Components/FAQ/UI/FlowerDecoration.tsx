@@ -18,7 +18,7 @@ const FlowerDecorations: React.FC = () => {
             <FlowerPair
                 level="Besar-Mobile"
                 flowers={flowers.besarMobile}
-                containerClass="block sm:hidden absolute -top-8 left-0 w-full h-[230px] z-0"
+                containerClass="block sm:hidden absolute -top-6 left-1/2 -translate-x-1/2 w-[109vw] h-auto z-0"
                 wrapperClass="flex justify-between items-start w-full relative"
             />
 
