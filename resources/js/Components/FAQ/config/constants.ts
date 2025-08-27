@@ -9,7 +9,7 @@ const faqData: FAQItem[] = [
     {
       id: 2,
       question: "Berapa harga tiket masuk Kampung Budaya?",
-      answer: "Harga tiket masuk mulai dari Rp 25.000 untuk dewasa dan Rp 15.000 untuk anak-anak. Tersedia juga paket family dan paket grup dengan harga khusus."
+      answer: "Harga tiket masuk mulai dari Rp 25.000 untuk dewasa dan Rp 15.000 untuk anak-anak. Tersedia juga paket family dan paket grup dengan harga khusus asdaiubfafsiausf aisfiasfa asfasif asfafsias bausfiasfaf."
     },
     {
       id: 3,

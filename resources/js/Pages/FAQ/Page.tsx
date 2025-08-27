@@ -12,7 +12,7 @@ const FAQPages: React.FC = () => {
             <FlowerDecorations />
 
             {/* Content Container */}
-            <div className="relative z-10 flex flex-col mx-6 lg:mx-12 space-y-6 pt-48 md:pt-32 pb-30 lg:pb-20">
+            <div className="relative min-h-screen z-10 flex flex-col mx-6 lg:mx-12 space-y-6 pt-48 md:pt-32 pb-30 lg:pb-20">
                 <h1 className="text-6xl lg:text-6xl xl:text-8xl text-center font-samsktrigrama tracking-[-0.02em] ">
                     <span className="block lg:inline bg-[linear-gradient(180deg,#FFC411_0%,#CD9C1A_22.12%,#BD6229_44.71%,#5D2F24_60.58%,#5D2F24_80.77%)] bg-clip-text text-transparent">Frequently </span>
                     <span className="block lg:inline bg-[linear-gradient(180deg,#FFC411_0%,#CD9C1A_22.12%,#BD6229_44.71%,#5D2F24_60.58%,#5D2F24_80.77%)] bg-clip-text text-transparent">
@@ -20,7 +20,7 @@ const FAQPages: React.FC = () => {
                     </span>
                 </h1>
 
-                <section className="grid grid-cols-1 lg:grid-cols-5 gap-0">
+                <section className="grid grid-cols-1 lg:grid-cols-5 gap-10">
                     <FAQSection />
                     <DecorationSection />
                 </section>

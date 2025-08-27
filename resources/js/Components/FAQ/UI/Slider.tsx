@@ -132,7 +132,7 @@ const Slider: React.FC<SliderProps> = ({
             >
                 <div
                     ref={sliderRef}
-                    className={`relative flex h-full max-h-[300px] flex-col touch-none select-none justify-center px-4 ${
+                    className={`relative flex h-full max-h-[31rem] flex-col touch-none select-none justify-center px-4 ${
                         isDragging ? "cursor-grabbing" : "cursor-grab"
                     }`}
                     onPointerMove={handlePointerMove}
