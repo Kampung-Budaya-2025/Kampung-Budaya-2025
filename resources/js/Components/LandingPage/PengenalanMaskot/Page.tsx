@@ -1,7 +1,7 @@
 import React from 'react'
 import Mascot from './UI/Mascot'
 
-const PengengalanMaskot = () => {
+const PengenalanMaskot = () => {
     return (
         <section className='h-[85vh] relative px-72'>
             <img className='absolute left-0 bottom-0 z-30 transform rotate-x-180 translate-y-1/2' src="img/background/batik-triangle.svg" alt="" />
@@ -44,4 +44,4 @@ const PengengalanMaskot = () => {
     )
 }
 
-export default PengengalanMaskot
+export default PengenalanMaskot

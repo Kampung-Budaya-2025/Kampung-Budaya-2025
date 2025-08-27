@@ -72,7 +72,8 @@ const logoData: LogoItem[] = [
   },
 ];
 
-const FilosofiLogi = () => {
+const FilosofiLogo = () => {
+
   const [activeLogoIndex, setActiveLogoIndex] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const logoCount = logoData.length;
@@ -118,7 +119,6 @@ const FilosofiLogi = () => {
   };
 
   const activeLogoData = logoData[activeLogoIndex];
-
   return (
     <section className="relative flex flex-col pt-32 w-full overflow-hidden">
       <div>
@@ -247,4 +247,5 @@ const FilosofiLogi = () => {
   );
 };
 
-export default FilosofiLogi;
+export default FilosofiLogo
+
