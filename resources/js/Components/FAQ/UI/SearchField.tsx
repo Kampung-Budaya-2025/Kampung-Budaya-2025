@@ -30,8 +30,8 @@ const SearchField: React.FC<SearchFieldProps> = ({
     return (
         <div
             className="
-        relative flex items-center
-        w-[340px] h-[45px] md:w-[648px] md:h-[49px] mx-auto
+        relative flex items-start
+        w-full max-w-full min-h-[4.5rem]
         rounded-[15.089px] border-[2px] border-[#3F170D]
         bg-white
         shadow-[inset_0_1.775px_3.55px_0_rgba(0,0,0,0.07)]
@@ -44,7 +44,7 @@ const SearchField: React.FC<SearchFieldProps> = ({
                 onKeyPress={handleKeyPress}
                 placeholder={placeholder}
                 className="
-          flex-1 w-[350px] h-[60px] md:w-[648px] md:h-[49px] px-6 text-base text-gray-800
+          flex-1 w-full min-h-[4.5rem] max-h-[4.5rem] px-6 text-2xl text-gray-800
           placeholder-[#3F170D] bg-transparent border-none outline-none
           rounded-l-[13.089px]
         "
@@ -53,7 +53,7 @@ const SearchField: React.FC<SearchFieldProps> = ({
             <button
                 onClick={handleSearchClick}
                 className="
-          flex items-center justify-center h-full px-6
+          flex items-center justify-center h-full px-6 my-auto
           transition-colors hover:bg-gray-50
           rounded-r-[13.089px]
         "
@@ -61,8 +61,8 @@ const SearchField: React.FC<SearchFieldProps> = ({
                 <img
                     src="/icon/search-icon.svg"
                     alt="Search"
-                    width={24}
-                    height={24}
+                    width={33}
+                    height={3}
                     className="object-contain"
                 />
             </button>
