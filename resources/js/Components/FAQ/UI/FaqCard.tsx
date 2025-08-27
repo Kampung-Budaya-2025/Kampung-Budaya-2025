@@ -1,41 +1,49 @@
 import React, { useState } from 'react';
 import { CardProps } from '../types';
-import { useFaqToggle } from '../hooks/page';
-import { faqData } from '../config/contants';
+import { faqData } from '../config/constants';
 
 const FAQCard: React.FC<CardProps> = ({
-  faqs,
-  searchQuery = "",
-  onToggle,
-  openItemId = null
+    faqs,
+    searchQuery = "",
+    onToggle,
+    openItemId = null,
 }) => {
-  // const [internalOpenId, setInternalOpenId] = useState<number | null>(null);
+    const [internalOpenId, setInternalOpenId] = useState<number | null>(null);
 
-  const { handleToggle, isExpanded } = useFaqToggle({ onToggle, openItemId });
-  // Data FAQ default (fallback)
-  
+    // Inline toggle logic (replacing useFaqToggle hook)
+    const handleToggle = (id: number) => {
+        if (onToggle) {
+            onToggle(id);
+        } else {
+            setInternalOpenId(internalOpenId === id ? null : id);
+        }
+    };
 
-  // Gunakan faqs dari props atau fallback ke default
-  const displayFaqs = faqs || faqData;
+    const isExpanded = (id: number) => {
+        return onToggle ? openItemId === id : internalOpenId === id;
+    };
+    // Data FAQ default (fallback)
 
+    // Gunakan faqs dari props atau fallback ke default
+    const displayFaqs = faqs || faqData;
 
-  // Function to highlight search query in text
-  const highlightText = (text: string, query: string) => {
-    if (!query) return text;
-    
-    const regex = new RegExp(`(${query})`, 'gi');
-    const parts = text.split(regex);
-    
-    return parts.map((part, index) =>
-      regex.test(part) ? (
-        <span key={index} className="bg-yellow-200 font-semibold">
-          {part}
-        </span>
-      ) : (
-        part
-      )
-    );
-  };
+    // Function to highlight search query in text
+    const highlightText = (text: string, query: string) => {
+        if (!query) return text;
+
+        const regex = new RegExp(`(${query})`, "gi");
+        const parts = text.split(regex);
+
+        return parts.map((part, index) =>
+            regex.test(part) ? (
+                <span key={index} className="bg-yellow-200 font-semibold">
+                    {part}
+                </span>
+            ) : (
+                part
+            )
+        );
+    };
 
   return (
     <div className="w-full space-y-6 lg:space-y-10">
@@ -43,7 +51,7 @@ const FAQCard: React.FC<CardProps> = ({
         <div key={item.id} className="w-full relative">
           {/* FAQ Card Header - Menyamakan dengan lebar SearchField */}
           <div
-            className="relative flex items-center justify-between cursor-pointer z-20 w-full max-w-[340px] md:max-w-[648px] py-3 lg:py-4"
+            className="relative flex items-center justify-between cursor-pointer z-20 min-w-full py-4 lg:py-5"
             style={{
               // height: '49px', // HAPUS baris ini agar tinggi mengikuti isi
               borderRadius: '16px',
@@ -53,25 +61,27 @@ const FAQCard: React.FC<CardProps> = ({
             onClick={() => handleToggle(item.id)}
           >
             {/* Question Text */}
-            <div className="flex-1 px-6 text-left max-w-[330px] lg:max-w-[570px]">
-              <p className="text-sm font-medium text-[#3F170D] break-words max-w-[310px] lg:max-w-[540px]">
+            <div className="flex-1 px-6 text-left max-w-full">
+              <p className="tast-base lg:text-2xl font-medium text-[#3F170D] break-words max-w-full">
                 {highlightText(item.question, searchQuery)}
               </p>
             </div>
 
-            {/* Down Arrow Icon */}
-            <div className="flex items-center justify-center pr-6">
-              <img
-                src="/icon/down-arrow.svg"
-                alt="Down Arrow"
-                width={20}
-                height={10}
-                className={`object-contain transition-transform duration-500 ${
-                  isExpanded(item.id) ? 'rotate-180' : 'rotate-0'
-                }`}
-              />
-            </div>
-          </div>
+                        {/* Down Arrow Icon */}
+                        <div className="flex items-center justify-center pr-6">
+                            <img
+                                src="/icon/down-arrow.svg"
+                                alt="Down Arrow"
+                                width={20}
+                                height={10}
+                                className={`object-contain transition-transform duration-500 ${
+                                    isExpanded(item.id)
+                                        ? "rotate-180"
+                                        : "rotate-0"
+                                }`}
+                            />
+                        </div>
+                    </div>
 
           {/* FAQ Answer (Expandable) - Menyamakan dengan lebar SearchField */}
           <div
@@ -81,13 +91,12 @@ const FAQCard: React.FC<CardProps> = ({
             style={{ marginTop: '-12px' }}
           >
             <div
-              className="px-6 py-4 bg-white border-1 border-[#CD9C1A] border-t-0 relative z-10 w-full max-w-[340px] md:max-w-[648px]"
+              className="px-6 py-4 bg-white border-1 border-[#CD9C1A] border-t-0 relative z-10 w-full max-w-full pt-5"
               style={{ 
-                borderRadius: '0 0 16px 16px',
-                paddingTop: '20px'
+                borderRadius: '0 0 16px 16px'
               }}
             >
-              <p className="text-sm text-[#CD9C1A] leading-relaxed">
+              <p className="text-2xl text-[#CD9C1A] leading-relaxed">
                 {highlightText(item.answer, searchQuery)}
               </p>
             </div>

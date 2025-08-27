@@ -1,0 +1,61 @@
+{
+  "resources/assets/fonts/Amaranth/Amaranth-Bold.ttf": {
+    "file": "assets/fonts/Amaranth-Bold.CEHd39ku.ttf",
+    "src": "resources/assets/fonts/Amaranth/Amaranth-Bold.ttf"
+  },
+  "resources/assets/fonts/Amaranth/Amaranth-BoldItalic.ttf": {
+    "file": "assets/fonts/Amaranth-BoldItalic.E_LjYplW.ttf",
+    "src": "resources/assets/fonts/Amaranth/Amaranth-BoldItalic.ttf"
+  },
+  "resources/assets/fonts/Amaranth/Amaranth-Italic.ttf": {
+    "file": "assets/fonts/Amaranth-Italic.4rSHuytB.ttf",
+    "src": "resources/assets/fonts/Amaranth/Amaranth-Italic.ttf"
+  },
+  "resources/assets/fonts/Amaranth/Amaranth-Regular.ttf": {
+    "file": "assets/fonts/Amaranth-Regular.DSOQc_1g.ttf",
+    "src": "resources/assets/fonts/Amaranth/Amaranth-Regular.ttf"
+  },
+  "resources/assets/fonts/SamsktriGrama-Regular.otf": {
+    "file": "assets/fonts/SamsktriGrama-Regular.BD5lcsOq.otf",
+    "src": "resources/assets/fonts/SamsktriGrama-Regular.otf"
+  },
+  "resources/assets/fonts/SamsktriGrama-Regular.ttf": {
+    "file": "assets/fonts/SamsktriGrama-Regular.BD5lcsOq.otf",
+    "src": "resources/assets/fonts/SamsktriGrama-Regular.otf"
+  },
+  "resources/assets/images/background-hero.svg": {
+    "file": "assets/images/background-hero.DALx6sIM.svg",
+    "src": "resources/assets/images/background-hero.svg"
+  },
+  "resources/assets/images/card-list-lomba.svg": {
+    "file": "assets/images/card-list-lomba.DxCSrJBp.svg",
+    "src": "resources/assets/images/card-list-lomba.svg"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app.C9Dx6xuf.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/js/app.tsx": {
+    "file": "assets/app-2iPk03IG.js",
+    "name": "app",
+    "src": "resources/js/app.tsx",
+    "isEntry": true,
+    "css": [
+      "assets/app.Cacu5y9W.css",
+      "assets/app.C9Dx6xuf.css"
+    ],
+    "assets": [
+      "assets/images/card-list-lomba.DxCSrJBp.svg",
+      "assets/images/background-hero.DALx6sIM.svg",
+      "assets/fonts/Amaranth-Regular.DSOQc_1g.ttf",
+      "assets/fonts/Amaranth-Bold.CEHd39ku.ttf",
+      "assets/fonts/Amaranth-Italic.4rSHuytB.ttf",
+      "assets/fonts/Amaranth-BoldItalic.E_LjYplW.ttf",
+      "assets/fonts/SamsktriGrama-Regular.BD5lcsOq.otf"
+    ]
+  }
+}

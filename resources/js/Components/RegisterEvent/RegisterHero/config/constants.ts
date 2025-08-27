@@ -24,7 +24,7 @@ export const ELEMENT_CONFIGS: Record<string, ElementConfig> = {
         floatDistance: 8, 
         rotateAmount: 2 
     },
-    // Pattern config — untuk pattern-galeri
+    
     pattern: {
         translateDistance: 20,
         duration: "1.2s",
@@ -32,6 +32,22 @@ export const ELEMENT_CONFIGS: Record<string, ElementConfig> = {
         floatDuration: "5s",
         floatDistance: 6
     },
+    bunga: {
+        translateDistance: 30,
+        duration: "1.5s",
+        delay: "0.1s",
+        floatDuration: "5s",
+        floatDistance: 0,
+        rotateAmount: 6
+    },
+    batik: {
+        translateDistance: 20,
+        duration: "1.2s",
+        delay: "0s",
+        floatDuration: "5s",
+        floatDistance: 6
+    }
+
 } as const;
 
 export const BATIK_BACKGROUND = {

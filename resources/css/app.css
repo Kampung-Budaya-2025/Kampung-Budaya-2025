@@ -2,53 +2,55 @@
 /* Override cursor untuk semua elemen agar selalu pakai custom cursor */
 
 *, *:hover, *:active, *:focus {
-    cursor: url('/icon/mouse-arrow.svg') 32 0, auto !important;
+    cursor: url('/icon/mouse-arrow.svg') 12 0, auto !important;
 }
 
 @font-face {
-    font-family: 'Amaranth';
-    src: url('/fonts/Amaranth/Amaranth-Regular.woff2') format('woff2'),
-         url('/fonts/Amaranth/Amaranth-Regular.woff') format('woff'),
-         url('/fonts/Amaranth/Amaranth-Regular.ttf') format('truetype');
+    font-family: "Amaranth";
+    src: url("../assets/fonts/Amaranth/Amaranth-Regular.woff2") format("woff2"),
+        url("../assets/fonts/Amaranth/Amaranth-Regular.woff") format("woff"),
+        url("../assets/fonts/Amaranth/Amaranth-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Amaranth';
-    src: url('/fonts/Amaranth/Amaranth-Bold.woff2') format('woff2'),
-         url('/fonts/Amaranth/Amaranth-Bold.woff') format('woff'),
-         url('/fonts/Amaranth/Amaranth-Bold.ttf') format('truetype');
+    font-family: "Amaranth";
+    src: url("../assets/fonts/Amaranth/Amaranth-Bold.woff2") format("woff2"),
+        url("../assets/fonts/Amaranth/Amaranth-Bold.woff") format("woff"),
+        url("../assets/fonts/Amaranth/Amaranth-Bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Amaranth';
-    src: url('/fonts/Amaranth/Amaranth-Italic.woff2') format('woff2'),
-         url('/fonts/Amaranth/Amaranth-Italic.woff') format('woff'),
-         url('/fonts/Amaranth/Amaranth-Italic.ttf') format('truetype');
+    font-family: "Amaranth";
+    src: url("../assets/fonts/Amaranth/Amaranth-Italic.woff2") format("woff2"),
+        url("../assets/fonts/Amaranth/Amaranth-Italic.woff") format("woff"),
+        url("../assets/fonts/Amaranth/Amaranth-Italic.ttf") format("truetype");
     font-weight: 400;
     font-style: italic;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Amaranth';
-    src: url('/fonts/Amaranth/Amaranth-BoldItalic.woff2') format('woff2'),
-         url('/fonts/Amaranth/Amaranth-BoldItalic.woff') format('woff'),
-         url('/fonts/Amaranth/Amaranth-BoldItalic.ttf') format('truetype');
+    font-family: "Amaranth";
+    src: url("../assets/fonts/Amaranth/Amaranth-BoldItalic.woff2")
+            format("woff2"),
+        url("../assets/fonts/Amaranth/Amaranth-BoldItalic.woff") format("woff"),
+        url("../assets/fonts/Amaranth/Amaranth-BoldItalic.ttf")
+            format("truetype");
     font-weight: 700;
     font-style: italic;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'SamsktriGrama';
-    src: url('/fonts/SamsktriGrama-Regular.otf') format('opentype'),
-         url('/fonts/SamsktriGrama-Regular.ttf') format('truetype');
+    font-family: "SamsktriGrama";
+    src: url("../assets/fonts/SamsktriGrama-Regular.otf") format("opentype"),
+        url("../assets/fonts/SamsktriGrama-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -61,9 +63,10 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Amaranth', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-samsktrigrama: 'SamsktriGrama', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Amaranth", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-samsktrigrama: "SamsktriGrama", ui-sans-serif, system-ui, sans-serif;
 }
 
 .scrollbar-hide {
@@ -150,11 +153,12 @@
                     transform: translateX(0) translateY(-12px);
                 }
             }
+=
 
-            
 /* Animasi float dengan rotasi untuk elemen kiri */
 @keyframes floatWithRotate-12-3 {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0) rotate(0deg);
     }
     50% {
@@ -163,7 +167,8 @@
 }
 
 @keyframes floatWithRotate-8-2 {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0) rotate(0deg);
     }
     50% {
@@ -173,7 +178,8 @@
 
 /* Animasi float dengan rotasi untuk elemen kanan */
 @keyframes floatWithRotateRight-12-3 {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0) rotate(0deg);
     }
     50% {
@@ -182,7 +188,8 @@
 }
 
 @keyframes floatWithRotateRight-8-2 {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0) rotate(0deg);
     }
     50% {
@@ -210,5 +217,3 @@
 .group:hover .group-hover\:rotate-y-180 {
     transform: rotateY(180deg);
 }
-
-

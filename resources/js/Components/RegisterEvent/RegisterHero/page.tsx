@@ -1,33 +1,32 @@
 import React from "react";
-import { useInView } from "framer-motion";
 import BackgroundImage from "./UI/BackgroundImage.";
-import Title from './UI/Title';
+import Title from "./UI/Title";
 import SubTitle from "./UI/Subtitle";
-import ElementPairComponent from './UI/ElementPairComponent';
-import { useElementRefs } from './hooks/useElementRefs';
-import { BATIK_BACKGROUND, CSS_CLASSES } from './config/constants';
+import ElementPairComponent from "./UI/ElementPairComponent";
+import { BATIK_BACKGROUND, CSS_CLASSES } from "./config/constants";
+import { useElementRefs } from "./hooks/useElementRefs";
 
 
-const GaleriHero: React.FC = () => {
+
+const RegisterHero: React.FC = () => {
     const { ORANG_BERTAPA_PAIR, DAUN_PAIR, WAYANG_PAIR, PATTERN, GRADIENT_BACKGROUND } = useElementRefs();
 
     const handleScrollToListLomba = () => {
         // Scroll ke elemen dengan ID 'list-lomba' atau class tertentu
-        const listLombaElement = document.getElementById('list-lomba');
+        const listLombaElement = document.getElementById("list-lomba");
         if (listLombaElement) {
             listLombaElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
+                behavior: "smooth",
+                block: "start",
             });
         } else {
             // Alternatif: scroll berdasarkan tinggi viewport jika element tidak ditemukan
             window.scrollTo({
                 top: window.innerHeight,
-                behavior: 'smooth'
+                behavior: "smooth",
             });
         }
     };
-
 
     const renderBatikBackground = () => (
         <BackgroundImage
@@ -80,12 +79,12 @@ const GaleriHero: React.FC = () => {
                 </SubTitle>
             </div>
 
-            <button 
-                type="button" 
+            <button
+                type="button"
                 onClick={handleScrollToListLomba}
                 className="relative cursor-pointer transition-transform duration-200 hover:scale-105 rounded-lg pt-6 pb-5 active:scale-95 bg-no-repeat bg-center bg-contain w-[250px] h-auto flex items-center justify-center text-[#FFDA88] font-samsktrigrama text-3xl tracking-[0.1]"
                 style={{
-                    backgroundImage: "url('/icon/button-daftar.svg')"
+                    backgroundImage: "url('/icon/button-daftar.svg')",
                 }}
             >
                 Daftar
@@ -101,10 +100,8 @@ const GaleriHero: React.FC = () => {
             <ElementPairComponent pair={WAYANG_PAIR} />
             {renderPatternImage()}
 
-
             <div className={CSS_CLASSES.mainContent}>
                 <div className={CSS_CLASSES.titleContainer}>
-
                     {renderGradientBackground()}
                     {renderTitles()}
                     {renderContent()}
@@ -114,4 +111,6 @@ const GaleriHero: React.FC = () => {
     );
 };
 
-export default GaleriHero;
+export default RegisterHero;
+
+
