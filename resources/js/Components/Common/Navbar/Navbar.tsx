@@ -25,7 +25,7 @@ const NavbarLogo: React.FC = () => (
         <img
             src="/icon/logo-kampung-budaya.svg"
             alt="Kampung Budaya Logo"
-            className="h-12 w-auto"
+            className="h-10 lg:h-12 w-auto"
             loading="lazy"
         />
     </Link>
@@ -35,7 +35,7 @@ const RegisterButton: React.FC<{ isMobile?: boolean }> = ({
     isMobile = false,
 }) => (
     <Link
-        href="/register-form"
+        href="/register-event"
         className={`text-white font-medium transition-all duration-200 hover:opacity-90 hover:scale-105 ${
             isMobile
                 ? "w-full px-6 py-2 rounded-lg mt-4 text-center block"
@@ -62,11 +62,11 @@ const MobileMenuButton: React.FC<{
         type="button"
     >
         <svg
-            className="h-12 w-12"
+            className="h-8 w-8"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            strokeWidth={3}
+            strokeWidth={2}
         >
             {isOpen ? (
                 <path
@@ -176,7 +176,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = "", currentPath }) => {
 
     return (
         <nav
-            className={`h-auto py-3 fixed top-0 left-0 right-0 rounded-b-[20px] z-50 
+            className={`lg:h-auto h-[60px] py-3 fixed top-0 left-0 right-0 rounded-b-[20px] z-50 
                 bg-[linear-gradient(90deg,#FFF_0%,#FFF_47.12%,#E1B01B_100%)] 
                 lg:bg-[linear-gradient(90deg,#E1B01B_0%,#FFF_25%,#FFF_75%,#E1B01B_100%)] 
     shadow-[0_5px_16px_0_rgba(8,15,52,0.12)] 
@@ -186,7 +186,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = "", currentPath }) => {
         >
             <BatikPattern side="left" />
             <BatikPattern side="right" />
-            <div className="mx-12 lg:container lg:mx-auto h-full relative">
+            <div className="mx-6 lg:container lg:mx-auto h-full relative">
                 <div className="flex items-center justify-between lg:justify-center h-full relative z-10">
                     <div className="flex items-center space-x-10">
                         <NavbarLogo />

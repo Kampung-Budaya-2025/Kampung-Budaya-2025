@@ -26,6 +26,13 @@ class PageController extends Controller
         ]);
     }
 
+    public function registerEvent()
+    {
+        return Inertia::render('RegisterEvent/Page', [
+            'title' => 'Daftar Event - Kampung Budaya 2025'
+        ]);
+    }
+
     public function galeri()
     {
         return Inertia::render('Galeri/Page', [
