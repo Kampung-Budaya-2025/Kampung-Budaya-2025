@@ -10,9 +10,9 @@ const FlowerDecorations: React.FC = () => {
             <FlowerPair
                 level="Besar"
                 flowers={flowers.besar}
-                containerClass="hidden sm:block absolute -top-8 sm:-top-3 left-0 w-full h-[230px] z-0"
+                containerClass="hidden sm:block absolute -top-8 sm:-top-6 left-1/2 -translate-x-1/2 w-[101vw] h-[363px] z-0"
                 wrapperClass="flex justify-between items-start w-full relative"
-            />
+            />  
 
             {/* Bunga Besar Mobile (lebih keluar) */}
             <FlowerPair
