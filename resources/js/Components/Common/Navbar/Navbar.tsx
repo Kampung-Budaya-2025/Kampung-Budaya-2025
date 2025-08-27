@@ -96,7 +96,7 @@ const DesktopNavigation: React.FC<{
                 href={link.href}
                 className={`text-2xl transition-all duration-200 rounded px-3 py-2 font-medium ${
                     currentPath === link.href
-                        ? "text-[#CE9C17] font-semibold"
+                        ? "text-[#CE9C17]" // font-semibold dihapus
                         : "text-[#3F170D] hover:text-[#CE9C17]"
                 }`}
             >
@@ -123,7 +123,7 @@ const MobileNavigation: React.FC<{
                         href={link.href}
                         className={`block font-medium transition-colors duration-200 rounded px-3 py-2 ${
                             currentPath === link.href
-                                ? "text-[#CE9C17] font-semibold"
+                                ? "text-[#CE9C17]"
                                 : "text-[#3F170D] hover:text-[#CE9C17]"
                         }`}
                         onClick={onClose}

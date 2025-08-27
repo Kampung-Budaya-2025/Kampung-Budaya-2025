@@ -1,6 +1,6 @@
 import React, { useRef,useMemo } from "react";
 import { useInView } from "framer-motion";
-import {  ANIMATION_CONFIG, ANIMATION_ONCE_CONFIGG, FLOWER_CONFIGS } from "../config/contants";
+import {  ANIMATION_CONFIG, ANIMATION_ONCE_CONFIG, FLOWER_CONFIGS } from "../config/constants";
 
 const useFlowerAnimations = () => {
     // Refs

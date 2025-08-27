@@ -1,6 +1,6 @@
 import React, { useRef, useState, useMemo } from "react";
 import { useScrollSync } from "../hooks/useScrollSync";
-import { faqData } from "../config/contants";
+import { faqData } from "../config/constants";
 import SearchField from "./SearchField";
 import Scrollbar from "./ScrollBar";
 import FAQCard from "./FaqCard";

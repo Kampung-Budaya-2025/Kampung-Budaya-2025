@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useInView } from "framer-motion";
-import { ANIMATION_CONFIG } from "../config/contants";
+import { ANIMATION_CONFIG } from "../config/constants";
 
 
 const BatikBackground: React.FC = () => {

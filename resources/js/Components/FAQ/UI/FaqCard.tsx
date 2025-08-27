@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CardProps } from '../types';
-import { faqData } from '../config/contants';
+import { faqData } from '../config/constants';
 
 const FAQCard: React.FC<CardProps> = ({
     faqs,
