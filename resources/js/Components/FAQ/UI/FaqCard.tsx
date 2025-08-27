@@ -62,7 +62,7 @@ const FAQCard: React.FC<CardProps> = ({
           >
             {/* Question Text */}
             <div className="flex-1 px-6 text-left max-w-full">
-              <p className="text-2xl font-medium text-[#3F170D] break-words max-w-full">
+              <p className="tast-base lg:text-2xl font-medium text-[#3F170D] break-words max-w-full">
                 {highlightText(item.question, searchQuery)}
               </p>
             </div>
