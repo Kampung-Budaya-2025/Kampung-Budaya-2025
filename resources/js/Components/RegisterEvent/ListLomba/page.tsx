@@ -10,7 +10,7 @@ import ElementPairComponent from "../RegisterHero/UI/ElementPairComponent";
 
 const ListLomba: React.FC = () => {
 
-     const { BUNGA_PAIR, BATIK_PAIR } = useElementRefs();
+     const { ORANG_BERTAPA_PAIR, DAUN_PAIR } = useElementRefs();
     return (
         <div
             id="list-lomba"
@@ -19,8 +19,8 @@ const ListLomba: React.FC = () => {
             {/* Bunga Kiri & Kanan */}
             {/* <DecorationGroup decoration={bungaDecorations} /> */}
             {/* <DecorationGroup decoration={batikDecorations} /> */}
-            <ElementPairComponent pair={BUNGA_PAIR} />
-            <ElementPairComponent pair={BATIK_PAIR} />
+            <ElementPairComponent pair={ORANG_BERTAPA_PAIR} />
+            <ElementPairComponent pair={DAUN_PAIR} />
 
             {/* Button Section */}
             <div className="flex flex-1 items-center justify-center w-full h-screen gap-6">

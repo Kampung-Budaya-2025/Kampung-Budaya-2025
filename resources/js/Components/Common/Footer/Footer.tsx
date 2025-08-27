@@ -16,7 +16,7 @@ interface SocialLink {
 
 // Social Media Icons Components
 const TwitterIcon: React.FC<{ className?: string }> = ({
-    className = "w-6 h-6",
+    className = "w-10 h-10",
 }) => (
     <svg
         className={className}
@@ -29,7 +29,7 @@ const TwitterIcon: React.FC<{ className?: string }> = ({
 );
 
 const YouTubeIcon: React.FC<{ className?: string }> = ({
-    className = "w-6 h-6",
+    className = "w-10 h-10",
 }) => (
     <svg
         className={className}
@@ -42,7 +42,7 @@ const YouTubeIcon: React.FC<{ className?: string }> = ({
 );
 
 const TikTokIcon: React.FC<{ className?: string }> = ({
-    className = "w-6 h-6",
+    className = "w-10 h-10",
 }) => (
     <svg
         className={className}
@@ -55,7 +55,7 @@ const TikTokIcon: React.FC<{ className?: string }> = ({
 );
 
 const InstagramIcon: React.FC<{ className?: string }> = ({
-    className = "w-6 h-6",
+    className = "w-10 h-10",
 }) => (
     <svg
         className={className}
@@ -114,7 +114,7 @@ const BrandTitle: React.FC = () => {
             className="block focus:outline-none rounded"
         >
             <h1
-                className="text-5xl lg:text-5xl font-samsktrigrama bg-clip-text text-transparent hover:opacity-80 transition-opacity duration-200"
+                className="text-5xl lg:text-[4rem] font-samsktrigrama bg-clip-text text-transparent hover:opacity-80 transition-opacity duration-200"
                 style={{
                     backgroundImage:
                         "linear-gradient(180deg, #FDEFC5 0%, #CD9C1A 64.66%, #B1811B 100%)",
@@ -143,7 +143,7 @@ const NavigationMenu: React.FC<{ currentPath: string }> = ({ currentPath }) => {
                         <Link
                             href={link.href}
                             onClick={handleClick}
-                            className={`transition-colors duration-200 text-lg rounded px-1 py-1 focus:outline-none ${
+                            className={`transition-colors duration-200 text-3xl rounded px-1 py-1 focus:outline-none ${
                                 isActiveLink(link.href)
                                     ? "text-yellow-400 font-semibold"
                                     : "text-[#FCF0AB] hover:text-yellow-400"
@@ -181,7 +181,7 @@ const Copyright: React.FC = () => {
 
     return (
         <div className="mt-8 pt-6 border-t-2 border-[#CE9C17] text-center">
-            <p className="text-sm lg:text-base text-white/80">
+            <p className="text-lg lg:text-xl text-white/80">
                 Copyright {currentYear} Made with{" "}
                 <span className="text-red-400" aria-label="love">
                     ♡
@@ -206,11 +206,11 @@ const BatikBackground: React.FC = () => (
 // Main Footer Component
 const Footer: React.FC<{ currentPath?: string }> = ({ currentPath = "/" }) => {
     return (
-        <footer className="relative h-[852px] lg:h-[280px] text-white rounded-t-[20px] bg-[linear-gradient(180deg,#3F170D_0%,#5F3313_100%)] overflow-hidden">
+        <footer className="relative h-[852px] lg:h-[26rem] text-white bg-[linear-gradient(180deg,#3F170D_0%,#5F3313_100%)] overflow-hidden">
             <BatikBackground />
 
-            <div className="relative z-10 py-8 lg:py-16 px-4 sm:px-8 lg:px-24">
-                <div className="mx-auto max-w-7xl">
+            <div className="relative z-10 py-8 lg:py-24 px-4 sm:px-8 lg:px-28">
+                <div className="mx-auto max-w-full">
                     <div className="flex flex-col lg:flex-row lg:justify-between items-center lg:items-center space-y-8 lg:space-y-0">
                         {/* Brand Section */}
                         <div className="lg:w-1/3">
