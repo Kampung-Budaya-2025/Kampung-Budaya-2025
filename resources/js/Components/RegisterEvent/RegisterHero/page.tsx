@@ -4,6 +4,7 @@ import Title from "./UI/Title";
 import SubTitle from "./UI/Subtitle";
 import ElementPairComponent from "./UI/ElementPairComponent";
 import { BATIK_BACKGROUND, CSS_CLASSES } from "./config/constants";
+import { useElementRefs } from "./hooks/useElementRefs";
 
 
 
@@ -105,7 +106,5 @@ const RegisterHero: React.FC = () => {
 };
 
 export default RegisterHero;
-function useElementRefs(): { ORANG_BERTAPA_PAIR: any; DAUN_PAIR: any; WAYANG_PAIR: any; PATTERN: any; } {
-    throw new Error("Function not implemented.");
-}
+
 

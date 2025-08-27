@@ -121,9 +121,6 @@ const useElementRefs = () => {
         src: "/icon/pattern-galeri.svg",
         alt: "pattern-galeri",
     };
-
-
-
     return {
         ORANG_BERTAPA_PAIR,
         DAUN_PAIR,
