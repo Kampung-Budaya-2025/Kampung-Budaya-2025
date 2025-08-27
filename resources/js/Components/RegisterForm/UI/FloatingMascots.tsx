@@ -1,40 +1,43 @@
 import { motion, easeInOut, Variants, AnimatePresence } from "framer-motion";
+import { memo } from "react";
 
 interface FloatingMascotsProps {
     currentStep: number;
 }
 
-const FloatingMascots = ({ currentStep }: FloatingMascotsProps) => {
+const FloatingMascots = memo(({ currentStep }: FloatingMascotsProps) => {
+    // Simplified floating animation to reduce CPU usage
     const floatingVariants: Variants = {
         animate: {
-            y: [0, -8, 0],
+            y: [0, -6, 0], // Reduced from -8
             transition: {
-                duration: 4.5,
+                duration: 3.5, // Reduced from 4.5
                 ease: easeInOut,
                 repeat: Infinity,
             },
         },
     };
 
+    // Optimized speech bubble animation
     const speechBubbleVariants: Variants = {
         hidden: { scale: 0, opacity: 0 },
         visible: {
             scale: 1,
             opacity: 1,
             transition: {
-                duration: 0.5,
+                duration: 0.3, // Reduced from 0.5
                 ease: easeInOut,
-                delay: 1.5,
+                delay: 1, // Reduced from 1.5
             },
         },
         exit: {
             scale: 0,
             opacity: 0,
             transition: {
-                duration: 0.3,
+                duration: 0.2, // Reduced from 0.3
                 ease: easeInOut,
             },
-        }
+        },
     };
 
     const getSpeechBubbleContent = () => {
@@ -42,22 +45,22 @@ const FloatingMascots = ({ currentStep }: FloatingMascotsProps) => {
             case 1:
                 return {
                     left: "Isi data diri dengan benar ya!",
-                    right: "Semangat!"
+                    right: "Semangat!",
                 };
             case 2:
                 return {
                     left: "Upload berkasnya yang lengkap!",
-                    right: "Jangan lupa cek format file!"
+                    right: "Jangan lupa cek format file!",
                 };
             case 3:
                 return {
                     left: "Cek lagi datanya sudah benar?",
-                    right: "Siap submit!"
+                    right: "Siap submit!",
                 };
             default:
                 return {
                     left: "Selamat datang!",
-                    right: "Halo!"
+                    right: "Halo!",
                 };
         }
     };
@@ -77,12 +80,12 @@ const FloatingMascots = ({ currentStep }: FloatingMascotsProps) => {
                 variants={floatingVariants}
                 animate="animate"
             >
-                <img 
-                    src="/mascot/mascot-cowok.svg" 
+                <img
+                    src="/mascot/mascot-cowok.svg"
                     alt="Maskot kiri"
                     className="h-auto w-28 sm:w-36 lg:w-48 xl:w-56"
                 />
-                
+
                 {/* Speech Bubble Kiri - WARNA BACKGROUND & CONTAINER DIPERBAIKI */}
                 <AnimatePresence mode="wait">
                     <motion.div
@@ -119,12 +122,12 @@ const FloatingMascots = ({ currentStep }: FloatingMascotsProps) => {
                 }}
                 animate="animate"
             >
-                <img 
-                    src="/mascot/mascot-cewek.svg" 
+                <img
+                    src="/mascot/mascot-cewek.svg"
                     alt="Maskot kanan"
                     className="h-auto w-28 sm:w-36 lg:w-48 xl:w-56"
                 />
-                
+
                 {/* Speech Bubble Kanan - WARNA BACKGROUND & CONTAINER DIPERBAIKI */}
                 <AnimatePresence mode="wait">
                     <motion.div
@@ -147,6 +150,9 @@ const FloatingMascots = ({ currentStep }: FloatingMascotsProps) => {
             </motion.div>
         </>
     );
-};
+});
+
+// Add display name for debugging
+FloatingMascots.displayName = "FloatingMascots";
 
 export default FloatingMascots;
