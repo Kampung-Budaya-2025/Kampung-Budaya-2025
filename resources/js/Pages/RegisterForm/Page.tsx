@@ -66,7 +66,6 @@ const RegisterForm = () => {
         setIsTransitioning(false);
     };
 
-<<<<<<< HEAD
     const handlePrev = async () => {
         if (isTransitioning) return;
         
@@ -96,18 +95,6 @@ const RegisterForm = () => {
         }, 200);
         
         setIsTransitioning(false);
-=======
-    const handleNext = () => {
-        if (!isFormValid) return;
-        const existing = JSON.parse(
-            localStorage.getItem("registrationData") || "{}"
-        );
-        localStorage.setItem(
-            "registrationData",
-            JSON.stringify({ ...existing, formData, step: 1 })
-        );
-        router.visit("/register-upload");
->>>>>>> 36366241c8b877c9a4655810139f309dc5df84be
     };
 
     const handleFinalSubmit = async () => {
@@ -222,7 +209,6 @@ const RegisterForm = () => {
     };
 
     return (
-<<<<<<< HEAD
         <div 
             className="relative min-h-screen px-4 py-4 sm:py-6 lg:py-8"
             style={{
@@ -244,123 +230,6 @@ const RegisterForm = () => {
                             opacity: 0, 
                             y: -50,
                             transition: { duration: 0.6, ease: "easeInOut" }
-=======
-        <div
-            className="relative min-h-screen px-4 py-8 sm:py-10"
-            style={{
-                backgroundImage: `url(${backgroundHeroSvg})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-            }}
-        >
-            {/* Header */}
-            <motion.header
-                className="mb-4 text-center sm:mb-6"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: easeInOut }}
-            >
-                <h1 className="text-xl font-extrabold text-amber-800 sm:text-2xl md:text-3xl">
-                    Pendaftaran Lomba Videografi
-                </h1>
-            </motion.header>
-
-            <div className="relative max-w-5xl mx-auto">
-                {/* Maskot kiri */}
-                <motion.div
-                    className="absolute hidden w-32 -left-2 top-16 lg:block"
-                    variants={floatingVariants}
-                    animate="animate"
-                >
-                    <img src="/mascot/mascot-cowok.svg" alt="Maskot kiri" />
-                </motion.div>
-
-                {/* Maskot kanan (delay offset) */}
-                <motion.div
-                    className="absolute hidden w-32 -right-2 top-16 lg:block"
-                    variants={{
-                        animate: {
-                            y: [0, -8, 0],
-                            transition: {
-                                duration: 4.5,
-                                ease: easeInOut,
-                                repeat: Infinity,
-                                delay: 2.25,
-                            },
-                        },
-                    }}
-                    animate="animate"
-                >
-                    <img src="/mascot/mascot-cewek.svg" alt="Maskot kanan" />
-                </motion.div>
-
-                {/* Card Putih */}
-                <motion.div
-                    className="relative w-full max-w-xl p-4 mx-auto bg-white border shadow-lg rounded-2xl border-amber-100 sm:max-w-2xl sm:rounded-3xl md:max-w-3xl md:p-8"
-                    variants={cardVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    {/* Stepper */}
-                    <motion.div
-                        className="flex items-center justify-center gap-3 mb-4 sm:mb-6 sm:gap-6"
-                        variants={stepperVariants}
-                        initial="hidden"
-                        animate="visible"
-                    >
-                        <motion.div
-                            className="flex items-center gap-2"
-                            variants={stepVariants}
-                        >
-                            <div className="flex items-center justify-center text-xs font-bold text-white rounded-full h-7 w-7 bg-amber-500 sm:h-8 sm:w-8 sm:text-sm">
-                                1
-                            </div>
-                            <span className="text-xs font-semibold text-amber-700 sm:text-sm">
-                                Data Diri
-                            </span>
-                        </motion.div>
-                        <motion.div
-                            className="w-8 h-px bg-amber-200 sm:w-10"
-                            variants={stepVariants}
-                        />
-                        <motion.div
-                            className="flex items-center gap-2 opacity-70"
-                            variants={stepVariants}
-                        >
-                            <div className="flex items-center justify-center text-xs font-bold rounded-full h-7 w-7 bg-amber-100 text-amber-400 sm:h-8 sm:w-8 sm:text-sm">
-                                2
-                            </div>
-                            <span className="text-xs text-amber-400 sm:text-sm">
-                                Upload Berkas
-                            </span>
-                        </motion.div>
-                        <motion.div
-                            className="w-8 h-px bg-amber-100 sm:w-10"
-                            variants={stepVariants}
-                        />
-                        <motion.div
-                            className="flex items-center gap-2 opacity-70"
-                            variants={stepVariants}
-                        >
-                            <div className="flex items-center justify-center text-xs font-bold rounded-full h-7 w-7 bg-amber-100 text-amber-400 sm:h-8 sm:w-8 sm:text-sm">
-                                3
-                            </div>
-                            <span className="text-xs text-amber-400 sm:text-sm">
-                                Konfirmasi
-                            </span>
-                        </motion.div>
-                    </motion.div>
-
-                    <motion.div
-                        className="mb-2 text-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{
-                            delay: 0.4,
-                            duration: 0.5,
-                            ease: easeInOut,
->>>>>>> 36366241c8b877c9a4655810139f309dc5df84be
                         }}
                         transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
                     >
