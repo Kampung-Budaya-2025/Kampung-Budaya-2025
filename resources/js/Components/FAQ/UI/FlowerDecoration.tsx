@@ -10,7 +10,7 @@ const FlowerDecorations: React.FC = () => {
             <FlowerPair
                 level="Besar"
                 flowers={flowers.besar}
-                containerClass="hidden sm:block absolute -top-8 sm:-top-6 left-1/2 -translate-x-1/2 w-[101vw] h-[363px] z-0"
+                containerClass="hidden sm:block absolute -top-8 sm:-top-4 left-1/2 -translate-x-1/2 w-[101vw] h-auto z-0"
                 wrapperClass="flex justify-between items-start w-full relative"
             />  
 
@@ -26,24 +26,24 @@ const FlowerDecorations: React.FC = () => {
             <FlowerPair
                 level="Sedang"
                 flowers={flowers.sedang}
-                containerClass="hidden sm:block absolute top-0 left-0 w-full h-[130px] mt-1 z-0"
-                wrapperClass="flex justify-between items-center w-full px-52"
+                containerClass="hidden sm:block absolute top-3 left-1/2 -translate-x-1/2 w-[66vw] h-auto z-0"
+                wrapperClass="flex justify-between items-center w-full"
             />
 
             {/* Bunga Kecil-1 */}
             <FlowerPair
                 level="Kecil-1"
                 flowers={flowers.kecil1}
-                containerClass="hidden sm:block absolute top-0 left-0 w-full h-[50px] mt-18 z-0"
-                wrapperClass="flex justify-between items-center w-full px-94"
+                containerClass="hidden sm:block absolute top-32 left-1/2 -translate-x-1/2 w-[40vw] h-[auto] z-0"
+                wrapperClass="flex justify-between items-center w-full"
             />
 
             {/* Bunga Kecil-2 */}
             <FlowerPair
                 level="Kecil-2"
                 flowers={flowers.kecil2}
-                containerClass="hidden sm:block absolute top-0 left-0 w-full h-[50px] mt-36 z-0"
-                wrapperClass="flex justify-between items-center w-full px-54"
+                containerClass="hidden sm:block absolute top-58 left-1/2 -translate-x-1/2 w-[66vw] h-[auto] z-0"
+                wrapperClass="flex justify-between items-center w-full"
             />
         </>
     );

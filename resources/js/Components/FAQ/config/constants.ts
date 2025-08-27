@@ -67,10 +67,10 @@ const ANIMATION_ONCE_CONFIG = {
 } as const;
 
 const FLOWER_CONFIGS = {
-    besar: { size: 360, translateDistance: 60, duration: "1.2s" },
-    sedang: { size: 230, translateDistance: 80, duration: "2s" },
-    kecil1: { size: 76, translateDistance: 100, duration: "2.5s" },
-    kecil2: { size: 76, translateDistance: 80, duration: "3.5s" },
+    besar: { size: 360, translateDistance: 120, duration: "2.5s" },
+    sedang: { size: 230, translateDistance: 130, duration: "2.8s" },
+    kecil1: { size: 76, translateDistance: 120, duration: "3s" },
+    kecil2: { size: 76, translateDistance: 140, duration: "3.5s" },
 } as const;
 
   export { faqData, ANIMATION_CONFIG, ANIMATION_ONCE_CONFIG, FLOWER_CONFIGS };
