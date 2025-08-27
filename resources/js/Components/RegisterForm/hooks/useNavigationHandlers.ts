@@ -26,7 +26,7 @@ export const useNavigationHandlers = ({
 
     const handleFinalSubmit = useCallback(async () => {
         setSubmitting(true);
-        await new Promise((r) => setTimeout(r, 1000));
+        await new Promise((r) => setTimeout(r, 800)); // Kurangi dari 1000
         await handleSubmit();
         setSubmitting(false);
     }, [handleSubmit]);
@@ -47,7 +47,7 @@ export const useNavigationHandlers = ({
         setTimeout(() => {
             optimizedScrollToCard();
             setIsTransitioning(false);
-        }, 150);
+        }, 100); // Kurangi dari 150
     }, [
         currentStep,
         isStep1Valid,
@@ -68,7 +68,7 @@ export const useNavigationHandlers = ({
         setTimeout(() => {
             optimizedScrollToCard();
             setIsTransitioning(false);
-        }, 150);
+        }, 100); // Kurangi dari 150
     }, [prevStep, isTransitioning, optimizedScrollToCard]);
 
     return {

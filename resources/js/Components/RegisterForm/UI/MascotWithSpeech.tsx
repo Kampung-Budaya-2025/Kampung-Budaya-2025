@@ -1,4 +1,4 @@
-import { motion, easeInOut } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface MascotWithSpeechProps {
     side: "left" | "right";
@@ -22,20 +22,23 @@ const MascotWithSpeech = ({
             animate={{ x: 0, opacity: 1 }}
             transition={{
                 delay,
-                duration: 0.8,
-                ease: [0.25, 0.1, 0.25, 1],
+                duration: 0.6, // Kurangi dari 0.8
+                ease: "easeOut", // Gunakan easing yang lebih ringan
             }}
+            style={{ willChange: "transform, opacity" }}
         >
             <motion.div
                 animate={{
-                    y: [0, -8, 0],
+                    y: [0, -5, 0], // Kurangi dari -8 ke -5
                 }}
                 transition={{
-                    duration: 3,
-                    ease: easeInOut,
-                    repeat: Infinity,
+                    duration: 4, // Perlambat dari 3 ke 4
+                    ease: "easeInOut",
+                    repeat: 3, // Batasi dari Infinity ke 3
+                    repeatDelay: 2, // Tambah repeatDelay
                     delay: delay + 0.5,
                 }}
+                style={{ willChange: "transform" }}
             >
                 <img
                     src={mascotSrc}
@@ -53,9 +56,10 @@ const MascotWithSpeech = ({
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{
                     delay: delay + 0.7,
-                    duration: 0.5,
-                    ease: easeInOut,
+                    duration: 0.4, // Kurangi dari 0.5
+                    ease: "easeOut",
                 }}
+                style={{ willChange: "transform, opacity" }}
             >
                 <div className="relative">
                     <div className="px-3 py-2 text-xs font-bold text-white rounded-full shadow-lg sm:px-4 sm:py-2 sm:text-sm whitespace-nowrap bg-[linear-gradient(180deg,#CE9C17_0%,#CD9514_52.04%,#CC8F12_100%)]">

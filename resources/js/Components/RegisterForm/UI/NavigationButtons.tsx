@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { MdArrowBack } from "react-icons/md";
 
 interface NavigationButtonsProps {
@@ -32,15 +32,16 @@ const NavigationButtons = ({
                 opacity: 0,
                 y: 50,
                 transition: {
-                    duration: 0.4,
-                    ease: "easeInOut",
+                    duration: 0.3, // Kurangi dari 0.4
+                    ease: "easeOut", // Ganti dari easeInOut
                 },
             }}
             transition={{
-                delay: 0.8,
-                duration: 0.6,
+                delay: 0.6, // Kurangi dari 0.8
+                duration: 0.4, // Kurangi dari 0.6
                 ease: "easeOut",
             }}
+            style={{ willChange: "transform, opacity" }}
         >
             {/* Back Button */}
             {currentStep > 1 && (
@@ -54,15 +55,16 @@ const NavigationButtons = ({
                             ? {
                                   scale: 1.02,
                                   backgroundColor: "#fffbeb",
-                                  y: -2,
+                                  y: -1, // Kurangi dari -2
                               }
                             : {}
                     }
                     whileTap={!isTransitioning ? { scale: 0.98 } : {}}
                     layout
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -15 }} // Kurangi dari -20
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1, duration: 0.5 }}
+                    transition={{ delay: 0.8, duration: 0.4 }} // Kurangi duration
+                    style={{ willChange: "transform" }}
                 >
                     <MdArrowBack className="w-4 h-4 sm:w-5 sm:h-5" />
                     Kembali
@@ -84,9 +86,9 @@ const NavigationButtons = ({
                 whileHover={
                     canProceed && !submitting && !isTransitioning
                         ? {
-                              scale: 1.05,
-                              y: -4,
-                              boxShadow: "0 25px 50px rgba(206, 156, 23, 0.4)",
+                              scale: 1.03, // Kurangi dari 1.05
+                              y: -2, // Kurangi dari -4
+                              boxShadow: "0 15px 30px rgba(206, 156, 23, 0.3)", // Kurangi shadow
                           }
                         : {}
                 }
@@ -96,19 +98,20 @@ const NavigationButtons = ({
                         : {}
                 }
                 layout
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }} // Kurangi dari 20
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
-                    delay: currentStep === 1 ? 1 : 1.2,
-                    duration: 0.6,
+                    delay: currentStep === 1 ? 0.8 : 1, // Kurangi delay
+                    duration: 0.4, // Kurangi dari 0.6
                     layout: {
-                        duration: 0.3,
+                        duration: 0.2, // Kurangi dari 0.3
                         ease: "easeOut",
                     },
                     type: "spring",
                     stiffness: 300,
                     damping: 20,
                 }}
+                style={{ willChange: "transform" }}
             >
                 <div className="flex items-center justify-center gap-2">
                     {submitting && (
@@ -120,6 +123,7 @@ const NavigationButtons = ({
                                 repeat: Infinity,
                                 ease: "linear",
                             }}
+                            style={{ willChange: "transform" }}
                         />
                     )}
                     {nextButtonText}

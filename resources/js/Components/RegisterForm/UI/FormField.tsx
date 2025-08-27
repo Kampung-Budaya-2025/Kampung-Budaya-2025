@@ -50,7 +50,10 @@ const FormField = memo(
         const isSelect = options && options.length > 0;
 
         return (
-            <motion.div variants={variants}>
+            <motion.div
+                variants={variants}
+                style={{ willChange: "transform, opacity" }} // GPU optimization
+            >
                 <label
                     htmlFor={id}
                     className="block mb-1 text-sm font-medium text-gray-700 sm:mb-2"
@@ -90,12 +93,13 @@ const FormField = memo(
                 {error && (
                     <motion.p
                         className="mt-1 text-xs text-red-500"
-                        initial={{ opacity: 0, y: -5 }}
+                        initial={{ opacity: 0, y: -3 }} // Kurangi dari -5
                         animate={{ opacity: 1, y: 0 }}
                         transition={{
-                            duration: 0.3,
-                            ease: "easeInOut",
+                            duration: 0.2, // Kurangi dari 0.3
+                            ease: "easeOut", // Ganti dari easeInOut
                         }}
+                        style={{ willChange: "transform, opacity" }}
                     >
                         {error}
                     </motion.p>

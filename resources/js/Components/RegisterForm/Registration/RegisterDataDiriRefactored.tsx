@@ -25,24 +25,24 @@ const RegisterDataDiriRefactored = memo(
             [onDataChange]
         );
 
-        // Simplified animation variants to reduce computational overhead
+        // Optimized animation variants for better performance
         const containerVariants = {
             hidden: { opacity: 0 },
             visible: {
                 opacity: 1,
                 transition: {
-                    staggerChildren: 0.05,
-                    delayChildren: 0.1,
+                    staggerChildren: 0.03, // Kurangi dari 0.05
+                    delayChildren: 0.05, // Kurangi dari 0.1
                 },
             },
         };
 
         const itemVariants = {
-            hidden: { opacity: 0, y: 10 },
+            hidden: { opacity: 0, y: 8 }, // Kurangi dari 10
             visible: {
                 opacity: 1,
                 y: 0,
-                transition: { duration: 0.3, ease: "easeInOut" as const },
+                transition: { duration: 0.25, ease: "easeOut" as const }, // Kurangi dari 0.3
             },
         };
 

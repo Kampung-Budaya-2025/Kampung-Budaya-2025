@@ -3,81 +3,81 @@ import { Variants } from "framer-motion";
 export const PAGE_TRANSITION_VARIANTS: Variants = {
     initial: {
         opacity: 0,
-        x: 20,
-        scale: 0.99,
+        x: 15, // Kurangi dari 20
+        scale: 0.995, // Kurangi dari 0.99
     },
     animate: {
         opacity: 1,
         x: 0,
         scale: 1,
         transition: {
-            duration: 0.3,
+            duration: 0.25, // Kurangi dari 0.3
             ease: "easeOut",
-            opacity: { duration: 0.2 },
-            scale: { duration: 0.3 },
+            opacity: { duration: 0.15 }, // Kurangi dari 0.2
+            scale: { duration: 0.25 }, // Kurangi dari 0.3
         },
     },
     exit: {
         opacity: 0,
-        x: -20,
-        scale: 0.99,
+        x: -15, // Kurangi dari -20
+        scale: 0.995, // Kurangi dari 0.99
         transition: {
-            duration: 0.2,
+            duration: 0.15, // Kurangi dari 0.2
             ease: "easeOut",
         },
     },
 };
 
 export const CARD_VARIANTS = {
-    hidden: { opacity: 0, y: 20, scale: 0.99 },
+    hidden: { opacity: 0, y: 15, scale: 0.995 }, // Kurangi values
     visible: {
         opacity: 1,
         y: 0,
         scale: 1,
         transition: {
-            duration: 0.5,
+            duration: 0.4, // Kurangi dari 0.5
             ease: "easeOut" as const,
-            delay: 0.05,
+            delay: 0.03, // Kurangi dari 0.05
         },
     },
     success: (currentStep: number) => ({
         opacity: 1,
         y: 0,
-        scale: currentStep === 4 ? 1.01 : 1,
+        scale: currentStep === 4 ? 1.005 : 1, // Kurangi dari 1.01
         transition: {
-            duration: 0.6,
+            duration: 0.5, // Kurangi dari 0.6
             ease: "easeOut" as const,
-            delay: 0.1,
+            delay: 0.08, // Kurangi dari 0.1
         },
     }),
 };
 
 export const HEADER_ANIMATIONS = {
     leftIcon: {
-        initial: { opacity: 0, x: -30, rotate: -15 },
+        initial: { opacity: 0, x: -20, rotate: -10 }, // Kurangi values
         animate: { opacity: 1, x: 0, rotate: 0 },
         transition: {
-            duration: 1.2,
-            delay: 0.5,
-            ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+            duration: 0.8, // Kurangi dari 1.2
+            delay: 0.3, // Kurangi dari 0.5
+            ease: "easeOut" as const, // Ganti cubic-bezier dengan easeOut
         },
     },
     title: {
-        initial: { opacity: 0, scale: 0.9 },
+        initial: { opacity: 0, scale: 0.95 }, // Kurangi dari 0.9
         animate: { opacity: 1, scale: 1 },
         transition: {
-            duration: 0.8,
-            delay: 0.3,
-            ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+            duration: 0.6, // Kurangi dari 0.8
+            delay: 0.2, // Kurangi dari 0.3
+            ease: "easeOut" as const,
         },
     },
     rightIcon: {
-        initial: { opacity: 0, x: 30, rotate: 15 },
+        initial: { opacity: 0, x: 20, rotate: 10 }, // Kurangi values
         animate: { opacity: 1, x: 0, rotate: 0 },
         transition: {
-            duration: 1.2,
-            delay: 0.7,
-            ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+            duration: 0.8, // Kurangi dari 1.2
+            delay: 0.4, // Kurangi dari 0.7
+            ease: "easeOut" as const,
         },
     },
 };

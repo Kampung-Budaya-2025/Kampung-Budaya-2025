@@ -149,6 +149,7 @@ const RegisterForm = () => {
                 backgroundRepeat: "no-repeat",
                 backgroundAttachment: "fixed",
                 overflow: "visible",
+                willChange: "transform", // GPU optimization
             }}
         >
             {/* Header */}
@@ -171,11 +172,11 @@ const RegisterForm = () => {
                                 animate="visible"
                                 exit={{
                                     opacity: 0,
-                                    scale: 0.8,
-                                    y: 50,
+                                    scale: 0.85, // Kurangi dari 0.8
+                                    y: 30, // Kurangi dari 50
                                     transition: {
-                                        duration: 0.6,
-                                        ease: "easeInOut",
+                                        duration: 0.4, // Kurangi dari 0.6
+                                        ease: "easeOut", // Ganti dari easeInOut
                                     },
                                 }}
                                 style={{
@@ -193,15 +194,19 @@ const RegisterForm = () => {
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
                                             exit={{ opacity: 0 }}
-                                            transition={{ duration: 0.2 }}
+                                            transition={{ duration: 0.15 }} // Kurangi dari 0.2
+                                            style={{ willChange: "opacity" }}
                                         >
                                             <motion.div
                                                 className="w-6 h-6 border-2 rounded-full border-amber-500 border-t-transparent"
                                                 animate={{ rotate: 360 }}
                                                 transition={{
-                                                    duration: 1,
+                                                    duration: 0.8, // Kurangi dari 1
                                                     repeat: Infinity,
                                                     ease: "linear",
+                                                }}
+                                                style={{
+                                                    willChange: "transform",
                                                 }}
                                             />
                                         </motion.div>
@@ -228,7 +233,8 @@ const RegisterForm = () => {
                                             className="w-full"
                                             style={{
                                                 backfaceVisibility: "hidden",
-                                                willChange: "transform",
+                                                willChange:
+                                                    "transform, opacity",
                                             }}
                                         >
                                             {renderCurrentStep}
@@ -255,14 +261,15 @@ const RegisterForm = () => {
                 <AnimatePresence>
                     {currentStep === 4 && (
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                            initial={{ opacity: 0, scale: 0.9, y: 30 }} // Kurangi values
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             transition={{
-                                duration: 0.8,
+                                duration: 0.6, // Kurangi dari 0.8
                                 ease: "easeOut",
-                                delay: 0.3,
+                                delay: 0.2, // Kurangi dari 0.3
                             }}
                             className="relative z-40"
+                            style={{ willChange: "transform, opacity" }}
                         >
                             {renderCurrentStep}
                         </motion.div>
