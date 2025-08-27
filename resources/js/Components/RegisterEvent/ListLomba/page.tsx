@@ -5,18 +5,22 @@ import { DecorationGroup } from "./UI/DecorationGroup";
 import { SingleDecoration } from "./UI/SingleDecoration";
 import { buttonData, cardData } from "./config/constants";
 import { bungaDecorations, batikDecorations, bungaMahkotaDecoration } from "./config/constants";
+import { useElementRefs } from "../RegisterHero/hooks/useElementRefs";
+import ElementPairComponent from "../RegisterHero/UI/ElementPairComponent";
 
 const ListLomba: React.FC = () => {
+
+     const { BUNGA_PAIR, BATIK_PAIR } = useElementRefs();
     return (
         <div
             id="list-lomba"
             className="relative h-auto w-full flex flex-col py-8"
         >
             {/* Bunga Kiri & Kanan */}
-            <DecorationGroup decoration={bungaDecorations} />
-
-            {/* Batik Kiri & Kanan */}
-            <DecorationGroup decoration={batikDecorations} />
+            {/* <DecorationGroup decoration={bungaDecorations} /> */}
+            {/* <DecorationGroup decoration={batikDecorations} /> */}
+            <ElementPairComponent pair={BUNGA_PAIR} />
+            <ElementPairComponent pair={BATIK_PAIR} />
 
             {/* Button Section */}
             <div className="flex flex-1 items-center justify-center w-full h-screen gap-6">
