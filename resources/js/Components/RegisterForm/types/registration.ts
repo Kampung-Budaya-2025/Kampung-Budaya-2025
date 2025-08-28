@@ -1,4 +1,5 @@
-export interface FormData {
+export interface RegistrationFormData {
+    eventType?: string;
     namaLengkap: string;
     kategori: string;
     tanggalLahir: string;

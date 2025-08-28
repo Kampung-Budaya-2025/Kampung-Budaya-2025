@@ -1,9 +1,11 @@
 import { useState, useCallback, useMemo, useRef } from "react";
 import { useRegistration } from "../../Hooks/useRegistration";
+import EventTypeSelector from "../../Components/RegisterForm/Registration/EventTypeSelector";
 import RegisterDataDiri from "../../Components/RegisterForm/Registration/RegisterDataDiri";
 import RegisterUpload from "../../Components/RegisterForm/Registration/RegisterUpload";
 import RegisterConfirmation from "../../Components/RegisterForm/Registration/RegisterConfirmation";
 import RegisterSuccess from "../../Components/RegisterForm/Registration/RegisterSuccess";
+import SubmissionState from "../../Components/RegisterForm/UI/SubmissionState";
 import { MdArrowBack } from "react-icons/md";
 import ManualStepper from "@/Components/RegisterForm/UI/ManualStepper";
 
@@ -18,37 +20,44 @@ const RegisterForm = () => {
         nextStep,
         prevStep,
         handleSubmit,
+        checkEmailAvailability,
         isStep1Valid,
         isStep2Valid,
         isStep3Valid,
     } = useRegistration();
 
     const [submitting, setSubmitting] = useState(false);
+    const [submissionError, setSubmissionError] = useState<string>("");
     const [isTransitioning, setIsTransitioning] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
 
     // Memoized speech content for mascots
     const speechContent = useMemo(() => {
         switch (currentStep) {
+            case 0:
+                return {
+                    left: "Pilih event yang ingin kamu ikuti!",
+                    right: "Ada banyak pilihan menarik!",
+                };
             case 1:
                 return {
                     left: "Isi data diri dengan benar ya!",
-                    right: "Semangat!"
+                    right: "Semangat!",
                 };
             case 2:
                 return {
                     left: "Upload berkasnya yang lengkap!",
-                    right: "Jangan lupa cek format file!"
+                    right: "Jangan lupa cek format file!",
                 };
             case 3:
                 return {
                     left: "Cek lagi datanya sudah benar?",
-                    right: "Siap submit!"
+                    right: "Siap submit!",
                 };
             default:
                 return {
                     left: "Selamat datang!",
-                    right: "Halo!"
+                    right: "Halo!",
                 };
         }
     }, [currentStep]);
@@ -56,19 +65,29 @@ const RegisterForm = () => {
     // Simplified handlers
     const handleNext = useCallback(async () => {
         if (isTransitioning) return;
-        
+
         setIsTransitioning(true);
-        
-        if (currentStep === 1 && isStep1Valid) {
+
+        if (currentStep === 0 && formData.eventType) {
+            nextStep();
+        } else if (currentStep === 1 && isStep1Valid) {
             nextStep();
         } else if (currentStep === 2 && isStep2Valid) {
             nextStep();
         } else if (currentStep === 3 && isStep3Valid) {
             await handleFinalSubmit();
         }
-        
+
         setTimeout(() => setIsTransitioning(false), 100);
-    }, [isTransitioning, currentStep, isStep1Valid, isStep2Valid, isStep3Valid, nextStep]);
+    }, [
+        isTransitioning,
+        currentStep,
+        formData.eventType,
+        isStep1Valid,
+        isStep2Valid,
+        isStep3Valid,
+        nextStep,
+    ]);
 
     const handlePrev = useCallback(() => {
         if (isTransitioning) return;
@@ -79,19 +98,47 @@ const RegisterForm = () => {
 
     const handleFinalSubmit = useCallback(async () => {
         setSubmitting(true);
-        await new Promise((r) => setTimeout(r, 800));
-        await handleSubmit();
-        setSubmitting(false);
+        setSubmissionError("");
+        try {
+            await new Promise((r) => setTimeout(r, 800)); // Simulate processing
+            await handleSubmit();
+        } catch (error) {
+            console.error("Submission error:", error);
+            setSubmissionError(
+                error instanceof Error
+                    ? error.message
+                    : "Terjadi kesalahan saat mengirim pendaftaran"
+            );
+        } finally {
+            setSubmitting(false);
+        }
     }, [handleSubmit]);
+
+    const handleRetrySubmission = useCallback(() => {
+        setSubmissionError("");
+        handleFinalSubmit();
+    }, [handleFinalSubmit]);
 
     const canProceed = useMemo(() => {
         switch (currentStep) {
-            case 1: return isStep1Valid;
-            case 2: return isStep2Valid;
-            case 3: return isStep3Valid;
-            default: return false;
+            case 0:
+                return !!formData.eventType;
+            case 1:
+                return isStep1Valid;
+            case 2:
+                return isStep2Valid;
+            case 3:
+                return isStep3Valid;
+            default:
+                return false;
         }
-    }, [currentStep, isStep1Valid, isStep2Valid, isStep3Valid]);
+    }, [
+        currentStep,
+        formData.eventType,
+        isStep1Valid,
+        isStep2Valid,
+        isStep3Valid,
+    ]);
 
     const nextButtonText = useMemo(() => {
         if (currentStep === 3) {
@@ -102,6 +149,13 @@ const RegisterForm = () => {
 
     const renderCurrentStep = useCallback(() => {
         switch (currentStep) {
+            case 0:
+                return (
+                    <EventTypeSelector
+                        formData={formData}
+                        onDataChange={handleDataChange}
+                    />
+                );
             case 1:
                 return (
                     <RegisterDataDiri
@@ -136,7 +190,14 @@ const RegisterForm = () => {
             default:
                 return null;
         }
-    }, [currentStep, formData, errors, handleDataChange, uploadData, handleFileUpload]);
+    }, [
+        currentStep,
+        formData,
+        errors,
+        handleDataChange,
+        uploadData,
+        handleFileUpload,
+    ]);
 
     return (
         <div
@@ -184,37 +245,38 @@ const RegisterForm = () => {
                     <>
                         {/* Maskot Kiri - STATIC DENGAN HOVER EFFECT */}
                         <div className="absolute hidden -translate-y-1/2 -left-40 top-1/2 lg:block">
-                            <div 
+                            <div
                                 className="transition-transform duration-300 hover:-translate-y-2"
                                 style={{
-                                    transform: 'translateZ(0)', // Hardware acceleration
-                                    willChange: 'transform'
+                                    transform: "translateZ(0)", // Hardware acceleration
+                                    willChange: "transform",
                                 }}
                             >
-                                <img 
-                                    src="/mascot/mascot-cowok.svg" 
+                                <img
+                                    src="/mascot/mascot-cowok.svg"
                                     alt="Maskot kiri"
                                     className="h-auto w-28 sm:w-36 lg:w-48 xl:w-56"
                                     loading="lazy"
                                 />
                             </div>
-                            
+
                             {/* Speech Bubble Kiri */}
                             <div className="absolute -top-8 -left-8 sm:-top-12 sm:-left-12">
                                 <div className="relative">
-                                    <div 
+                                    <div
                                         className="px-3 py-2 text-xs font-bold text-center text-white rounded-full shadow-lg sm:px-4 sm:py-2 sm:text-sm whitespace-nowrap"
                                         style={{
-                                            background: 'linear-gradient(180deg, #CE9C17 0%, #CD9514 52.04%, #CC8F12 100%)',
-                                            minWidth: '180px',
-                                            maxWidth: '280px'
+                                            background:
+                                                "linear-gradient(180deg, #CE9C17 0%, #CD9514 52.04%, #CC8F12 100%)",
+                                            minWidth: "180px",
+                                            maxWidth: "280px",
                                         }}
                                     >
                                         {speechContent.left}
                                     </div>
-                                    <div 
+                                    <div
                                         className="absolute w-2 h-2 transform rotate-45 bottom-[-4px] left-4 sm:w-3 sm:h-3 sm:left-6"
-                                        style={{ backgroundColor: '#CC8F12' }}
+                                        style={{ backgroundColor: "#CC8F12" }}
                                     ></div>
                                 </div>
                             </div>
@@ -222,37 +284,38 @@ const RegisterForm = () => {
 
                         {/* Maskot Kanan - STATIC DENGAN HOVER EFFECT */}
                         <div className="absolute hidden -translate-y-1/2 -right-40 top-1/2 lg:block">
-                            <div 
+                            <div
                                 className="transition-transform duration-300 hover:-translate-y-2"
                                 style={{
-                                    transform: 'translateZ(0)', // Hardware acceleration
-                                    willChange: 'transform'
+                                    transform: "translateZ(0)", // Hardware acceleration
+                                    willChange: "transform",
                                 }}
                             >
-                                <img 
-                                    src="/mascot/mascot-cewek.svg" 
+                                <img
+                                    src="/mascot/mascot-cewek.svg"
                                     alt="Maskot kanan"
                                     className="h-auto w-28 sm:w-36 lg:w-48 xl:w-56"
                                     loading="lazy"
                                 />
                             </div>
-                            
+
                             {/* Speech Bubble Kanan */}
                             <div className="absolute -top-8 -right-8 sm:-top-12 sm:-right-12">
                                 <div className="relative">
-                                    <div 
+                                    <div
                                         className="px-3 py-2 text-xs font-bold text-center text-white rounded-full shadow-lg sm:px-4 sm:py-2 sm:text-sm whitespace-nowrap"
                                         style={{
-                                            background: 'linear-gradient(180deg, #CE9C17 0%, #CD9514 52.04%, #CC8F12 100%)',
-                                            minWidth: '120px',
-                                            maxWidth: '240px'
+                                            background:
+                                                "linear-gradient(180deg, #CE9C17 0%, #CD9514 52.04%, #CC8F12 100%)",
+                                            minWidth: "120px",
+                                            maxWidth: "240px",
                                         }}
                                     >
                                         {speechContent.right}
                                     </div>
-                                    <div 
+                                    <div
                                         className="absolute w-2 h-2 transform rotate-45 bottom-[-4px] right-4 sm:w-3 sm:h-3 sm:right-6"
-                                        style={{ backgroundColor: '#CC8F12' }}
+                                        style={{ backgroundColor: "#CC8F12" }}
                                     ></div>
                                 </div>
                             </div>
@@ -280,20 +343,21 @@ const RegisterForm = () => {
                             </div>
 
                             {/* CONTENT TANPA ANIMASI */}
-                            <div className="w-full">
-                                {renderCurrentStep()}
-                            </div>
+                            <div className="w-full">{renderCurrentStep()}</div>
                         </div>
 
                         {/* BUTTONS SEDERHANA */}
                         <div
                             className={`relative flex items-center max-w-lg gap-3 mx-auto mt-4 sm:max-w-xl sm:gap-4 sm:mt-5 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl z-40 ${
-                                currentStep === 1
+                                (currentStep === 1 && formData.eventType) ||
+                                currentStep === 0
                                     ? "justify-center"
                                     : "flex-col-reverse sm:flex-row sm:justify-between"
                             }`}
                         >
-                            {currentStep > 1 && (
+                            {/* Show back button if step > 1, or step === 1 but no eventType from URL */}
+                            {(currentStep > 1 ||
+                                (currentStep === 1 && !formData.eventType)) && (
                                 <button
                                     type="button"
                                     onClick={handlePrev}
@@ -308,11 +372,17 @@ const RegisterForm = () => {
                             <button
                                 type="button"
                                 onClick={handleNext}
-                                disabled={!canProceed || submitting || isTransitioning}
+                                disabled={
+                                    !canProceed || submitting || isTransitioning
+                                }
                                 className={`rounded-full px-6 py-2 text-sm font-semibold transition-colors sm:px-8 sm:py-3 sm:text-base lg:px-10 lg:py-3 lg:text-lg shadow-lg ${
-                                    currentStep === 1 ? "w-auto" : "w-full sm:w-auto"
+                                    currentStep === 1
+                                        ? "w-auto"
+                                        : "w-full sm:w-auto"
                                 } ${
-                                    canProceed && !submitting && !isTransitioning
+                                    canProceed &&
+                                    !submitting &&
+                                    !isTransitioning
                                         ? "bg-gradient-to-r from-[#CE9C17] via-[#CD9514] to-[#CC8F12] text-white hover:opacity-90"
                                         : "cursor-not-allowed bg-gray-300 text-gray-600"
                                 }`}
@@ -330,11 +400,16 @@ const RegisterForm = () => {
 
                 {/* SUCCESS TANPA ANIMASI BERAT */}
                 {currentStep === 4 && (
-                    <div className="relative z-40">
-                        {renderCurrentStep()}
-                    </div>
+                    <div className="relative z-40">{renderCurrentStep()}</div>
                 )}
             </div>
+
+            {/* Submission State Modal */}
+            <SubmissionState
+                isSubmitting={submitting}
+                error={submissionError}
+                onRetry={handleRetrySubmission}
+            />
         </div>
     );
 };
