@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
-import { ANIMATION_CONFIG, ANIMATION_ONCE_CONFIG } from '@/Components/FAQ/config/constants';
+import { ANIMATION_CONFIG, ANIMATION_ONCE_CONFIG} from '@/Components/FAQ/config/constants';
+import { BUNGA_MOBILE_CONFIGS } from '../config/constants';
 import { ELEMENT_CONFIGS } from '../config/constants';
 import { ElementPair } from '../types';
 
@@ -17,6 +18,7 @@ const useElementRefs = () => {
     const bungaRef = useRef<HTMLImageElement | null>(null);
     const batikRef = useRef<HTMLImageElement | null>(null);
     const gradientBackgroundRef = useRef<HTMLImageElement | null>(null);
+    const bungaMobileRefs = Array.from({ length: 3 }, () => useRef<HTMLImageElement | null>(null));
 
     
     // InView hooks
@@ -30,6 +32,7 @@ const useElementRefs = () => {
     const isBungaInView = useInView(bungaRef, ANIMATION_CONFIG);
     const isBatikInView = useInView(batikRef, ANIMATION_CONFIG);
     const isGradientBackgroundInView = useInView(gradientBackgroundRef, ANIMATION_ONCE_CONFIG);
+    const isBungaMobileInView = bungaMobileRefs.map(ref => useInView(ref, ANIMATION_CONFIG));
 
     const ORANG_BERTAPA_PAIR: ElementPair = {
         kiri: {
@@ -37,7 +40,7 @@ const useElementRefs = () => {
             isInView: isOrangBertapaKiriInView,
             src: "/background/orang-bertapa.svg",
             alt: "Orang Bertapa Kiri",
-            className: "absolute bottom-0 -left-[10%] z-10 w-[30vw] h-auto",
+            className: "hidden md:block absolute bottom-0 -left-[10%] z-10 w-[30vw] h-auto",
             translateDistance: ELEMENT_CONFIGS.orangBertapa.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.orangBertapa.duration,
             transitionDelay: ELEMENT_CONFIGS.orangBertapa.delay,
@@ -49,7 +52,7 @@ const useElementRefs = () => {
             isInView: isOrangBertapaKananInView,
             src: "/background/orang-bertapa.svg",
             alt: "Orang Bertapa Kanan",
-            className: "absolute bottom-0 -right-[10%] z-10 transform scale-x-[-1] w-[30vw] h-auto",
+            className: "hidden md:block absolute bottom-0 -right-[10%] z-10 transform scale-x-[-1] w-[30vw] h-auto",
             translateDistance: ELEMENT_CONFIGS.orangBertapa.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.orangBertapa.duration,
             transitionDelay: ELEMENT_CONFIGS.orangBertapa.delay,
@@ -64,7 +67,7 @@ const useElementRefs = () => {
             isInView: isDaunKiriInView,
             src: "/background/daun.svg",
             alt: "Daun Kiri",
-            className: "absolute bottom-[27%] left-[4.5%] z-0 w-[20vw] h-auto",
+            className: "hidden md:block absolute bottom-[27%] left-[4.5%] z-0 w-[20vw] h-auto",
             translateDistance: ELEMENT_CONFIGS.daun.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.daun.duration,
             transitionDelay: ELEMENT_CONFIGS.daun.delay,
@@ -77,7 +80,7 @@ const useElementRefs = () => {
             isInView: isDaunKananInView,
             src: "/background/daun.svg",
             alt: "Daun Kanan",
-            className: "absolute bottom-[27%] right-[4.5%] z-0 transform scale-x-[-1] w-[20vw] h-auto",
+            className: "hidden md:block absolute bottom-[27%] right-[4.5%] z-0 transform scale-x-[-1] w-[20vw] h-auto",
             translateDistance: ELEMENT_CONFIGS.daun.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.daun.duration,
             transitionDelay: ELEMENT_CONFIGS.daun.delay,
@@ -93,7 +96,7 @@ const useElementRefs = () => {
             isInView: isWayangKiriInView,
             src: "/background/wayang.svg",
             alt: "Wayang Kiri",
-            className: "absolute bottom-[17%] left-[7%] z-0 w-[19vw] h-auto",
+            className: "hidden md:block absolute bottom-[17%] left-[7%] z-0 w-[19vw] h-auto",
             translateDistance: ELEMENT_CONFIGS.wayang.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.wayang.duration,
             transitionDelay: ELEMENT_CONFIGS.wayang.delay,
@@ -106,7 +109,7 @@ const useElementRefs = () => {
             isInView: isWayangKananInView,
             src: "/background/wayang.svg",
             alt: "Wayang Kanan",
-            className: "absolute bottom-[17%] right-[7%] z-0 transform scale-x-[-1] w-[19vw] h-auto",
+            className: "hidden md:block absolute bottom-[17%] right-[7%] z-0 transform scale-x-[-1] w-[19vw] h-auto",
             translateDistance: ELEMENT_CONFIGS.wayang.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.wayang.duration,
             transitionDelay: ELEMENT_CONFIGS.wayang.delay,
@@ -122,7 +125,7 @@ const useElementRefs = () => {
             isInView: isBungaInView,
             src: "/icon/bunga-opacity.svg",
             alt: "Bunga Kiri",
-            className: "absolute top-110 -left-30 w-[240px] h-[240px] opacity-30",
+            className: "hidden md:block absolute top-110 -left-30 w-[240px] h-[240px] opacity-30 animate-spin-clockwise",
             translateDistance: ELEMENT_CONFIGS.bunga.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.bunga.duration,
             transitionDelay: ELEMENT_CONFIGS.bunga.delay,
@@ -135,7 +138,7 @@ const useElementRefs = () => {
             isInView: isBungaInView,
             src: "/icon/bunga-opacity.svg",
             alt: "Bunga Kanan",
-            className: "absolute top-100 -right-30 w-[240px] h-[240px] transform scale-x-[-1] opacity-30",
+            className: "absolute top-100 -right-30 w-[240px] h-[240px] transform scale-x-[-1] opacity-30 animate-spin-counter",
             translateDistance: ELEMENT_CONFIGS.bunga.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.bunga.duration,
             transitionDelay: ELEMENT_CONFIGS.bunga.delay,
@@ -174,6 +177,35 @@ const useElementRefs = () => {
         },
     }
 
+    const BUNGA_MOBILE_PAIRS : ElementPair[] = BUNGA_MOBILE_CONFIGS.map((config, idx) => ({
+    kiri: {
+        ref: bungaMobileRefs[idx],
+        isInView: isBungaMobileInView[idx],
+        src: "/icon/bunga.svg",
+        alt: `Bunga Kiri ${idx + 1}`,
+        className: config.kiri.className,
+        translateDistance: ELEMENT_CONFIGS.bunga.translateDistance,
+        transitionDuration: ELEMENT_CONFIGS.bunga.duration,
+        transitionDelay: ELEMENT_CONFIGS.bunga.delay,
+        floatDuration: ELEMENT_CONFIGS.bunga.floatDuration,
+        floatDistance: ELEMENT_CONFIGS.bunga.floatDistance,
+        rotateAmount: ELEMENT_CONFIGS.bunga.rotateAmount,
+    },
+    kanan: {
+        ref: bungaMobileRefs[idx],
+        isInView: isBungaMobileInView[idx],
+        src: "/icon/bunga.svg",
+        alt: `Bunga Kanan ${idx + 1}`,
+        className: config.kanan.className,
+        translateDistance: ELEMENT_CONFIGS.bunga.translateDistance,
+        transitionDuration: ELEMENT_CONFIGS.bunga.duration,
+        transitionDelay: ELEMENT_CONFIGS.bunga.delay,
+        floatDuration: ELEMENT_CONFIGS.bunga.floatDuration,
+        floatDistance: ELEMENT_CONFIGS.bunga.floatDistance,
+        rotateAmount: ELEMENT_CONFIGS.bunga.rotateAmount,
+    }
+}));
+
     // Pattern object mirip struktur elemen lain (ref + isInView + src/alt)
     const PATTERN = {
         ref: patternRef,
@@ -197,7 +229,8 @@ const useElementRefs = () => {
         PATTERN,
         GRADIENT_BACKGROUND,
         BUNGA_PAIR,
-        BATIK_PAIR
+        BATIK_PAIR,
+        BUNGA_MOBILE_PAIRS
     };
 };
 

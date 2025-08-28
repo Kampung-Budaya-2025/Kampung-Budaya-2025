@@ -3,13 +3,13 @@ import BackgroundImage from "./UI/BackgroundImage.";
 import Title from "./UI/Title";
 import SubTitle from "./UI/Subtitle";
 import ElementPairComponent from "./UI/ElementPairComponent";
-import { BATIK_BACKGROUND, CSS_CLASSES } from "./config/constants";
+import { BATIK_BACKGROUND,BATIK_BACKGROUND_MOBILE, CSS_CLASSES } from "./config/constants";
 import { useElementRefs } from "./hooks/useElementRefs";
 
 
 
 const RegisterHero: React.FC = () => {
-    const { ORANG_BERTAPA_PAIR, DAUN_PAIR, WAYANG_PAIR, PATTERN, GRADIENT_BACKGROUND } = useElementRefs();
+    const { ORANG_BERTAPA_PAIR, DAUN_PAIR, WAYANG_PAIR, PATTERN, GRADIENT_BACKGROUND, BUNGA_MOBILE_PAIRS } = useElementRefs();
 
     const handleScrollToListLomba = () => {
         // Scroll ke elemen dengan ID 'list-lomba' atau class tertentu
@@ -33,6 +33,14 @@ const RegisterHero: React.FC = () => {
             src={BATIK_BACKGROUND.src}
             alt={BATIK_BACKGROUND.alt}
             className={BATIK_BACKGROUND.className}
+        />
+    );
+
+    const renderBatikBackgroundMobile = () => (
+        <BackgroundImage
+            src={BATIK_BACKGROUND_MOBILE.src}
+            alt={BATIK_BACKGROUND_MOBILE.alt}
+            className={BATIK_BACKGROUND_MOBILE.className}
         />
     );
 
@@ -82,7 +90,7 @@ const RegisterHero: React.FC = () => {
             <button
                 type="button"
                 onClick={handleScrollToListLomba}
-                className="relative cursor-pointer transition-transform duration-200 hover:scale-105 rounded-lg pt-6 pb-5 active:scale-95 bg-no-repeat bg-center bg-contain w-[26.3rem] min-w-[26rem] max-w-[27rem] h-[8rem] flex items-center justify-center text-[#FFDA88] font-samsktrigrama text-[3.6rem] tracking-[0.1]"
+                className="relative cursor-pointer transition-transform duration-200 hover:scale-105 rounded-lg pt-6 pb-5 active:scale-95 bg-no-repeat bg-center bg-contain w-[28vh] h-[8.3vh] lg:w-[21.667vw] lg:h-[12.8vh] flex items-center justify-center text-[#FFDA88] font-samsktrigrama text-[3.6vh] lg:text-[5.7vh] tracking-[0.1]"
                 style={{
                     backgroundImage: "url('/icon/button-daftar.svg')",
                 }}
@@ -94,10 +102,17 @@ const RegisterHero: React.FC = () => {
 
     return (
         <div className={CSS_CLASSES.container}>
+            {renderBatikBackgroundMobile()}
             {renderBatikBackground()}
             <ElementPairComponent pair={ORANG_BERTAPA_PAIR} />
             <ElementPairComponent pair={DAUN_PAIR} />
             <ElementPairComponent pair={WAYANG_PAIR} />
+            {Array.isArray(BUNGA_MOBILE_PAIRS)
+                ? BUNGA_MOBILE_PAIRS.map((pair, idx) => (
+                    <ElementPairComponent key={idx} pair={pair} />
+                ))
+                : <ElementPairComponent pair={BUNGA_MOBILE_PAIRS} />
+            }
             {renderPatternImage()}
 
             <div className={CSS_CLASSES.mainContent}>
