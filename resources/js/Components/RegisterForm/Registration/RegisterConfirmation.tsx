@@ -1,21 +1,39 @@
 import { motion } from "framer-motion";
-import { FormData, UploadFormData } from "../types/registration";
+import { RegistrationFormData, UploadFormData } from "../types/registration";
 import { formatDate } from "../utils/validation";
 import StepHeader from "../UI/StepHeader";
 import DataRow from "../UI/DataRow";
 
 interface RegisterConfirmationProps {
-    formData: FormData;
+    formData: RegistrationFormData;
     uploadData: UploadFormData;
 }
 
-const RegisterConfirmation = ({ formData, uploadData }: RegisterConfirmationProps) => {
+const RegisterConfirmation = ({
+    formData,
+    uploadData,
+}: RegisterConfirmationProps) => {
+    // Helper function to get event type display name
+    const getEventTypeDisplayName = (eventType?: string) => {
+        switch (eventType) {
+            case "kolaborasi-musik":
+                return "Kolaborasi Musik";
+            case "bazar-kebudayaan":
+                return "Bazar Kebudayaan";
+            case "fashion-show":
+                return "Fashion Show";
+            default:
+                return eventType || "Tidak dipilih";
+        }
+    };
+
     return (
         <div>
-            <StepHeader 
-                title="Verifikasi Biodata" 
-                subtitle="Pastikan data yang anda masukkan sudah benar" 
+            <StepHeader
+                title="Verifikasi Biodata"
+                subtitle="Pastikan data yang anda masukkan sudah benar"
             />
+
 
             <motion.div 
                 className="max-w-2xl p-4 mx-auto mt-5 rounded-lg bg-gray-50 sm:p-6"

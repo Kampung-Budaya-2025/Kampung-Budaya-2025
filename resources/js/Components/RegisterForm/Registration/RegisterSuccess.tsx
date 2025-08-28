@@ -1,6 +1,8 @@
+
 import SuccessTitle from "@/Components/RegisterForm/Success/SuccessTitle";
 import SuccessMascots from "@/Components/RegisterForm/Success/SuccessMascots";
 import SuccessContent from "@/Components/RegisterForm/Success/SuccessContent";
+
 
 interface RegisterSuccessProps {
     onFinish?: () => void;

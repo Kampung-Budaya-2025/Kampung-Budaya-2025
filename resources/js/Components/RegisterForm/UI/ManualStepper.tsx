@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MdCheckCircle } from 'react-icons/md';
+import { MdCheckCircle } from "react-icons/md";
 
 interface StepperItemProps {
     step: number;
@@ -7,22 +7,39 @@ interface StepperItemProps {
     isActive?: boolean;
 }
 
-const StepperItem = ({ step, isCompleted = false, isActive = false }: StepperItemProps) => {
+const StepperItem = ({
+    step,
+    isCompleted = false,
+    isActive = false,
+}: StepperItemProps) => {
     const getStatusClasses = () => {
         if (isActive) {
-            return 'bg-gradient-to-b from-[#CE9C17] via-[#CD9514] to-[#CC8F12] text-white';
+            return "bg-gradient-to-b from-[#CE9C17] via-[#CD9514] to-[#CC8F12] text-white";
         }
         if (isCompleted) {
-            return 'bg-gradient-to-b from-[#CE9C17] via-[#CD9514] to-[#CC8F12] text-white';
+            return "bg-gradient-to-b from-[#CE9C17] via-[#CD9514] to-[#CC8F12] text-white";
         }
-        return 'bg-[#EFF0F6] text-gray-400';
+        return "bg-[#EFF0F6] text-gray-400";
     };
 
     const renderStepContent = () => {
         if (isCompleted) {
-            return <MdCheckCircle className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />;
+            return (
+                <MdCheckCircle className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
+            );
         }
         if (isActive) {
+            if (step === 0) {
+                return (
+                    <motion.span
+                        className="text-xs font-bold text-white sm:text-xs"
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                        E
+                    </motion.span>
+                );
+            }
             return (
                 <motion.span
                     className="text-xs font-bold text-white sm:text-xs"
@@ -35,19 +52,19 @@ const StepperItem = ({ step, isCompleted = false, isActive = false }: StepperIte
         }
         return (
             <span className="text-xs font-bold text-gray-400 sm:text-xs">
-                {step}
+                {step === 0 ? "E" : step}
             </span>
         );
     };
 
     return (
-        <motion.div 
-            className={`${!isActive && !isCompleted && 'opacity-70'}`}
+        <motion.div
+            className={`${!isActive && !isCompleted && "opacity-70"}`}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: step * 0.1 }}
         >
-            <motion.div 
+            <motion.div
                 className={`flex items-center justify-center rounded-full h-5 w-5 sm:h-6 sm:w-6 transition-all duration-300 shadow-sm ${getStatusClasses()}`}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -67,10 +84,13 @@ interface ManualStepperProps {
 const ManualStepper = ({ currentStep }: ManualStepperProps) => {
     const getConnectorColor = (stepIndex: number) => {
         if (currentStep > stepIndex) {
-            return 'bg-gradient-to-r from-[#CE9C17] via-[#CD9514] to-[#CC8F12]';
+            return "bg-gradient-to-r from-[#CE9C17] via-[#CD9514] to-[#CC8F12]";
         }
-        return 'bg-[#EFF0F6]';
+        return "bg-[#EFF0F6]";
     };
+
+    // Step labels for display
+    const stepLabels = ["Event", "Data", "Upload", "Konfirmasi"];
 
     return (
         <motion.div
@@ -79,42 +99,83 @@ const ManualStepper = ({ currentStep }: ManualStepperProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
         >
-            {/* Step 1 */}
-            <StepperItem 
-                step={1} 
-                isCompleted={currentStep > 1}
-                isActive={currentStep === 1}
-            />
-            
-            {/* Connector Line 1 - DIPERPANJANG */}
+            {/* Step 0 - Event Selection */}
+            <div className="text-center">
+                <StepperItem
+                    step={0}
+                    isCompleted={currentStep > 0}
+                    isActive={currentStep === 0}
+                />
+                <span className="text-xs text-gray-500 mt-1 block">
+                    {stepLabels[0]}
+                </span>
+            </div>
+
+            {/* Connector Line 0 */}
             <motion.div
-                className={`h-1 flex-1 min-w-12 max-w-16 sm:min-w-16 sm:max-w-20 md:min-w-20 md:max-w-24 transition-all duration-500 rounded-full ${getConnectorColor(1)}`}
+                className={`h-1 flex-1 min-w-8 max-w-12 sm:min-w-12 sm:max-w-16 transition-all duration-500 rounded-full ${getConnectorColor(
+                    0
+                )}`}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+            />
+
+            {/* Step 1 - Data Diri */}
+            <div className="text-center">
+                <StepperItem
+                    step={1}
+                    isCompleted={currentStep > 1}
+                    isActive={currentStep === 1}
+                />
+                <span className="text-xs text-gray-500 mt-1 block">
+                    {stepLabels[1]}
+                </span>
+            </div>
+
+            {/* Connector Line 1 */}
+            <motion.div
+                className={`h-1 flex-1 min-w-8 max-w-12 sm:min-w-12 sm:max-w-16 transition-all duration-500 rounded-full ${getConnectorColor(
+                    1
+                )}`}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
             />
-            
-            {/* Step 2 */}
-            <StepperItem 
-                step={2} 
-                isCompleted={currentStep > 2}
-                isActive={currentStep === 2}
-            />
-            
-            {/* Connector Line 2 - DIPERPANJANG */}
+
+            {/* Step 2 - Upload */}
+            <div className="text-center">
+                <StepperItem
+                    step={2}
+                    isCompleted={currentStep > 2}
+                    isActive={currentStep === 2}
+                />
+                <span className="text-xs text-gray-500 mt-1 block">
+                    {stepLabels[2]}
+                </span>
+            </div>
+
+            {/* Connector Line 2 */}
             <motion.div
-                className={`h-1 flex-1 min-w-12 max-w-16 sm:min-w-16 sm:max-w-20 md:min-w-20 md:max-w-24 transition-all duration-500 rounded-full ${getConnectorColor(2)}`}
+                className={`h-1 flex-1 min-w-8 max-w-12 sm:min-w-12 sm:max-w-16 transition-all duration-500 rounded-full ${getConnectorColor(
+                    2
+                )}`}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
             />
-            
-            {/* Step 3 */}
-            <StepperItem 
-                step={3} 
-                isCompleted={currentStep > 3}
-                isActive={currentStep === 3}
-            />
+
+            {/* Step 3 - Konfirmasi */}
+            <div className="text-center">
+                <StepperItem
+                    step={3}
+                    isCompleted={currentStep > 3}
+                    isActive={currentStep === 3}
+                />
+                <span className="text-xs text-gray-500 mt-1 block">
+                    {stepLabels[3]}
+                </span>
+            </div>
         </motion.div>
     );
 };

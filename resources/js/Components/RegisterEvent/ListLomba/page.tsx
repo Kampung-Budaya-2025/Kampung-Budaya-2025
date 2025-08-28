@@ -4,13 +4,16 @@ import Button from "./UI/Button";
 import { DecorationGroup } from "./UI/DecorationGroup";
 import { SingleDecoration } from "./UI/SingleDecoration";
 import { buttonData, cardData } from "./config/constants";
-import { bungaDecorations, batikDecorations, bungaMahkotaDecoration } from "./config/constants";
+import {
+    bungaDecorations,
+    batikDecorations,
+    bungaMahkotaDecoration,
+} from "./config/constants";
 import { useElementRefs } from "../RegisterHero/hooks/useElementRefs";
 import ElementPairComponent from "../RegisterHero/UI/ElementPairComponent";
 
 const ListLomba: React.FC = () => {
-
-     const { BUNGA_PAIR, BATIK_PAIR } = useElementRefs();
+    const { ORANG_BERTAPA_PAIR, DAUN_PAIR } = useElementRefs();
     return (
         <div
             id="list-lomba"
@@ -19,8 +22,8 @@ const ListLomba: React.FC = () => {
             {/* Bunga Kiri & Kanan */}
             {/* <DecorationGroup decoration={bungaDecorations} /> */}
             {/* <DecorationGroup decoration={batikDecorations} /> */}
-            <ElementPairComponent pair={BUNGA_PAIR} />
-            <ElementPairComponent pair={BATIK_PAIR} />
+            <ElementPairComponent pair={ORANG_BERTAPA_PAIR} />
+            <ElementPairComponent pair={DAUN_PAIR} />
 
             {/* Button Section */}
             <div className="flex flex-1 items-center justify-center w-full h-screen gap-6">
@@ -42,18 +45,21 @@ const ListLomba: React.FC = () => {
                 <div className="hidden lg:flex justify-between max-w-[1100px] mx-auto mb-16 px-4 gap-8">
                     <ListCard
                         key={cardData[0].id}
+                        eventId={cardData[0].id}
                         title={cardData[0].title}
                         icon={cardData[0].icon}
                         description={cardData[0].description}
                     />
                     <ListCard
                         key={cardData[1].id}
+                        eventId={cardData[1].id}
                         title={cardData[1].title}
                         icon={cardData[1].icon}
                         description={cardData[1].description}
                     />
                     <ListCard
                         key={cardData[2].id}
+                        eventId={cardData[2].id}
                         title={cardData[2].title}
                         icon={cardData[2].icon}
                         description={cardData[2].description}
@@ -64,12 +70,14 @@ const ListLomba: React.FC = () => {
                 <div className="hidden lg:flex justify-center gap-12 max-w-[1000px] mx-auto px-4">
                     <ListCard
                         key={cardData[3].id}
+                        eventId={cardData[3].id}
                         title={cardData[3].title}
                         icon={cardData[3].icon}
                         description={cardData[3].description}
                     />
                     <ListCard
                         key={cardData[4].id}
+                        eventId={cardData[4].id}
                         title={cardData[4].title}
                         icon={cardData[4].icon}
                         description={cardData[4].description}
@@ -81,6 +89,7 @@ const ListLomba: React.FC = () => {
                     {cardData.map((card) => (
                         <ListCard
                             key={card.id}
+                            eventId={card.id}
                             title={card.title}
                             icon={card.icon}
                             description={card.description}

@@ -36,12 +36,33 @@ export default defineConfig(({ command, mode }) => ({
                     }
                     return "assets/[name].[hash][extname]";
                 },
+                // Optimize chunk splitting for better caching
+                manualChunks: {
+                    "react-vendor": ["react", "react-dom"],
+                    "framer-motion": ["framer-motion"],
+                    "react-icons": ["react-icons"],
+                },
             },
         },
+        // Performance optimizations
+        minify: mode === "production" ? "terser" : false,
+        target: "es2015",
+        sourcemap: mode === "development",
     },
     publicDir: "public",
     server: {
-        host: '127.0.0.1',
+        host: "127.0.0.1",
         port: 5173,
+    },
+    // Performance optimizations for development
+    optimizeDeps: {
+        include: ["react", "react-dom", "framer-motion", "react-icons"],
+        force: false,
+    },
+    esbuild: {
+        // Enable JSX fragment optimization
+        jsxFragment: "Fragment",
+        jsxFactory: "React.createElement",
+        target: "es2015",
     },
 }));

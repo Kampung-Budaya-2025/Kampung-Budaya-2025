@@ -1,54 +1,61 @@
 import { motion, easeInOut } from "framer-motion";
-import { FormData, FormErrors } from "../types/registration";
+import { memo, useCallback } from "react";
+import { RegistrationFormData, FormErrors } from "../types/registration";
 import StepHeader from "../UI/StepHeader";
 import FormInput from "../Fields/FormInput";
 import FormSelect from "../Fields/FormSelect";
 import FormFieldGroup from "../Fields/FormFieldGroup";
 
+
 interface RegisterDataDiriProps {
-    formData: FormData;
+    formData: RegistrationFormData;
     errors: FormErrors;
-    onDataChange: (field: keyof FormData, value: string) => void;
+    onDataChange: (field: keyof RegistrationFormData, value: string) => void;
 }
 
-const RegisterDataDiri = ({ formData, errors, onDataChange }: RegisterDataDiriProps) => {
-    const kategoriOptions = ["Pelajar", "Mahasiswa"];
+const RegisterDataDiri = memo(
+    ({ formData, errors, onDataChange }: RegisterDataDiriProps) => {
+        const kategoriOptions = ["Pelajar", "Mahasiswa"];
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.2
-            }
-        }
-    };
+        // Memoized handler to prevent re-creating functions on every render
+        const handleInputChange = useCallback(
+            (field: keyof RegistrationFormData) =>
+                (
+                    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+                ) => {
+                    onDataChange(field, e.target.value);
+                },
+            [onDataChange]
+        );
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.5, ease: easeInOut }
-        }
-    };
+        // Simplified animation variants to reduce computational overhead
+        const containerVariants = {
+            hidden: { opacity: 0 },
+            visible: {
+                opacity: 1,
+                transition: {
+                    staggerChildren: 0.05, // Reduced from 0.1
+                    delayChildren: 0.1, // Reduced from 0.2
+                },
+            },
+        };
 
-    return (
-        <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-        >
-            <StepHeader 
-                title="Data Diri" 
-                subtitle="Harap isi formulir ini dengan benar" 
-            />
+        const itemVariants = {
+            hidden: { opacity: 0, y: 10 }, // Reduced from y: 20
+            visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.3, ease: easeInOut }, // Reduced from 0.5
+            },
+        };
 
+        return (
             <motion.div
-                className="mt-5 space-y-4 sm:space-y-5"
                 variants={containerVariants}
+                initial="hidden"
+                animate="visible"
             >
+
                 {/* Nama Lengkap */}
                 <FormInput
                     id="nama"
@@ -152,8 +159,11 @@ const RegisterDataDiri = ({ formData, errors, onDataChange }: RegisterDataDiriPr
                     *Form Wajib Diisi
                 </motion.p>
             </motion.div>
-        </motion.div>
-    );
-};
+        );
+    }
+);
+
+// Add display name for debugging
+RegisterDataDiri.displayName = "RegisterDataDiri";
 
 export default RegisterDataDiri;
