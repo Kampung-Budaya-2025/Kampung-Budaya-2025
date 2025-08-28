@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import {
-    FormData,
+    RegistrationFormData,
     FormErrors,
     UploadFormData,
     UploadedFile,
@@ -12,7 +12,12 @@ import {
 } from "../Components/RegisterForm/utils/validation";
 
 export const useRegistration = () => {
-    const [formData, setFormData] = useState<FormData>({
+    // Get eventType from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlEventType = urlParams.get("eventType");
+
+    const [formData, setFormData] = useState<RegistrationFormData>({
+        eventType: urlEventType || "",
         namaLengkap: "",
         kategori: "",
         tanggalLahir: "",
@@ -29,7 +34,7 @@ export const useRegistration = () => {
     });
 
     const [errors, setErrors] = useState<FormErrors>({});
-    const [currentStep, setCurrentStep] = useState(1);
+    const [currentStep, setCurrentStep] = useState(urlEventType ? 1 : 0);
 
     // Debounce validation to prevent excessive re-renders
     const validationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -68,7 +73,7 @@ export const useRegistration = () => {
     }, [formData]);
 
     const handleDataChange = useCallback(
-        (field: keyof FormData, value: string) => {
+        (field: keyof RegistrationFormData, value: string) => {
             setFormData((prev) => ({ ...prev, [field]: value }));
         },
         []
@@ -134,25 +139,114 @@ export const useRegistration = () => {
         saveToLocalStorage();
     }, [currentStep, saveToLocalStorage]);
 
-    const handleSubmit = useCallback(async () => {
-        try {
-            // Save final data
-            localStorage.setItem(
-                "registrationData",
-                JSON.stringify({
-                    formData,
-                    uploadData,
-                    step: 4,
-                    status: "submitted",
-                    submittedAt: new Date().toISOString(),
-                })
-            );
+    const handleSubmit = useCallback(
+        async (eventType?: string) => {
+            try {
+                // Use eventType parameter or from formData
+                const selectedEventType = eventType || formData.eventType;
 
-            setCurrentStep(4);
-        } catch (error) {
-            console.warn("Failed to save final data:", error);
-        }
-    }, [formData, uploadData]);
+                if (!selectedEventType) {
+                    throw new Error("Event type is required");
+                }
+
+                // Prepare form data for API
+                const apiFormData = new FormData();
+
+                // Add form fields
+                apiFormData.append("event_type", selectedEventType);
+                apiFormData.append("name", formData.namaLengkap);
+                apiFormData.append("category", formData.kategori);
+                apiFormData.append("birthdate", formData.tanggalLahir);
+                apiFormData.append("affiliation", formData.asalInstansi);
+                apiFormData.append("phone_number", formData.noHandphone);
+                apiFormData.append("email", formData.email);
+                apiFormData.append("instagram_username", formData.instagram);
+                apiFormData.append("id_line", formData.idLine);
+
+                // Add files
+                if (uploadData.formulirPendaftaran.file) {
+                    apiFormData.append(
+                        "registration_form",
+                        uploadData.formulirPendaftaran.file
+                    );
+                }
+                if (uploadData.buktiPembayaran.file) {
+                    apiFormData.append(
+                        "payment_proof",
+                        uploadData.buktiPembayaran.file
+                    );
+                }
+
+                // Send to API
+                const response = await fetch("/api/event-registrations", {
+                    method: "POST",
+                    body: apiFormData,
+                    headers: {
+                        Accept: "application/json",
+                    },
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || "Registration failed");
+                }
+
+                const result = await response.json();
+
+                // Save final data with API response
+                localStorage.setItem(
+                    "registrationData",
+                    JSON.stringify({
+                        formData: { ...formData, eventType: selectedEventType },
+                        uploadData,
+                        step: 4,
+                        status: "submitted",
+                        submittedAt: new Date().toISOString(),
+                        apiResponse: result,
+                    })
+                );
+
+                setCurrentStep(4);
+                return result;
+            } catch (error) {
+                console.error("Registration failed:", error);
+                throw error;
+            }
+        },
+        [formData, uploadData]
+    );
+
+    const checkEmailAvailability = useCallback(
+        async (email: string, eventType: string) => {
+            try {
+                const response = await fetch(
+                    "/api/event-registrations/check-email",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Accept: "application/json",
+                        },
+                        body: JSON.stringify({
+                            email,
+                            event_type: eventType,
+                        }),
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error("Failed to check email");
+                }
+
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                console.error("Email check failed:", error);
+                throw error;
+            }
+        },
+        []
+    );
 
     // Memoized validation functions to prevent unnecessary re-calculations
     const isStep1Valid = useMemo(() => {
@@ -183,6 +277,7 @@ export const useRegistration = () => {
         nextStep,
         prevStep,
         handleSubmit,
+        checkEmailAvailability,
         isStep1Valid,
         isStep2Valid,
         isStep3Valid,
