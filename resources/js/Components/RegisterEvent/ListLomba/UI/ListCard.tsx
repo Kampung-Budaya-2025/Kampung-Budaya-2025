@@ -1,7 +1,9 @@
 import React from "react";
+import { router } from "@inertiajs/react";
 import cardBackgroundSvg from "@assets/images/card-list-lomba.svg?url";
 
 interface ListCardProps {
+    eventId: string;
     title: string;
     icon: string;
     description: string;
@@ -9,14 +11,17 @@ interface ListCardProps {
 }
 
 const ListCard: React.FC<ListCardProps> = ({
+    eventId,
     title = "Kolaborasi Musik",
     icon = "/icon/kolaborasi-musik.svg",
     description = "Deskripsi default",
     className = "",
 }) => {
     const handleDaftarClick = () => {
-        console.log(`Daftar untuk ${title}`);
-        // Tambahkan logika pendaftaran di sini
+        // Navigate to register form with event type as URL parameter
+        router.visit(`/register-form?eventType=${eventId}`, {
+            method: "get",
+        });
     };
 
     return (

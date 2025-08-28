@@ -1,12 +1,12 @@
 import { motion, easeInOut } from "framer-motion";
 import { memo, useCallback } from "react";
-import { FormData, FormErrors } from "../types/registration";
+import { RegistrationFormData, FormErrors } from "../types/registration";
 import StepHeader from "../UI/StepHeader";
 
 interface RegisterDataDiriProps {
-    formData: FormData;
+    formData: RegistrationFormData;
     errors: FormErrors;
-    onDataChange: (field: keyof FormData, value: string) => void;
+    onDataChange: (field: keyof RegistrationFormData, value: string) => void;
 }
 
 const RegisterDataDiri = memo(
@@ -15,7 +15,7 @@ const RegisterDataDiri = memo(
 
         // Memoized handler to prevent re-creating functions on every render
         const handleInputChange = useCallback(
-            (field: keyof FormData) =>
+            (field: keyof RegistrationFormData) =>
                 (
                     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
                 ) => {

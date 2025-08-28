@@ -1,4 +1,4 @@
-import { FormData, FormErrors } from "../types/registration";
+import { RegistrationFormData, FormErrors } from "../types/registration";
 
 // Cached regex patterns for better performance
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -13,10 +13,12 @@ export const validatePhone = (phone: string): boolean => {
 };
 
 // Memoized validation function to reduce re-calculations
-let lastFormData: FormData | null = null;
+let lastFormData: RegistrationFormData | null = null;
 let lastErrors: FormErrors = {};
 
-export const validateFormData = (formData: FormData): FormErrors => {
+export const validateFormData = (
+    formData: RegistrationFormData
+): FormErrors => {
     // Simple memoization to avoid re-validation of same data
     if (
         lastFormData &&
@@ -41,8 +43,8 @@ export const validateFormData = (formData: FormData): FormErrors => {
     return errors;
 };
 
-export const isFormDataComplete = (formData: FormData): boolean => {
-    const required: (keyof FormData)[] = [
+export const isFormDataComplete = (formData: RegistrationFormData): boolean => {
+    const required: (keyof RegistrationFormData)[] = [
         "namaLengkap",
         "kategori",
         "tanggalLahir",

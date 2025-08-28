@@ -25,7 +25,7 @@ const NavbarLogo: React.FC = () => (
         <img
             src="/icon/logo-kampung-budaya.svg"
             alt="Kampung Budaya Logo"
-            className="h-10 lg:h-22 w-auto"
+            className="h-8 lg:h-16 w-auto"
             loading="lazy"
         />
     </Link>
@@ -39,7 +39,7 @@ const RegisterButton: React.FC<{ isMobile?: boolean }> = ({
         className={`text-white font-medium transition-all duration-200 hover:opacity-90 hover:scale-105 ${
             isMobile
                 ? "w-full px-6 py-3 rounded-lg mt-4 text-center block"
-                : "hidden lg:block text-4xl px-12 py-3 rounded-full"
+                : "hidden lg:block text-2xl px-8 py-2 rounded-full"
         }`}
         style={{
             background:
@@ -62,7 +62,7 @@ const MobileMenuButton: React.FC<{
         type="button"
     >
         <svg
-            className="h-8 w-8"
+            className="h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -89,12 +89,12 @@ const DesktopNavigation: React.FC<{
     links: NavigationLink[];
     currentPath: string;
 }> = ({ links, currentPath }) => (
-    <div className="hidden lg:flex items-center space-x-20">
+    <div className="hidden lg:flex items-center space-x-16">
         {links.map((link) => (
             <Link
                 key={link.id}
                 href={link.href}
-                className={`text-4xl transition-all duration-200 rounded px-3 py-2 font-medium ${
+                className={`text-2xl transition-all duration-200 rounded px-3 py-2 font-medium ${
                     currentPath === link.href
                         ? "text-[#CE9C17]" // font-semibold dihapus
                         : "text-[#3F170D] hover:text-[#CE9C17]"
@@ -176,7 +176,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = "", currentPath }) => {
 
     return (
         <nav
-            className={`lg:h-[7.5rem] h-[60px] py-3 fixed top-0 left-0 right-0 rounded-b-[20px] z-50 
+            className={`lg:h-[5rem] h-[50px] py-2 fixed top-0 left-0 right-0 rounded-b-[20px] z-50 
                 bg-[linear-gradient(90deg,#FFF_0%,#FFF_47.12%,#E1B01B_100%)] 
                 lg:bg-[linear-gradient(90deg,#E1B01B_0%,#FFF_25%,#FFF_75%,#E1B01B_100%)] 
     shadow-[0_5px_16px_0_rgba(8,15,52,0.12)] 

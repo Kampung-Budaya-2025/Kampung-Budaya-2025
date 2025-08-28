@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventRegistrationController;
 use App\Http\Controllers\PageController;
 
-// API Routes
 Route::prefix('api')->group(function () {
     Route::post('/event-registrations', [EventRegistrationController::class, 'store']);
     Route::get('/event-registrations', [EventRegistrationController::class, 'index']);
@@ -14,7 +13,6 @@ Route::prefix('api')->group(function () {
     Route::get('/event-registrations/email-registrations', [EventRegistrationController::class, 'getEmailRegistrations']);
 });
 
-// Web Routes using Inertia
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/register-event', [PageController::class, 'registerEvent'])->name('register-event');
