@@ -1,4 +1,22 @@
 {
+  "_framer-motion-CtSIk6Mq.js": {
+    "file": "assets/framer-motion-CtSIk6Mq.js",
+    "name": "framer-motion",
+    "imports": [
+      "_react-vendor-DhvPlQDy.js"
+    ]
+  },
+  "_react-icons-Cqto-WUl.js": {
+    "file": "assets/react-icons-Cqto-WUl.js",
+    "name": "react-icons",
+    "imports": [
+      "_framer-motion-CtSIk6Mq.js"
+    ]
+  },
+  "_react-vendor-DhvPlQDy.js": {
+    "file": "assets/react-vendor-DhvPlQDy.js",
+    "name": "react-vendor"
+  },
   "resources/assets/fonts/Amaranth/Amaranth-Bold.ttf": {
     "file": "assets/fonts/Amaranth-Bold.CEHd39ku.ttf",
     "src": "resources/assets/fonts/Amaranth/Amaranth-Bold.ttf"
@@ -23,16 +41,12 @@
     "file": "assets/fonts/SamsktriGrama-Regular.BD5lcsOq.otf",
     "src": "resources/assets/fonts/SamsktriGrama-Regular.otf"
   },
-  "resources/assets/images/background-hero.svg": {
-    "file": "assets/images/background-hero.DALx6sIM.svg",
-    "src": "resources/assets/images/background-hero.svg"
-  },
   "resources/assets/images/card-list-lomba.svg": {
     "file": "assets/images/card-list-lomba.DxCSrJBp.svg",
     "src": "resources/assets/images/card-list-lomba.svg"
   },
   "resources/css/app.css": {
-    "file": "assets/app.C9Dx6xuf.css",
+    "file": "assets/app.BwykWafn.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [
@@ -40,17 +54,21 @@
     ]
   },
   "resources/js/app.tsx": {
-    "file": "assets/app-2iPk03IG.js",
+    "file": "assets/app-BdDZKR-W.js",
     "name": "app",
     "src": "resources/js/app.tsx",
     "isEntry": true,
+    "imports": [
+      "_framer-motion-CtSIk6Mq.js",
+      "_react-vendor-DhvPlQDy.js",
+      "_react-icons-Cqto-WUl.js"
+    ],
     "css": [
       "assets/app.Cacu5y9W.css",
-      "assets/app.C9Dx6xuf.css"
+      "assets/app.BwykWafn.css"
     ],
     "assets": [
       "assets/images/card-list-lomba.DxCSrJBp.svg",
-      "assets/images/background-hero.DALx6sIM.svg",
       "assets/fonts/Amaranth-Regular.DSOQc_1g.ttf",
       "assets/fonts/Amaranth-Bold.CEHd39ku.ttf",
       "assets/fonts/Amaranth-Italic.4rSHuytB.ttf",
