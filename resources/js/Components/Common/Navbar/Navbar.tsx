@@ -176,7 +176,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = "", currentPath }) => {
 
     return (
         <nav
-            className={`lg:h-[7.5rem] h-[60px] py-3 fixed top-0 left-0 right-0 rounded-b-[20px] z-50 
+            className={`lg:h-[7.5rem] lg:max-h-[7.5rem] h-[60px] py-3 fixed top-0 left-0 right-0 rounded-b-[20px] z-50 
                 bg-[linear-gradient(90deg,#FFF_0%,#FFF_47.12%,#E1B01B_100%)] 
                 lg:bg-[linear-gradient(90deg,#E1B01B_0%,#FFF_25%,#FFF_75%,#E1B01B_100%)] 
     shadow-[0_5px_16px_0_rgba(8,15,52,0.12)] 

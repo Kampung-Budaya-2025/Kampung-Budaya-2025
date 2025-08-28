@@ -82,12 +82,12 @@ const RegisterHero: React.FC = () => {
             <button
                 type="button"
                 onClick={handleScrollToListLomba}
-                className="relative cursor-pointer transition-transform duration-200 hover:scale-105 rounded-lg pt-6 pb-5 active:scale-95 bg-no-repeat bg-center bg-contain w-[250px] h-auto flex items-center justify-center text-[#FFDA88] font-samsktrigrama text-3xl tracking-[0.1]"
+                className="relative cursor-pointer transition-transform duration-200 hover:scale-105 rounded-lg pt-6 pb-5 active:scale-95 bg-no-repeat bg-center bg-contain w-[26.3rem] min-w-[26rem] max-w-[27rem] h-[8rem] flex items-center justify-center text-[#FFDA88] font-samsktrigrama text-[3.6rem] tracking-[0.1]"
                 style={{
                     backgroundImage: "url('/icon/button-daftar.svg')",
                 }}
             >
-                Daftar
+                <h1 className="mt-1">Daftar</h1>
             </button>
         </div>
     );
