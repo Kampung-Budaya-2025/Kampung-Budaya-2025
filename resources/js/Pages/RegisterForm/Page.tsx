@@ -10,6 +10,7 @@ import RegisterFormMascots from "@/Components/RegisterForm/Layout/RegisterFormMa
 import RegisterFormHeader from "@/Components/RegisterForm/Layout/RegisterFormHeader";
 import RegisterFormContainer from "@/Components/RegisterForm/Layout/RegisterFormContainer";
 import RegisterFormNavigation from "@/Components/RegisterForm/Layout/RegisterFormNavigation";
+import EventTypeSelector from "@/Components/RegisterForm/Registration/EventTypeSelector";
 
 
 
@@ -72,8 +73,7 @@ const RegisterForm = () => {
 
         setIsTransitioning(true);
         
-        if (currentStep === 1 && isStep1Valid()) {
-
+        if (currentStep === 1 && isStep1Valid) {
             nextStep();
         } else if (currentStep === 1 && isStep1Valid) {
             nextStep();
