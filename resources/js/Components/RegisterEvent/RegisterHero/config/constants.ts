@@ -9,7 +9,7 @@ export const ELEMENT_CONFIGS: Record<string, ElementConfig> = {
         floatDistance: 8 
     },
     daun: { 
-        translateDistance: 100, 
+        translateDistance: 200, 
         duration: "2.2s", 
         delay: "0.2s", 
         floatDuration: "4s", 
@@ -17,7 +17,7 @@ export const ELEMENT_CONFIGS: Record<string, ElementConfig> = {
         rotateAmount: 3 
     },
     wayang: { 
-        translateDistance: 80, 
+        translateDistance: 200, 
         duration: "3s", 
         delay: "0.4s", 
         floatDuration: "6s", 
