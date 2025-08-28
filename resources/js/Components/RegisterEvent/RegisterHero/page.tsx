@@ -9,7 +9,7 @@ import { useElementRefs } from "./hooks/useElementRefs";
 
 
 const RegisterHero: React.FC = () => {
-    const { ORANG_BERTAPA_PAIR, DAUN_PAIR, WAYANG_PAIR, PATTERN } = useElementRefs();
+    const { ORANG_BERTAPA_PAIR, DAUN_PAIR, WAYANG_PAIR, PATTERN, GRADIENT_BACKGROUND } = useElementRefs();
 
     const handleScrollToListLomba = () => {
         // Scroll ke elemen dengan ID 'list-lomba' atau class tertentu
@@ -48,10 +48,16 @@ const RegisterHero: React.FC = () => {
 
     const renderGradientBackground = () => (
         <div className="h-full relative w-full">
-            <img
-                src="/background/gradasi-galeri.svg"
+            {/* <img
+                src="/background/gradasi-event.svg"
                 alt="Gradasi"
                 className={CSS_CLASSES.gradientImage}
+            /> */}
+            <img
+                ref={GRADIENT_BACKGROUND.ref}
+                src={GRADIENT_BACKGROUND.src}
+                alt={GRADIENT_BACKGROUND.alt}
+                className={`${CSS_CLASSES.gradientImage} transition-opacity duration-1000 ease-out ${GRADIENT_BACKGROUND.isInView ? 'opacity-100' : 'opacity-0'}`}
             />
         </div>
     );

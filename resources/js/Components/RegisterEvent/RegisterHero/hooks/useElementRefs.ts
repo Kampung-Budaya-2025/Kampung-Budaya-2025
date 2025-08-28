@@ -3,7 +3,7 @@ import { useInView } from 'framer-motion';
 import { ANIMATION_CONFIG, ANIMATION_ONCE_CONFIG } from '@/Components/FAQ/config/constants';
 import { ELEMENT_CONFIGS } from '../config/constants';
 import { ElementPair } from '../types';
-import { ref } from 'process';
+
 
 const useElementRefs = () => {
     // Refs untuk semua elemen
@@ -16,6 +16,7 @@ const useElementRefs = () => {
     const patternRef = useRef<HTMLImageElement | null>(null);
     const bungaRef = useRef<HTMLImageElement | null>(null);
     const batikRef = useRef<HTMLImageElement | null>(null);
+    const gradientBackgroundRef = useRef<HTMLImageElement | null>(null);
 
     
     // InView hooks
@@ -28,6 +29,7 @@ const useElementRefs = () => {
     const isPatternInView = useInView(patternRef, ANIMATION_ONCE_CONFIG);
     const isBungaInView = useInView(bungaRef, ANIMATION_CONFIG);
     const isBatikInView = useInView(batikRef, ANIMATION_CONFIG);
+    const isGradientBackgroundInView = useInView(gradientBackgroundRef, ANIMATION_ONCE_CONFIG);
 
     const ORANG_BERTAPA_PAIR: ElementPair = {
         kiri: {
@@ -179,13 +181,21 @@ const useElementRefs = () => {
         src: "/icon/pattern-galeri.svg",
         alt: "pattern-galeri",
     };
+
+    const GRADIENT_BACKGROUND = {
+        ref: gradientBackgroundRef,
+        isInView: isGradientBackgroundInView,
+        src: "/background/gradasi-event.svg",
+        alt: "gradient-background",
+    };
+
+
     return {
         ORANG_BERTAPA_PAIR,
         DAUN_PAIR,
         WAYANG_PAIR,
         PATTERN,
-        BUNGA_PAIR,
-        BATIK_PAIR
+        GRADIENT_BACKGROUND,
     };
 };
 
