@@ -2,7 +2,7 @@
 /* Override cursor untuk semua elemen agar selalu pakai custom cursor */
 
 *, *:hover, *:active, *:focus {
-    cursor: url('/icon/mouse-arrow.svg') 32 0, auto !important;
+    cursor: url('/icon/mouse-arrow.svg') 12 0, auto !important;
 }
 
 @font-face {

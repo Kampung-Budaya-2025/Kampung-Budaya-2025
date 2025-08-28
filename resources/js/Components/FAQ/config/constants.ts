@@ -9,7 +9,7 @@ const faqData: FAQItem[] = [
     {
       id: 2,
       question: "Berapa harga tiket masuk Kampung Budaya?",
-      answer: "Harga tiket masuk mulai dari Rp 25.000 untuk dewasa dan Rp 15.000 untuk anak-anak. Tersedia juga paket family dan paket grup dengan harga khusus."
+      answer: "Harga tiket masuk mulai dari Rp 25.000 untuk dewasa dan Rp 15.000 untuk anak-anak. Tersedia juga paket family dan paket grup dengan harga khusus asdaiubfafsiausf aisfiasfa asfasif asfafsias bausfiasfaf."
     },
     {
       id: 3,
@@ -67,10 +67,11 @@ const ANIMATION_ONCE_CONFIG = {
 } as const;
 
 const FLOWER_CONFIGS = {
-    besar: { size: 230, translateDistance: 60, duration: "1.2s" },
-    sedang: { size: 140, translateDistance: 80, duration: "2s" },
-    kecil1: { size: 50, translateDistance: 100, duration: "2.5s" },
-    kecil2: { size: 50, translateDistance: 80, duration: "3.5s" },
+    besar: { size: 360, translateDistance: 120, duration: "2.5s" },
+    besarmobile: { size: 180, translateDistance: 120, duration: "2.5s" },
+    sedang: { size: 230, translateDistance: 130, duration: "2.8s" },
+    kecil1: { size: 76, translateDistance: 120, duration: "3s" },
+    kecil2: { size: 76, translateDistance: 140, duration: "3.5s" },
 } as const;
 
   export { faqData, ANIMATION_CONFIG, ANIMATION_ONCE_CONFIG, FLOWER_CONFIGS };

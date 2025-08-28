@@ -44,9 +44,9 @@ const FAQSection: React.FC = () => {
     };
 
     return (
-        <div className="lg:col-span-3 flex flex-col relative">
+        <div className="lg:col-span-3 w-full flex flex-col relative">
             {/* Search Field */}
-            <div className="mb-8 mx-0 lg:mx-11">
+            <div className="mb-8 pl:0 lg:pl-11"> 
                 <SearchField 
                     value={searchQuery}
                     onChange={handleSearchChange}
@@ -58,7 +58,7 @@ const FAQSection: React.FC = () => {
             {/* FAQ Container with ScrollBar */}
             <div className="relative">
                 {/* Custom ScrollBar */}
-                <div className="absolute left-0 top-0 h-[300px] z-20 hidden md:block">
+                <div className="absolute left-0 top-0 max-h-[31rem] z-20 hidden md:block">
                     <Scrollbar
                         startingValue={0}
                         defaultValue={scrollValue}
@@ -72,7 +72,7 @@ const FAQSection: React.FC = () => {
                 {/* Scrollable FAQ Container */}
                 <div
                     ref={faqContainerRef}
-                    className="overflow-y-scroll overflow-x-hidden lg:pl-11 scrollbar-hide h-[300px]"
+                    className="overflow-y-scroll overflow-x-hidden lg:pl-11 scrollbar-hide max-h-[30rem] md:max-h-[36rem] lg:max-h-[30rem]"
                     onScroll={handleContainerScroll}
                 >
                     {filteredFaqs.length > 0 ? (
@@ -83,7 +83,7 @@ const FAQSection: React.FC = () => {
                             openItemId={openItemId}
                         />
                     ) : (
-                        <div className="flex items-center justify-center h-full">
+                        <div className="flex items-center justify-center h-full min-h-[31rem]">
                             <p className="text-[#CD9C1A] text-sm">
                                 Tidak ada FAQ yang ditemukan untuk "{searchQuery}"
                             </p>
