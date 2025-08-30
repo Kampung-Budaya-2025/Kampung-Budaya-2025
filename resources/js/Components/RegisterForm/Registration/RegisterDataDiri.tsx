@@ -6,7 +6,6 @@ import FormInput from "../Fields/FormInput";
 import FormSelect from "../Fields/FormSelect";
 import FormFieldGroup from "../Fields/FormFieldGroup";
 
-
 interface RegisterDataDiriProps {
     formData: RegistrationFormData;
     errors: FormErrors;
@@ -54,7 +53,12 @@ const RegisterDataDiri = memo(
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
+                className="space-y-4"
             >
+                <StepHeader
+                    title="Data Diri"
+                    subtitle="Isi data diri anda dengan lengkap dan benar"
+                />
 
                 {/* Nama Lengkap */}
                 <FormInput
@@ -87,14 +91,18 @@ const RegisterDataDiri = memo(
                         label="Tanggal Lahir"
                         type="date"
                         value={formData.tanggalLahir}
-                        onChange={(value) => onDataChange("tanggalLahir", value)}
+                        onChange={(value) =>
+                            onDataChange("tanggalLahir", value)
+                        }
                         required
                     />
                     <FormInput
                         id="instansi"
                         label="Asal Instansi"
                         value={formData.asalInstansi}
-                        onChange={(value) => onDataChange("asalInstansi", value)}
+                        onChange={(value) =>
+                            onDataChange("asalInstansi", value)
+                        }
                         placeholder="Universitas Brawijaya"
                         autoComplete="organization"
                         required
@@ -152,7 +160,7 @@ const RegisterDataDiri = memo(
                 </FormFieldGroup>
 
                 {/* Required Fields Notice */}
-                <motion.p 
+                <motion.p
                     className="mt-1 text-xs text-red-500"
                     variants={itemVariants}
                 >

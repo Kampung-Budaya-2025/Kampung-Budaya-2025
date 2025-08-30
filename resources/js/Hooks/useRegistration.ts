@@ -16,6 +16,14 @@ export const useRegistration = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const urlEventType = urlParams.get("eventType");
 
+    // Redirect ke register-event jika tidak ada eventType
+    useEffect(() => {
+        if (!urlEventType) {
+            window.location.href = "/register-event";
+            return;
+        }
+    }, [urlEventType]);
+
     const [formData, setFormData] = useState<RegistrationFormData>({
         eventType: urlEventType || "",
         namaLengkap: "",
@@ -34,7 +42,8 @@ export const useRegistration = () => {
     });
 
     const [errors, setErrors] = useState<FormErrors>({});
-    const [currentStep, setCurrentStep] = useState(urlEventType ? 1 : 0);
+    // Selalu mulai dari step 1 karena eventType sudah dipilih di halaman sebelumnya
+    const [currentStep, setCurrentStep] = useState(1);
 
     // Debounce validation to prevent excessive re-renders
     const validationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -47,7 +56,8 @@ export const useRegistration = () => {
                 const parsed = JSON.parse(saved);
                 if (parsed.formData) setFormData(parsed.formData);
                 if (parsed.uploadData) setUploadData(parsed.uploadData);
-                if (parsed.step) setCurrentStep(parsed.step);
+                // Pastikan step minimal adalah 1
+                if (parsed.step) setCurrentStep(Math.max(parsed.step, 1));
             } catch (error) {
                 console.warn("Failed to parse saved registration data:", error);
             }
@@ -134,6 +144,11 @@ export const useRegistration = () => {
     }, [currentStep, saveToLocalStorage]);
 
     const prevStep = useCallback(() => {
+        if (currentStep <= 1) {
+            // Jika di step 1, kembali ke halaman register-event
+            window.location.href = "/register-event";
+            return;
+        }
         const newStep = currentStep - 1;
         setCurrentStep(newStep);
         saveToLocalStorage();

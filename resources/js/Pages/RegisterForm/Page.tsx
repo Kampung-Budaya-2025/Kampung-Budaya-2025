@@ -1,4 +1,3 @@
-
 import { useState, useCallback, useMemo } from "react";
 import { useRegistration } from "../../Hooks/useRegistration";
 import RegisterDataDiri from "../../Components/RegisterForm/Registration/RegisterDataDiri";
@@ -10,9 +9,6 @@ import RegisterFormMascots from "@/Components/RegisterForm/Layout/RegisterFormMa
 import RegisterFormHeader from "@/Components/RegisterForm/Layout/RegisterFormHeader";
 import RegisterFormContainer from "@/Components/RegisterForm/Layout/RegisterFormContainer";
 import RegisterFormNavigation from "@/Components/RegisterForm/Layout/RegisterFormNavigation";
-import EventTypeSelector from "@/Components/RegisterForm/Registration/EventTypeSelector";
-
-
 
 const RegisterForm = () => {
     const {
@@ -40,39 +36,34 @@ const RegisterForm = () => {
             case 1:
                 return {
                     left: "Isi data diri dengan benar ya!",
-                    right: "Semangat!"
-
+                    right: "Semangat!",
                 };
             case 2:
                 return {
                     left: "Upload berkasnya yang lengkap!",
-                  
-                    right: "Jangan lupa cek format file!"
 
+                    right: "Jangan lupa cek format file!",
                 };
             case 3:
                 return {
                     left: "Cek lagi datanya sudah benar?",
 
-                    right: "Siap submit!"
-
+                    right: "Siap submit!",
                 };
             default:
                 return {
                     left: "Selamat datang!",
 
-                    right: "Halo!"
-
+                    right: "Halo!",
                 };
         }
     }, [currentStep]);
 
-
-  const handleNext = useCallback(async () => {
+    const handleNext = useCallback(async () => {
         if (isTransitioning) return;
 
         setIsTransitioning(true);
-        
+
         if (currentStep === 1 && isStep1Valid) {
             nextStep();
         } else if (currentStep === 1 && isStep1Valid) {
@@ -82,10 +73,16 @@ const RegisterForm = () => {
         } else if (currentStep === 3 && isStep3Valid) {
             await handleFinalSubmit();
         }
-        
-        setTimeout(() => setIsTransitioning(false), 100);
-    }, [isTransitioning, currentStep, isStep1Valid, isStep2Valid, isStep3Valid, nextStep]);
 
+        setTimeout(() => setIsTransitioning(false), 100);
+    }, [
+        isTransitioning,
+        currentStep,
+        isStep1Valid,
+        isStep2Valid,
+        isStep3Valid,
+        nextStep,
+    ]);
 
     const handlePrev = useCallback(() => {
         if (isTransitioning) return;
@@ -103,8 +100,6 @@ const RegisterForm = () => {
 
     const canProceed = useMemo(() => {
         switch (currentStep) {
-            case 0:
-                return !!formData.eventType;
             case 1:
                 return isStep1Valid;
             case 2:
@@ -114,8 +109,13 @@ const RegisterForm = () => {
             default:
                 return false;
         }
-    }, [currentStep, isStep1Valid, isStep2Valid, isStep3Valid]);
-
+    }, [
+        currentStep,
+        isStep1Valid,
+        isStep2Valid,
+        isStep3Valid,
+        formData.eventType,
+    ]);
 
     const nextButtonText = useMemo(() => {
         if (currentStep === 3) {
@@ -126,13 +126,6 @@ const RegisterForm = () => {
 
     const renderCurrentStep = useCallback(() => {
         switch (currentStep) {
-            case 0:
-                return (
-                    <EventTypeSelector
-                        formData={formData}
-                        onDataChange={handleDataChange}
-                    />
-                );
             case 1:
                 return (
                     <RegisterDataDiri
@@ -167,25 +160,35 @@ const RegisterForm = () => {
             default:
                 return null;
         }
-    }, [currentStep, formData, errors, handleDataChange, uploadData, handleFileUpload]);
+    }, [
+        currentStep,
+        formData,
+        errors,
+        handleDataChange,
+        uploadData,
+        handleFileUpload,
+    ]);
 
     return (
         <RegisterFormBackground>
-            <RegisterFormHeader currentStep={currentStep} />
-            
+            <RegisterFormHeader
+                currentStep={currentStep}
+                eventType={formData.eventType}
+            />
+
             <div className="relative z-10 max-w-4xl mx-auto">
-                <RegisterFormMascots 
-                    speechContent={speechContent} 
-                    currentStep={currentStep} 
+                <RegisterFormMascots
+                    speechContent={speechContent}
+                    currentStep={currentStep}
                 />
-                
-                <RegisterFormContainer 
+
+                <RegisterFormContainer
                     currentStep={currentStep}
                     isTransitioning={isTransitioning}
                     renderCurrentStep={renderCurrentStep}
                 />
-                
-                <RegisterFormNavigation 
+
+                <RegisterFormNavigation
                     currentStep={currentStep}
                     canProceed={canProceed}
                     submitting={submitting}
@@ -196,7 +199,6 @@ const RegisterForm = () => {
                 />
             </div>
         </RegisterFormBackground>
-
     );
 };
 
