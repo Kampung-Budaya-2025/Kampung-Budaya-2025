@@ -29,17 +29,6 @@ const StepperItem = ({
             );
         }
         if (isActive) {
-            if (step === 0) {
-                return (
-                    <motion.span
-                        className="text-xs font-bold text-white sm:text-xs"
-                        animate={{ scale: [1, 1.1, 1] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                        E
-                    </motion.span>
-                );
-            }
             return (
                 <motion.span
                     className="text-xs font-bold text-white sm:text-xs"
@@ -52,7 +41,7 @@ const StepperItem = ({
         }
         return (
             <span className="text-xs font-bold text-gray-400 sm:text-xs">
-                {step === 0 ? "E" : step}
+                {step}
             </span>
         );
     };
@@ -90,7 +79,7 @@ const ManualStepper = ({ currentStep }: ManualStepperProps) => {
     };
 
     // Step labels for display
-    const stepLabels = ["Event", "Data", "Upload", "Konfirmasi"];
+    const stepLabels = ["Data", "Upload", "Konfirmasi"];
 
     return (
         <motion.div
@@ -99,28 +88,6 @@ const ManualStepper = ({ currentStep }: ManualStepperProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
         >
-            {/* Step 0 - Event Selection */}
-            <div className="text-center">
-                <StepperItem
-                    step={0}
-                    isCompleted={currentStep > 0}
-                    isActive={currentStep === 0}
-                />
-                <span className="text-xs text-gray-500 mt-1 block">
-                    {stepLabels[0]}
-                </span>
-            </div>
-
-            {/* Connector Line 0 */}
-            <motion.div
-                className={`h-1 flex-1 min-w-8 max-w-12 sm:min-w-12 sm:max-w-16 transition-all duration-500 rounded-full ${getConnectorColor(
-                    0
-                )}`}
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-            />
-
             {/* Step 1 - Data Diri */}
             <div className="text-center">
                 <StepperItem
@@ -129,7 +96,7 @@ const ManualStepper = ({ currentStep }: ManualStepperProps) => {
                     isActive={currentStep === 1}
                 />
                 <span className="text-xs text-gray-500 mt-1 block">
-                    {stepLabels[1]}
+                    {stepLabels[0]}
                 </span>
             </div>
 
@@ -140,7 +107,7 @@ const ManualStepper = ({ currentStep }: ManualStepperProps) => {
                 )}`}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
             />
 
             {/* Step 2 - Upload */}
@@ -151,7 +118,7 @@ const ManualStepper = ({ currentStep }: ManualStepperProps) => {
                     isActive={currentStep === 2}
                 />
                 <span className="text-xs text-gray-500 mt-1 block">
-                    {stepLabels[2]}
+                    {stepLabels[1]}
                 </span>
             </div>
 
@@ -162,7 +129,7 @@ const ManualStepper = ({ currentStep }: ManualStepperProps) => {
                 )}`}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
             />
 
             {/* Step 3 - Konfirmasi */}
@@ -173,7 +140,7 @@ const ManualStepper = ({ currentStep }: ManualStepperProps) => {
                     isActive={currentStep === 3}
                 />
                 <span className="text-xs text-gray-500 mt-1 block">
-                    {stepLabels[3]}
+                    {stepLabels[2]}
                 </span>
             </div>
         </motion.div>
