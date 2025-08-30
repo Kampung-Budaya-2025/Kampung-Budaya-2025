@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo } from "react";
+import { router } from "@inertiajs/react";
 import { useRegistration } from "../../Hooks/useRegistration";
 import RegisterDataDiri from "../../Components/RegisterForm/Registration/RegisterDataDiri";
 import RegisterUpload from "../../Components/RegisterForm/Registration/RegisterUpload";
@@ -59,22 +60,40 @@ const RegisterForm = () => {
         }
     }, [currentStep]);
 
+    const handleFinalSubmit = useCallback(async () => {
+        try {
+            setSubmitting(true);
+            await new Promise((r) => setTimeout(r, 800));
+            await handleSubmit();
+            // Submit berhasil, step akan berubah ke 4 otomatis dari handleSubmit
+        } catch (error) {
+            console.error("Submit failed:", error);
+            // Handle error, tampilkan pesan error jika perlu
+            alert("Terjadi kesalahan saat mengirim data. Silakan coba lagi.");
+        } finally {
+            // Pastikan loading state direset
+            setSubmitting(false);
+        }
+    }, [handleSubmit]);
+
     const handleNext = useCallback(async () => {
         if (isTransitioning) return;
 
         setIsTransitioning(true);
 
-        if (currentStep === 1 && isStep1Valid) {
-            nextStep();
-        } else if (currentStep === 1 && isStep1Valid) {
-            nextStep();
-        } else if (currentStep === 2 && isStep2Valid) {
-            nextStep();
-        } else if (currentStep === 3 && isStep3Valid) {
-            await handleFinalSubmit();
+        try {
+            if (currentStep === 1 && isStep1Valid) {
+                nextStep();
+            } else if (currentStep === 2 && isStep2Valid) {
+                nextStep();
+            } else if (currentStep === 3 && isStep3Valid) {
+                await handleFinalSubmit();
+            }
+        } catch (error) {
+            console.error("Navigation error:", error);
+        } finally {
+            setTimeout(() => setIsTransitioning(false), 100);
         }
-
-        setTimeout(() => setIsTransitioning(false), 100);
     }, [
         isTransitioning,
         currentStep,
@@ -82,6 +101,7 @@ const RegisterForm = () => {
         isStep2Valid,
         isStep3Valid,
         nextStep,
+        handleFinalSubmit,
     ]);
 
     const handlePrev = useCallback(() => {
@@ -90,13 +110,6 @@ const RegisterForm = () => {
         prevStep();
         setTimeout(() => setIsTransitioning(false), 100);
     }, [isTransitioning, prevStep]);
-
-    const handleFinalSubmit = useCallback(async () => {
-        setSubmitting(true);
-        await new Promise((r) => setTimeout(r, 800));
-        await handleSubmit();
-        setSubmitting(false);
-    }, [handleSubmit]);
 
     const canProceed = useMemo(() => {
         switch (currentStep) {
@@ -153,7 +166,10 @@ const RegisterForm = () => {
                     <RegisterSuccess
                         onFinish={() => {
                             localStorage.removeItem("registrationData");
-                            window.location.reload();
+                            // Redirect ke homepage menggunakan Inertia router
+                            router.visit("/", {
+                                method: "get",
+                            });
                         }}
                     />
                 );

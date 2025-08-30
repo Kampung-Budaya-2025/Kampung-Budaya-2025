@@ -1,8 +1,7 @@
-
+import { router } from "@inertiajs/react";
 import SuccessTitle from "@/Components/RegisterForm/Success/SuccessTitle";
 import SuccessMascots from "@/Components/RegisterForm/Success/SuccessMascots";
 import SuccessContent from "@/Components/RegisterForm/Success/SuccessContent";
-
 
 interface RegisterSuccessProps {
     onFinish?: () => void;
@@ -15,7 +14,9 @@ const RegisterSuccess = ({ onFinish }: RegisterSuccessProps = {}) => {
         if (onFinish) {
             onFinish();
         } else {
-            window.location.href = "/";
+            router.visit("/", {
+                method: "get",
+            });
         }
     };
 
