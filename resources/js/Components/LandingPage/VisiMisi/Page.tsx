@@ -4,7 +4,7 @@ import FlowerDecoration from '@/Components/Common/Flower/FlowerDecoration';
 
 const VisiMisi = () => {
     return (
-        <section className='flex flex-col py-48 items-center bg-gradient-to-b from-[#FFFFFF] to-[#E1C476] gap-32 relative'>
+        <section className='flex flex-col py-12 lg:py-48 items-center bg-gradient-to-b from-[#FFFFFF] to-[#E1C476] gap-12 lg:gap-32 relative'>
             <div className='opacity-20'>
             <FlowerDecoration position='absolute top-24 left-0 -translate-x-1/2 z-0'/>
             <FlowerDecoration position='absolute top-5/12 right-48 translate-x-1/2 z-0'/>

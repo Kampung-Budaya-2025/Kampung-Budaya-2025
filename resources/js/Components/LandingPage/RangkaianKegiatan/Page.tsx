@@ -25,10 +25,16 @@ const RangkaianKegiatan: React.FC = () => {
 
   return (
     <section className='relative flex flex-col items-center justify-center pt-24 pb-48'>
-      <GradientText className='font-samsktrigrama text-8xl'>
-        Rangkaian Kegiatan
+      <div className="flex flex-col lg:flex-row gap-2 lg:gap-8">
+      <GradientText className=' text-center font-samsktrigrama text-7xl'>
+        Rangkaian
       </GradientText>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 pb-96'>
+      <GradientText className=' text-center font-samsktrigrama text-7xl'>
+        Kegiatan
+      </GradientText>
+
+      </div>
+      <div className='grid grid-cols-1 lg:grid-cols-3 gap-112 lg:gap-8 mt-8 pb-96'>
         {cardData.map((card: CardData, index: number) => (
           <FlipCard
             key={index}

@@ -12,8 +12,8 @@ const Hero = () => {
       <div className='relative h-[122vh] w-full overflow-hidden'>
         <BackgroundSection />
         <FlowerSection />
-        <CandiSection />
         <TitleSection />
+        <CandiSection />
       </div>
       
       <style dangerouslySetInnerHTML={{ __html: flowerAnimation }} />

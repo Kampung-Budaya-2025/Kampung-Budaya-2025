@@ -2,7 +2,16 @@ import React from 'react';
 import Letter from './Letters';
 
 const TitleSection = () => (
-  <div id='title' className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-80 scale-[0.7]'>
+<div 
+  id="title" 
+  className="
+    absolute 
+    top-1/2 left-1/2 transform 
+    -translate-x-1/2 
+    -translate-y-4/5 md:-translate-y-80 
+    scale-[0.4] sm:scale-[0.5] md:scale-[0.6] lg:scale-[0.7] 
+  "
+>
     <div id='kampung' className='flex justify-center gap-1'>
       <Letter src="img/letters/K.svg" />
       <Letter src="img/letters/a_1.svg" />
