@@ -1,0 +1,27 @@
+# Allow access to static assets
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf|eot|json)$">
+    # Set proper MIME types
+    <IfModule mod_mime.c>
+        AddType application/javascript .js
+        AddType text/css .css
+        AddType application/json .json
+        AddType font/woff .woff
+        AddType font/woff2 .woff2
+        AddType font/truetype .ttf
+        AddType font/opentype .otf
+    </IfModule>
+    
+    # Set cache headers
+    Header set Cache-Control "max-age=31536000, public"
+    
+    # Enable CORS for fonts if needed
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+    </IfModule>
+</FilesMatch>
+
+# Disable directory browsing
+Options -Indexes
+
+# Ensure mod_rewrite is off for this directory - serve files directly
+RewriteEngine Off
