@@ -11,17 +11,38 @@
         AddType font/opentype .otf
     </IfModule>
     
-    # Set cache headers
-    Header set Cache-Control "max-age=31536000, public"
-    
-    # Enable CORS for fonts if needed
+    # Set cache headers for long-term caching (files have hash in name)
     <IfModule mod_headers.c>
+        Header set Cache-Control "max-age=31536000, public, immutable"
+        Header set Expires "Thu, 31 Dec 2026 23:55:55 GMT"
+        
+        # Enable CORS for fonts
         Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, OPTIONS"
+        Header set Access-Control-Allow-Headers "Content-Type"
+        
+        # Force revalidation for debugging
+        Header set Last-Modified "Sat, 31 Aug 2024 12:00:00 GMT"
+        Header set ETag W/"build-assets-v2"
+    </IfModule>
+</FilesMatch>
+
+# Special handling for JS files to ensure proper delivery
+<FilesMatch "\.(js)$">
+    <IfModule mod_headers.c>
+        Header set Content-Type "application/javascript; charset=utf-8"
+        Header unset Pragma
+        Header unset X-Powered-By
     </IfModule>
 </FilesMatch>
 
 # Disable directory browsing
 Options -Indexes
 
-# Ensure mod_rewrite is off for this directory - serve files directly
+# Ensure files are served directly without any URL rewriting
 RewriteEngine Off
+
+# Force proper handling of JS files
+<Files "*.js">
+    ForceType application/javascript
+</Files>
