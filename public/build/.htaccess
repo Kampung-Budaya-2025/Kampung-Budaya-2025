@@ -1,48 +1,39 @@
-# Allow access to static assets
-<FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf|eot|json)$">
-    # Set proper MIME types
-    <IfModule mod_mime.c>
-        AddType application/javascript .js
-        AddType text/css .css
-        AddType application/json .json
-        AddType font/woff .woff
-        AddType font/woff2 .woff2
-        AddType font/truetype .ttf
-        AddType font/opentype .otf
-    </IfModule>
-    
-    # Set cache headers for long-term caching (files have hash in name)
-    <IfModule mod_headers.c>
-        Header set Cache-Control "max-age=31536000, public, immutable"
-        Header set Expires "Thu, 31 Dec 2026 23:55:55 GMT"
-        
-        # Enable CORS for fonts
-        Header set Access-Control-Allow-Origin "*"
-        Header set Access-Control-Allow-Methods "GET, OPTIONS"
-        Header set Access-Control-Allow-Headers "Content-Type"
-        
-        # Force revalidation for debugging
-        Header set Last-Modified "Sat, 31 Aug 2024 12:00:00 GMT"
-        Header set ETag W/"build-assets-v2"
-    </IfModule>
-</FilesMatch>
+# Ensure proper MIME types are set
+<IfModule mod_mime.c>
+    AddType application/javascript .js
+    AddType text/css .css
+    AddType application/json .json
+    AddType font/woff .woff
+    AddType font/woff2 .woff2
+    AddType font/truetype .ttf
+    AddType font/opentype .otf
+</IfModule>
 
-# Special handling for JS files to ensure proper delivery
-<FilesMatch "\.(js)$">
-    <IfModule mod_headers.c>
-        Header set Content-Type "application/javascript; charset=utf-8"
-        Header unset Pragma
-        Header unset X-Powered-By
-    </IfModule>
-</FilesMatch>
-
-# Disable directory browsing
-Options -Indexes
-
-# Ensure files are served directly without any URL rewriting
-RewriteEngine Off
-
-# Force proper handling of JS files
+# Force specific MIME type for JS files
 <Files "*.js">
     ForceType application/javascript
+    <IfModule mod_headers.c>
+        Header set Content-Type "application/javascript; charset=utf-8"
+    </IfModule>
 </Files>
+
+# Enable file serving and disable any URL rewriting
+Options +FollowSymLinks -Indexes
+RewriteEngine Off
+
+# Set cache headers for all assets
+<IfModule mod_headers.c>
+    # Cache static assets for 1 year (they have hash in filename)
+    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf|eot|json)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, OPTIONS"
+        Header unset Pragma
+        Header unset X-Powered-By
+    </FilesMatch>
+</IfModule>
+
+# Ensure files are served directly
+<IfModule mod_dir.c>
+    DirectoryIndex disabled
+</IfModule>
