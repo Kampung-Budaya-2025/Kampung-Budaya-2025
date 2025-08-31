@@ -64,12 +64,12 @@ export const BATIK_BACKGROUND_MOBILE = {
 
 export const CSS_CLASSES = {
     container: "flex justify-center items-center mb-12 relative w-full min-h-screen",
-    mainContent: "relative h-[50vh] lg:h-[110vh] w-[80%] lg:w-[75%] max-w-[1256px] flex flex-col items-center justify-center overflow-y-hidden pt-8 sm:pt-20 md:pt-20 px-0 lg:px-4 z-20",
+    mainContent: "relative h-[50vh] lg:h-[110vh] w-[80%] lg:w-[75%] max-w-[1256px] flex flex-col items-center justify-center overflow-y-hidden pt-8 sm:pt-20 md:pt-[8vh] px-0 lg:px-4 z-20",
     titleContainer: "flex flex-col items-center text-center mt-6 sm:mt-8 md:mt-18 justify-center z-20 w-full",
     patternImage: "absolute top-[30vh] lg:top-[20%] h-[3.875rem] lg:h-[15.2vh] z-0",
-    gradientImage: "absolute inset-0 w-auto h-auto object-cover z-0",
-    titleWrapper: "flex flex-col items-center pt-4 lg:pt-6",
-    titleSpacing: "-mb-4 sm:-mb-6 md:-mb-8 lg:-mb-10",
+    gradientImage: "absolute top-[1%] inset-0 w-auto h-auto items-center object-cover z-0",
+    titleWrapper: "flex flex-col items-center pt-4 lg:pt-[2.4vh]",
+    titleSpacing: "-mb-[1.6vh] sm:-mb-[2.4vh] md:-mb-[3.2vh] lg:-mb-[4vh]",
     contentWrapper: "flex flex-col items-center gap-4 md:gap-6 mt-0 lg:-mt-4",
     buttonImage: "w-full min-w-full h-[8rem]",
 };
