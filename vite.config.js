@@ -42,6 +42,7 @@ export default defineConfig(({ command, mode }) => ({
                     "framer-motion": ["framer-motion"],
                     "react-icons": ["react-icons"],
                 },
+                chunkFileNames: "assets/[name]-[hash].js",
             },
         },
         // Performance optimizations
