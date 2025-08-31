@@ -1,33 +1,32 @@
-<IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
+# Static assets folder - Direct file serving only
+# DO NOT redirect to Laravel for static assets
 
-    RewriteEngine On
-
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-    # Handle X-XSRF-Token Header
-    RewriteCond %{HTTP:x-xsrf-token} .
-    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
-
-    # Allow access to build assets (CSS, JS, fonts, images)
-    RewriteCond %{REQUEST_URI} ^/build/.*\.(css|js|woff|woff2|ttf|otf|eot|svg|png|jpg|jpeg|gif|ico)$ [NC]
-    RewriteRule ^ - [L]
-
-    # Allow access to other static assets
-    RewriteCond %{REQUEST_URI} ^/storage/.*$ [NC]
-    RewriteRule ^ - [L]
-
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-
-    # Send Requests To Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+<IfModule mod_headers.c>
+    # Set proper MIME types for CSS and JS files
+    <FilesMatch "\.(css)$">
+        Header set Content-Type "text/css"
+    </FilesMatch>
+    <FilesMatch "\.(js)$">
+        Header set Content-Type "application/javascript"
+    </FilesMatch>
+    <FilesMatch "\.(woff|woff2)$">
+        Header set Content-Type "font/woff"
+    </FilesMatch>
+    <FilesMatch "\.(ttf|otf)$">
+        Header set Content-Type "font/ttf"
+    </FilesMatch>
 </IfModule>
+
+<IfModule mod_expires.c>
+    # Set long cache times for static assets
+    ExpiresActive on
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+</IfModule>
+
+# Disable directory browsing
+Options -Indexes
