@@ -20,6 +20,7 @@ export default defineConfig(({ command, mode }) => ({
     build: {
         manifest: "manifest.json",
         outDir: "public/build",
+        emptyOutDir: true,
         rollupOptions: {
             output: {
                 assetFileNames: (assetInfo) => {
@@ -48,11 +49,16 @@ export default defineConfig(({ command, mode }) => ({
         minify: mode === "production" ? "terser" : false,
         target: "es2015",
         sourcemap: mode === "development",
+        chunkSizeWarningLimit: 1000,
     },
     publicDir: "public",
     server: {
         host: "127.0.0.1",
         port: 5173,
+        strictPort: false,
+        hmr: {
+            host: "localhost",
+        },
     },
     // Performance optimizations for development
     optimizeDeps: {
