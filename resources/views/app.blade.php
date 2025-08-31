@@ -5,29 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title inertia>{{ config('app.name', 'Kampung Budaya') }}</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.ico') }}" />
     
     @if(app()->environment('local'))
         @viteReactRefresh
-        @vite(['resources/css/app.css', 'resources/js/app.tsx'])
-    @else
-        {{-- Production: Load built assets --}}
-        @if(file_exists(public_path('build/manifest.json')))
-            @vite(['resources/css/app.css', 'resources/js/app.tsx'])
-        @else
-            {{-- Fallback if Vite build files don't exist --}}
-            <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}" />
-            <script type="module" src="{{ asset('build/assets/app.js') }}"></script>
-        @endif
     @endif
+    
+    {{-- Always use Vite helper for proper asset resolution --}}
+    @vite(['resources/css/app.css', 'resources/js/app.tsx'])
     
     @inertiaHead
 </head>
 <body>
     @inertia
     
-    {{-- Error handling for production --}}
-    @if(!app()->environment('local'))
+    {{-- Debug info for production --}}
+    @if(!app()->environment('local') && config('app.debug'))
+        <script>
+            console.log('Environment: {{ app()->environment() }}');
+            console.log('Manifest exists: {{ file_exists(public_path("build/manifest.json")) ? "true" : "false" }}');
+            console.log('Base URL: {{ config("app.url") }}');
+        </script>
+    @endif
+</body>
+</html>
         <script>
             window.addEventListener('error', function(e) {
                 console.error('JavaScript Error:', e.error);

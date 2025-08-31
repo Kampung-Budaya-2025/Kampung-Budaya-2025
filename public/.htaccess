@@ -13,6 +13,14 @@
     RewriteCond %{HTTP:x-xsrf-token} .
     RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
 
+    # Allow access to build assets (CSS, JS, fonts, images)
+    RewriteCond %{REQUEST_URI} ^/build/.*\.(css|js|woff|woff2|ttf|otf|eot|svg|png|jpg|jpeg|gif|ico)$ [NC]
+    RewriteRule ^ - [L]
+
+    # Allow access to other static assets
+    RewriteCond %{REQUEST_URI} ^/storage/.*$ [NC]
+    RewriteRule ^ - [L]
+
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
