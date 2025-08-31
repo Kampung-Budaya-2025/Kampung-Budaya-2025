@@ -25,11 +25,7 @@
             console.log('Environment: {{ app()->environment() }}');
             console.log('Manifest exists: {{ file_exists(public_path("build/manifest.json")) ? "true" : "false" }}');
             console.log('Base URL: {{ config("app.url") }}');
-        </script>
-    @endif
-</body>
-</html>
-        <script>
+            
             window.addEventListener('error', function(e) {
                 console.error('JavaScript Error:', e.error);
             });
