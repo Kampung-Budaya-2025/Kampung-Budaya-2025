@@ -83,65 +83,74 @@ const ManualStepper = ({ currentStep }: ManualStepperProps) => {
 
     return (
         <motion.div
-            className="flex items-center justify-center gap-2 sm:gap-3"
+            className="flex flex-col items-center justify-center"
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
         >
-            {/* Step 1 - Data Diri */}
-            <div className="text-center">
+            {/* Steps and Connectors Row */}
+            <div className="flex items-center justify-center w-full max-w-xs gap-2">
+                {/* Step 1 - Data Diri */}
                 <StepperItem
                     step={1}
                     isCompleted={currentStep > 1}
                     isActive={currentStep === 1}
                 />
-                <span className="text-xs text-gray-500 mt-1 block">
-                    {stepLabels[0]}
-                </span>
-            </div>
 
-            {/* Connector Line 1 */}
-            <motion.div
-                className={`h-1 flex-1 min-w-8 max-w-12 sm:min-w-12 sm:max-w-16 transition-all duration-500 rounded-full ${getConnectorColor(
-                    1
-                )}`}
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-            />
+                {/* Connector Line 1 */}
+                <motion.div
+                    className={`h-1 w-12 sm:w-14 transition-all duration-500 rounded-full ${getConnectorColor(
+                        1
+                    )}`}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                />
 
-            {/* Step 2 - Upload */}
-            <div className="text-center">
+                {/* Step 2 - Upload */}
                 <StepperItem
                     step={2}
                     isCompleted={currentStep > 2}
                     isActive={currentStep === 2}
                 />
-                <span className="text-xs text-gray-500 mt-1 block">
-                    {stepLabels[1]}
-                </span>
-            </div>
 
-            {/* Connector Line 2 */}
-            <motion.div
-                className={`h-1 flex-1 min-w-8 max-w-12 sm:min-w-12 sm:max-w-16 transition-all duration-500 rounded-full ${getConnectorColor(
-                    2
-                )}`}
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-            />
+                {/* Connector Line 2 */}
+                <motion.div
+                    className={`h-1 w-12 sm:w-14 transition-all duration-500 rounded-full ${getConnectorColor(
+                        2
+                    )}`}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                />
 
-            {/* Step 3 - Konfirmasi */}
-            <div className="text-center">
+                {/* Step 3 - Konfirmasi */}
                 <StepperItem
                     step={3}
                     isCompleted={currentStep > 3}
                     isActive={currentStep === 3}
                 />
-                <span className="text-xs text-gray-500 mt-1 block">
-                    {stepLabels[2]}
-                </span>
+            </div>
+
+            {/* Labels Row */}
+            <div className="flex items-center justify-center w-full max-w-xs mt-2 gap-1">
+                <div className="flex justify-center" style={{ width: "24px" }}>
+                    <span className="text-xs text-gray-500 text-center">
+                        {stepLabels[0]}
+                    </span>
+                </div>
+                <div className="w-14 sm:w-16"></div>
+                <div className="flex justify-center" style={{ width: "24px" }}>
+                    <span className="text-xs text-gray-500 text-center">
+                        {stepLabels[1]}
+                    </span>
+                </div>
+                <div className="w-14 sm:w-16"></div>
+                <div className="flex justify-center" style={{ width: "24px" }}>
+                    <span className="text-xs text-gray-500 text-center">
+                        {stepLabels[2]}
+                    </span>
+                </div>
             </div>
         </motion.div>
     );

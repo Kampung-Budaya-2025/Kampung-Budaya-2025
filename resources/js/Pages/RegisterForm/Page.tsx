@@ -17,6 +17,7 @@ const RegisterForm = () => {
         uploadData,
         errors,
         currentStep,
+        isCheckingEmail,
         handleDataChange,
         handleFileUpload,
         nextStep,
@@ -68,8 +69,17 @@ const RegisterForm = () => {
             // Submit berhasil, step akan berubah ke 4 otomatis dari handleSubmit
         } catch (error) {
             console.error("Submit failed:", error);
-            // Handle error, tampilkan pesan error jika perlu
-            alert("Terjadi kesalahan saat mengirim data. Silakan coba lagi.");
+
+            // Extract error message
+            const errorMessage =
+                error instanceof Error
+                    ? error.message
+                    : "Terjadi kesalahan yang tidak diketahui";
+
+            // Show more detailed error to user
+            alert(
+                `Terjadi kesalahan saat mengirim data:\n${errorMessage}\n\nSilakan periksa koneksi internet dan coba lagi.`
+            );
         } finally {
             // Pastikan loading state direset
             setSubmitting(false);
@@ -144,6 +154,7 @@ const RegisterForm = () => {
                     <RegisterDataDiri
                         formData={formData}
                         errors={errors}
+                        isCheckingEmail={isCheckingEmail}
                         onDataChange={handleDataChange}
                     />
                 );

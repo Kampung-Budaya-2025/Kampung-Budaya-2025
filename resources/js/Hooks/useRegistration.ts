@@ -12,16 +12,16 @@ import {
 } from "../Components/RegisterForm/utils/validation";
 
 export const useRegistration = () => {
-    // Get eventType from URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const urlEventType = urlParams.get("eventType");
 
-    // Redirect ke register-event jika tidak ada eventType
     useEffect(() => {
         if (!urlEventType) {
             window.location.href = "/register-event";
             return;
         }
+
+        localStorage.removeItem("registrationData");
     }, [urlEventType]);
 
     const [formData, setFormData] = useState<RegistrationFormData>({
@@ -42,29 +42,12 @@ export const useRegistration = () => {
     });
 
     const [errors, setErrors] = useState<FormErrors>({});
-    // Selalu mulai dari step 1 karena eventType sudah dipilih di halaman sebelumnya
     const [currentStep, setCurrentStep] = useState(1);
+    const [isCheckingEmail, setIsCheckingEmail] = useState(false);
 
-    // Debounce validation to prevent excessive re-renders
     const validationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const emailCheckTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-    // Load existing data
-    useEffect(() => {
-        const saved = localStorage.getItem("registrationData");
-        if (saved) {
-            try {
-                const parsed = JSON.parse(saved);
-                if (parsed.formData) setFormData(parsed.formData);
-                if (parsed.uploadData) setUploadData(parsed.uploadData);
-                // Pastikan step minimal adalah 1
-                if (parsed.step) setCurrentStep(Math.max(parsed.step, 1));
-            } catch (error) {
-                console.warn("Failed to parse saved registration data:", error);
-            }
-        }
-    }, []);
-
-    // Debounced validation
     useEffect(() => {
         if (validationTimeoutRef.current) {
             clearTimeout(validationTimeoutRef.current);
@@ -81,6 +64,69 @@ export const useRegistration = () => {
             }
         };
     }, [formData]);
+
+    // Email availability check with debouncing
+    useEffect(() => {
+        if (emailCheckTimeoutRef.current) {
+            clearTimeout(emailCheckTimeoutRef.current);
+        }
+
+        // Only check if email and eventType are provided
+        if (
+            formData.email &&
+            formData.eventType &&
+            formData.email.includes("@")
+        ) {
+            emailCheckTimeoutRef.current = setTimeout(async () => {
+                try {
+                    setIsCheckingEmail(true);
+                    const response = await fetch(
+                        "/api/event-registrations/check-email",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Accept: "application/json",
+                            },
+                            body: JSON.stringify({
+                                email: formData.email,
+                                event_type: formData.eventType,
+                            }),
+                        }
+                    );
+
+                    if (response.ok) {
+                        const result = await response.json();
+
+                        if (result.exists) {
+                            setErrors((prev) => ({
+                                ...prev,
+                                email: "Email sudah terdaftar untuk jenis event ini. Gunakan email lain atau daftar jenis event berbeda.",
+                            }));
+                        } else {
+                            // Remove email error if email is available
+                            setErrors((prev) => {
+                                const newErrors = { ...prev };
+                                delete newErrors.email;
+                                return newErrors;
+                            });
+                        }
+                    }
+                } catch (error) {
+                    console.error("Email check failed:", error);
+                    // Don't set error if check fails - let user continue
+                } finally {
+                    setIsCheckingEmail(false);
+                }
+            }, 1000); // 1 second debounce for email check
+        }
+
+        return () => {
+            if (emailCheckTimeoutRef.current) {
+                clearTimeout(emailCheckTimeoutRef.current);
+            }
+        };
+    }, [formData.email, formData.eventType]);
 
     const handleDataChange = useCallback(
         (field: keyof RegistrationFormData, value: string) => {
@@ -110,38 +156,13 @@ export const useRegistration = () => {
         []
     );
 
-    // Throttled localStorage save
-    const saveToLocalStorageRef = useRef<NodeJS.Timeout | null>(null);
-    const saveToLocalStorage = useCallback(() => {
-        if (saveToLocalStorageRef.current) {
-            clearTimeout(saveToLocalStorageRef.current);
-        }
-
-        saveToLocalStorageRef.current = setTimeout(() => {
-            try {
-                const existing = JSON.parse(
-                    localStorage.getItem("registrationData") || "{}"
-                );
-                localStorage.setItem(
-                    "registrationData",
-                    JSON.stringify({
-                        ...existing,
-                        formData,
-                        uploadData,
-                        step: currentStep,
-                    })
-                );
-            } catch (error) {
-                console.warn("Failed to save to localStorage:", error);
-            }
-        }, 500); // Throttle localStorage saves
-    }, [formData, uploadData, currentStep]);
+    // Tidak menggunakan localStorage untuk menyimpan form data
+    // User akan selalu mulai dengan form kosong untuk menghindari konflik data lama
 
     const nextStep = useCallback(() => {
         const newStep = currentStep + 1;
         setCurrentStep(newStep);
-        saveToLocalStorage();
-    }, [currentStep, saveToLocalStorage]);
+    }, [currentStep]);
 
     const prevStep = useCallback(() => {
         if (currentStep <= 1) {
@@ -151,8 +172,7 @@ export const useRegistration = () => {
         }
         const newStep = currentStep - 1;
         setCurrentStep(newStep);
-        saveToLocalStorage();
-    }, [currentStep, saveToLocalStorage]);
+    }, [currentStep]);
 
     const handleSubmit = useCallback(
         async (eventType?: string) => {
@@ -192,18 +212,45 @@ export const useRegistration = () => {
                     );
                 }
 
-                // Send to API
                 const response = await fetch("/api/event-registrations", {
                     method: "POST",
                     body: apiFormData,
                     headers: {
                         Accept: "application/json",
+                        "X-Requested-With": "XMLHttpRequest",
+                        ...(document
+                            .querySelector('meta[name="csrf-token"]')
+                            ?.getAttribute("content") && {
+                            "X-CSRF-TOKEN":
+                                document
+                                    .querySelector('meta[name="csrf-token"]')
+                                    ?.getAttribute("content") || "",
+                        }),
                     },
                 });
 
                 if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.message || "Registration failed");
+                    let errorMessage = "Registration failed";
+                    let errorDetails = "";
+
+                    try {
+                        const errorData = await response.json();
+                        errorMessage =
+                            errorData.message || "Registration failed";
+
+                        if (errorData.errors) {
+                            errorDetails = Object.values(errorData.errors)
+                                .flat()
+                                .join(", ");
+                        }
+                    } catch (parseError) {
+                        errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+                    }
+
+                    const fullError = errorDetails
+                        ? `${errorMessage} - ${errorDetails}`
+                        : errorMessage;
+                    throw new Error(fullError);
                 }
 
                 const result = await response.json();
@@ -287,6 +334,7 @@ export const useRegistration = () => {
         uploadData,
         errors,
         currentStep,
+        isCheckingEmail,
         handleDataChange,
         handleFileUpload,
         nextStep,

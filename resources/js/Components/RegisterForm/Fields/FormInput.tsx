@@ -11,8 +11,17 @@ interface FormInputProps {
     required?: boolean;
     error?: string;
     pattern?: string;
-    inputMode?: "text" | "search" | "tel" | "email" | "none" | "url" | "numeric" | "decimal";
+    inputMode?:
+        | "text"
+        | "search"
+        | "tel"
+        | "email"
+        | "none"
+        | "url"
+        | "numeric"
+        | "decimal";
     variants?: any;
+    isLoading?: boolean;
 }
 
 const FormInput = ({
@@ -27,7 +36,8 @@ const FormInput = ({
     error,
     pattern,
     inputMode,
-    variants
+    variants,
+    isLoading = false,
 }: FormInputProps) => {
     return (
         <motion.div variants={variants}>
@@ -59,6 +69,16 @@ const FormInput = ({
                     transition={{ duration: 0.3, ease: easeInOut }}
                 >
                     {error}
+                </motion.p>
+            )}
+            {isLoading && (
+                <motion.p
+                    className="mt-1 text-xs text-black"
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, ease: easeInOut }}
+                >
+                    memeriksa email...
                 </motion.p>
             )}
         </motion.div>

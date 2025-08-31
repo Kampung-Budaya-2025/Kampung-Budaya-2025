@@ -9,11 +9,17 @@ import FormFieldGroup from "../Fields/FormFieldGroup";
 interface RegisterDataDiriProps {
     formData: RegistrationFormData;
     errors: FormErrors;
+    isCheckingEmail?: boolean;
     onDataChange: (field: keyof RegistrationFormData, value: string) => void;
 }
 
 const RegisterDataDiri = memo(
-    ({ formData, errors, onDataChange }: RegisterDataDiriProps) => {
+    ({
+        formData,
+        errors,
+        isCheckingEmail,
+        onDataChange,
+    }: RegisterDataDiriProps) => {
         const kategoriOptions = ["Pelajar", "Mahasiswa"];
 
         // Memoized handler to prevent re-creating functions on every render
@@ -134,6 +140,7 @@ const RegisterDataDiri = memo(
                         autoComplete="email"
                         required
                         error={errors.email}
+                        isLoading={isCheckingEmail}
                     />
                 </FormFieldGroup>
 
