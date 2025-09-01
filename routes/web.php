@@ -18,4 +18,5 @@ Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/register-event', [PageController::class, 'registerEvent'])->name('register-event');
 Route::get('/register-form', [PageController::class, 'registerForm'])->name('register-form');
 Route::get('/register-upload', [PageController::class, 'registerUpload'])->name('register-upload');
-Route::get('/register-confirmation', [PageController::class, 'registerConfirmation'])->name('register-confirmation'); 
+Route::get('/register-confirmation', [PageController::class, 'registerConfirmation'])->name('register-confirmation');
+Route::get('/coming-soon', [PageController::class, 'comingSoon'])->name('coming-soon');

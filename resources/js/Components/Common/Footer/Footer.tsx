@@ -114,7 +114,7 @@ const BrandTitle: React.FC = () => {
             className="block focus:outline-none rounded"
         >
             <h1
-                className="max-w-[18.5rem] lg:max-w-full text-[3.25rem] lg:text-[4rem] text-center leading-[1] lg:text-start mt-2 font-samsktrigrama hover:opacity-80 transition-opacity duration-200"
+                className="max-w-[18.5rem] lg:max-w-full text-[3.25rem] lg:text-[4rem] text-center leading-[1] lg:text-start font-samsktrigrama transition-opacity duration-200"
                 style={{
                     backgroundImage:
                         "",
@@ -139,13 +139,13 @@ const NavigationMenu: React.FC<{ currentPath: string }> = ({ currentPath }) => {
 
     return (
         <nav aria-label="Footer navigation">
-            <ul className="flex flex-col lg:flex-row text-center lg:text-start gap-12 lg:gap-16">
+            <ul className="flex flex-col lg:flex-row items-center text-center lg:text-center lg:items-center lg:mt-6 gap-12 lg:gap-16">
                 {NAVIGATION_LINKS.map((link) => (
                     <li key={link.id}>
                         <Link
                             href={link.href}
                             onClick={handleClick}
-                            className={`w-[57px] h-[57px] transition-colors duration-200 text-3xl rounded px-1 py-1 focus:outline-none ${
+                            className={`transition-colors duration-200 text-3xl rounded px-1 py-1 focus:outline-none ${
                                 isActiveLink(link.href)
                                     ? "text-yellow-400"
                                     : "text-[#FCF0AB] hover:text-yellow-400"
@@ -232,7 +232,7 @@ const Footer: React.FC<{ currentPath?: string }> = ({ currentPath = "/" }) => {
                         </div>
 
                         {/* Navigation and Social Section */}
-                        <div className="flex flex-col sm:flex-col lg:flex-row items-center lg:items-center sm:justify-between lg:justify-between space-y-10  w-full lg:w-2/3 gap-8 sm:gap-16 ">
+                        <div className="flex flex-col sm:flex-col lg:flex-row items-center lg:items-center sm:justify-between lg:justify-between space-y-10 w-full lg:w-2/3 gap-8 sm:gap-16 ">
                             <NavigationMenu currentPath={currentPath} />
                             <SocialMediaLinks />
                         </div>

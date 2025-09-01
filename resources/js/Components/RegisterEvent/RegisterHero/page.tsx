@@ -3,13 +3,22 @@ import BackgroundImage from "./UI/BackgroundImage.";
 import Title from "./UI/Title";
 import SubTitle from "./UI/Subtitle";
 import ElementPairComponent from "./UI/ElementPairComponent";
-import { BATIK_BACKGROUND, CSS_CLASSES } from "./config/constants";
+import {
+    BATIK_BACKGROUND,
+    BATIK_BACKGROUND_MOBILE,
+    CSS_CLASSES,
+} from "./config/constants";
 import { useElementRefs } from "./hooks/useElementRefs";
 
-
-
 const RegisterHero: React.FC = () => {
-    const { ORANG_BERTAPA_PAIR, DAUN_PAIR, WAYANG_PAIR, PATTERN, GRADIENT_BACKGROUND } = useElementRefs();
+    const {
+        ORANG_BERTAPA_PAIR,
+        DAUN_PAIR,
+        WAYANG_PAIR,
+        PATTERN,
+        GRADIENT_BACKGROUND,
+        BUNGA_MOBILE_PAIRS,
+    } = useElementRefs();
 
     const handleScrollToListLomba = () => {
         // Scroll ke elemen dengan ID 'list-lomba' atau class tertentu
@@ -36,13 +45,29 @@ const RegisterHero: React.FC = () => {
         />
     );
 
+    const renderBatikBackgroundMobile = () => (
+        <BackgroundImage
+            src={BATIK_BACKGROUND_MOBILE.src}
+            alt={BATIK_BACKGROUND_MOBILE.alt}
+            className={BATIK_BACKGROUND_MOBILE.className}
+        />
+    );
+
     // render pattern menggunakan struktur dari useElementRefs (ref + isInView + src)
     const renderPatternImage = () => (
         <img
             ref={PATTERN.ref}
             src={PATTERN.src}
             alt={PATTERN.alt}
-            className={`${CSS_CLASSES.patternImage} transition-opacity duration-1000 ease-out ${PATTERN.isInView ? 'opacity-100' : 'opacity-0'}`}
+            className={`
+    ${CSS_CLASSES.patternImage}
+    transition-all duration-1000 ease-out
+    ${
+        PATTERN.isInView
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-[4vh]"
+    }
+`}
         />
     );
 
@@ -57,7 +82,11 @@ const RegisterHero: React.FC = () => {
                 ref={GRADIENT_BACKGROUND.ref}
                 src={GRADIENT_BACKGROUND.src}
                 alt={GRADIENT_BACKGROUND.alt}
-                className={`${CSS_CLASSES.gradientImage} transition-opacity duration-1000 ease-out ${GRADIENT_BACKGROUND.isInView ? 'opacity-100' : 'opacity-0'}`}
+                className={`${
+                    CSS_CLASSES.gradientImage
+                } transition-opacity duration-1000 ease-out ${
+                    GRADIENT_BACKGROUND.isInView ? "opacity-100" : "opacity-0"
+                }`}
             />
         </div>
     );
@@ -82,22 +111,30 @@ const RegisterHero: React.FC = () => {
             <button
                 type="button"
                 onClick={handleScrollToListLomba}
-                className="relative cursor-pointer transition-transform duration-200 hover:scale-105 rounded-lg pt-6 pb-5 active:scale-95 bg-no-repeat bg-center bg-contain w-[250px] h-auto flex items-center justify-center text-[#FFDA88] font-samsktrigrama text-3xl tracking-[0.1]"
+                className="relative cursor-pointer transition-transform duration-200 hover:scale-105 rounded-lg pt-6 pb-5 active:scale-95 bg-no-repeat bg-center bg-contain w-[28vh] h-[8.3vh] lg:w-[21.667vw] lg:h-[12.8vh] flex items-center justify-center text-[#FFDA88] font-samsktrigrama text-[3.6vh] lg:text-[5.7vh] tracking-[0.1]"
                 style={{
                     backgroundImage: "url('/icon/button-daftar.svg')",
                 }}
             >
-                Daftar
+                <h1 className="mt-1">Daftar</h1>
             </button>
         </div>
     );
 
     return (
         <div className={CSS_CLASSES.container}>
+            {renderBatikBackgroundMobile()}
             {renderBatikBackground()}
             <ElementPairComponent pair={ORANG_BERTAPA_PAIR} />
             <ElementPairComponent pair={DAUN_PAIR} />
             <ElementPairComponent pair={WAYANG_PAIR} />
+            {Array.isArray(BUNGA_MOBILE_PAIRS) ? (
+                BUNGA_MOBILE_PAIRS.map((pair, idx) => (
+                    <ElementPairComponent key={idx} pair={pair} />
+                ))
+            ) : (
+                <ElementPairComponent pair={BUNGA_MOBILE_PAIRS} />
+            )}
             {renderPatternImage()}
 
             <div className={CSS_CLASSES.mainContent}>
@@ -112,5 +149,3 @@ const RegisterHero: React.FC = () => {
 };
 
 export default RegisterHero;
-
-

@@ -16,9 +16,8 @@ const GaleriBatikBackground: React.FC = () => {
                 ref={batikBackgroundRef}
                 src="/background/batik-horizontal-galeri.svg"
                 alt="Batik Background"
-                className="absolute top-0 left-0 w-full h-full object-cover"
+                className="absolute top-[20vh] lg:top-0 left-0 lg:w-full h-auto lg:object-cover z-0"
                 style={{
-                    objectFit: "cover",
                     opacity: isBatikBackgroundInView ? 1 : 0,
                     transform: isBatikBackgroundInView
                         ? "translateY(-20vh)"
