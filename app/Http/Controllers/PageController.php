@@ -60,4 +60,11 @@ class PageController extends Controller
             'title' => 'Konfirmasi Pendaftaran - Kampung Budaya 2025'
         ]);
     }
+
+    public function comingSoon()
+    {
+        return Inertia::render('ComingSoon/Page', [
+            'title' => 'Coming Soon - Kampung Budaya 2025'
+        ]);
+    }
 }

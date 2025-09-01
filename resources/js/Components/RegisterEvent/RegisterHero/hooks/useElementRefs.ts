@@ -19,6 +19,7 @@ const useElementRefs = () => {
     const batikRef = useRef<HTMLImageElement | null>(null);
     const gradientBackgroundRef = useRef<HTMLImageElement | null>(null);
     const bungaMobileRefs = Array.from({ length: 3 }, () => useRef<HTMLImageElement | null>(null));
+    const textRef = useRef<HTMLHeadingElement | null>(null);
 
     
     // InView hooks
@@ -33,6 +34,7 @@ const useElementRefs = () => {
     const isBatikInView = useInView(batikRef, ANIMATION_CONFIG);
     const isGradientBackgroundInView = useInView(gradientBackgroundRef, ANIMATION_ONCE_CONFIG);
     const isBungaMobileInView = bungaMobileRefs.map(ref => useInView(ref, ANIMATION_CONFIG));
+    const isTextInView = useInView(textRef, ANIMATION_ONCE_CONFIG);
 
     const ORANG_BERTAPA_PAIR: ElementPair = {
         kiri: {
@@ -210,8 +212,8 @@ const useElementRefs = () => {
     const PATTERN = {
         ref: patternRef,
         isInView: isPatternInView,
-        src: "/icon/pattern-galeri.svg",
-        alt: "pattern-galeri",
+        src: "/icon/pattern-event-top.svg",
+        alt: "pattern-event-top",
     };
 
     const GRADIENT_BACKGROUND = {

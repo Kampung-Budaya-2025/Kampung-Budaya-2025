@@ -3,13 +3,22 @@ import BackgroundImage from "./UI/BackgroundImage.";
 import Title from "./UI/Title";
 import SubTitle from "./UI/Subtitle";
 import ElementPairComponent from "./UI/ElementPairComponent";
-import { BATIK_BACKGROUND,BATIK_BACKGROUND_MOBILE, CSS_CLASSES } from "./config/constants";
+import {
+    BATIK_BACKGROUND,
+    BATIK_BACKGROUND_MOBILE,
+    CSS_CLASSES,
+} from "./config/constants";
 import { useElementRefs } from "./hooks/useElementRefs";
 
-
-
 const RegisterHero: React.FC = () => {
-    const { ORANG_BERTAPA_PAIR, DAUN_PAIR, WAYANG_PAIR, PATTERN, GRADIENT_BACKGROUND, BUNGA_MOBILE_PAIRS } = useElementRefs();
+    const {
+        ORANG_BERTAPA_PAIR,
+        DAUN_PAIR,
+        WAYANG_PAIR,
+        PATTERN,
+        GRADIENT_BACKGROUND,
+        BUNGA_MOBILE_PAIRS,
+    } = useElementRefs();
 
     const handleScrollToListLomba = () => {
         // Scroll ke elemen dengan ID 'list-lomba' atau class tertentu
@@ -50,7 +59,15 @@ const RegisterHero: React.FC = () => {
             ref={PATTERN.ref}
             src={PATTERN.src}
             alt={PATTERN.alt}
-            className={`${CSS_CLASSES.patternImage} transition-opacity duration-1000 ease-out ${PATTERN.isInView ? 'opacity-100' : 'opacity-0'}`}
+            className={`
+    ${CSS_CLASSES.patternImage}
+    transition-all duration-1000 ease-out
+    ${
+        PATTERN.isInView
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-[4vh]"
+    }
+`}
         />
     );
 
@@ -65,7 +82,11 @@ const RegisterHero: React.FC = () => {
                 ref={GRADIENT_BACKGROUND.ref}
                 src={GRADIENT_BACKGROUND.src}
                 alt={GRADIENT_BACKGROUND.alt}
-                className={`${CSS_CLASSES.gradientImage} transition-opacity duration-1000 ease-out ${GRADIENT_BACKGROUND.isInView ? 'opacity-100' : 'opacity-0'}`}
+                className={`${
+                    CSS_CLASSES.gradientImage
+                } transition-opacity duration-1000 ease-out ${
+                    GRADIENT_BACKGROUND.isInView ? "opacity-100" : "opacity-0"
+                }`}
             />
         </div>
     );
@@ -107,12 +128,13 @@ const RegisterHero: React.FC = () => {
             <ElementPairComponent pair={ORANG_BERTAPA_PAIR} />
             <ElementPairComponent pair={DAUN_PAIR} />
             <ElementPairComponent pair={WAYANG_PAIR} />
-            {Array.isArray(BUNGA_MOBILE_PAIRS)
-                ? BUNGA_MOBILE_PAIRS.map((pair, idx) => (
+            {Array.isArray(BUNGA_MOBILE_PAIRS) ? (
+                BUNGA_MOBILE_PAIRS.map((pair, idx) => (
                     <ElementPairComponent key={idx} pair={pair} />
                 ))
-                : <ElementPairComponent pair={BUNGA_MOBILE_PAIRS} />
-            }
+            ) : (
+                <ElementPairComponent pair={BUNGA_MOBILE_PAIRS} />
+            )}
             {renderPatternImage()}
 
             <div className={CSS_CLASSES.mainContent}>
@@ -127,5 +149,3 @@ const RegisterHero: React.FC = () => {
 };
 
 export default RegisterHero;
-
-

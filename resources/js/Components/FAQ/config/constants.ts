@@ -67,11 +67,11 @@ const ANIMATION_ONCE_CONFIG = {
 } as const;
 
 const FLOWER_CONFIGS = {
-    besar: { size: 360, translateDistance: 120, duration: "2.5s" },
-    besarmobile: { size: 180, translateDistance: 120, duration: "2.5s" },
-    sedang: { size: 230, translateDistance: 130, duration: "2.8s" },
-    kecil1: { size: 76, translateDistance: 120, duration: "3s" },
-    kecil2: { size: 76, translateDistance: 140, duration: "3.5s" },
+    besar: { size: "20vw", translateDistance: 120, duration: "2.5s" },
+    besarmobile: { size: "9.375vw", translateDistance: 120, duration: "2.5s" },
+    sedang: { size: "12vw", translateDistance: 130, duration: "2.8s" },
+    kecil1: { size: "3.958vw", translateDistance: 120, duration: "3s" },
+    kecil2: { size: "3.958vw", translateDistance: 140, duration: "3.5s" },
 } as const;
 
   export { faqData, ANIMATION_CONFIG, ANIMATION_ONCE_CONFIG, FLOWER_CONFIGS };

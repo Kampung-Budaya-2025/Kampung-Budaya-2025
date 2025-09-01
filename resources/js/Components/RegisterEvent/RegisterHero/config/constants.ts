@@ -51,7 +51,7 @@ export const ELEMENT_CONFIGS: Record<string, ElementConfig> = {
 } as const;
 
 export const BATIK_BACKGROUND = {
-    src: "/background/batik-horizontal-galeri.svg",
+    src: "/background/batik-horizontal-event.svg",
     alt: "Batik Background",
     className: "hidden md:block -top-[20vh] left-0 w-full lg:w-auto h-auto z-0",
 };
