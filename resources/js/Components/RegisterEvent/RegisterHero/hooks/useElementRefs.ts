@@ -5,8 +5,17 @@ import { BUNGA_MOBILE_CONFIGS } from '../config/constants';
 import { ELEMENT_CONFIGS } from '../config/constants';
 import { ElementPair } from '../types';
 
+type CustomPairConfig = {
+    kiri?: Partial<Omit<ElementPair['kiri'], 'ref' | 'isInView'>>;
+    kanan?: Partial<Omit<ElementPair['kanan'], 'ref' | 'isInView'>>;
+};
 
-const useElementRefs = () => {
+const useElementRefs = (
+    orangBertapaConfig?: CustomPairConfig,
+    daunConfig?: CustomPairConfig,
+    wayangConfig?: CustomPairConfig,
+    bungaConfig?: CustomPairConfig
+) => {
     // Refs untuk semua elemen
     const orangBertapaKiriRef = useRef<HTMLImageElement | null>(null);
     const orangBertapaKananRef = useRef<HTMLImageElement | null>(null);
@@ -36,59 +45,61 @@ const useElementRefs = () => {
     const isBungaMobileInView = bungaMobileRefs.map(ref => useInView(ref, ANIMATION_CONFIG));
     const isTextInView = useInView(textRef, ANIMATION_ONCE_CONFIG);
 
+    // ORANG_BERTAPA_PAIR
     const ORANG_BERTAPA_PAIR: ElementPair = {
         kiri: {
             ref: orangBertapaKiriRef,
             isInView: isOrangBertapaKiriInView,
-            src: "/background/orang-bertapa.svg",
-            alt: "Orang Bertapa Kiri",
-            className: "hidden md:block absolute bottom-0 -left-[10%] z-10 w-[30vw] h-auto",
-            translateDistance: ELEMENT_CONFIGS.orangBertapa.translateDistance,
-            transitionDuration: ELEMENT_CONFIGS.orangBertapa.duration,
-            transitionDelay: ELEMENT_CONFIGS.orangBertapa.delay,
-            floatDuration: ELEMENT_CONFIGS.orangBertapa.floatDuration,
-            floatDistance: ELEMENT_CONFIGS.orangBertapa.floatDistance,
+            src: orangBertapaConfig?.kiri?.src ?? "/background/orang-bertapa.svg",
+            alt: orangBertapaConfig?.kiri?.alt ?? "Orang Bertapa Kiri",
+            className: orangBertapaConfig?.kiri?.className ?? "hidden md:block absolute bottom-0 -left-[10%] z-10 w-[30vw] h-auto",
+            translateDistance: orangBertapaConfig?.kiri?.translateDistance ?? ELEMENT_CONFIGS.orangBertapa.translateDistance,
+            transitionDuration: orangBertapaConfig?.kiri?.transitionDuration ?? ELEMENT_CONFIGS.orangBertapa.duration,
+            transitionDelay: orangBertapaConfig?.kiri?.transitionDelay ?? ELEMENT_CONFIGS.orangBertapa.delay,
+            floatDuration: orangBertapaConfig?.kiri?.floatDuration ?? ELEMENT_CONFIGS.orangBertapa.floatDuration,
+            floatDistance: orangBertapaConfig?.kiri?.floatDistance ?? ELEMENT_CONFIGS.orangBertapa.floatDistance,
         },
         kanan: {
             ref: orangBertapaKananRef,
             isInView: isOrangBertapaKananInView,
-            src: "/background/orang-bertapa.svg",
-            alt: "Orang Bertapa Kanan",
-            className: "hidden md:block absolute bottom-0 -right-[10%] z-10 transform scale-x-[-1] w-[30vw] h-auto",
-            translateDistance: ELEMENT_CONFIGS.orangBertapa.translateDistance,
-            transitionDuration: ELEMENT_CONFIGS.orangBertapa.duration,
-            transitionDelay: ELEMENT_CONFIGS.orangBertapa.delay,
-            floatDuration: ELEMENT_CONFIGS.orangBertapa.floatDuration,
-            floatDistance: ELEMENT_CONFIGS.orangBertapa.floatDistance,
+            src: orangBertapaConfig?.kanan?.src ?? "/background/orang-bertapa.svg",
+            alt: orangBertapaConfig?.kanan?.alt ?? "Orang Bertapa Kanan",
+            className: orangBertapaConfig?.kanan?.className ?? "hidden md:block absolute bottom-0 -right-[10%] z-10 transform scale-x-[-1] w-[30vw] h-auto",
+            translateDistance: orangBertapaConfig?.kanan?.translateDistance ?? ELEMENT_CONFIGS.orangBertapa.translateDistance,
+            transitionDuration: orangBertapaConfig?.kanan?.transitionDuration ?? ELEMENT_CONFIGS.orangBertapa.duration,
+            transitionDelay: orangBertapaConfig?.kanan?.transitionDelay ?? ELEMENT_CONFIGS.orangBertapa.delay,
+            floatDuration: orangBertapaConfig?.kanan?.floatDuration ?? ELEMENT_CONFIGS.orangBertapa.floatDuration,
+            floatDistance: orangBertapaConfig?.kanan?.floatDistance ?? ELEMENT_CONFIGS.orangBertapa.floatDistance,
         },
     };
 
+    // DAUN_PAIR
     const DAUN_PAIR: ElementPair = {
         kiri: {
             ref: daunKiriRef,
             isInView: isDaunKiriInView,
-            src: "/background/daun.svg",
-            alt: "Daun Kiri",
-            className: "hidden md:block absolute bottom-[27%] left-[4.5%] z-0 w-[20vw] h-auto",
-            translateDistance: ELEMENT_CONFIGS.daun.translateDistance,
-            transitionDuration: ELEMENT_CONFIGS.daun.duration,
-            transitionDelay: ELEMENT_CONFIGS.daun.delay,
-            floatDuration: ELEMENT_CONFIGS.daun.floatDuration,
-            floatDistance: ELEMENT_CONFIGS.daun.floatDistance,
-            rotateAmount: ELEMENT_CONFIGS.daun.rotateAmount,
+            src: daunConfig?.kiri?.src ?? "/background/daun.svg",
+            alt: daunConfig?.kiri?.alt ?? "Daun Kiri",
+            className: daunConfig?.kiri?.className ?? "hidden md:block absolute bottom-[27%] left-[4.5%] z-0 w-[20vw] h-auto",
+            translateDistance: daunConfig?.kiri?.translateDistance ?? ELEMENT_CONFIGS.daun.translateDistance,
+            transitionDuration: daunConfig?.kiri?.transitionDuration ?? ELEMENT_CONFIGS.daun.duration,
+            transitionDelay: daunConfig?.kiri?.transitionDelay ?? ELEMENT_CONFIGS.daun.delay,
+            floatDuration: daunConfig?.kiri?.floatDuration ?? ELEMENT_CONFIGS.daun.floatDuration,
+            floatDistance: daunConfig?.kiri?.floatDistance ?? ELEMENT_CONFIGS.daun.floatDistance,
+            rotateAmount: daunConfig?.kiri?.rotateAmount ?? ELEMENT_CONFIGS.daun.rotateAmount,
         },
         kanan: {
             ref: daunKananRef,
             isInView: isDaunKananInView,
-            src: "/background/daun.svg",
-            alt: "Daun Kanan",
-            className: "hidden md:block absolute bottom-[27%] right-[4.5%] z-0 transform scale-x-[-1] w-[20vw] h-auto",
-            translateDistance: ELEMENT_CONFIGS.daun.translateDistance,
-            transitionDuration: ELEMENT_CONFIGS.daun.duration,
-            transitionDelay: ELEMENT_CONFIGS.daun.delay,
-            floatDuration: ELEMENT_CONFIGS.daun.floatDuration,
-            floatDistance: ELEMENT_CONFIGS.daun.floatDistance,
-            rotateAmount: ELEMENT_CONFIGS.daun.rotateAmount,
+            src: daunConfig?.kanan?.src ?? "/background/daun.svg",
+            alt: daunConfig?.kanan?.alt ?? "Daun Kanan",
+            className: daunConfig?.kanan?.className ?? "hidden md:block absolute bottom-[27%] right-[4.5%] z-0 transform scale-x-[-1] w-[20vw] h-auto",
+            translateDistance: daunConfig?.kanan?.translateDistance ?? ELEMENT_CONFIGS.daun.translateDistance,
+            transitionDuration: daunConfig?.kanan?.transitionDuration ?? ELEMENT_CONFIGS.daun.duration,
+            transitionDelay: daunConfig?.kanan?.transitionDelay ?? ELEMENT_CONFIGS.daun.delay,
+            floatDuration: daunConfig?.kanan?.floatDuration ?? ELEMENT_CONFIGS.daun.floatDuration,
+            floatDistance: daunConfig?.kanan?.floatDistance ?? ELEMENT_CONFIGS.daun.floatDistance,
+            rotateAmount: daunConfig?.kanan?.rotateAmount ?? ELEMENT_CONFIGS.daun.rotateAmount,
         },
     };
 
@@ -98,55 +109,56 @@ const useElementRefs = () => {
             isInView: isWayangKiriInView,
             src: "/background/wayang.svg",
             alt: "Wayang Kiri",
-            className: "hidden md:block absolute bottom-[17%] left-[7%] z-0 w-[19vw] h-auto",
-            translateDistance: ELEMENT_CONFIGS.wayang.translateDistance,
-            transitionDuration: ELEMENT_CONFIGS.wayang.duration,
-            transitionDelay: ELEMENT_CONFIGS.wayang.delay,
-            floatDuration: ELEMENT_CONFIGS.wayang.floatDuration,
-            floatDistance: ELEMENT_CONFIGS.wayang.floatDistance,
-            rotateAmount: ELEMENT_CONFIGS.wayang.rotateAmount,
+            className: wayangConfig?.kiri?.className ?? "hidden md:block absolute bottom-[17%] left-[7%] z-0 w-[19vw] h-auto",
+            translateDistance: wayangConfig?.kiri?.translateDistance ?? ELEMENT_CONFIGS.wayang.translateDistance,
+            transitionDuration: wayangConfig?.kiri?.transitionDuration ?? ELEMENT_CONFIGS.wayang.duration,
+            transitionDelay: wayangConfig?.kiri?.transitionDelay ?? ELEMENT_CONFIGS.wayang.delay,
+            floatDuration: wayangConfig?.kiri?.floatDuration ?? ELEMENT_CONFIGS.wayang.floatDuration,
+            floatDistance: wayangConfig?.kiri?.floatDistance ?? ELEMENT_CONFIGS.wayang.floatDistance,
+            rotateAmount: wayangConfig?.kiri?.rotateAmount ?? ELEMENT_CONFIGS.wayang.rotateAmount,
         },
         kanan: {
             ref: wayangKananRef,
             isInView: isWayangKananInView,
             src: "/background/wayang.svg",
             alt: "Wayang Kanan",
-            className: "hidden md:block absolute bottom-[17%] right-[7%] z-0 transform scale-x-[-1] w-[19vw] h-auto",
-            translateDistance: ELEMENT_CONFIGS.wayang.translateDistance,
-            transitionDuration: ELEMENT_CONFIGS.wayang.duration,
-            transitionDelay: ELEMENT_CONFIGS.wayang.delay,
-            floatDuration: ELEMENT_CONFIGS.wayang.floatDuration,
-            floatDistance: ELEMENT_CONFIGS.wayang.floatDistance,
-            rotateAmount: ELEMENT_CONFIGS.wayang.rotateAmount,
+            className: wayangConfig?.kanan?.className ?? "hidden md:block absolute bottom-[17%] right-[7%] z-0 transform scale-x-[-1] w-[19vw] h-auto",
+            translateDistance: wayangConfig?.kanan?.translateDistance ?? ELEMENT_CONFIGS.wayang.translateDistance,
+            transitionDuration: wayangConfig?.kanan?.transitionDuration ?? ELEMENT_CONFIGS.wayang.duration,
+            transitionDelay: wayangConfig?.kanan?.transitionDelay ?? ELEMENT_CONFIGS.wayang.delay,
+            floatDuration: wayangConfig?.kanan?.floatDuration ?? ELEMENT_CONFIGS.wayang.floatDuration,
+            floatDistance: wayangConfig?.kanan?.floatDistance ?? ELEMENT_CONFIGS.wayang.floatDistance,
+            rotateAmount: wayangConfig?.kanan?.rotateAmount ?? ELEMENT_CONFIGS.wayang.rotateAmount,
         },
     };
 
+    // BUNGA_PAIR
     const BUNGA_PAIR: ElementPair = {
         kiri: {
             ref: bungaRef,
             isInView: isBungaInView,
-            src: "/icon/bunga-opacity.svg",
-            alt: "Bunga Kiri",
-            className: "hidden md:block absolute top-110 -left-30 w-[240px] h-[240px] opacity-30 animate-spin-clockwise",
-            translateDistance: ELEMENT_CONFIGS.bunga.translateDistance,
-            transitionDuration: ELEMENT_CONFIGS.bunga.duration,
-            transitionDelay: ELEMENT_CONFIGS.bunga.delay,
-            floatDuration: ELEMENT_CONFIGS.bunga.floatDuration,
-            floatDistance: ELEMENT_CONFIGS.bunga.floatDistance,
-            rotateAmount: ELEMENT_CONFIGS.bunga.rotateAmount,
+            src: bungaConfig?.kiri?.src ?? "/icon/bunga-opacity.svg",
+            alt: bungaConfig?.kiri?.alt ?? "Bunga Kiri",
+            className: bungaConfig?.kiri?.className ?? "hidden md:block absolute top-110 -left-30 w-[240px] h-[240px] opacity-30 animate-spin-clockwise",
+            translateDistance: bungaConfig?.kiri?.translateDistance ?? ELEMENT_CONFIGS.bunga.translateDistance,
+            transitionDuration: bungaConfig?.kiri?.transitionDuration ?? ELEMENT_CONFIGS.bunga.duration,
+            transitionDelay: bungaConfig?.kiri?.transitionDelay ?? ELEMENT_CONFIGS.bunga.delay,
+            floatDuration: bungaConfig?.kiri?.floatDuration ?? ELEMENT_CONFIGS.bunga.floatDuration,
+            floatDistance: bungaConfig?.kiri?.floatDistance ?? ELEMENT_CONFIGS.bunga.floatDistance,
+            rotateAmount: bungaConfig?.kiri?.rotateAmount ?? ELEMENT_CONFIGS.bunga.rotateAmount,
         },
         kanan: {
             ref: bungaRef,
             isInView: isBungaInView,
-            src: "/icon/bunga-opacity.svg",
-            alt: "Bunga Kanan",
-            className: "absolute top-100 -right-30 w-[240px] h-[240px] transform scale-x-[-1] opacity-30 animate-spin-counter",
-            translateDistance: ELEMENT_CONFIGS.bunga.translateDistance,
-            transitionDuration: ELEMENT_CONFIGS.bunga.duration,
-            transitionDelay: ELEMENT_CONFIGS.bunga.delay,
-            floatDuration: ELEMENT_CONFIGS.bunga.floatDuration,
-            floatDistance: ELEMENT_CONFIGS.bunga.floatDistance,
-            rotateAmount: ELEMENT_CONFIGS.bunga.rotateAmount,
+            src: bungaConfig?.kanan?.src ?? "/icon/bunga-opacity.svg",
+            alt: bungaConfig?.kanan?.alt ?? "Bunga Kanan",
+            className: bungaConfig?.kanan?.className ?? "absolute top-100 -right-30 w-[240px] h-[240px] transform scale-x-[-1] opacity-30 animate-spin-counter",
+            translateDistance: bungaConfig?.kanan?.translateDistance ?? ELEMENT_CONFIGS.bunga.translateDistance,
+            transitionDuration: bungaConfig?.kanan?.transitionDuration ?? ELEMENT_CONFIGS.bunga.duration,
+            transitionDelay: bungaConfig?.kanan?.transitionDelay ?? ELEMENT_CONFIGS.bunga.delay,
+            floatDuration: bungaConfig?.kanan?.floatDuration ?? ELEMENT_CONFIGS.bunga.floatDuration,
+            floatDistance: bungaConfig?.kanan?.floatDistance ?? ELEMENT_CONFIGS.bunga.floatDistance,
+            rotateAmount: bungaConfig?.kanan?.rotateAmount ?? ELEMENT_CONFIGS.bunga.rotateAmount,
         },
     };
 

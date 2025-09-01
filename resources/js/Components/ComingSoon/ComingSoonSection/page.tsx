@@ -6,7 +6,20 @@ import ElementPairComponent from "@/Components/RegisterEvent/RegisterHero/UI/Ele
 
 const ComingSoonSection: React.FC = () => {
     const { ORANG_BERTAPA_PAIR, DAUN_PAIR, WAYANG_PAIR, PATTERN } =
-        useElementRefs();
+        useElementRefs(
+            {
+                kiri: { className: "hidden md:block absolute bottom-0 -left-[8%] z-10 w-[26.667vw] h-auto" },
+                kanan: { className: "hidden md:block absolute bottom-0 -right-[8%] z-10 transform scale-x-[-1] w-[26.667vw] h-auto" },
+            },
+            {
+                kiri: { className: "hidden md:block absolute bottom-[24%] left-[4.5%] z-0 w-[16.667vw] h-auto" },
+                kanan: { className: "hidden md:block absolute bottom-[24%] right-[4.5%] z-0 transform scale-x-[-1] w-[16.667vw] h-auto" },
+            },
+            {
+                kiri: { className: "hidden md:block absolute bottom-[16%] left-[4%] z-0 w-[15.625vw] h-auto" },
+                kanan: { className: "hidden md:block absolute bottom-[16%] right-[4%] z-0 transform scale-x-[-1] w-[15.625vw] h-auto"},
+            }
+        );
     const [showLetters, setShowLetters] = useState(false);
     const [showSubtitle, setShowSubtitle] = useState(false);
 
@@ -16,7 +29,10 @@ const ComingSoonSection: React.FC = () => {
 
         // Hitung total delay animasi h1
         const h1AnimDuration = "Coming Soon".length * 60 + 500; // 60ms per huruf + 500ms animasi terakhir
-        const subtitleTimeout = setTimeout(() => setShowSubtitle(true), h1AnimDuration - 500);
+        const subtitleTimeout = setTimeout(
+            () => setShowSubtitle(true),
+            h1AnimDuration - 500
+        );
 
         return () => {
             clearTimeout(timeout);
@@ -27,7 +43,7 @@ const ComingSoonSection: React.FC = () => {
     const comingSoonText = "Coming Soon".split("");
 
     return (
-        <div className="relative min-h-screen overflow-hidden justify-center items-center flex">
+        <div className="relative min-h-[110vh] overflow-hidden justify-center items-center flex">
             <BatikBackground
                 topSrc="/background/batik-horizontal-event.svg"
                 topClassName="absolute -top-[18vh] left-0 w-full h-[6vh] h-auto z-0 pointer-events-none hidden sm:block"
@@ -61,7 +77,11 @@ const ComingSoonSection: React.FC = () => {
                             <span
                                 key={idx}
                                 className={`bg-[linear-gradient(180deg,_#FFC411_0%,_#CD9C1A_22.12%,_#BD6229_44.71%,_#5D2F24_60.58%,_#5D2F24_80.77%)] bg-clip-text text-transparent inline-block transition-all duration-500 ease-out
-                                    ${showLetters ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-[10vh]"}
+                                    ${
+                                        showLetters
+                                            ? "opacity-100 translate-y-0"
+                                            : "opacity-0 -translate-y-[10vh]"
+                                    }
                                 `}
                                 style={{
                                     transitionDelay: `${idx * 60}ms`,
@@ -75,7 +95,11 @@ const ComingSoonSection: React.FC = () => {
                         className={`
                             text-[#C88B5F] text-[3.5vh] -mt-[7.2vh]
                             transition-all duration-1500 ease-out
-                            ${showSubtitle ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-[6vh]"}
+                            ${
+                                showSubtitle
+                                    ? "opacity-100 translate-y-0"
+                                    : "opacity-0 -translate-y-[6vh]"
+                            }
                         `}
                         style={{
                             transitionDelay: showSubtitle ? "0ms" : "0ms",
