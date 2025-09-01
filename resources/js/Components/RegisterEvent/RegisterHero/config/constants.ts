@@ -1,12 +1,12 @@
-import { ElementConfig } from '../types';
+import { ElementConfig } from "../types";
 
 export const ELEMENT_CONFIGS: Record<string, ElementConfig> = {
-    orangBertapa: { 
-        translateDistance: 120, 
-        duration: "1.8s", 
-        delay: "0s", 
-        floatDuration: "3s", 
-        floatDistance: 8 
+    orangBertapa: {
+        translateDistance: 120,
+        duration: "1.8s",
+        delay: "0s",
+        floatDuration: "3s",
+        floatDistance: 8,
     },
     daun: { 
         translateDistance: 200, 
@@ -23,14 +23,15 @@ export const ELEMENT_CONFIGS: Record<string, ElementConfig> = {
         floatDuration: "6s", 
         floatDistance: 8, 
         rotateAmount: 2 
+
     },
-    
+
     pattern: {
         translateDistance: 20,
         duration: "1.2s",
         delay: "0s",
         floatDuration: "5s",
-        floatDistance: 6
+        floatDistance: 6,
     },
     bunga: {
         translateDistance: 30,
@@ -38,16 +39,15 @@ export const ELEMENT_CONFIGS: Record<string, ElementConfig> = {
         delay: "0.1s",
         floatDuration: "5s",
         floatDistance: 0,
-        rotateAmount: 6
+        rotateAmount: 6,
     },
     batik: {
         translateDistance: 20,
         duration: "1.2s",
         delay: "0s",
         floatDuration: "5s",
-        floatDistance: 6
-    }
-
+        floatDistance: 6,
+    },
 } as const;
 
 export const BATIK_BACKGROUND = {
@@ -88,3 +88,4 @@ export const BUNGA_MOBILE_CONFIGS = [
         kanan: { className: "block md:hidden absolute top-[21vh] right-[10vh] w-[1.75rem] h-auto transform scale-x-[-1]" }
     }
 ];
+

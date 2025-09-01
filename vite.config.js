@@ -42,6 +42,7 @@ export default defineConfig(({ command, mode }) => ({
                     "framer-motion": ["framer-motion"],
                     "react-icons": ["react-icons"],
                 },
+                chunkFileNames: "assets/[name]-[hash].js",
             },
         },
         // Performance optimizations
@@ -49,7 +50,7 @@ export default defineConfig(({ command, mode }) => ({
         target: "es2015",
         sourcemap: mode === "development",
     },
-    publicDir: "public",
+    publicDir: false,
     server: {
         host: "127.0.0.1",
         port: 5173,

@@ -40,6 +40,7 @@ const RegisterButton: React.FC<{ isMobile?: boolean }> = ({
             isMobile
                 ? "w-full px-[2.4vh] py-[1.2vh] rounded-lg mt-4 text-center block"
                 : "hidden lg:block text-[3.6vh] px-[4.8vh] py-[1.2vh] rounded-full"
+
         }`}
         style={{
             background:
@@ -62,7 +63,7 @@ const MobileMenuButton: React.FC<{
         type="button"
     >
         <svg
-            className="h-8 w-8"
+            className="h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

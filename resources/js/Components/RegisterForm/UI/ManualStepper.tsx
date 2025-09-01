@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MdCheckCircle } from 'react-icons/md';
+import { MdCheckCircle } from "react-icons/md";
 
 interface StepperItemProps {
     step: number;
@@ -7,20 +7,26 @@ interface StepperItemProps {
     isActive?: boolean;
 }
 
-const StepperItem = ({ step, isCompleted = false, isActive = false }: StepperItemProps) => {
+const StepperItem = ({
+    step,
+    isCompleted = false,
+    isActive = false,
+}: StepperItemProps) => {
     const getStatusClasses = () => {
         if (isActive) {
-            return 'bg-gradient-to-b from-[#CE9C17] via-[#CD9514] to-[#CC8F12] text-white';
+            return "bg-gradient-to-b from-[#CE9C17] via-[#CD9514] to-[#CC8F12] text-white";
         }
         if (isCompleted) {
-            return 'bg-gradient-to-b from-[#CE9C17] via-[#CD9514] to-[#CC8F12] text-white';
+            return "bg-gradient-to-b from-[#CE9C17] via-[#CD9514] to-[#CC8F12] text-white";
         }
-        return 'bg-[#EFF0F6] text-gray-400';
+        return "bg-[#EFF0F6] text-gray-400";
     };
 
     const renderStepContent = () => {
         if (isCompleted) {
-            return <MdCheckCircle className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />;
+            return (
+                <MdCheckCircle className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
+            );
         }
         if (isActive) {
             return (
@@ -41,13 +47,13 @@ const StepperItem = ({ step, isCompleted = false, isActive = false }: StepperIte
     };
 
     return (
-        <motion.div 
-            className={`${!isActive && !isCompleted && 'opacity-70'}`}
+        <motion.div
+            className={`${!isActive && !isCompleted && "opacity-70"}`}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: step * 0.1 }}
         >
-            <motion.div 
+            <motion.div
                 className={`flex items-center justify-center rounded-full h-5 w-5 sm:h-6 sm:w-6 transition-all duration-300 shadow-sm ${getStatusClasses()}`}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -67,54 +73,85 @@ interface ManualStepperProps {
 const ManualStepper = ({ currentStep }: ManualStepperProps) => {
     const getConnectorColor = (stepIndex: number) => {
         if (currentStep > stepIndex) {
-            return 'bg-gradient-to-r from-[#CE9C17] via-[#CD9514] to-[#CC8F12]';
+            return "bg-gradient-to-r from-[#CE9C17] via-[#CD9514] to-[#CC8F12]";
         }
-        return 'bg-[#EFF0F6]';
+        return "bg-[#EFF0F6]";
     };
+
+    // Step labels for display
+    const stepLabels = ["Data", "Upload", "Konfirmasi"];
 
     return (
         <motion.div
-            className="flex items-center justify-center gap-2 sm:gap-3"
+            className="flex flex-col items-center justify-center"
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
         >
-            {/* Step 1 */}
-            <StepperItem 
-                step={1} 
-                isCompleted={currentStep > 1}
-                isActive={currentStep === 1}
-            />
-            
-            {/* Connector Line 1 - DIPERPANJANG */}
-            <motion.div
-                className={`h-1 flex-1 min-w-12 max-w-16 sm:min-w-16 sm:max-w-20 md:min-w-20 md:max-w-24 transition-all duration-500 rounded-full ${getConnectorColor(1)}`}
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-            />
-            
-            {/* Step 2 */}
-            <StepperItem 
-                step={2} 
-                isCompleted={currentStep > 2}
-                isActive={currentStep === 2}
-            />
-            
-            {/* Connector Line 2 - DIPERPANJANG */}
-            <motion.div
-                className={`h-1 flex-1 min-w-12 max-w-16 sm:min-w-16 sm:max-w-20 md:min-w-20 md:max-w-24 transition-all duration-500 rounded-full ${getConnectorColor(2)}`}
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-            />
-            
-            {/* Step 3 */}
-            <StepperItem 
-                step={3} 
-                isCompleted={currentStep > 3}
-                isActive={currentStep === 3}
-            />
+            {/* Steps and Connectors Row */}
+            <div className="flex items-center justify-center w-full max-w-xs gap-2">
+                {/* Step 1 - Data Diri */}
+                <StepperItem
+                    step={1}
+                    isCompleted={currentStep > 1}
+                    isActive={currentStep === 1}
+                />
+
+                {/* Connector Line 1 */}
+                <motion.div
+                    className={`h-1 w-12 sm:w-14 transition-all duration-500 rounded-full ${getConnectorColor(
+                        1
+                    )}`}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                />
+
+                {/* Step 2 - Upload */}
+                <StepperItem
+                    step={2}
+                    isCompleted={currentStep > 2}
+                    isActive={currentStep === 2}
+                />
+
+                {/* Connector Line 2 */}
+                <motion.div
+                    className={`h-1 w-12 sm:w-14 transition-all duration-500 rounded-full ${getConnectorColor(
+                        2
+                    )}`}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                />
+
+                {/* Step 3 - Konfirmasi */}
+                <StepperItem
+                    step={3}
+                    isCompleted={currentStep > 3}
+                    isActive={currentStep === 3}
+                />
+            </div>
+
+            {/* Labels Row */}
+            <div className="flex items-center justify-center w-full max-w-xs mt-2 gap-1">
+                <div className="flex justify-center" style={{ width: "24px" }}>
+                    <span className="text-xs text-gray-500 text-center">
+                        {stepLabels[0]}
+                    </span>
+                </div>
+                <div className="w-14 sm:w-16"></div>
+                <div className="flex justify-center" style={{ width: "24px" }}>
+                    <span className="text-xs text-gray-500 text-center">
+                        {stepLabels[1]}
+                    </span>
+                </div>
+                <div className="w-14 sm:w-16"></div>
+                <div className="flex justify-center" style={{ width: "24px" }}>
+                    <span className="text-xs text-gray-500 text-center">
+                        {stepLabels[2]}
+                    </span>
+                </div>
+            </div>
         </motion.div>
     );
 };
