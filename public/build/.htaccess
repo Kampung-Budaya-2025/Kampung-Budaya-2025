@@ -1,25 +1,39 @@
-<IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
+# Ensure proper MIME types are set
+<IfModule mod_mime.c>
+    AddType application/javascript .js
+    AddType text/css .css
+    AddType application/json .json
+    AddType font/woff .woff
+    AddType font/woff2 .woff2
+    AddType font/truetype .ttf
+    AddType font/opentype .otf
+</IfModule>
+
+# Force specific MIME type for JS files
+<Files "*.js">
+    ForceType application/javascript
+    <IfModule mod_headers.c>
+        Header set Content-Type "application/javascript; charset=utf-8"
     </IfModule>
+</Files>
 
-    RewriteEngine On
+# Enable file serving and disable any URL rewriting
+Options +FollowSymLinks -Indexes
+RewriteEngine Off
 
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+# Set cache headers for all assets
+<IfModule mod_headers.c>
+    # Cache static assets for 1 year (they have hash in filename)
+    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf|eot|json)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, OPTIONS"
+        Header unset Pragma
+        Header unset X-Powered-By
+    </FilesMatch>
+</IfModule>
 
-    # Handle X-XSRF-Token Header
-    RewriteCond %{HTTP:x-xsrf-token} .
-    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
-
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-
-    # Send Requests To Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+# Ensure files are served directly
+<IfModule mod_dir.c>
+    DirectoryIndex disabled
 </IfModule>

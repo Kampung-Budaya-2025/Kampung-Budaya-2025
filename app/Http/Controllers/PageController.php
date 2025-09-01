@@ -40,10 +40,25 @@ class PageController extends Controller
         ]);
     }
 
-    public function registerForm()
+    public function registerForm(Request $request)
     {
+        // Validasi query parameter eventType
+        $eventType = $request->query('eventType');
+        
+        // Jika tidak ada eventType, redirect ke halaman register-event
+        if (!$eventType) {
+            return redirect()->route('register-event');
+        }
+        
+        // Validasi eventType yang diperbolehkan
+        $allowedEventTypes = ['kolaborasi-musik', 'bazar-kebudayaan', 'fashion-show'];
+        if (!in_array($eventType, $allowedEventTypes)) {
+            return redirect()->route('register-event');
+        }
+        
         return Inertia::render('RegisterForm/Page', [
-            'title' => 'Daftar Event - Kampung Budaya 2025'
+            'title' => 'Daftar Event - Kampung Budaya 2025',
+            'eventType' => $eventType
         ]);
     }
 
