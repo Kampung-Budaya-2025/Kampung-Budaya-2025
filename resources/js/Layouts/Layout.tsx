@@ -12,7 +12,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
     return (
         <div className="h-screen bg-gray-50">
-            <Navbar currentPath={url} />
+            {/* Sembunyikan Navbar jika url adalah /coming-sson */}
+            {url !== "/coming-soon" && <Navbar currentPath={url} />}
             <main className="overflow-hidden">{children}</main>
             <Footer currentPath={url} />
         </div>

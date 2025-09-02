@@ -58,7 +58,7 @@ const FAQSection: React.FC = () => {
             {/* FAQ Container with ScrollBar */}
             <div className="relative">
                 {/* Custom ScrollBar */}
-                <div className="absolute left-0 top-0 max-h-[31rem] z-20 hidden md:block">
+                <div className="absolute left-0 top-0 max-h-[49.6vh] z-20 hidden md:block">
                     <Scrollbar
                         startingValue={0}
                         defaultValue={scrollValue}
