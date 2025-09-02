@@ -41,53 +41,23 @@ const ListLomba: React.FC = () => {
             <SingleDecoration decoration={bungaMahkotaDecoration} />
 
             {/* Grid Container dengan layout responsif */}
-            <div className="relative w-full px-4 pt-6 pb-32 lg:px-24">
-                {/* Desktop: Baris pertama - 3 cards */}
-                <div className="hidden lg:flex justify-between max-w-[1100px] mx-auto mb-16 px-4 gap-8">
-                    <ListCard
-                        key={cardData[0].id}
-                        eventId={cardData[0].id}
-                        title={cardData[0].title}
-                        icon={cardData[0].icon}
-                        description={cardData[0].description}
-                    />
-                    <ListCard
-                        key={cardData[1].id}
-                        eventId={cardData[1].id}
-                        title={cardData[1].title}
-                        icon={cardData[1].icon}
-                        description={cardData[1].description}
-                    />
-                    <ListCard
-                        key={cardData[2].id}
-                        eventId={cardData[2].id}
-                        title={cardData[2].title}
-                        icon={cardData[2].icon}
-                        description={cardData[2].description}
-                    />
+            <div className="relative w-full px-[1.6vh] pt-[2.4vh] pb-[12.8vh] lg:px-[9.6vh]">
+                {/* Desktop & Tablet: 3 kolom grid, 6 card */}
+                <div className="hidden lg:grid grid-cols-3 w-[170vh] justify-items-center mx-auto">
+                    {cardData.slice(0, 6).map((card) => (
+                        <ListCard
+                            key={card.id}
+                            eventId={card.id}
+                            title={card.title}
+                            icon={card.icon}
+                            description={card.description}
+                        />
+                    ))}
                 </div>
 
-                {/* Desktop: Baris kedua - 2 cards */}
-                <div className="hidden lg:flex justify-center gap-12 max-w-[1000px] mx-auto px-4">
-                    <ListCard
-                        key={cardData[3].id}
-                        eventId={cardData[3].id}
-                        title={cardData[3].title}
-                        icon={cardData[3].icon}
-                        description={cardData[3].description}
-                    />
-                    <ListCard
-                        key={cardData[4].id}
-                        eventId={cardData[4].id}
-                        title={cardData[4].title}
-                        icon={cardData[4].icon}
-                        description={cardData[4].description}
-                    />
-                </div>
-
-                {/* Mobile & Tablet: Semua cards dalam 1 kolom */}
-                <div className="lg:hidden flex flex-col items-center gap-8 w-full mx-auto">
-                    {cardData.map((card) => (
+                {/* Mobile: Semua cards dalam 1 kolom */}
+                <div className="lg:hidden flex flex-col items-center gap-[3.2vh] w-full mx-auto">
+                    {cardData.slice(0, 6).map((card) => (
                         <ListCard
                             key={card.id}
                             eventId={card.id}

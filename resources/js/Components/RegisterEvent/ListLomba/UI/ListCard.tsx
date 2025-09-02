@@ -26,7 +26,7 @@ const ListCard: React.FC<ListCardProps> = ({
 
     return (
         <div
-            className={`group perspective-1000 w-[320px] h-[470px] ${className}`}
+            className={`group perspective-1000 w-[46vh] h-[74vh] ${className}`}
         >
             <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
                 {/* Front Side - Tampilan Original */}
@@ -40,23 +40,23 @@ const ListCard: React.FC<ListCardProps> = ({
                     }}
                 >
                     {/* Icon */}
-                    <div className="flex items-center justify-center mb-4 z-10">
+                    <div className="flex items-center justify-center mb-[1.6vh] z-10">
                         <img
                             src={icon}
                             alt={title}
-                            className="w-35 h-35 object-contain"
+                            className="w-[24vh] h-[24vh] object-contain"
                         />
                     </div>
 
                     {/* Title */}
-                    <h1 className="text-center text-[#3F170D] text-2xl px-4 leading-tight z-10 max-w-full">
+                    <h1 className="text-center text-[#3F170D] text-[3.5vh] px-[3vh] leading-tight z-10 max-w-full">
                         {title}
                     </h1>
                 </div>
 
                 {/* Back Side - Tampilan Baru */}
                 <div
-                    className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 flex flex-col overflow-hidden p-6"
+                    className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 flex flex-col overflow-hidden px-[4vh] pt-[13vh] pb-[10vh]"
                     style={{
                         backgroundImage: `url(${cardBackgroundSvg})`,
                         backgroundSize: "contain",
@@ -65,24 +65,26 @@ const ListCard: React.FC<ListCardProps> = ({
                     }}
                 >
                     {/* Title - Fixed position */}
-                    <div className="flex-shrink-0 pt-20">
-                        <h2 className="text-center text-[#3F170D] text-2xl mb-2 z-10 tracking-[-0.7px]">
+                    <div className="flex-shrink-0 pt-12 flex flex-row justify-center items-center gap-3">
+                        <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[3.2vh]" />
+                        <h2 className="text-center text-[#3F170D] text-[2.8vh] leading-[1.25] mb-[0.8vh] z-10 tracking-[-0.07vh]">
                             {title}
                         </h2>
+                        <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[3.2vh] scale-x-[-1]" />
                     </div>
 
                     {/* Description - Flexible area */}
-                    <div className="flex-1 flex items-start justify-center px-2">
-                        <p className="text-justify text-[#7A4D17] text-sm z-10 leading-[1.2] tracking-[-0.4px] whitespace-pre-line">
+                    <div className="flex-1 flex items-start justify-center -mt-[0.8vh]">
+                        <p className="text-justify text-[#7A4D17] text-[1.6vh] z-10 leading-[1.2] tracking-[-0.2px] whitespace-pre-line">
                             {description}
                         </p>
                     </div>
 
                     {/* Daftar Button - Fixed position */}
-                    <div className="flex-shrink-0 pb-24 items-center justify-center flex">
+                    <div className="flex-shrink-0 pb-[9.6vh] items-center justify-center flex">
                         <button
                             onClick={handleDaftarClick}
-                            className="bg-[linear-gradient(180deg,#CE9C17_0%,#CD9514_52.04%,#CC8F12_100%)] hover:bg-[linear-gradient(180deg,#D4A51A_0%,#D39E17_52.04%,#D19515_100%)] text-white py-2 px-8 rounded-[40px] transition-colors duration-300 z-10 shadow-lg"
+                            className="bg-[linear-gradient(180deg,#CE9C17_0%,#CD9514_52.04%,#CC8F12_100%)] hover:bg-[linear-gradient(180deg,#D4A51A_0%,#D39E17_52.04%,#D19515_100%)] text-white py-[0.8vh] px-[3.2vh] rounded-[40px] transition-colors duration-300 z-10 shadow-lg"
                         >
                             Daftar
                         </button>
