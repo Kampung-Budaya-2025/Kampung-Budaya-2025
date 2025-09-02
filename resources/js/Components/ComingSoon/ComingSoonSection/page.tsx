@@ -65,7 +65,7 @@ const ComingSoonSection: React.FC = () => {
     const comingSoonText = "Coming Soon".split("");
 
     return (
-        <div className="relative min-h-[130vh] overflow-hidden justify-center items-center flex">
+        <div className="relative min-h-[130vh] lg:min-h-[110vh] overflow-hidden justify-center items-center flex">
             <BatikBackground
                 topSrc="/background/batik-horizontal-event.svg"
                 topClassName="absolute -top-[18vh] left-0 w-full h-[6vh] h-auto z-0 pointer-events-none hidden sm:block"
