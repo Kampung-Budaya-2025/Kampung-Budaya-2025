@@ -111,7 +111,7 @@ const BrandTitle: React.FC = () => {
         <Link
             href="/"
             onClick={handleClick}
-            className="block focus:outline-none rounded"
+            className="block rounded focus:outline-none"
         >
             <h1
                 className="max-w-[18.5rem] lg:max-w-full text-[3.25rem] lg:text-[4rem] text-center leading-[1] lg:text-start font-samsktrigrama transition-opacity duration-200"
@@ -195,22 +195,22 @@ const Copyright: React.FC = () => {
 };
 
 const BatikBackground: React.FC = () => (
-    <div className="hidden lg:block absolute lg:bottom-0 left-0 w-full z-0" aria-hidden="true">
+    <div className="absolute left-0 z-0 hidden w-full lg:block lg:bottom-0" aria-hidden="true">
         <img
             src="/background/batik-footer.svg"
             alt=""
-            className="w-full h-auto object-cover pointer-events-none"
+            className="object-cover w-full h-auto pointer-events-none"
             loading="lazy"
         />
     </div>
 );
 
 const BatikBackgroundMobile: React.FC = () => (
-    <div className="block lg:hidden absolute bottom-0 left-0 w-full z-0" aria-hidden="true">
+    <div className="absolute bottom-0 left-0 z-0 block w-full lg:hidden" aria-hidden="true">
         <img
             src="/background/batik-footer-mobile.svg"
             alt=""
-            className="w-full h-auto object-cover pointer-events-none"
+            className="object-cover w-full h-auto pointer-events-none"
             loading="lazy"
         />
     </div>
@@ -223,9 +223,9 @@ const Footer: React.FC<{ currentPath?: string }> = ({ currentPath = "/" }) => {
             <BatikBackground />
             <BatikBackgroundMobile />
 
-            <div className="relative z-10 py-20 lg:py-24 px-12 sm:px-20 lg:px-28">
-                <div className="mx-auto max-w-full">
-                    <div className="flex flex-col lg:flex-row lg:justify-between items-center lg:items-center space-y-12 lg:space-y-0">
+            <div className="relative z-10 px-12 py-20 lg:py-24 sm:px-20 lg:px-28">
+                <div className="max-w-full mx-auto">
+                    <div className="flex flex-col items-center space-y-12 lg:flex-row lg:justify-between lg:items-center lg:space-y-0">
                         {/* Brand Section */}
                         <div className="lg:w-1/3">
                             <BrandTitle />
