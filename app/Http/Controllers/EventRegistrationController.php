@@ -43,7 +43,7 @@ class EventRegistrationController extends Controller
                 ],
                 'instagram_username' => 'nullable|string|max:255',
                 'id_line' => 'nullable|string|max:255',
-                'registration_form' => 'nullable|file|mimes:pdf|max:2048', 
+                'registration_form' => 'nullable|file|mimes:pdf,docx|max:2048', 
                 'payment_proof' => 'nullable|file|mimes:jpeg,png,jpg|max:2048', 
             ], [
                 'email.unique' => 'Email sudah terdaftar untuk event type ini. Anda dapat mendaftar dengan email yang sama untuk event type yang berbeda.'
@@ -111,7 +111,7 @@ class EventRegistrationController extends Controller
     public function updateAttachments(Request $request, EventRegistration $registration)
     {
         $request->validate([
-            'registration_form' => 'nullable|file|mimes:pdf|max:2048',
+            'registration_form' => 'nullable|file|mimes:pdf,docx|max:2048',
             'payment_proof' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
         ]);
 

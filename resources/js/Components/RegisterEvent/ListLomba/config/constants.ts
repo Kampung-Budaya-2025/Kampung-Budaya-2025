@@ -1,16 +1,17 @@
 import { ButtonData, CardData } from "../types";
 import { DecorationGroup, DecorationItem } from "../types";
+import { downloadDocument } from "@/Utils/documentUtils";
 
 const buttonData: ButtonData[] = [
     {
         id: "booklet",
         text: "Booklet",
-        onClick: () => console.log("Booklet clicked"),
+        onClick: downloadDocument.booklet.download,
     },
     {
         id: "formulir",
         text: "Formulir",
-        onClick: () => console.log("Formulir clicked"),
+        onClick: downloadDocument.form.download,
     },
 ] as const;
 
@@ -82,7 +83,7 @@ const bungaDecorations: DecorationGroup = {
 const batikDecorations: DecorationGroup = {
     id: "batik-group",
     containerClassName:
-        "hidden absolute bottom-50 left-0 w-full flex justify-between pb-4 pointer-events-none overflow-visible z-0",
+        "absolute bottom-50 left-0 w-full flex justify-between pb-4 pointer-events-none overflow-visible z-0",
     items: [
         {
             id: "batik-kiri",

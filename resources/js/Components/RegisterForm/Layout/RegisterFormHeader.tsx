@@ -16,8 +16,12 @@ const RegisterFormHeader = ({
                 return "Pendaftaran Lomba Kolaborasi Musik";
             case "bazar-kebudayaan":
                 return "Pendaftaran Bazar Kebudayaan";
-            case "fashion-show":
-                return "Pendaftaran Fashion Show";
+            case "busana-adat":
+                return "Pendaftaran Lomba Busana Adat";
+            case "tari-tradisional":
+                return "Pendaftaran Lomba Tari Tradisional";
+            case "cerita-nusantara":
+                return "Pendaftaran Lomba Cerita Nusantara";
             default:
                 return "Pendaftaran Event";
         }
@@ -39,7 +43,7 @@ const RegisterFormHeader = ({
                             src="/decoration/bunga-mobile-small.svg"
                             alt="Bunga Kecil Kiri"
                             className="w-10 h-8 -mt-8 ml-22 animate-spin"
-                            style={{ animationDuration: '2s' }}
+                            style={{ animationDuration: "2s" }}
                         />
                     </div>
 
@@ -49,7 +53,10 @@ const RegisterFormHeader = ({
                             src="/decoration/bunga-mobile-up.svg"
                             alt="Mobile Up Kiri"
                             className="w-24 h-20 animate-spin"
-                            style={{ animationDuration: '4s', animationDirection: 'reverse' }}
+                            style={{
+                                animationDuration: "4s",
+                                animationDirection: "reverse",
+                            }}
                         />
                     </div>
 
@@ -69,7 +76,7 @@ const RegisterFormHeader = ({
                             src="/decoration/bunga-mobile-up.svg"
                             alt="Mobile Up Kanan"
                             className="w-24 h-20 animate-spin"
-                            style={{ animationDuration: '4s' }}
+                            style={{ animationDuration: "4s" }}
                         />
                     </div>
 
@@ -84,7 +91,10 @@ const RegisterFormHeader = ({
                             src="/decoration/bunga-mobile-small.svg"
                             alt="Bunga Kecil Kanan"
                             className="w-10 h-8 -mt-8 mr-22 animate-spin"
-                            style={{ animationDuration: '2s', animationDirection: 'reverse' }}
+                            style={{
+                                animationDuration: "2s",
+                                animationDirection: "reverse",
+                            }}
                         />
                     </div>
                 </div>
