@@ -33,7 +33,7 @@ const FlowerPair: React.FC<{
                 <img
                     src="/icon/bunga.svg"
                     alt={`Bunga ${level} Kiri`}
-                    width={flowers.kiri.size}
+                    style={{ width: flowers.kiri.size }}
                     className={`flex-shrink-0 ${flowers.kiri.animationClass}`}
                 />
             </div>
@@ -62,7 +62,7 @@ const FlowerPair: React.FC<{
                 <img
                     src="/icon/bunga.svg"
                     alt={`Bunga ${level} Kanan`}
-                    width={flowers.kanan.size}
+                    style={{ width: flowers.kanan.size }}
                     className={`flex-shrink-0 ${flowers.kanan.animationClass}`}
                 />
             </div>

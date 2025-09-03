@@ -203,7 +203,7 @@ const RegisterForm = () => {
                 eventType={formData.eventType}
             />
 
-            <div className="relative z-10 max-w-4xl mx-auto">
+            <div className="relative z-10 max-w-4xl pb-32 mx-auto">
                 <RegisterFormMascots
                     speechContent={speechContent}
                     currentStep={currentStep}
@@ -224,6 +224,36 @@ const RegisterForm = () => {
                     handleNext={handleNext}
                     handlePrev={handlePrev}
                 />
+
+                {/* Mobile batik di tengah antara selanjutnya dan decoration, di belakang */}
+                <div className="absolute left-0 z-10 flex justify-center w-full pointer-events-none -bottom-10 sm:hidden">
+                    <img
+                        src="/decoration/mobile-batik.svg"
+                        alt="Mobile Batik Background"
+                        className="w-full h-auto opacity-90"
+                        style={{
+                            maxWidth: "100vw",
+                            minWidth: "100vw",
+                            objectFit: "cover",
+                            marginBottom: 0,
+                        }}
+                    />
+                </div>
+
+                {/* Mobile only bottom decoration, nyelip ke footer Kampung Budaya */}
+                <div className="absolute left-0 z-30 flex justify-center w-full mb-8 pointer-events-none -bottom-20 sm:hidden">
+                    <img
+                        src="/decoration/mobile-decoration-down.svg"
+                        alt="Dekorasi Bawah Mobile"
+                        className="w-full h-auto"
+                        style={{
+                            maxWidth: "100vw",
+                            minWidth: "100vw",
+                            objectFit: "cover",
+                            marginBottom: 0,
+                        }}
+                    />
+                </div>
             </div>
         </RegisterFormBackground>
     );
