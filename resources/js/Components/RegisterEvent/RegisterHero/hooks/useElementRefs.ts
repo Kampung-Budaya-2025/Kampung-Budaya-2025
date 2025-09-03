@@ -168,7 +168,7 @@ const useElementRefs = (
             isInView: isBatikInView,
             src: "/icon/batik.svg",
             alt: "Batik Kiri",
-            className: "absolute -bottom-28 left-0 w-[305px] h-auto",
+            className: "absolute -bottom-28 left-0 w-[25vw] h-auto",
             translateDistance: ELEMENT_CONFIGS.batik.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.batik.duration,
             transitionDelay: ELEMENT_CONFIGS.batik.delay,
@@ -181,7 +181,7 @@ const useElementRefs = (
             isInView: isBatikInView,
             src: "/icon/batik.svg",
             alt: "Batik Kanan",
-            className: "absolute -bottom-28 right-0 w-[305px] h-auto scale-x-[-1]",
+            className: "absolute -bottom-28 right-0 w-[25vw] h-auto scale-x-[-1]",
             translateDistance: ELEMENT_CONFIGS.batik.translateDistance,
             transitionDuration: ELEMENT_CONFIGS.batik.duration,
             transitionDelay: ELEMENT_CONFIGS.batik.delay,
@@ -203,7 +203,6 @@ const useElementRefs = (
         transitionDelay: ELEMENT_CONFIGS.bunga.delay,
         floatDuration: ELEMENT_CONFIGS.bunga.floatDuration,
         floatDistance: ELEMENT_CONFIGS.bunga.floatDistance,
-        rotateAmount: ELEMENT_CONFIGS.bunga.rotateAmount,
     },
     kanan: {
         ref: bungaMobileRefs[idx],
@@ -216,7 +215,6 @@ const useElementRefs = (
         transitionDelay: ELEMENT_CONFIGS.bunga.delay,
         floatDuration: ELEMENT_CONFIGS.bunga.floatDuration,
         floatDistance: ELEMENT_CONFIGS.bunga.floatDistance,
-        rotateAmount: ELEMENT_CONFIGS.bunga.rotateAmount,
     }
 }));
 

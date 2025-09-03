@@ -21,33 +21,40 @@ const cardData: CardData[] = [
         title: "Kolaborasi Musik",
         icon: "/icon/kolaborasi-musik.svg",
         description:
-            "Lomba yang mempresentasikan dan menampilkan busana tradisional khas daerahnya. Dikemas dengan konsep fashion show, dengan target peserta forum daerah (FORDA) dan mahasiswa internasional.\nKegiatan akan dilaksanakan secara offline pada:\nTanggal: 1 - 2 Oktober\nKategori Lomba : Forum Daerah",
+            "Kolaborasi Musik Nusantara adalah kompetisi menyanyikan lagu daerah yang menggabungkan unsur alat musik tradisional dan musik modern. Kegiatan ini bertujuan untuk melestarikan kekayaaan budaya musik Indonesia melalui pendekatan kreatif dan inovatif, dengan harapan dapat membangkitkan kecintaan generasi muda terhadap musik tradisional dalam balutan nuansa kekinian",
     },
     {
         id: "bazar-kebudayaan",
         title: "Bazar Kebudayaan",
         icon: "/icon/bazar-kebudayaan.svg",
         description:
-            "Pameran dan penjualan produk kebudayaan lokal dari berbagai daerah di Indonesia.",
+            "Kegiatan ini berupa perlombaan yang memberikan kebabsan kepada Forum Daerah (FORDA) untuk merancang stand mereka secara kreatif. FORDA juga berkesempatan untuk menjual makanan dan aksesoris khas dari daerah masing-masing. Selain itu, tersedia stand khusus bagi mahasiswa internasional untuk memperkenalkan budaya asal mereka. Tak hanya itu, stand UMKM juga akan disediakan dan dapat disewa oleh masyarakat umum, serta untuk meningkatkan minat wirausaha pada mahasiswa wirausaha juga dapat menyewa stand ini.",
     },
     {
-        id: "busana-adat",
-        title: "Busana Adat",
+        id: "gemilang-busana-adat",
+        title: "Gemilang Busana Adat",
         icon: "/icon/busana-adat.svg",
         description:
-            "Lomba menampilkan keindahan dan keunikan busana adat dari seluruh Indonesia.",
+            "Kegiatan lomba yang menampilkan kreativitas mahasiswa dalam memperagakan busana adat khas daerahnya masing-masing, dikemas dengan konsep fashion show. Kegiatan ini ditujukan bagi Forum Daerah (FORDA) dan Universitas Brawijaya sebagai bentuk apresiasi terhadap kekayaan budaya nusantara.",
     },
     {
-        id: "tari-tradisional",
-        title: "Tari Tradisional",
+        id: "gelanggang-tari-nusantara",
+        title: "Gelanggang Tari Nusantara",
         icon: "/icon/tari-tradisional.svg",
         description:
-            "Kompetisi tari tradisional yang mempertahankan keaslian dan nilai budaya Indonesia.",
+            "Gelanggang tari nusantara adalah ajang perlombaan tari tradisional yang menampilkan keragaman budaya dari berbagai daerah di Indonesia. Kegiatan ini menjadi wadah ekspresi seni, pelestarian budaya. Kegiatan ini ditujukan bagi forum daerah (FORDA) Universitas Brawijaya sebagai bentuk apresiasi terhadap kekayaan tari nusantara.",
     },
     {
-        id: "cerita-nusantara",
-        title: "Cerita Nusantara",
+        id: "panggung-budaya-nusantara",
+        title: "Panggung Budaya Nusantara",
         icon: "/icon/cerita-nusantara.svg",
+        description:
+            "Lomba bercerita dengan tema legenda dan cerita rakyat dari berbagai daerah di Nusantara.",
+    },
+    {
+        id: "karya-citra-inklusif",
+        title: "Karya Citra Inklusif",
+        icon: "/icon/lomba-bercerita.svg",
         description:
             "Lomba bercerita dengan tema legenda dan cerita rakyat dari berbagai daerah di Nusantara.",
     },
@@ -82,13 +89,13 @@ const batikDecorations: DecorationGroup = {
             id: "batik-kiri",
             src: "/icon/batik.svg",
             alt: "Batik Kiri",
-            className: "absolute left-0 w-[305px] h-auto",
+            className: "absolute left-0 w-[30.5vh] h-auto",
         },
         {
             id: "batik-kanan",
             src: "/icon/batik.svg",
             alt: "Batik Kanan",
-            className: "absolute right-0 w-[305px] h-auto scale-x-[-1]",
+            className: "absolute right-0 w-[30.5vh] h-auto scale-x-[-1]",
         },
     ],
 } as const;
@@ -98,7 +105,7 @@ const bungaMahkotaDecoration: DecorationItem = {
     src: "/icon/bunga-mahkota.svg",
     alt: "Bunga Mahkota",
     className:
-        "absolute w-[610px] -bottom-2 left-1/2 transform -translate-x-1/2 translate-y-1/4 z-0",
+        "absolute w-[80vw] lg:w-[50vw] -bottom-2 left-1/2 transform -translate-x-1/2 translate-y-1/4 z-0",
 } as const;
 
 export {
