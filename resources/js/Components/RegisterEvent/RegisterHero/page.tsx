@@ -9,6 +9,8 @@ import {
     CSS_CLASSES,
 } from "./config/constants";
 import { useElementRefs } from "./hooks/useElementRefs";
+import { AnimatedFlower } from "../ListLomba/UI/AnimatedFlower";
+import { AnimatedElement } from "../ListLomba/UI/AnimateElement";
 
 const RegisterHero: React.FC = () => {
     const {
@@ -128,15 +130,75 @@ const RegisterHero: React.FC = () => {
             <ElementPairComponent pair={ORANG_BERTAPA_PAIR} />
             <ElementPairComponent pair={DAUN_PAIR} />
             <ElementPairComponent pair={WAYANG_PAIR} />
-            {Array.isArray(BUNGA_MOBILE_PAIRS) ? (
-                BUNGA_MOBILE_PAIRS.map((pair, idx) => (
-                    <ElementPairComponent key={idx} pair={pair} />
-                ))
-            ) : (
-                <ElementPairComponent pair={BUNGA_MOBILE_PAIRS} />
-            )}
-            {renderPatternImage()}
 
+            {/* Bunga Mobile 1 */}
+            <AnimatedFlower
+                // Mengubah kelas container, misalnya margin dan opacity
+                containerClassName="block lg:hidden w-[190vw] absolute  top-0 flex justify-around pointer-events-none my-16"
+                leftFlowerClassName="w-[136px] h-[136px] animate-spin-clockwise"
+                rightFlowerClassName="w-[136px] h-[136px] animate-spin-counter"
+                leftFlowerTransition="all 2s ease-in-out 0.1s"
+                rightFlowerTransition="all 2s ease-in-out 0.1s"
+            />
+            <AnimatedFlower
+                // Mengubah kelas container, misalnya margin dan opacity
+                containerClassName="block lg:hidden w-[90vw] absolute  top-0 flex justify-around pointer-events-none my-16"
+                leftFlowerClassName="w-[87px] h-[87px] animate-spin-clockwise"
+                rightFlowerClassName="w-[87px] h-[87px] animate-spin-counter"
+                leftFlowerTransition="all 2.5s ease-in-out 0.1s"
+                rightFlowerTransition="all 2.5s ease-in-out 0.1s"
+            />
+            <AnimatedFlower
+                // Mengubah kelas container, misalnya margin dan opacity
+                containerClassName="block lg:hidden w-[110vw] absolute top-24 flex justify-around pointer-events-none my-16"
+                leftFlowerClassName="w-[28px] h-[28px] animate-spin-clockwise"
+                rightFlowerClassName="w-[28px] h-[28px] animate-spin-counter"
+                leftFlowerTransition="all 3s ease-in-out 0.1s"
+                rightFlowerTransition="all 3s ease-in-out 0.1s"
+            />
+
+            <div className="lg:hidden absolute w-full h-auto -bottom-16 left-1/2 flex justify-center items-center transform -translate-x-1/2 z-20"
+            >
+                <div className="absolute -bottom-[40px] left-0 w-full">
+                    <img
+                        src="background/batik-horizontal-commingsoon-mobile-2.svg"
+                        alt="Batik"
+                        className="w-full h-auto scale-x-[-1]"
+                    />
+                </div>
+
+                {/* Bunga Mahkota */}
+                <AnimatedElement src="/icon/bunga-mahkota.svg" alt="Bunga Mahkota"
+                    containerClassName="block lg:hidden absolute w-full h-auto bottom-12 left-1/2 flex justify-center items-center transform -translate-x-1/2 rotate-180 z-20"
+                    elementClassName="h-[64px] w-auto"
+                    yOffset={-20}
+                />
+
+                {/* Wayang */}
+                <AnimatedElement src="/background/wayang.svg" alt="Wayang"
+                    containerClassName="hidden lg:hidden absolute w-full h-auto bottom-12 left-1/2 flex justify-center items-center transform -translate-x-1/2 rotate-[152deg] z-30 "
+                    elementClassName="h-[252px] w-auto"
+                    yOffset={20}
+                />
+
+                <AnimatedFlower
+                    containerClassName="block lg:hidden absolute w-[130vw] h-auto bottom-18 left-1/2 flex justify-center items-center transform -translate-x-1/2 gap-4 z-0"
+                    leftFlowerSrc="/icon/api.svg"
+                    rightFlowerSrc="/icon/api.svg"
+                    leftFlowerClassName="h-[171px] w-auto"
+                    rightFlowerClassName="h-[171px] w-auto transform scale-x-[-1]"
+                />
+
+                <AnimatedFlower
+                    containerClassName="block lg:hidden absolute w-[110vw] h-auto bottom-6 left-1/2 flex justify-center items-center transform -translate-x-1/2 gap-32 z-10"
+                    leftFlowerSrc="/background/daun.svg"
+                    rightFlowerSrc="/background/daun.svg"
+                    leftFlowerClassName="h-[180px] w-auto scale-x-[-1]"
+                    rightFlowerClassName="h-[180px] w-auto transform"
+                />
+            </div>
+
+            {renderPatternImage()}
             <div className={CSS_CLASSES.mainContent}>
                 <div className={CSS_CLASSES.titleContainer}>
                     {renderGradientBackground()}
