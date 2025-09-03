@@ -3,13 +3,14 @@ import DecorationSection from "@/Components/FAQ/UI/Decoration";
 import FAQSection from "@/Components/FAQ/UI/FAQSection";
 import React from "react";
 import "../../../css/app.css";
-import FlowerDecorations from "@/Components/FAQ/UI/FlowerDecoration";
+import FlowerDecorations from "@/Components/Common/FlowerDecoration";
 
 const FAQPages: React.FC = () => {
     return (
         <div className="relative min-h-screen overflow-hidden">
             <BatikBackground />
-            <FlowerDecorations />
+            {/* <FlowerDecorations /> */}
+            <FlowerDecorations showPairs={["besar", "sedang", "kecil1", "kecil2"]} />
 
             {/* Content Container */}
             <div className="relative min-h-screen z-10 flex flex-col mx-[2.4vh] lg:mx-[4.8vh] space-y-[6.4vh] pt-[22.4vh] md:pt-[22.4vh] pb-[12vh] lg:pb-[15.2vh]">

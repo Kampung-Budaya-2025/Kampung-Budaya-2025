@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BatikBackground from "../../FAQ/UI/BatikBackground";
-import FlowerDecorations from "@/Components/FAQ/UI/FlowerDecoration";
+import FlowerDecorations from "@/Components/Common/FlowerDecoration";
 import { useElementRefs } from "@/Components/RegisterEvent/RegisterHero/hooks/useElementRefs";
 import ElementPairComponent from "@/Components/RegisterEvent/RegisterHero/UI/ElementPairComponent";
 import { SingleDecoration } from "@/Components/RegisterEvent/ListLomba/UI/SingleDecoration";
@@ -65,17 +65,31 @@ const ComingSoonSection: React.FC = () => {
     const comingSoonText = "Coming Soon".split("");
 
     return (
-        <div className="relative min-h-[130vh] lg:min-h-[110vh] overflow-hidden justify-center items-center flex">
+        <div className="relative min-h-[130vh] lg:min-h-[110vh] overflow-visible justify-center items-center flex">
             <BatikBackground
                 topSrc="/background/batik-horizontal-event.svg"
                 topClassName="absolute -top-[18vh] left-0 w-full h-[6vh] h-auto z-0 pointer-events-none hidden sm:block"
             />
             <FlowerDecorations
-                besarClass="hidden md:block absolute -top-[16vh] left-1/2 -translate-x-1/2 w-[111vw] h-auto z-0"
-                sedangClass="hidden md:block absolute -top-[12vh] left-1/2 -translate-x-1/2 w-[76vw] h-auto z-0"
-                kecil1Class="hidden md:block absolute top-[2vh] left-1/2 -translate-x-1/2 w-[50vw] h-[auto] z-0"
-                kecil2Class="hidden md:block absolute top-[16vh] left-1/2 -translate-x-1/2 w-[72vw] h-[auto] z-0"
+                showPairs={["besar", "sedang", "kecil1", "kecil2"]}
+                besarClass="hidden md:block absolute -top-[16vh] left-1/2 -translate-x-1/2 w-[111vw] h-auto z-10"
+                sedangClass="hidden md:block absolute -top-[12vh] left-1/2 -translate-x-1/2 w-[76vw] h-auto z-10"
+                kecil1Class="hidden md:block absolute top-[2vh] left-1/2 -translate-x-1/2 w-[50vw] h-[auto] z-10"
+                kecil2Class="hidden md:block absolute top-[16vh] left-1/2 -translate-x-1/2 w-[72vw] h-[auto] z-10"
             />
+            <FlowerDecorations
+                showPairs={["besar", "sedang", "kecil1"]}
+                besarClass="block md:hidden absolute top-0 left-1/2 -translate-x-1/2 w-[100vw] h-auto z-30"
+                sedangClass="block md:hidden absolute top-[5vh] left-1/2 -translate-x-1/2 w-[20vh] h-auto z-10"
+                kecil1Class="block md:hidden absolute top-[15vh] left-1/2 -translate-x-1/2 w-[30vw] h-[auto] z-10"
+                customSizes={{
+                    besar: "150px",      // Custom size untuk besar
+                    sedang: "87px",     // Custom size untuk sedang
+                    kecil1: "29px",     // Custom size untuk kecil1
+                }}
+            />
+            
+            
             <ElementPairComponent pair={ORANG_BERTAPA_PAIR} />
             <ElementPairComponent pair={DAUN_PAIR} />
             <ElementPairComponent pair={WAYANG_PAIR} />

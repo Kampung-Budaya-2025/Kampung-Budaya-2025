@@ -230,7 +230,7 @@ const Footer: React.FC<{ currentPath?: string }> = ({ currentPath = "/" }) => {
                         <div className="lg:w-1/3">
                             <BrandTitle />
                         </div>
-
+            
                         {/* Navigation and Social Section */}
                         <div className="flex flex-col sm:flex-col lg:flex-row items-center lg:items-center sm:justify-between lg:justify-between space-y-[4vh] w-full lg:w-2/3 gap-[3.2vh] sm:gap-[6.4vh]">
                             <NavigationMenu currentPath={currentPath} />
