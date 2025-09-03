@@ -3,6 +3,28 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventRegistrationController;
 use App\Http\Controllers\PageController;
+use Illuminate\Support\Facades\Config;
+
+Route::prefix('maintenance')->group(function () {
+    Route::post('/enable', function () {
+        Config::set('app.maintenance_mode', true);
+        cache()->put('maintenance_mode', true, now()->addDays(30));
+        
+        return response()->json(['message' => 'Maintenance mode enabled']);
+    })->name('maintenance.enable');
+    
+    Route::post('/disable', function () {
+        Config::set('app.maintenance_mode', false);
+        cache()->forget('maintenance_mode');
+        
+        return response()->json(['message' => 'Maintenance mode disabled']);
+    })->name('maintenance.disable');
+    
+    Route::get('/status', function () {
+        $isEnabled = config('app.maintenance_mode', false) || cache()->get('maintenance_mode', false);
+        return response()->json(['maintenance_mode' => $isEnabled]);
+    })->name('maintenance.status');
+});
 
 Route::prefix('api')->group(function () {
     Route::post('/event-registrations', [EventRegistrationController::class, 'store']);
