@@ -16,12 +16,14 @@ const RegisterFormHeader = ({
                 return "Pendaftaran Lomba Kolaborasi Musik";
             case "bazar-kebudayaan":
                 return "Pendaftaran Bazar Kebudayaan";
-            case "busana-adat":
-                return "Pendaftaran Lomba Busana Adat";
-            case "tari-tradisional":
-                return "Pendaftaran Lomba Tari Tradisional";
-            case "cerita-nusantara":
-                return "Pendaftaran Lomba Cerita Nusantara";
+            case "gemilang-busana-adat":
+                return "Pendaftaran Lomba Gemilang Busana Adat";
+            case "gelanggang-tari-nusantara":
+                return "Pendaftaran Lomba Gelanggang Tari Nusantara";
+            case "panggung-budaya-nusantara":
+                return "Pendaftaran Lomba Panggung Budaya Nusantara";
+            case "karya-citra-inklusif":
+                return "Pendaftaran Lomba Karya Citra Inklusif";
             default:
                 return "Pendaftaran Event";
         }
