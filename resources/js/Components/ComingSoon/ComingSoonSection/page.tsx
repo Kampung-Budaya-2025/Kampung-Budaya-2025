@@ -80,19 +80,22 @@ const ComingSoonSection: React.FC = () => {
             <FlowerDecorations
                 showPairs={["besar", "sedang", "kecil1"]}
                 besarClass="block md:hidden absolute top-0 left-1/2 -translate-x-1/2 w-[100vw] h-auto z-30"
-                sedangClass="block md:hidden absolute top-[5vh] left-1/2 -translate-x-1/2 w-[20vh] h-auto z-10"
-                kecil1Class="block md:hidden absolute top-[15vh] left-1/2 -translate-x-1/2 w-[30vw] h-[auto] z-10"
+                sedangClass="block md:hidden absolute top-0 left-1/2 -translate-x-1/2 w-[20vh] h-auto z-10"
+                kecil1Class="block md:hidden absolute top-[10vh] left-1/2 -translate-x-1/2 w-[20vw] h-[auto] z-10"
                 customSizes={{
-                    besar: "150px",      // Custom size untuk besar
-                    sedang: "87px",     // Custom size untuk sedang
-                    kecil1: "29px",     // Custom size untuk kecil1
+                    besar: "150px", // Custom size untuk besar
+                    sedang: "87px", // Custom size untuk sedang
+                    kecil1: "29px", // Custom size untuk kecil1
                 }}
             />
-            
-            
+
             <ElementPairComponent pair={ORANG_BERTAPA_PAIR} />
             <ElementPairComponent pair={DAUN_PAIR} />
             <ElementPairComponent pair={WAYANG_PAIR} />
+
+            <div className="block lg:hidden">
+                <SingleDecoration decoration={bungaMahkotaDecoration} />
+            </div>
 
             {/* Gradasi Atas */}
             <div
@@ -122,12 +125,13 @@ const ComingSoonSection: React.FC = () => {
                 </div>
             </div>
 
-             {/* Gradasi Bawah */}
+            {/* Gradasi Bawah */}
             <div
                 className="block md:hidden absolute bottom-0 left-0 w-full h-auto"
                 aria-hidden="true"
                 style={{
-                    backgroundImage: "url('/background/gradasi-commingsoon-bottom.svg')",
+                    backgroundImage:
+                        "url('/background/gradasi-commingsoon-bottom.svg')",
                     backgroundSize: "cover",
                     backgroundPosition: "bottom center",
                     backgroundRepeat: "no-repeat",
@@ -148,7 +152,6 @@ const ComingSoonSection: React.FC = () => {
                         className="w-full h-auto scale-x-[-1]"
                     />
                 </div>
-                
             </div>
 
             <div className="relative flex items-center flex-col z-10">
@@ -184,7 +187,7 @@ const ComingSoonSection: React.FC = () => {
                                     {comingText.map((char, idx) => (
                                         <span
                                             key={`coming-${idx}`}
-                                            className={`bg-[linear-gradient(180deg,_#FFC411_0%,_#CD9C1A_22.12%,_#BD6229_44.71%,_#5D2F24_60.58%,_#5D2F24_80.77%)] bg-clip-text text-transparent inline-block transition-all duration-500 ease-out
+                                            className={`bg-[linear-gradient(180deg,_#FFC411_0%,_#CD9C1A_22.12%,_#BD6229_44.71%,_#5D2F24_60.58%,_#5D2F24_80.77%)] bg-clip-text text-transparent inline-block transition-all duration-700 ease-[cubic-bezier(0.34,2.5,0.64,1)]
                                                 ${
                                                     showLetters
                                                         ? "opacity-100 translate-y-0"
@@ -205,7 +208,7 @@ const ComingSoonSection: React.FC = () => {
                                     {soonText.map((char, idx) => (
                                         <span
                                             key={`soon-${idx}`}
-                                            className={`bg-[linear-gradient(180deg,_#FFC411_0%,_#CD9C1A_22.12%,_#BD6229_44.71%,_#5D2F24_60.58%,_#5D2F24_80.77%)] bg-clip-text text-transparent inline-block transition-all duration-500 ease-out
+                                            className={`bg-[linear-gradient(180deg,_#FFC411_0%,_#CD9C1A_22.12%,_#BD6229_44.71%,_#5D2F24_60.58%,_#5D2F24_80.77%)] bg-clip-text text-transparent inline-block transition-all duration-700 ease-[cubic-bezier(0.34,2.5,0.64,1)]
                                                 ${
                                                     showLetters
                                                         ? "opacity-100 translate-y-0"
@@ -229,7 +232,7 @@ const ComingSoonSection: React.FC = () => {
                                 {comingSoonText.map((char, idx) => (
                                     <span
                                         key={idx}
-                                        className={`bg-[linear-gradient(180deg,_#FFC411_0%,_#CD9C1A_22.12%,_#BD6229_44.71%,_#5D2F24_60.58%,_#5D2F24_80.77%)] bg-clip-text text-transparent inline-block transition-all duration-500 ease-out
+                                        className={`bg-[linear-gradient(180deg,_#FFC411_0%,_#CD9C1A_22.12%,_#BD6229_44.71%,_#5D2F24_60.58%,_#5D2F24_80.77%)] bg-clip-text text-transparent inline-block transition-all duration-700 ease-[cubic-bezier(0.34,2.5,0.64,1)]
                                             ${
                                                 showLetters
                                                     ? "opacity-100 translate-y-0"

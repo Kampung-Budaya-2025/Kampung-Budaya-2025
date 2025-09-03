@@ -82,19 +82,19 @@ const bungaDecorations: DecorationGroup = {
 const batikDecorations: DecorationGroup = {
     id: "batik-group",
     containerClassName:
-        "absolute bottom-50 left-0 w-full flex justify-between pb-4 pointer-events-none overflow-visible z-0",
+        "hidden absolute bottom-50 left-0 w-full flex justify-between pb-4 pointer-events-none overflow-visible z-0",
     items: [
         {
             id: "batik-kiri",
             src: "/icon/batik.svg",
             alt: "Batik Kiri",
-            className: "absolute left-0 w-[305px] h-auto",
+            className: "absolute left-0 w-[30.5vh] h-auto",
         },
         {
             id: "batik-kanan",
             src: "/icon/batik.svg",
             alt: "Batik Kanan",
-            className: "absolute right-0 w-[305px] h-auto scale-x-[-1]",
+            className: "absolute right-0 w-[30.5vh] h-auto scale-x-[-1]",
         },
     ],
 } as const;
@@ -104,7 +104,7 @@ const bungaMahkotaDecoration: DecorationItem = {
     src: "/icon/bunga-mahkota.svg",
     alt: "Bunga Mahkota",
     className:
-        "absolute w-[610px] -bottom-2 left-1/2 transform -translate-x-1/2 translate-y-1/4 z-0",
+        "absolute w-[80vw] lg:w-[50vw] -bottom-2 left-1/2 transform -translate-x-1/2 translate-y-1/4 z-0",
 } as const;
 
 export {
