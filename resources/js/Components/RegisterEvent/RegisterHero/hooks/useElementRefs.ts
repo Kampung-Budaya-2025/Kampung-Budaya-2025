@@ -203,7 +203,6 @@ const useElementRefs = (
         transitionDelay: ELEMENT_CONFIGS.bunga.delay,
         floatDuration: ELEMENT_CONFIGS.bunga.floatDuration,
         floatDistance: ELEMENT_CONFIGS.bunga.floatDistance,
-        rotateAmount: ELEMENT_CONFIGS.bunga.rotateAmount,
     },
     kanan: {
         ref: bungaMobileRefs[idx],
@@ -216,7 +215,6 @@ const useElementRefs = (
         transitionDelay: ELEMENT_CONFIGS.bunga.delay,
         floatDuration: ELEMENT_CONFIGS.bunga.floatDuration,
         floatDistance: ELEMENT_CONFIGS.bunga.floatDistance,
-        rotateAmount: ELEMENT_CONFIGS.bunga.rotateAmount,
     }
 }));
 

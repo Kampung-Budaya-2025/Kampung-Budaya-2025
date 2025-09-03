@@ -2,6 +2,7 @@ import React from "react";
 import { router } from "@inertiajs/react";
 import cardBackgroundSvg from "@assets/images/card-list-lomba.svg?url";
 
+
 interface ListCardProps {
     eventId: string;
     title: string;
@@ -26,7 +27,7 @@ const ListCard: React.FC<ListCardProps> = ({
 
     return (
         <div
-            className={`group perspective-1000 w-[46vh] h-[74vh] ${className}`}
+            className={`group perspective-1000 w-[264px] h-[380px] lg:w-[46vh] lg:h-[74vh] ${className}`}
         >
             <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
                 {/* Front Side - Tampilan Original */}
@@ -44,19 +45,19 @@ const ListCard: React.FC<ListCardProps> = ({
                         <img
                             src={icon}
                             alt={title}
-                            className="w-[24vh] h-[24vh] object-contain"
+                            className="w-[7.5rem] h-[7.5rem] md:w-[24vh] md:h-[24vh] object-contain"
                         />
                     </div>
 
                     {/* Title */}
-                    <h1 className="text-center text-[#3F170D] text-[3.5vh] px-[3vh] leading-tight z-10 max-w-full">
+                    <h1 className="text-center text-[#3F170D] text-lg md:text-[3.5vh] px-[3vh] leading-tight z-10 max-w-full">
                         {title}
                     </h1>
                 </div>
 
                 {/* Back Side - Tampilan Baru */}
                 <div
-                    className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 flex flex-col overflow-hidden px-[4vh] pt-[13vh] pb-[10vh]"
+                    className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 flex flex-col overflow-hidden px-[4vh] pt-[6vh] md:pt-[13vh] pb-[10vh]"
                     style={{
                         backgroundImage: `url(${cardBackgroundSvg})`,
                         backgroundSize: "contain",
@@ -67,21 +68,21 @@ const ListCard: React.FC<ListCardProps> = ({
                     {/* Title - Fixed position */}
                     <div className="flex-shrink-0 pt-12 flex flex-row justify-center items-center gap-3">
                         <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[3.2vh]" />
-                        <h2 className="text-center text-[#3F170D] text-[2.8vh] leading-[1.25] mb-[0.8vh] z-10 tracking-[-0.07vh]">
+                        <h2 className="text-center text-[#3F170D] text-lg md:text-[2.8vh] leading-[1.25] mb-[0.8vh] z-10 tracking-[-0.07vh]">
                             {title}
                         </h2>
                         <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[3.2vh] scale-x-[-1]" />
                     </div>
 
                     {/* Description - Flexible area */}
-                    <div className="flex-1 flex items-start justify-center -mt-[0.8vh]">
-                        <p className="text-justify text-[#7A4D17] text-[1.6vh] z-10 leading-[1.2] tracking-[-0.2px] whitespace-pre-line">
+                    <div className="flex-1 flex items-start justify-center md:-mt-[0.8vh] overflow-y-auto custom-scrollbar">
+                        <p className="text-justify text-[#7A4D17] text-base lg:text-lg z-10 leading-[1.2] tracking-[-0.2px] whitespace-pre-line pr-2">
                             {description}
                         </p>
                     </div>
 
                     {/* Daftar Button - Fixed position */}
-                    <div className="flex-shrink-0 pb-[9.6vh] items-center justify-center flex">
+                    <div className="flex-shrink-0 pb-[3vh] md:pb-[9.6vh] pt-[2vh] items-center justify-center flex">
                         <button
                             onClick={handleDaftarClick}
                             className="bg-[linear-gradient(180deg,#CE9C17_0%,#CD9514_52.04%,#CC8F12_100%)] hover:bg-[linear-gradient(180deg,#D4A51A_0%,#D39E17_52.04%,#D19515_100%)] text-white py-[0.8vh] px-[3.2vh] rounded-[40px] transition-colors duration-300 z-10 shadow-lg"

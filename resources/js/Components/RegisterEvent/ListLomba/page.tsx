@@ -1,19 +1,18 @@
 import React from "react";
 import { ListCard } from "./UI/ListCard";
 import Button from "./UI/Button";
-import { DecorationGroup } from "./UI/DecorationGroup";
 import { SingleDecoration } from "./UI/SingleDecoration";
-import { buttonData, cardData } from "./config/constants";
 import {
-    bungaDecorations,
-    batikDecorations,
     bungaMahkotaDecoration,
+    cardData,
+    buttonData,
 } from "./config/constants";
 import { useElementRefs } from "../RegisterHero/hooks/useElementRefs";
 import ElementPairComponent from "../RegisterHero/UI/ElementPairComponent";
+import FlowerDecorations from "@/Components/Common/FlowerDecoration";
+import { AnimatedFlower } from "./UI/AnimatedFlower";
 
 const ListLomba: React.FC = () => {
-
      const { BATIK_PAIR, BUNGA_PAIR } = useElementRefs();
     return (
         <div
@@ -21,9 +20,11 @@ const ListLomba: React.FC = () => {
             className="relative h-auto w-full flex flex-col py-8"
         >
             {/* Bunga Kiri & Kanan */}
-            {/* <DecorationGroup decoration={bungaDecorations} />
-            <DecorationGroup decoration={batikDecorations} /> */}
-            <ElementPairComponent pair={BUNGA_PAIR} />
+            <FlowerDecorations
+                showPairs={["besar"]}
+                besarClass="block absolute top-1/3 left-1/2 -translate-x-1/2 w-[115vw] h-auto z-10 opacity-30"
+            />
+            {/*Batik Kiri & Kanan  */}
             <ElementPairComponent pair={BATIK_PAIR} />
 
             {/* Button Section */}
@@ -56,15 +57,17 @@ const ListLomba: React.FC = () => {
                 </div>
 
                 {/* Mobile: Semua cards dalam 1 kolom */}
-                <div className="lg:hidden flex flex-col items-center gap-[3.2vh] w-full mx-auto">
+                <div className="lg:hidden flex flex-col items-center -gap-[3.2vh] w-full mx-auto">
                     {cardData.slice(0, 6).map((card) => (
-                        <ListCard
-                            key={card.id}
-                            eventId={card.id}
-                            title={card.title}
-                            icon={card.icon}
-                            description={card.description}
-                        />
+                        <React.Fragment key={card.id}>
+                            <ListCard
+                                eventId={card.id}
+                                title={card.title}
+                                icon={card.icon}
+                                description={card.description}
+                            />
+                            <AnimatedFlower />
+                        </React.Fragment>
                     ))}
                 </div>
             </div>

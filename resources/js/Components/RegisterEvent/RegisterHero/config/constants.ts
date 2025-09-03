@@ -75,15 +75,15 @@ export const CSS_CLASSES = {
 
 export const BUNGA_MOBILE_CONFIGS = [
     {
-        kiri: { className: "block md:hidden absolute top-[8vh] -left-[8vh] w-[8.5rem] h-auto" },
-        kanan: { className: "block md:hidden absolute top-[8vh] -right-[8vh] w-[8.5rem] h-auto transform scale-x-[-1]" }
+        kiri: { className: "block md:hidden absolute top-[8vh] -left-[8vh] w-[8.5rem] h-auto animate-spin-clockwise" },
+        kanan: { className: "block md:hidden absolute top-[8vh] -right-[8vh] w-[8.5rem] h-auto transform scale-x-[-1] animate-spin-counter" }
     },
     {
-        kiri: { className: "block md:hidden absolute top-[9vh] left-[9vh] w-[5.5rem] h-auto" },
-        kanan: { className: "block md:hidden absolute top-[9vh] right-[9vh] w-[5.5rem] h-auto transform scale-x-[-1]" }
+        kiri: { className: "block md:hidden absolute top-[9vh] left-[9vh] w-[5.5rem] h-auto animate-spin-clockwise" },
+        kanan: { className: "block md:hidden absolute top-[9vh] right-[9vh] w-[5.5rem] h-auto transform scale-x-[-1] animate-spin-counter" }
     },
     {
-        kiri: { className: "block md:hidden absolute top-[21vh] left-[10vh] w-[1.75rem] h-auto" },
-        kanan: { className: "block md:hidden absolute top-[21vh] right-[10vh] w-[1.75rem] h-auto transform scale-x-[-1]" }
+        kiri: { className: "block md:hidden absolute top-[21vh] left-[10vh] w-[1.75rem] h-auto animate-spin-clockwise" },
+        kanan: { className: "block md:hidden absolute top-[21vh] right-[10vh] w-[1.75rem] h-auto transform scale-x-[-1] animate-spin-counter" }
     }
 ];

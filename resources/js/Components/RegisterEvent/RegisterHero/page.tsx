@@ -9,6 +9,7 @@ import {
     CSS_CLASSES,
 } from "./config/constants";
 import { useElementRefs } from "./hooks/useElementRefs";
+import { AnimatedFlower } from "../ListLomba/UI/AnimatedFlower";
 
 const RegisterHero: React.FC = () => {
     const {
@@ -128,13 +129,39 @@ const RegisterHero: React.FC = () => {
             <ElementPairComponent pair={ORANG_BERTAPA_PAIR} />
             <ElementPairComponent pair={DAUN_PAIR} />
             <ElementPairComponent pair={WAYANG_PAIR} />
-            {Array.isArray(BUNGA_MOBILE_PAIRS) ? (
+            {/* {Array.isArray(BUNGA_MOBILE_PAIRS) ? (
                 BUNGA_MOBILE_PAIRS.map((pair, idx) => (
                     <ElementPairComponent key={idx} pair={pair} />
                 ))
             ) : (
                 <ElementPairComponent pair={BUNGA_MOBILE_PAIRS} />
-            )}
+            )} */}
+
+            {/* Bunga Mobile 1 */}
+            <AnimatedFlower
+                // Mengubah kelas container, misalnya margin dan opacity
+                containerClassName="block lg:hidden w-[190vw] absolute  top-0 flex justify-around pointer-events-none my-16"
+                leftFlowerClassName="w-[136px] h-[136px] animate-spin-clockwise"
+                rightFlowerClassName="w-[136px] h-[136px] animate-spin-counter"
+                leftFlowerTransition="all 2s ease-in-out 0.1s"
+                rightFlowerTransition="all 2s ease-in-out 0.1s"
+            />
+            <AnimatedFlower
+                // Mengubah kelas container, misalnya margin dan opacity
+                containerClassName="block lg:hidden w-[90vw] absolute  top-0 flex justify-around pointer-events-none my-16"
+                leftFlowerClassName="w-[87px] h-[87px] animate-spin-clockwise"
+                rightFlowerClassName="w-[87px] h-[87px] animate-spin-counter"
+                leftFlowerTransition="all 2.5s ease-in-out 0.1s"
+                rightFlowerTransition="all 2.5s ease-in-out 0.1s"
+            />
+            <AnimatedFlower
+                // Mengubah kelas container, misalnya margin dan opacity
+                containerClassName="block lg:hidden w-[110vw] absolute top-24 flex justify-around pointer-events-none my-16"
+                leftFlowerClassName="w-[28px] h-[28px] animate-spin-clockwise"
+                rightFlowerClassName="w-[28px] h-[28px] animate-spin-counter"
+                leftFlowerTransition="all 3s ease-in-out 0.1s"
+                rightFlowerTransition="all 3s ease-in-out 0.1s"
+            />
             {renderPatternImage()}
 
             <div className={CSS_CLASSES.mainContent}>
