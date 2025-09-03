@@ -15,7 +15,7 @@ const EventTypeSelector = memo(
                 id: "kolaborasi-musik",
                 title: "Kolaborasi Musik",
                 description:
-                    "Lomba yang mempresentasikan dan menampilkan busana tradisional khas daerahnya.",
+                    "Lomba kolaborasi musik yang memadukan unsur tradisional dan modern.",
                 icon: "/icon/kolaborasi-musik.svg",
             },
             {
@@ -26,11 +26,25 @@ const EventTypeSelector = memo(
                 icon: "/icon/bazar-kebudayaan.svg",
             },
             {
-                id: "fashion-show",
-                title: "Fashion Show",
+                id: "busana-adat",
+                title: "Busana Adat",
                 description:
-                    "Pertunjukan busana tradisional dengan konsep modern.",
-                icon: "/icon/fashion-show.svg",
+                    "Lomba menampilkan keindahan dan keunikan busana adat dari seluruh Indonesia.",
+                icon: "/icon/busana-adat.svg",
+            },
+            {
+                id: "tari-tradisional",
+                title: "Tari Tradisional",
+                description:
+                    "Kompetisi tari tradisional yang mempertahankan keaslian dan nilai budaya Indonesia.",
+                icon: "/icon/tari-tradisional.svg",
+            },
+            {
+                id: "cerita-nusantara",
+                title: "Cerita Nusantara",
+                description:
+                    "Lomba bercerita dengan tema legenda dan cerita rakyat dari berbagai daerah di Nusantara.",
+                icon: "/icon/cerita-nusantara.svg",
             },
         ];
 

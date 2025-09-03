@@ -51,7 +51,7 @@ class PageController extends Controller
         }
         
         // Validasi eventType yang diperbolehkan
-        $allowedEventTypes = ['kolaborasi-musik', 'bazar-kebudayaan', 'fashion-show'];
+        $allowedEventTypes = ['kolaborasi-musik', 'bazar-kebudayaan', 'busana-adat', 'tari-tradisional', 'cerita-nusantara'];
         if (!in_array($eventType, $allowedEventTypes)) {
             return redirect()->route('register-event');
         }
