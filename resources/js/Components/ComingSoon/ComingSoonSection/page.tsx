@@ -108,12 +108,13 @@ const ComingSoonSection: React.FC = () => {
                 </div>
             </div>
 
-             {/* Gradasi Bawah */}
+            {/* Gradasi Bawah */}
             <div
                 className="block md:hidden absolute bottom-0 left-0 w-full h-auto"
                 aria-hidden="true"
                 style={{
-                    backgroundImage: "url('/background/gradasi-commingsoon-bottom.svg')",
+                    backgroundImage:
+                        "url('/background/gradasi-commingsoon-bottom.svg')",
                     backgroundSize: "cover",
                     backgroundPosition: "bottom center",
                     backgroundRepeat: "no-repeat",
@@ -134,7 +135,6 @@ const ComingSoonSection: React.FC = () => {
                         className="w-full h-auto scale-x-[-1]"
                     />
                 </div>
-                
             </div>
 
             <div className="relative flex items-center flex-col z-10">
@@ -231,7 +231,7 @@ const ComingSoonSection: React.FC = () => {
                                 ))}
                             </span>
                         </h1>
-                        <h2
+                        {/* <h2
                             className={`
                                 text-[#C88B5F] text-[2.4vh] lg:text-[3.5vh] mt-0 lg:-mt-[7.2vh]
                                 transition-all duration-1500 ease-out
@@ -246,9 +246,9 @@ const ComingSoonSection: React.FC = () => {
                             }}
                         >
                             Kami sedang mengerjakan sesuatu yang menarik di sini
-                            <br /> Halaman ini akan segera tersedia — terima
+                            <br /> Halaman ini akan segera tersedia - terima
                             kasih atas kesabarannya!
-                        </h2>
+                        </h2> */}
                     </div>
                 </div>
                 <div>
