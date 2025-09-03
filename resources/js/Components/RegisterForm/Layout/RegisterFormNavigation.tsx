@@ -34,7 +34,7 @@ const RegisterFormNavigation = ({
                     type="button"
                     onClick={handlePrev}
                     disabled={isTransitioning}
-                    className="inline-flex items-center justify-center w-full gap-2 px-4 py-2 text-sm font-medium transition-colors bg-white border rounded-full shadow-md sm:w-auto sm:px-5 sm:py-2 sm:text-base border-amber-300 text-amber-700 hover:bg-amber-50 disabled:opacity-50"
+                    className="relative z-10 inline-flex items-center justify-center w-full gap-2 px-4 py-2 text-sm font-medium transition-colors bg-white border rounded-full shadow-md sm:w-auto sm:px-5 sm:py-2 sm:text-base border-amber-300 text-amber-700 hover:bg-amber-50 disabled:opacity-50"
                 >
                     <MdArrowBack className="w-4 h-4 sm:w-5 sm:h-5" />
                     Kembali
@@ -45,7 +45,7 @@ const RegisterFormNavigation = ({
                 type="button"
                 onClick={handleNext}
                 disabled={!canProceed || submitting || isTransitioning}
-                className={`rounded-full px-6 py-2 text-sm font-semibold transition-colors sm:px-8 sm:py-3 sm:text-base lg:px-10 lg:py-3 lg:text-lg shadow-lg ${
+                className={`rounded-full px-6 py-2 text-sm font-semibold transition-colors sm:px-8 sm:py-3 sm:text-base lg:px-10 lg:py-3 lg:text-lg shadow-lg relative z-10 ${
                     currentStep === 1 ? "w-auto" : "w-full sm:w-auto"
                 } ${
                     canProceed && !submitting && !isTransitioning
