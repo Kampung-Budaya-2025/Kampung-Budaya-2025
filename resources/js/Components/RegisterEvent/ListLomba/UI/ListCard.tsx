@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { router } from "@inertiajs/react";
 import cardBackgroundSvg from "@assets/images/card-list-lomba.svg?url";
 
@@ -18,18 +18,33 @@ const ListCard: React.FC<ListCardProps> = ({
     description = "Deskripsi default",
     className = "",
 }) => {
-    const handleDaftarClick = () => {
+    const [isFlipped, setIsFlipped] = useState(false);
+
+    const handleDaftarClick = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Mencegah card-click event saat tombol di-klik
         // Navigate to register form with event type as URL parameter
         router.visit(`/register-form?eventType=${eventId}`, {
             method: "get",
         });
     };
 
+    const handleCardClick = () => {
+        // Hanya toggle flip pada layar kecil (mobile)
+        if (window.innerWidth < 1024) {
+            setIsFlipped(!isFlipped);
+        }
+    };
+
     return (
         <div
             className={`group perspective-1000 w-[264px] h-[380px] lg:w-[46vh] lg:h-[74vh] ${className}`}
+            onClick={handleCardClick}
         >
-            <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+            <div
+                className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d lg:group-hover:rotate-y-180 ${
+                    isFlipped ? "rotate-y-180" : ""
+                }`}
+            >
                 {/* Front Side - Tampilan Original */}
                 <div
                     className="absolute inset-0 w-full h-full backface-hidden flex flex-col items-center justify-center overflow-hidden"

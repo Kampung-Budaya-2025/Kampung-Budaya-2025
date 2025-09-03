@@ -8,6 +8,10 @@ interface AnimatedFlowerProps {
     rightFlowerClassName?: string;
     leftFlowerTransition?: string;
     rightFlowerTransition?: string;
+    leftFlowerSrc?: string;
+    leftFlowerAlt?: string;
+    rightFlowerSrc?: string;
+    rightFlowerAlt?: string;
 }
 
 const AnimatedFlower: React.FC<AnimatedFlowerProps> = ({
@@ -16,6 +20,10 @@ const AnimatedFlower: React.FC<AnimatedFlowerProps> = ({
     rightFlowerClassName = "w-[30vw] h-[30vw] animate-spin-counter",
     leftFlowerTransition = "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
     rightFlowerTransition = "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+    leftFlowerSrc = "/icon/bunga.svg",
+    leftFlowerAlt = "Bunga Kiri",
+    rightFlowerSrc = "/icon/bunga.svg",
+    rightFlowerAlt = "Bunga Kanan",
 }) => {
     const ref = useRef(null);
     const inView = useInView(ref, ANIMATION_CONFIG);
@@ -30,8 +38,8 @@ const AnimatedFlower: React.FC<AnimatedFlowerProps> = ({
                 }}
             >
                 <img
-                    src="/icon/bunga.svg"
-                    alt="Bunga Kiri"
+                    src={leftFlowerSrc}
+                    alt={leftFlowerAlt}
                     className={leftFlowerClassName}
                 />
             </div>
@@ -43,8 +51,8 @@ const AnimatedFlower: React.FC<AnimatedFlowerProps> = ({
                 }}
             >
                 <img
-                    src="/icon/bunga.svg"
-                    alt="Bunga Kanan"
+                    src={rightFlowerSrc}
+                    alt={rightFlowerAlt}
                     className={rightFlowerClassName}
                 />
             </div>
