@@ -21,7 +21,7 @@ const RegisterSuccess = ({ onFinish }: RegisterSuccessProps = {}) => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen px-4 py-8 text-center">
+        <div className="flex flex-col items-center justify-start min-h-screen px-4 py-8 pt-16 sm:pt-20 md:pt-24 lg:pt-28 text-center">
             <SuccessTitle />
             <SuccessMascots />
             <SuccessContent onFinish={handleFinish} />

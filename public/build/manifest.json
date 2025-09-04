@@ -46,7 +46,7 @@
     "src": "resources/assets/images/card-list-lomba.svg"
   },
   "resources/css/app.css": {
-    "file": "assets/app.bkj2WY4v.css",
+    "file": "assets/app.2I6ZPIqa.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [
@@ -54,7 +54,7 @@
     ]
   },
   "resources/js/app.tsx": {
-    "file": "assets/app-Ajy93kLJ.js",
+    "file": "assets/app-BxHAj936.js",
     "name": "app",
     "src": "resources/js/app.tsx",
     "isEntry": true,
@@ -65,7 +65,7 @@
     ],
     "css": [
       "assets/app.Cacu5y9W.css",
-      "assets/app.bkj2WY4v.css"
+      "assets/app.2I6ZPIqa.css"
     ],
     "assets": [
       "assets/images/card-list-lomba.DxCSrJBp.svg",

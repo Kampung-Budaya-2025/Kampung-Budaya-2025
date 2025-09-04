@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface RegisterFormHeaderProps {
     currentStep: number;
     eventType?: string;
@@ -30,12 +32,22 @@ const RegisterFormHeader = ({
     };
 
     return (
-        <header className="relative z-20 pt-12 mb-4 text-center sm:mb-6 lg:mb-8 sm:pt-16 lg:pt-20">
-            <div className="relative px-2 mx-auto sm:px-4 max-w-fit">
+        <motion.header 
+            className="relative z-20 pt-12 mb-4 text-center sm:mb-6 lg:mb-8 sm:pt-16 lg:pt-20"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+            <motion.div 
+                className="relative px-2 mx-auto sm:px-4 max-w-fit"
+                initial={{ scale: 0.95 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+            >
                 {/* Mobile only decorative flowers with animation */}
-                <div className="relative w-full pt-8 mb-2 sm:hidden">
+                <div className="relative w-full pt-8 mb-2 min-[480px]:hidden">
                     {/* Left side flowers - bunga left mentok kiri */}
-                    <div className="absolute -top-20 -left-8">
+                    <div className="absolute -top-17 -left-14">
                         <img
                             src="/decoration/bunga-mobile-left.svg"
                             alt="Bunga Kiri"
@@ -44,13 +56,13 @@ const RegisterFormHeader = ({
                         <img
                             src="/decoration/bunga-mobile-small.svg"
                             alt="Bunga Kecil Kiri"
-                            className="w-10 h-8 -mt-8 ml-22 animate-spin"
-                            style={{ animationDuration: "2s" }}
+                            className="w-10 h-8 -mt-10 ml-23 animate-spin"
+                            style={{ animationDuration: '2s' }}
                         />
                     </div>
 
                     {/* Left mobile-up terpisah */}
-                    <div className="absolute -top-16 left-15">
+                    <div className="absolute -top-14 left-10">
                         <img
                             src="/decoration/bunga-mobile-up.svg"
                             alt="Mobile Up Kiri"
@@ -73,7 +85,7 @@ const RegisterFormHeader = ({
                     </div>
 
                     {/* Right mobile-up terpisah */}
-                    <div className="absolute -top-16 right-15">
+                    <div className="absolute -top-14 right-10">
                         <img
                             src="/decoration/bunga-mobile-up.svg"
                             alt="Mobile Up Kanan"
@@ -83,7 +95,7 @@ const RegisterFormHeader = ({
                     </div>
 
                     {/* Right side flowers - bunga right mentok kanan */}
-                    <div className="absolute flex flex-col items-end -top-20 -right-8">
+                    <div className="absolute flex flex-col items-end -top-17 -right-14">
                         <img
                             src="/decoration/bunga-mobile-right.svg"
                             alt="Bunga Kanan"
@@ -92,11 +104,8 @@ const RegisterFormHeader = ({
                         <img
                             src="/decoration/bunga-mobile-small.svg"
                             alt="Bunga Kecil Kanan"
-                            className="w-10 h-8 -mt-8 mr-22 animate-spin"
-                            style={{
-                                animationDuration: "2s",
-                                animationDirection: "reverse",
-                            }}
+                            className="w-10 h-8 -mt-10 mr-23 animate-spin"
+                            style={{ animationDuration: '2s', animationDirection: 'reverse' }}
                         />
                     </div>
                 </div>
@@ -122,8 +131,8 @@ const RegisterFormHeader = ({
                         />
                     </div>
                 </div>
-            </div>
-        </header>
+            </motion.div>
+        </motion.header>
     );
 };
 

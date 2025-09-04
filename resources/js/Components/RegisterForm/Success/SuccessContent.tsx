@@ -7,21 +7,21 @@ interface SuccessContentProps {
 const SuccessContent = ({ onFinish }: SuccessContentProps) => {
     return (
         <motion.div
-            className="max-w-lg mx-auto"
+            className="relative z-10 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-                delay: 2.8,
+                delay: 3.2,
                 duration: 0.8,
                 ease: [0.25, 0.1, 0.25, 1],
             }}
         >
             {/* Success Message */}
             <motion.p
-                className="mb-6 text-base font-semibold text-amber-800 sm:text-lg md:text-xl"
+                className="mb-4 text-lg font-semibold text-amber-800 sm:text-xl md:text-2xl lg:text-3xl"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 3 }}
+                transition={{ delay: 3.4 }}
             >
                 Segera bergabung di grup WhatsApp untuk mendapatkan
                 informasi selanjutnya!
@@ -32,10 +32,10 @@ const SuccessContent = ({ onFinish }: SuccessContentProps) => {
                 href="https://chat.whatsapp.com/J3au7X2Tu7fiIS9r9RF9K5"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block mb-8 text-sm text-teal-600 underline break-all transition-colors hover:text-teal-800 sm:text-base"
+                className="inline-block mb-6 text-base text-teal-600 underline break-all transition-colors hover:text-teal-800 sm:text-lg md:text-xl lg:text-2xl"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 3.2 }}
+                transition={{ delay: 3.6 }}
                 whileHover={{ scale: 1.02 }}
             >
                 https://chat.whatsapp.com/J3au7X2Tu7fiIS9r9RF9K5
@@ -46,11 +46,11 @@ const SuccessContent = ({ onFinish }: SuccessContentProps) => {
                 className="flex justify-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 3.5 }}
+                transition={{ delay: 3.9 }}
             >
                 <motion.button
                     onClick={onFinish}
-                    className="px-14 py-3 text-lg font-semibold text-white transition-all rounded-full bg-gradient-to-r from-[#CE9C17] via-[#CD9514] to-[#CC8F12] shadow-lg hover:from-[#CC8F12] hover:via-[#CD9514] hover:to-[#CE9C17] hover:shadow-xl"
+                    className="px-14 py-2 text-lg font-semibold text-white transition-all rounded-full bg-gradient-to-r from-[#CE9C17] via-[#CD9514] to-[#CC8F12] shadow-lg hover:from-[#CC8F12] hover:via-[#CD9514] hover:to-[#CE9C17] hover:shadow-xl"
                     whileHover={{
                         scale: 1.05,
                         y: -2,
@@ -60,7 +60,7 @@ const SuccessContent = ({ onFinish }: SuccessContentProps) => {
                     initial={{ scale: 0.9 }}
                     animate={{ scale: 1 }}
                     transition={{
-                        delay: 3.8,
+                        delay: 4.2,
                         type: "spring",
                         stiffness: 400,
                         damping: 17,
@@ -74,11 +74,11 @@ const SuccessContent = ({ onFinish }: SuccessContentProps) => {
             <motion.img
                 src="/decoration/mobile-down.svg"
                 alt="Mobile decoration bottom"
-                className="block w-auto h-12 mx-auto mt-6 sm:hidden"
+                className="block w-auto h-16 mx-auto mt-4 min-[480px]:hidden md:h-20 lg:h-24"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ 
-                    delay: 4.0, 
+                    delay: 4.4, 
                     duration: 0.6, 
                     ease: [0.25, 0.1, 0.25, 1]
                 }}
