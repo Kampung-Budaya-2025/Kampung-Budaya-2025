@@ -214,6 +214,8 @@ const RegisterHero: React.FC = () => {
                     {renderContent()}
                 </div>
             </div>
+
+
         </div>
     );
 };
