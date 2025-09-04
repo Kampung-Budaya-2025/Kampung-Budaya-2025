@@ -1,17 +1,16 @@
 import { ButtonData, CardData } from "../types";
 import { DecorationGroup, DecorationItem } from "../types";
-import { downloadDocument } from "@/Utils/documentUtils";
 
 const buttonData: ButtonData[] = [
     {
         id: "booklet",
         text: "Booklet",
-        onClick: downloadDocument.booklet.download,
+        href: "https://drive.google.com/drive/folders/1uVciYKRaAQKgwp6zye7-HeLMQEUmftgD",
     },
     {
         id: "formulir",
         text: "Formulir",
-        onClick: downloadDocument.form.download,
+        href: "https://drive.google.com/drive/folders/1LL-5aK_JJ6pDeLoj94TOFpQpHtF_lsIk?usp=sharing",
     },
 ] as const;
 
@@ -24,6 +23,8 @@ const cardData: CardData[] = [
         category: "Lomba Umum",
         description:
             "Kolaborasi Musik Nusantara adalah kompetisi menyanyikan lagu daerah yang menggabungkan unsur alat musik tradisional dan musik modern. Kegiatan ini bertujuan untuk melestarikan kekayaaan budaya musik Indonesia melalui pendekatan kreatif dan inovatif, dengan harapan dapat membangkitkan kecintaan generasi muda terhadap musik tradisional dalam balutan nuansa kekinian",
+        registrationStart: "2025-09-25",
+        registrationEnd: "2025-10-05",
     },
     {
         id: "bazar-kebudayaan",
@@ -60,6 +61,9 @@ const cardData: CardData[] = [
         category: "Lomba Forum Daerah",
         description:
             "Rangkaian puncak acara dan penutupan dari Kampung Budaya 2025. Panggung budaya nusantara merupakan kegiatan yang berisi penampilan dari pemenang lomba dan penampilan dari tamu undangan.",
+        registrationStart: "2025-09-21",
+        registrationEnd: "2025-10-17",
+
     },
     {
         id: "teater-cakrawala-budaya",

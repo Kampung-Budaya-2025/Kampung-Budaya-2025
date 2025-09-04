@@ -13,7 +13,7 @@ import FlowerDecorations from "@/Components/Common/FlowerDecoration";
 import { AnimatedFlower } from "./UI/AnimatedFlower";
 
 const ListLomba: React.FC = () => {
-     const { BATIK_PAIR, BUNGA_PAIR } = useElementRefs();
+    const { BATIK_PAIR, BUNGA_PAIR } = useElementRefs();
     return (
         <div
             id="list-lomba"
@@ -34,6 +34,7 @@ const ListLomba: React.FC = () => {
                         key={button.id}
                         text={button.text}
                         onClick={button.onClick}
+                        href={button.href}
                     />
                 ))}
             </div>
@@ -54,6 +55,8 @@ const ListLomba: React.FC = () => {
                             date={card.date}
                             category={card.category}
                             description={card.description}
+                            registrationStart={card.registrationStart}
+                            registrationEnd={card.registrationEnd}
                         />
                     ))}
                 </div>
@@ -69,11 +72,15 @@ const ListLomba: React.FC = () => {
                                 date={card.date}
                                 category={card.category}
                                 description={card.description}
+                                registrationStart={card.registrationStart}
+                                registrationEnd={card.registrationEnd}
                             />
                             <AnimatedFlower />
                         </React.Fragment>
                     ))}
                 </div>
+            </div>
+                        <div className='absolute bottom-0 h-[10vh] w-full bg-[#3F170D] rounded-t-4xl z-20'>
             </div>
         </div>
     );

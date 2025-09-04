@@ -250,7 +250,7 @@
   animation: slideInTop 3s ease-out forwards;
 }
 .animate-slide-in-top-quick {
-  animation: slideInTop 2s ease-out forwards;
+  animation: slideInTop 1s ease-out forwards;
 }
 .animate-slide-in-bottom {
   animation: slideInBottom 3s ease-out forwards;

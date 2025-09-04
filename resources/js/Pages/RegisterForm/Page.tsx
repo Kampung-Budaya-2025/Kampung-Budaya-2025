@@ -43,20 +43,48 @@ const RegisterForm = () => {
             case 2:
                 return {
                     left: "Upload berkasnya yang lengkap!",
-
                     right: "Jangan lupa cek format file!",
                 };
             case 3:
                 return {
                     left: "Cek lagi datanya sudah benar?",
-
                     right: "Siap submit!",
                 };
             default:
                 return {
                     left: "Selamat datang!",
-
                     right: "Halo!",
+                };
+        }
+    }, [currentStep]);
+
+    // Dynamic bottom position based on current step
+    const getDecorationPosition = useMemo(() => {
+        switch (currentStep) {
+            case 1:
+                return {
+                    batik: "-bottom-10",
+                    decoration: "-bottom-15"
+                };
+            case 2:
+                return {
+                    batik: "-bottom-10", // Upload form lebih panjang
+                    decoration: "-bottom-15"
+                };
+            case 3:
+                return {
+                    batik: "-bottom-10",
+                    decoration: "-bottom-15"
+                };
+            case 4:
+                return {
+                    batik: "hidden", // Hide on success page
+                    decoration: "-bottom-15"
+                };
+            default:
+                return {
+                    batik: "-bottom-10",
+                    decoration: "-bottom-15"
                 };
         }
     }, [currentStep]);
@@ -203,7 +231,7 @@ const RegisterForm = () => {
                 eventType={formData.eventType}
             />
 
-            <div className="relative z-10 max-w-4xl pb-32 mx-auto">
+            <div className="relative z-10 max-w-4xl pb-40 mx-auto min-[480px]:pb-32">
                 <RegisterFormMascots
                     speechContent={speechContent}
                     currentStep={currentStep}
@@ -226,34 +254,38 @@ const RegisterForm = () => {
                 />
 
                 {/* Mobile batik di tengah antara selanjutnya dan decoration, di belakang */}
-                <div className="absolute left-0 z-10 flex justify-center w-full pointer-events-none -bottom-10 sm:hidden">
-                    <img
-                        src="/decoration/mobile-batik.svg"
-                        alt="Mobile Batik Background"
-                        className="w-full h-auto opacity-90"
-                        style={{
-                            maxWidth: "100vw",
-                            minWidth: "100vw",
-                            objectFit: "cover",
-                            marginBottom: 0,
-                        }}
-                    />
-                </div>
+                {getDecorationPosition.batik !== "hidden" && (
+                    <div className={`absolute left-0 z-10 flex justify-center w-full pointer-events-none ${getDecorationPosition.batik} min-[480px]:hidden`}>
+                        <img
+                            src="/decoration/mobile-batik.svg"
+                            alt="Mobile Batik Background"
+                            className="w-full h-auto opacity-90"
+                            style={{
+                                maxWidth: "100vw",
+                                minWidth: "100vw",
+                                objectFit: "cover",
+                                marginBottom: 0,
+                            }}
+                        />
+                    </div>
+                )}
 
                 {/* Mobile only bottom decoration, nyelip ke footer Kampung Budaya */}
-                <div className="absolute left-0 z-30 flex justify-center w-full mb-8 pointer-events-none -bottom-20 sm:hidden">
-                    <img
-                        src="/decoration/mobile-decoration-down.svg"
-                        alt="Dekorasi Bawah Mobile"
-                        className="w-full h-auto"
-                        style={{
-                            maxWidth: "100vw",
-                            minWidth: "100vw",
-                            objectFit: "cover",
-                            marginBottom: 0,
-                        }}
-                    />
-                </div>
+                {getDecorationPosition.decoration !== "hidden" && (
+                    <div className={`absolute left-0 z-30 flex justify-center w-full pointer-events-none ${getDecorationPosition.decoration} min-[480px]:hidden`}>
+                        <img
+                            src="/decoration/mobile-decoration-down.svg"
+                            alt="Dekorasi Bawah Mobile"
+                            className="w-full h-auto"
+                            style={{
+                                maxWidth: "100vw",
+                                minWidth: "100vw",
+                                objectFit: "cover",
+                                marginBottom: 0,
+                            }}
+                        />
+                    </div>
+                )}
             </div>
         </RegisterFormBackground>
     );

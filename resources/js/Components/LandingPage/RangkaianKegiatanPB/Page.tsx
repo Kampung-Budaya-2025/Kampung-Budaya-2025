@@ -11,7 +11,7 @@ const RangkaianKegiatanPB: React.FC = () => {
   
       ref={ref}
       className={`
-        z-50
+        z-30
         relative lg:max-h-screen w-full overflow-visible lg:pt-48
         transform transition-all duration-700 ease-out
         ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
@@ -94,10 +94,10 @@ const RangkaianKegiatanPB: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:grid sm:grid-cols-3 xl:gap-2 py-6 font-bold text-base md:text-lg lg:text-base xl:text-lg md:text-[20px] text-center lg:text-left">
-            <GradientText>Talkshow</GradientText>
+            <GradientText>Seminar</GradientText>
             <GradientText>Lomba Budaya</GradientText>
             <GradientText>Gelanggang Budaya</GradientText>
-            <GradientText>Workshop Membatik</GradientText>
+            <GradientText>Teater</GradientText>
             <GradientText>Parade</GradientText>
           </div>
 
