@@ -11,9 +11,9 @@ const MediaPartnerData: string[] = [
 
 const MediaPartner: React.FC = () => {
     return (
-        <section className='bg-gradient-to-b from-[#E1C476] to-[#B1811B] flex flex-col justify-center items-center gap-24 pt-12 pb-24'>
+        <section className='bg-gradient-to-b from-[#E1C476] to-[#B1811B] flex flex-col justify-center items-center gap-8 lg:gap-24 pt-12 pb-24'>
             <p
-                className="text-8xl font-samsktrigrama text-transparent bg-clip-text bg-gradient-to-b from-[#5F3313] to-[#3F170D]">
+                className="text-5xl px-24 text-center lg:text-8xl font-samsktrigrama text-transparent bg-clip-text bg-gradient-to-b from-[#5F3313] to-[#3F170D]">
                 Sponsors and Media Partner
             </p>
             {/* First scroll row - Left to Right */}
@@ -25,7 +25,7 @@ const MediaPartner: React.FC = () => {
                             <img
                                 src={logo}
                                 alt={`Media Partner ${index + 1}`}
-                                className='h-56 w-auto object-contain filter transition-all duration-300'
+                                className='h-42 lg:h-56 w-auto object-contain filter transition-all duration-300'
                             />
                         </div>
                     ))}
@@ -35,7 +35,7 @@ const MediaPartner: React.FC = () => {
                             <img
                                 src={logo}
                                 alt={`Media Partner ${index + 1}`}
-                                className='h-56 w-auto object-contain filter transition-all duration-300'
+                                className='h-42 lg:h-56 w-auto object-contain filter transition-all duration-300'
                             />
                         </div>
                     ))}
@@ -45,7 +45,7 @@ const MediaPartner: React.FC = () => {
                             <img
                                 src={logo}
                                 alt={`Media Partner ${index + 1}`}
-                                className='h-56 w-auto object-contain filter transition-all duration-300'
+                                className='h-42 lg:h-56 w-auto object-contain filter transition-all duration-300'
                             />
                         </div>
                     ))}
@@ -61,7 +61,7 @@ const MediaPartner: React.FC = () => {
                             <img
                                 src={logo}
                                 alt={`Media Partner ${index + 1}`}
-                                className='h-56 w-auto object-contain filter transition-all duration-300'
+                                className='h-42 lg:h-56 w-auto object-contain filter transition-all duration-300'
                             />
                         </div>
                     ))}
@@ -71,7 +71,7 @@ const MediaPartner: React.FC = () => {
                             <img
                                 src={logo}
                                 alt={`Media Partner ${index + 1}`}
-                                className='h-56 w-auto object-contain filter transition-all duration-300'
+                                className='h-42 lg:h-56 w-auto object-contain filter transition-all duration-300'
                             />
                         </div>
                     ))}
@@ -81,7 +81,42 @@ const MediaPartner: React.FC = () => {
                             <img
                                 src={logo}
                                 alt={`Media Partner ${index + 1}`}
-                                className='h-56 w-auto object-contain filter transition-all duration-300'
+                                className='h-42 lg:h-56 w-auto object-contain filter transition-all duration-300'
+                            />
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className='lg:hidden w-full overflow-hidden'>
+                <div className='flex animate-scroll-left'>
+                    {/* First set of logos */}
+                    {MediaPartnerData.map((logo: string, index: number) => (
+                        <div key={`first-${index}`} className='flex-shrink-0 mx-8'>
+                            <img
+                                src={logo}
+                                alt={`Media Partner ${index + 1}`}
+                                className='h-42 lg:h-56 w-auto object-contain filter transition-all duration-300'
+                            />
+                        </div>
+                    ))}
+                    {/* Duplicate set for seamless loop */}
+                    {MediaPartnerData.map((logo: string, index: number) => (
+                        <div key={`second-${index}`} className='flex-shrink-0 mx-8'>
+                            <img
+                                src={logo}
+                                alt={`Media Partner ${index + 1}`}
+                                className='h-42 lg:h-56 w-auto object-contain filter transition-all duration-300'
+                            />
+                        </div>
+                    ))}
+                    {/* Third set to ensure complete coverage */}
+                    {MediaPartnerData.map((logo: string, index: number) => (
+                        <div key={`third-${index}`} className='flex-shrink-0 mx-8'>
+                            <img
+                                src={logo}
+                                alt={`Media Partner ${index + 1}`}
+                                className='h-42 lg:h-56 w-auto object-contain filter transition-all duration-300'
                             />
                         </div>
                     ))}

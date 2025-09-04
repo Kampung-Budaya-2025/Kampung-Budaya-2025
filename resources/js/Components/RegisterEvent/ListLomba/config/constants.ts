@@ -1,17 +1,16 @@
 import { ButtonData, CardData } from "../types";
 import { DecorationGroup, DecorationItem } from "../types";
-import { downloadDocument } from "@/Utils/documentUtils";
 
 const buttonData: ButtonData[] = [
     {
         id: "booklet",
         text: "Booklet",
-        onClick: downloadDocument.booklet.download,
+        href: "https://drive.google.com/drive/folders/1uVciYKRaAQKgwp6zye7-HeLMQEUmftgD",
     },
     {
         id: "formulir",
         text: "Formulir",
-        onClick: downloadDocument.form.download,
+        href: "https://drive.google.com/drive/folders/1LL-5aK_JJ6pDeLoj94TOFpQpHtF_lsIk?usp=sharing",
     },
 ] as const;
 
@@ -22,6 +21,8 @@ const cardData: CardData[] = [
         icon: "/icon/kolaborasi-musik.svg",
         description:
             "Kolaborasi Musik Nusantara adalah kompetisi menyanyikan lagu daerah yang menggabungkan unsur alat musik tradisional dan musik modern. Kegiatan ini bertujuan untuk melestarikan kekayaaan budaya musik Indonesia melalui pendekatan kreatif dan inovatif, dengan harapan dapat membangkitkan kecintaan generasi muda terhadap musik tradisional dalam balutan nuansa kekinian",
+        registrationStart: "2025-09-25",
+        registrationEnd: "2025-10-05",
     },
     {
         id: "bazar-kebudayaan",
@@ -50,6 +51,8 @@ const cardData: CardData[] = [
         icon: "/icon/cerita-nusantara.svg",
         description:
             "Lomba bercerita dengan tema legenda dan cerita rakyat dari berbagai daerah di Nusantara.",
+        registrationStart: "2025-09-21",
+        registrationEnd: "2025-10-17",
     },
     {
         id: "karya-citra-inklusif",

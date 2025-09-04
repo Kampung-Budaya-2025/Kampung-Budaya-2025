@@ -6,6 +6,7 @@ type FlowerDecorationProps = {
   animation?: string;
   zIndex?: string;
   decorationSrc?: 'bunga.svg' | 'bunga-2.svg'; 
+  className?: string;
 };
 
 const FlowerDecoration = ({ 
@@ -13,13 +14,16 @@ const FlowerDecoration = ({
   size = 'w-64', 
   animation = 'animate-spin-clockwise', 
   zIndex = 'z-10',
-  decorationSrc = 'bunga.svg'
+  decorationSrc = 'bunga.svg',
+  className = '',
 }: FlowerDecorationProps) => (
-  <img 
-    className={`absolute ${position} transform ${zIndex} ${size} object-contain ${animation}`}
-    src={`img/decoration/${decorationSrc}`}
-    alt="Dekorasi Bunga" 
-  />
+  <div className={`${className} absolute ${position} ${zIndex} `}>
+    <img 
+      className={`transform ${size} object-contain ${animation}`} 
+      src={`img/decoration/${decorationSrc}`} 
+      alt="Dekorasi Bunga" 
+    />
+  </div>
 );
 
 export default FlowerDecoration;

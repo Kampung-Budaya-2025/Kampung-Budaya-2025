@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { router } from "@inertiajs/react";
 import cardBackgroundSvg from "@assets/images/card-list-lomba.svg?url";
 
-
 interface ListCardProps {
     eventId: string;
     title: string;
     icon: string;
     description: string;
     className?: string;
+    registrationStart?: string;
+    registrationEnd?: string;
 }
 
 const ListCard: React.FC<ListCardProps> = ({
@@ -17,15 +18,50 @@ const ListCard: React.FC<ListCardProps> = ({
     icon = "/icon/kolaborasi-musik.svg",
     description = "Deskripsi default",
     className = "",
+    registrationStart,
+    registrationEnd,
 }) => {
     const [isFlipped, setIsFlipped] = useState(false);
 
+    const getRegistrationStatus = (): { isOpen: boolean; message: string } => {
+        if (!registrationStart || !registrationEnd) {
+            return { isOpen: false, message: "Tutup" };
+        }
+
+        const today = new Date();
+        const startDate = new Date(registrationStart);
+        const endDate = new Date(registrationEnd);
+
+        today.setHours(0, 0, 0, 0);
+        startDate.setHours(0, 0, 0, 0);
+        endDate.setHours(23, 59, 59, 999);
+
+        if (today < startDate) {
+            return {
+                isOpen: false,
+                message: `Buka ${new Intl.DateTimeFormat("id-ID", {
+                    day: "numeric",
+                    month: "long",
+                }).format(startDate)}`,
+            };
+        } else if (today > endDate) {
+            return { isOpen: false, message: "Tutup" };
+        } else {
+            return { isOpen: true, message: "Daftar" };
+        }
+    };
+
+    const registrationStatus = getRegistrationStatus();
+
     const handleDaftarClick = (e: React.MouseEvent) => {
         e.stopPropagation(); // Mencegah card-click event saat tombol di-klik
-        // Navigate to register form with event type as URL parameter
-        router.visit(`/register-form?eventType=${eventId}`, {
-            method: "get",
-        });
+
+        if (registrationStatus.isOpen) {
+            // Navigate to register form with event type as URL parameter
+            router.visit(`/register-form?eventType=${eventId}`, {
+                method: "get",
+            });
+        }
     };
 
     const handleCardClick = () => {
@@ -82,11 +118,19 @@ const ListCard: React.FC<ListCardProps> = ({
                 >
                     {/* Title - Fixed position */}
                     <div className="flex-shrink-0 pt-12 flex flex-row justify-center items-center gap-3">
-                        <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[3.2vh]" />
+                        <img
+                            src="/decoration/list-card-decoration.svg"
+                            alt="decoration"
+                            className="mb-[3.2vh]"
+                        />
                         <h2 className="text-center text-[#3F170D] text-lg md:text-[2.8vh] leading-[1.25] mb-[0.8vh] z-10 tracking-[-0.07vh]">
                             {title}
                         </h2>
-                        <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[3.2vh] scale-x-[-1]" />
+                        <img
+                            src="/decoration/list-card-decoration.svg"
+                            alt="decoration"
+                            className="mb-[3.2vh] scale-x-[-1]"
+                        />
                     </div>
 
                     {/* Description - Flexible area */}
@@ -100,9 +144,17 @@ const ListCard: React.FC<ListCardProps> = ({
                     <div className="flex-shrink-0 pb-[3vh] md:pb-[9.6vh] pt-[2vh] items-center justify-center flex">
                         <button
                             onClick={handleDaftarClick}
-                            className="bg-[linear-gradient(180deg,#CE9C17_0%,#CD9514_52.04%,#CC8F12_100%)] hover:bg-[linear-gradient(180deg,#D4A51A_0%,#D39E17_52.04%,#D19515_100%)] text-white py-[0.8vh] px-[3.2vh] rounded-[40px] transition-colors duration-300 z-10 shadow-lg"
+                            disabled={!registrationStatus.isOpen}
+                            className={`
+                                py-[0.8vh] px-[3.2vh] rounded-[40px] transition-colors duration-300 z-10 shadow-lg text-white
+                                ${
+                                    registrationStatus.isOpen
+                                        ? "bg-[linear-gradient(180deg,#CE9C17_0%,#CD9514_52.04%,#CC8F12_100%)] hover:bg-[linear-gradient(180deg,#D4A51A_0%,#D39E17_52.04%,#D19515_100%)] cursor-pointer"
+                                        : "bg-gray-400 cursor-not-allowed opacity-70"
+                                }
+                            `}
                         >
-                            Daftar
+                            {registrationStatus.message}
                         </button>
                     </div>
                 </div>

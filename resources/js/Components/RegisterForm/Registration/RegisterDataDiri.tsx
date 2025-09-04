@@ -33,24 +33,40 @@ const RegisterDataDiri = memo(
             [onDataChange]
         );
 
-        // Simplified animation variants to reduce computational overhead
+        // Enhanced animation variants for better entrance effect
         const containerVariants = {
-            hidden: { opacity: 0 },
+            hidden: { 
+                opacity: 0,
+                y: 30,
+                scale: 0.95 
+            },
             visible: {
                 opacity: 1,
+                y: 0,
+                scale: 1,
                 transition: {
-                    staggerChildren: 0.05, // Reduced from 0.1
-                    delayChildren: 0.1, // Reduced from 0.2
+                    duration: 0.6,
+                    ease: easeInOut,
+                    staggerChildren: 0.08,
+                    delayChildren: 0.2,
                 },
             },
         };
 
         const itemVariants = {
-            hidden: { opacity: 0, y: 10 }, // Reduced from y: 20
+            hidden: { 
+                opacity: 0, 
+                y: 20,
+                x: -10
+            },
             visible: {
                 opacity: 1,
                 y: 0,
-                transition: { duration: 0.3, ease: easeInOut }, // Reduced from 0.5
+                x: 0,
+                transition: { 
+                    duration: 0.5, 
+                    ease: easeInOut
+                },
             },
         };
 
