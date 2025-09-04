@@ -1,73 +1,61 @@
-import GradientText from "@/Components/Common/GradientText";
-import React, { useState, TouchEvent } from "react";
+import GradientText from '@/Components/Common/GradientText'
+import React, { useState, TouchEvent } from 'react'
 
 interface LogoItem {
-    id: number;
-    src: string;
-    title: string;
-    description: string;
+  id: number;
+  src: string;
+  title: string;
+  description: string;
 }
 
 const logoData: LogoItem[] = [
   {
     id: 1,
-    src: "icon/logo-kampung-budaya.svg",
+    src: "img/logo/filosofi-logo/rusa.svg",
     title: "RUSA",
     description: "Rusa Bawean (Axis kuhlii) adalah spesies endemik Indonesia yang hanya ditemukan di Pulau Bawean, Jawa Timur. Rusa ini melambangkan keberlanjutan budaya, keseimbangan dan harmoni, serta identitas lokal yang unik."
   },
   {
     id: 2,
-    src: "icon/logo-kampung-budaya.svg",
+    src: "img/logo/filosofi-logo/rusa-berlari.svg",
     title: "SILUET RUSA BERLARI",
     description: "Siluet rusa berlari mencerminkan dinamika dan perkembangan budaya yang terus bergerak maju. 5 garis pada siluet rusa berlari melambangkan 5 sila pada pancasila dan 5 pulau besar yang ada di Indonesia."
   },
   {
     id: 3,
-    src: "icon/logo-kampung-budaya.svg",
+    src: "img/logo/filosofi-logo/tanduk-rusa.svg",
     title: "TANDUK RUSA",
     description: "Tanduk yang bercabang melambangkan koneksi antara masa lalu, masa kini, dan masa depan budaya. Tiga cabang pada tiap tanduk melambangkan tri dharma perguruan tinggi."
   },
   {
     id: 4,
-    src: "icon/logo-kampung-budaya.svg",
+    src: "img/logo/filosofi-logo/batik-kawung.svg",
     title: "BATIK KAWUNG",
     description: "Motif Batik 'Kawung' dari pulau melambangkan kesempurnaan, kemurnian, dan kesucian."
   },
   {
     id: 5,
-    src: "icon/logo-kampung-budaya.svg",
+    src: "img/logo/filosofi-logo/batik-pucuk-rabuang.svg",
     title: "BATIK PUCUK RABUANG",
     description: "Motif Batik 'Pucuk Rabuang' dari pulau Sumatera melambangkan pertumbuhan dan perkembangan."
   },
   {
     id: 6,
-    src: "icon/logo-kampung-budaya.svg",
+    src: "img/logo/filosofi-logo/batik-dayak.svg",
     title: "BATIK DAYAK",
     description: "Motif Batik 'Dayak' dari pulau Kalimantan melambangkan kearifan lokal dan spiritualitas."
   },
   {
     id: 7,
-    src: "icon/logo-kampung-budaya.svg",
+    src: "img/logo/filosofi-logo/batik-toraja.svg",
     title: "BATIK TORAJA",
     description: "Motif Batik 'Toraja Pa`Tangke Rapa' dari Pulau Sulawesi melambangkan harapan kebahagiaan dan kedamaian. "
   },
   {
     id: 8,
-    src: "icon/logo-kampung-budaya.svg",
+    src: "img/logo/filosofi-logo/batik-asmat.svg",
     title: "BATIK ASMAT",
     description: "Motif Batik 'Asmat' dari Pulau Papua melambangkan hubungan manusia dengan leluhur."
-  },
-  {
-    id: 9,
-    src: "icon/logo-kampung-budaya.svg",
-    title: "WARNA EMAS",
-    description: "Melambangkan nilai luhur dari tradisi dan warisan budaya yang dijaga dan dilestarikan. Emas juga dimaknai sebagai cahaya harapan masa depan bahwa budaya dapat terus lestari dengan zaman yang terus berkembang ini."
-  },
-  {
-    id: 10,
-    src: "icon/logo-kampung-budaya.svg",
-    title: "WARNA COKLAT",
-    description: "Warna cokelat merepresentasikan akar budaya yang tumbuh dari alam dan tradisi masyarakat."
   },
 ];
 
@@ -211,9 +199,11 @@ const FilosofiLogi = () => {
 
               return (
                 <img
-                    className="w-full rotate-180"
-                    src="img/background/batikan.svg"
-                    alt=""
+                  key={logo.id}
+                  className={`${sizeClass} ${opacity} ${cursor} ${zIndex} relative transition-all duration-300 transform hover:scale-105`}
+                  src={logo.src}
+                  alt={`Logo ${logo.id}`}
+                  onClick={() => handleLogoClick(index)}
                 />
               );
             })}
