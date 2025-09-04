@@ -35,15 +35,36 @@ class PageController extends Controller
 
     public function galeri()
     {
-        return Inertia::render('Galeri/Page', [
-            'title' => 'Galeri - Kampung Budaya 2025'
-        ]);
+        // Sementara redirect ke home karena halaman galeri belum tersedia
+        return redirect()->route('home')->with('message', 'Halaman galeri sedang dalam pengembangan. Anda akan diarahkan ke beranda.');
     }
 
-    public function registerForm()
+    public function registerForm(Request $request)
     {
+        // Validasi query parameter eventType
+        $eventType = $request->query('eventType');
+        
+        // Jika tidak ada eventType, redirect ke halaman register-event
+        if (!$eventType) {
+            return redirect()->route('register-event');
+        }
+        
+        // Validasi eventType yang diperbolehkan
+        $allowedEventTypes = [
+            'kolaborasi-musik', 
+            'bazar-kebudayaan', 
+            'gemilang-busana-adat', 
+            'gelanggang-tari-nusantara', 
+            'panggung-budaya-nusantara', 
+            'karya-citra-inklusif'
+        ];
+        if (!in_array($eventType, $allowedEventTypes)) {
+            return redirect()->route('register-event');
+        }
+        
         return Inertia::render('RegisterForm/Page', [
-            'title' => 'Daftar Event - Kampung Budaya 2025'
+            'title' => 'Daftar Event - Kampung Budaya 2025',
+            'eventType' => $eventType
         ]);
     }
 
@@ -58,6 +79,13 @@ class PageController extends Controller
     {
         return Inertia::render('RegisterConfirmation/Page', [
             'title' => 'Konfirmasi Pendaftaran - Kampung Budaya 2025'
+        ]);
+    }
+
+    public function comingSoon()
+    {
+        return Inertia::render('ComingSoon/Page', [
+            'title' => 'Coming Soon - Kampung Budaya 2025'
         ]);
     }
 }

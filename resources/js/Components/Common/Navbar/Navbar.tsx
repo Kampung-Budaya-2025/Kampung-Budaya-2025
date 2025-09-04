@@ -24,7 +24,7 @@ const NavbarLogo: React.FC = () => (
         <img
             src="/icon/logo-kampung-budaya.svg"
             alt="Kampung Budaya Logo"
-            className="h-10 lg:h-12 w-auto"
+            className="h-[4vh] lg:h-[8.8vh] w-auto"
             loading="lazy"
         />
     </Link>
@@ -37,8 +37,8 @@ const RegisterButton: React.FC<{ isMobile?: boolean }> = ({
         href="/register-event"
         className={`text-white font-medium transition-all duration-200 hover:opacity-90 hover:scale-105 ${
             isMobile
-                ? "w-full px-6 py-2 rounded-lg mt-4 text-center block"
-                : "hidden lg:block text-2xl px-6 py-1 rounded-full"
+                ? "w-full px-[2.4vh] py-[1.2vh] rounded-lg mt-4 text-center block"
+                : "hidden lg:block text-[3.6vh] px-[4.8vh] py-[1.2vh] rounded-full"
         }`}
         style={{
             background:
@@ -61,7 +61,7 @@ const MobileMenuButton: React.FC<{
         type="button"
     >
         <svg
-            className="h-8 w-8"
+            className="h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -88,14 +88,14 @@ const DesktopNavigation: React.FC<{
     links: NavigationLink[];
     currentPath: string;
 }> = ({ links, currentPath }) => (
-    <div className="hidden lg:flex items-center space-x-12">
+    <div className="hidden lg:flex items-center space-x-[8vh]">
         {links.map((link) => (
             <Link
                 key={link.id}
                 href={link.href}
-                className={`text-2xl transition-all duration-200 rounded px-3 py-2 font-medium ${
+                className={`text-[3.6vh] transition-all duration-200 rounded px-3 py-2 font-medium ${
                     currentPath === link.href
-                        ? "text-[#CE9C17] font-semibold"
+                        ? "text-[#CE9C17]" // font-semibold dihapus
                         : "text-[#3F170D] hover:text-[#CE9C17]"
                 }`}
             >
@@ -115,14 +115,14 @@ const MobileNavigation: React.FC<{
 
     return (
         <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t rounded-b-[20px] z-40">
-            <div className="px-4 py-4 space-y-3">
+            <div className="px-4 py-6 space-y-3">
                 {links.map((link) => (
                     <Link
                         key={link.id}
                         href={link.href}
                         className={`block font-medium transition-colors duration-200 rounded px-3 py-2 ${
                             currentPath === link.href
-                                ? "text-[#CE9C17] font-semibold"
+                                ? "text-[#CE9C17]"
                                 : "text-[#3F170D] hover:text-[#CE9C17]"
                         }`}
                         onClick={onClose}
@@ -175,7 +175,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = "", currentPath }) => {
 
     return (
         <nav
-            className={`lg:h-auto h-[60px] py-3 fixed top-0 left-0 right-0 rounded-b-[20px] z-50 
+            className={`lg:h-[12vh] lg:max-h-[12vh] h-[3.75rem] py-3 fixed top-0 left-0 right-0 rounded-b-[20px] z-50 
                 bg-[linear-gradient(90deg,#FFF_0%,#FFF_47.12%,#E1B01B_100%)] 
                 lg:bg-[linear-gradient(90deg,#E1B01B_0%,#FFF_25%,#FFF_75%,#E1B01B_100%)] 
     shadow-[0_5px_16px_0_rgba(8,15,52,0.12)] 
@@ -187,7 +187,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = "", currentPath }) => {
             <BatikPattern side="right" />
             <div className="mx-6 lg:container lg:mx-auto h-full relative">
                 <div className="flex items-center justify-between lg:justify-center h-full relative z-10">
-                    <div className="flex items-center space-x-10">
+                    <div className="flex items-center space-x-[6.4vh]">
                         <NavbarLogo />
                         <DesktopNavigation
                             links={NAVIGATION_LINKS}

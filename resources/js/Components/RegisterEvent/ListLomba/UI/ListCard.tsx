@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { router } from "@inertiajs/react";
 import cardBackgroundSvg from "@assets/images/card-list-lomba.svg?url";
 
+
 interface ListCardProps {
+    eventId: string;
     title: string;
     icon: string;
     description: string;
@@ -9,21 +12,39 @@ interface ListCardProps {
 }
 
 const ListCard: React.FC<ListCardProps> = ({
+    eventId,
     title = "Kolaborasi Musik",
     icon = "/icon/kolaborasi-musik.svg",
     description = "Deskripsi default",
     className = "",
 }) => {
-    const handleDaftarClick = () => {
-        console.log(`Daftar untuk ${title}`);
-        // Tambahkan logika pendaftaran di sini
+    const [isFlipped, setIsFlipped] = useState(false);
+
+    const handleDaftarClick = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Mencegah card-click event saat tombol di-klik
+        // Navigate to register form with event type as URL parameter
+        router.visit(`/register-form?eventType=${eventId}`, {
+            method: "get",
+        });
+    };
+
+    const handleCardClick = () => {
+        // Hanya toggle flip pada layar kecil (mobile)
+        if (window.innerWidth < 1024) {
+            setIsFlipped(!isFlipped);
+        }
     };
 
     return (
         <div
-            className={`group perspective-1000 w-[320px] h-[470px] ${className}`}
+            className={`group perspective-1000 w-[264px] h-[380px] lg:w-[46vh] lg:h-[74vh] ${className}`}
+            onClick={handleCardClick}
         >
-            <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+            <div
+                className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d lg:group-hover:rotate-y-180 ${
+                    isFlipped ? "rotate-y-180" : ""
+                }`}
+            >
                 {/* Front Side - Tampilan Original */}
                 <div
                     className="absolute inset-0 w-full h-full backface-hidden flex flex-col items-center justify-center overflow-hidden"
@@ -35,23 +56,23 @@ const ListCard: React.FC<ListCardProps> = ({
                     }}
                 >
                     {/* Icon */}
-                    <div className="flex items-center justify-center mb-4 z-10">
+                    <div className="flex items-center justify-center mb-[1.6vh] z-10">
                         <img
                             src={icon}
                             alt={title}
-                            className="w-35 h-35 object-contain"
+                            className="w-[7.5rem] h-[7.5rem] md:w-[24vh] md:h-[24vh] object-contain"
                         />
                     </div>
 
                     {/* Title */}
-                    <h1 className="text-center text-[#3F170D] text-2xl px-4 leading-tight z-10 max-w-full">
+                    <h1 className="text-center text-[#3F170D] text-lg md:text-[3.5vh] px-[3vh] leading-tight z-10 max-w-full">
                         {title}
                     </h1>
                 </div>
 
                 {/* Back Side - Tampilan Baru */}
                 <div
-                    className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 flex flex-col overflow-hidden p-6"
+                    className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 flex flex-col overflow-hidden px-[4vh] pt-[6vh] md:pt-[13vh] pb-[10vh]"
                     style={{
                         backgroundImage: `url(${cardBackgroundSvg})`,
                         backgroundSize: "contain",
@@ -60,24 +81,26 @@ const ListCard: React.FC<ListCardProps> = ({
                     }}
                 >
                     {/* Title - Fixed position */}
-                    <div className="flex-shrink-0 pt-20">
-                        <h2 className="text-center text-[#3F170D] text-2xl mb-2 z-10 tracking-[-0.7px]">
+                    <div className="flex-shrink-0 pt-12 flex flex-row justify-center items-center gap-3">
+                        <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[3.2vh]" />
+                        <h2 className="text-center text-[#3F170D] text-lg md:text-[2.8vh] leading-[1.25] mb-[0.8vh] z-10 tracking-[-0.07vh]">
                             {title}
                         </h2>
+                        <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[3.2vh] scale-x-[-1]" />
                     </div>
 
                     {/* Description - Flexible area */}
-                    <div className="flex-1 flex items-start justify-center px-2">
-                        <p className="text-justify text-[#7A4D17] text-sm z-10 leading-[1.2] tracking-[-0.4px] whitespace-pre-line">
+                    <div className="flex-1 flex items-start justify-center md:-mt-[0.8vh] overflow-y-auto custom-scrollbar">
+                        <p className="text-justify text-[#7A4D17] text-base lg:text-lg z-10 leading-[1.2] tracking-[-0.2px] whitespace-pre-line pr-2">
                             {description}
                         </p>
                     </div>
 
                     {/* Daftar Button - Fixed position */}
-                    <div className="flex-shrink-0 pb-24 items-center justify-center flex">
+                    <div className="flex-shrink-0 pb-[3vh] md:pb-[9.6vh] pt-[2vh] items-center justify-center flex">
                         <button
                             onClick={handleDaftarClick}
-                            className="bg-[linear-gradient(180deg,#CE9C17_0%,#CD9514_52.04%,#CC8F12_100%)] hover:bg-[linear-gradient(180deg,#D4A51A_0%,#D39E17_52.04%,#D19515_100%)] text-white py-2 px-8 rounded-[40px] transition-colors duration-300 z-10 shadow-lg"
+                            className="bg-[linear-gradient(180deg,#CE9C17_0%,#CD9514_52.04%,#CC8F12_100%)] hover:bg-[linear-gradient(180deg,#D4A51A_0%,#D39E17_52.04%,#D19515_100%)] text-white py-[0.8vh] px-[3.2vh] rounded-[40px] transition-colors duration-300 z-10 shadow-lg"
                         >
                             Daftar
                         </button>

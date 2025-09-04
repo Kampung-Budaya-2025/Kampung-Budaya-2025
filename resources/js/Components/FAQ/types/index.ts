@@ -24,7 +24,7 @@ interface FlowerInitialPosition {
 interface FlowerPosition {
     ref: React.RefObject<HTMLImageElement | null>;
     isInView: boolean;
-    size: number;
+    size:string;
     translateDistance: number;
     transitionDuration: string;
     animationClass: string;

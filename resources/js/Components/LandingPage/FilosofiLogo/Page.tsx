@@ -1,11 +1,11 @@
-import GradientText from '@/Components/Common/GradientText'
-import React, { useState, TouchEvent } from 'react'
+import GradientText from "@/Components/Common/GradientText";
+import React, { useState, TouchEvent } from "react";
 
 interface LogoItem {
-  id: number;
-  src: string;
-  title: string;
-  description: string;
+    id: number;
+    src: string;
+    title: string;
+    description: string;
 }
 
 const logoData: LogoItem[] = [
@@ -211,11 +211,9 @@ const FilosofiLogi = () => {
 
               return (
                 <img
-                  key={logo.id}
-                  className={`${sizeClass} ${opacity} ${cursor} ${zIndex} relative transition-all duration-300 transform hover:scale-105`}
-                  src={logo.src}
-                  alt={`Logo ${logo.id}`}
-                  onClick={() => handleLogoClick(index)}
+                    className="w-full rotate-180"
+                    src="img/background/batikan.svg"
+                    alt=""
                 />
               );
             })}
@@ -255,4 +253,4 @@ const FilosofiLogi = () => {
   );
 };
 
-export default FilosofiLogi;
+export default FilosofiLogo;
