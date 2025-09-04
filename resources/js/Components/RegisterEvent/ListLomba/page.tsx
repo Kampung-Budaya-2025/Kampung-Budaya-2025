@@ -76,6 +76,8 @@ const ListLomba: React.FC = () => {
                     ))}
                 </div>
             </div>
+                        <div className='absolute bottom-0 h-[10vh] w-full bg-[#3F170D] rounded-t-4xl z-20'>
+            </div>
         </div>
     );
 };

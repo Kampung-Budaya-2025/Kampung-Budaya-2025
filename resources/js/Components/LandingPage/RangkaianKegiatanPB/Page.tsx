@@ -94,10 +94,10 @@ const RangkaianKegiatanPB: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:grid sm:grid-cols-3 xl:gap-2 py-6 font-bold text-base md:text-lg lg:text-base xl:text-lg md:text-[20px] text-center lg:text-left">
-            <GradientText>Talkshow</GradientText>
+            <GradientText>Seminar</GradientText>
             <GradientText>Lomba Budaya</GradientText>
             <GradientText>Gelanggang Budaya</GradientText>
-            <GradientText>Workshop Membatik</GradientText>
+            <GradientText>Teater</GradientText>
             <GradientText>Parade</GradientText>
           </div>
 
