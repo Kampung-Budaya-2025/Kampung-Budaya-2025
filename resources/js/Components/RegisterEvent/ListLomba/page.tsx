@@ -22,7 +22,7 @@ const ListLomba: React.FC = () => {
             {/* Bunga Kiri & Kanan */}
             <FlowerDecorations
                 showPairs={["besar"]}
-                besarClass="block absolute top-1/3 left-1/2 -translate-x-1/2 w-[115vw] h-auto z-10 opacity-30"
+                besarClass="block absolute top-1/3 left-1/2 -translate-x-1/2 w-[115vw] h-auto z-0 opacity-30"
             />
             {/*Batik Kiri & Kanan  */}
             <ElementPairComponent pair={BATIK_PAIR} />
