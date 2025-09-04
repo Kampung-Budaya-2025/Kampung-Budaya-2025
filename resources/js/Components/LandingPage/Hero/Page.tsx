@@ -10,10 +10,10 @@ const Hero = () => {
   return (
     <section>
       <div className='relative h-[122vh] w-full overflow-hidden'>
-        <BackgroundSection />
         <FlowerSection />
-        <TitleSection />
+        <BackgroundSection />
         <CandiSection />
+        <TitleSection />
       </div>
       
       <style dangerouslySetInnerHTML={{ __html: flowerAnimation }} />

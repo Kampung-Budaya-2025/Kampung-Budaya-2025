@@ -4,9 +4,9 @@ type CandiDecorationProps = {
   position: string;
   src: string;
   className?: string;
+  Animation?: string;
 };
-
-const CandiDecoration = ({ position, src, className = '' }: CandiDecorationProps) => {
+const CandiDecoration = ({ position, src, className = '', Animation }: CandiDecorationProps) => {
   const getResponsiveHeight = () => {
     if (src.includes('candi-hero-1.svg')) {
       return 'h-[20rem] sm:h-[24rem] md:h-[28rem] lg:h-[32rem] xl:h-[36rem]';
@@ -20,18 +20,21 @@ const CandiDecoration = ({ position, src, className = '' }: CandiDecorationProps
     if (src.includes('candi.svg')) {
       return 'h-[18rem] sm:h-[24rem] md:h-[22rem] lg:h-[24rem]';
     }
-    if (src.includes('candi-compact .svg')) {
+    if (src.includes('candi-compact.svg')) {
       return 'h-[18rem] sm:h-[24rem] md:h-[22rem] lg:h-[24rem]';
     }
     return 'h-[16rem] sm:h-[20rem] md:h-[24rem]';
   };
 
   return (
-    <img
-      className={`absolute ${position} transform z-10 object-contain ${className} ${getResponsiveHeight()}`}
-      src={src}
-      alt="Dekorasi Candi"
-    />
+    <div className={`absolute ${position} ${Animation}`}>
+
+      <img
+        className={` transform z-10 object-contain ${className} ${getResponsiveHeight()}`}
+        src={src}
+        alt="Dekorasi Candi"
+      />
+    </div>
   );
 };
 

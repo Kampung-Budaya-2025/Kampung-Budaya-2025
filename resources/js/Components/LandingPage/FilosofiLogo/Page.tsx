@@ -1,7 +1,6 @@
 import GradientText from '@/Components/Common/GradientText'
 import React, { useState, TouchEvent } from 'react'
 
-// Define the shape of a logo object
 interface LogoItem {
   id: number;
   src: string;
@@ -18,7 +17,7 @@ const logoData: LogoItem[] = [
   },
   {
     id: 2,
-    src: "img/decoration/daun.svg",
+    src: "icon/logo-kampung-budaya.svg",
     title: "SILUET RUSA BERLARI",
     description: "Siluet rusa berlari mencerminkan dinamika dan perkembangan budaya yang terus bergerak maju. 5 garis pada siluet rusa berlari melambangkan 5 sila pada pancasila dan 5 pulau besar yang ada di Indonesia."
   },
@@ -81,14 +80,13 @@ const FilosofiLogi = () => {
     if (index !== activeLogoIndex && !isTransitioning) {
       setIsTransitioning(true);
       setActiveLogoIndex(index);
-      
+
       setTimeout(() => {
         setIsTransitioning(false);
       }, 300);
     }
   };
 
-  // Swipe handling
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const minSwipeDistance = 50;
@@ -104,7 +102,7 @@ const FilosofiLogi = () => {
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
@@ -120,59 +118,69 @@ const FilosofiLogi = () => {
   const activeLogoData = logoData[activeLogoIndex];
 
   return (
-    <section className="relative flex flex-col pt-32 w-full overflow-hidden">
+    <section className="relative flex flex-col lg:pt-32 w-full overflow-hidden">
       <div>
-        <img className="w-full rotate-180" src="img/background/batikan.svg" alt="" />
+        <img className="hidden sm:block w-full rotate-180" src="img/background/batikan.svg" alt="" />
       </div>
+                      <img
+                    className='w-full block sm:hidden mt-[2vh] px-6 sm:px-18'
+                    src="img/background/batikan-mobile.svg"
+                    alt=""
+                />
 
-      <div className="w-full flex flex-col px-24 my-24">
+      <img
+        className="lg-hidden z-0 absolute w-42 lg:w-72 opacity-15 animate-spin-counter left-0 md:left-0 top-1/6 md:top-1/4 transform"
+        src="img/decoration/bunga.svg"
+        alt="Bunga Dekorasi"
+      />
+      <div className="w-full flex flex-col px-12 md:px-16 lg:px-20 xl:px-24 my-24">
         {/* Background Ornament */}
         <div className="z-0 absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/4 w-[800px] h-[800px]">
           <div className="relative w-full h-full flex justify-center items-center">
-            <div className="absolute w-[600px] h-[600px] rounded-full bg-[#E1B01B] opacity-10"></div>
-            <div className="absolute w-[800px] h-[800px] rounded-full bg-[#E1B01B] opacity-10"></div>
+            <div className="hidden lg:block absolute w-[600px] h-[600px] rounded-full bg-[#E1B01B] opacity-10"></div>
+            <div className="hidden lg:block absolute w-[800px] h-[800px] rounded-full bg-[#E1B01B] opacity-10"></div>
             <div className="absolute inset-0 m-auto flex justify-center items-center">
-              <img 
-                className="w-72 opacity-20 animate-spin-counter" 
-                src="img/decoration/bunga.svg" 
-                alt="Bunga Dekorasi" 
+              <img
+                className="w-48 lg:w-72 opacity-15 animate-spin-counter"
+                src="img/decoration/bunga.svg"
+                alt="Bunga Dekorasi"
               />
             </div>
           </div>
         </div>
 
         {/* Title */}
-        <div className="flex flex-col w-full items-end">
-          <GradientText className="font-samsktrigrama text-8xl">
+        <div className="flex flex-col w-full items-center lg:items-end">
+          <GradientText className="font-samsktrigrama text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
             Filosofi Logo
           </GradientText>
-          <p className="font-samsktrigrama text-[#3F170D] text-8xl">
+          <p className="font-samsktrigrama text-center text-[#3F170D] text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
             Kampung Budaya 2024
           </p>
         </div>
 
         {/* Logo Display */}
-        <div 
-          className="flex flex-row w-full h-full my-12 gap-24 items-center justify-center"
+        <div
+          className="flex flex-col lg:flex-row w-full h-full my-12 gap-24 items-center justify-center pt-12"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
           {/* Active Logo */}
           <div className="relative flex flex-2 items-center justify-center">
-            <div className={`absolute w-[600px] h-[600px] rounded-full bg-[#E1B01B] opacity-10 transition-all duration-300 ${isTransitioning ? 'scale-110' : 'scale-100'}`}></div>
-            <div className={`absolute w-[500px] h-[500px] rounded-full bg-[#E1B01B] opacity-20 transition-all duration-300 ${isTransitioning ? 'scale-105' : 'scale-100'}`}></div>
-            <div className={`absolute w-[400px] h-[400px] rounded-full bg-[#E1B01B] opacity-30 transition-all duration-300 ${isTransitioning ? 'scale-110' : 'scale-100'}`}></div>
+            <div className={`absolute w-[325px] h-[325px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px] rounded-full bg-[#E1B01B] opacity-10 transition-all duration-300 ${isTransitioning ? 'scale-110' : 'scale-100'}`}></div>
+            <div className={`absolute w-[275px] h-[275px] lg:w-[425px] lg:h-[425px] xl:w-[500px] xl:h-[500px] rounded-full bg-[#E1B01B] opacity-20 transition-all duration-300 ${isTransitioning ? 'scale-105' : 'scale-100'}`}></div>
+            <div className={`absolute w-[225px] h-[225px] lg:w-[350px] lg:h-[350px] xl:w-[400px] xl:h-[400px] rounded-full bg-[#E1B01B] opacity-30 transition-all duration-300 ${isTransitioning ? 'scale-110' : 'scale-100'}`}></div>
 
             <img
-              className={`w-68 relative z-10 transition-all duration-300 ${isTransitioning ? 'scale-105 opacity-80' : 'scale-100 opacity-100'}`}
+              className={`w-42 lg:w-60 xl:w-68 relative z-10 transition-all duration-300 ${isTransitioning ? 'scale-105 opacity-80' : 'scale-100 opacity-100'}`}
               src={activeLogoData.src}
               alt="Logo Kampung Budaya Active"
             />
           </div>
 
           {/* Next 4 Logos */}
-          <div className="relative flex flex-3 gap-12 items-center">
+          <div className="relative flex flex-3 gap-6 lg:gap-12 items-center">
             {Array.from({ length: 4 }).map((_, i) => {
               const index = (activeLogoIndex + i + 1) % logoCount;
               const logo = logoData[index];
@@ -180,23 +188,23 @@ const FilosofiLogi = () => {
               let sizeClass, opacity, cursor, zIndex;
 
               if (i === 0) {
-                sizeClass = "w-50";
-                opacity = "opacity-90";
-                cursor = "cursor-pointer hover:opacity-100";
+                sizeClass = "w-24 lg:w-42 xl:w-50";
+                opacity = "opacity-100";
+                cursor = "cursor-pointer hover:opacity-1000";
                 zIndex = "z-20";
               } else if (i === 1) {
-                sizeClass = "w-40";
-                opacity = "opacity-70";
-                cursor = "cursor-pointer hover:opacity-90";
+                sizeClass = "w-20 lg:w-36 xl:w-40";
+                opacity = "opacity-100";
+                cursor = "cursor-pointer hover:opacity-100";
                 zIndex = "z-15";
               } else if (i === 2) {
-                sizeClass = "w-30";
-                opacity = "opacity-50";
-                cursor = "cursor-pointer hover:opacity-70";
+                sizeClass = "w-16 lg:w-30 xl:w-30";
+                opacity = "opacity-100";
+                cursor = "cursor-pointer hover:opacity-100";
                 zIndex = "z-10";
               } else {
-                sizeClass = "w-20";
-                opacity = "opacity-30";
+                sizeClass = "w-12 lg:w-24 xl:w-20";
+                opacity = "opacity-100";
                 cursor = "cursor-pointer hover:opacity-50";
                 zIndex = "z-5";
               }
@@ -215,34 +223,34 @@ const FilosofiLogi = () => {
         </div>
 
         {/* Description */}
-        <div className="flex flex-col w-full items-end">
-          <p className={`text-[#3F170D] text-2xl font-bold transition-all duration-300 ${isTransitioning ? 'opacity-70 translate-y-2' : 'opacity-100 translate-y-0'}`}>
+        <div className="flex flex-col w-full items-center lg:items-end">
+          <p className={`text-[#3F170D] text-xl lg:text-2xl font-bold transition-all duration-300 ${isTransitioning ? 'opacity-70 translate-y-2' : 'opacity-100 translate-y-0'}`}>
             {activeLogoData.title}
           </p>
-          <p className={`text-[#3F170D] text-xl w-[50%] text-right mt-4 transition-all duration-300 ${isTransitioning ? 'opacity-70 translate-y-2' : 'opacity-100 translate-y-0'}`}>
+          <p className={`text-[#3F170D] w-full text-lg lg:text-xl lg:w-[50%] text-center lg:text-right mt-4 transition-all duration-300 ${isTransitioning ? 'opacity-70 translate-y-2' : 'opacity-100 translate-y-0'}`}>
             {activeLogoData.description}
           </p>
         </div>
 
-        {/* Navigation Buttons */}
-        <button
-          className="absolute left-8 top-1/2 translate-y-36 w-12 h-12 bg-white bg-opacity-20 hover:bg-opacity-40 rounded-full flex items-center justify-center transition-all duration-300 z-30"
-          onClick={() => handleLogoClick((activeLogoIndex - 1 + logoCount) % logoCount)}
-        >
-          <svg className="w-6 h-6 text-[#3F170D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-
-        <button
-          className="absolute right-8 top-1/2 translate-y-36 w-12 h-12 bg-white bg-opacity-20 hover:bg-opacity-40 rounded-full flex items-center justify-center transition-all duration-300 z-30"
-          onClick={() => handleLogoClick((activeLogoIndex + 1) % logoCount)}
-        >
-          <svg className="w-6 h-6 text-[#3F170D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
       </div>
+      {/* Navigation Buttons */}
+      <button
+        className="absolute left-8 top-120 md:top-136 lg:top-150 xl:top-184 lg:translate-y-36 w-12 h-12 bg-white bg-opacity-20 hover:bg-opacity-40 rounded-full flex items-center justify-center transition-all duration-300 z-30"
+        onClick={() => handleLogoClick((activeLogoIndex - 1 + logoCount) % logoCount)}
+      >
+        <svg className="w-6 h-6 text-[#3F170D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <button
+        className="absolute right-8 top-120 md:top-136 lg:top-150 xl:top-184 lg:translate-y-36 w-12 h-12 bg-white bg-opacity-20 hover:bg-opacity-40 rounded-full flex items-center justify-center transition-all duration-300 z-30"
+        onClick={() => handleLogoClick((activeLogoIndex + 1) % logoCount)}
+      >
+        <svg className="w-6 h-6 text-[#3F170D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
     </section>
   );
 };
