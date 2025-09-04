@@ -3,6 +3,7 @@
         "target": "es6",
         "module": "esnext",
         "moduleResolution": "node",
+            "ignoreDeprecations": "6.0",
         "strict": true,
         "jsx": "react-jsx",
         "sourceMap": true,
