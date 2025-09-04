@@ -253,4 +253,4 @@ const FilosofiLogi = () => {
   );
 };
 
-export default FilosofiLogo;
+export default FilosofiLogi;
