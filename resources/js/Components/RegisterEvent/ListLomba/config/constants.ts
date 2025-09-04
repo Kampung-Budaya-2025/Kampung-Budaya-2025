@@ -121,7 +121,7 @@ const bungaMahkotaDecoration: DecorationItem = {
     src: "/icon/bunga-mahkota.svg",
     alt: "Bunga Mahkota",
     className:
-        "absolute w-[80vw] lg:w-[50vw] -bottom-2 lg:bottom-16 left-1/2 transform -translate-x-1/2 translate-y-1/4 z-50",
+        "absolute w-[80vw] lg:w-[50vw] -bottom-2 lg:bottom-16 left-1/2 transform -translate-x-1/2 translate-y-1/4 z-50 lg:z-0",
 } as const;
 
 export {
