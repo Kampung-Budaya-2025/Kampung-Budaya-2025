@@ -15,7 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\HandleInertiaRequests::class,
         ]);
         
-        // Exclude API routes from CSRF verification
+        $middleware->web(prepend: [
+            \App\Http\Middleware\MaintenanceMode::class,
+        ]);
+        
         $middleware->validateCsrfTokens(except: [
             'api/*',
         ]);

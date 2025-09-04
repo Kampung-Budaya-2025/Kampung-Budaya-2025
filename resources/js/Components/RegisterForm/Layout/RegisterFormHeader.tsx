@@ -18,8 +18,14 @@ const RegisterFormHeader = ({
                 return "Pendaftaran Lomba Kolaborasi Musik";
             case "bazar-kebudayaan":
                 return "Pendaftaran Bazar Kebudayaan";
-            case "fashion-show":
-                return "Pendaftaran Fashion Show";
+            case "gemilang-busana-adat":
+                return "Pendaftaran Lomba Gemilang Busana Adat";
+            case "gelanggang-tari-nusantara":
+                return "Pendaftaran Lomba Gelanggang Tari Nusantara";
+            case "panggung-budaya-nusantara":
+                return "Pendaftaran Lomba Panggung Budaya Nusantara";
+            case "karya-citra-inklusif":
+                return "Pendaftaran Lomba Karya Citra Inklusif";
             default:
                 return "Pendaftaran Event";
         }
@@ -61,7 +67,10 @@ const RegisterFormHeader = ({
                             src="/decoration/bunga-mobile-up.svg"
                             alt="Mobile Up Kiri"
                             className="w-24 h-20 animate-spin"
-                            style={{ animationDuration: '4s', animationDirection: 'reverse' }}
+                            style={{
+                                animationDuration: "4s",
+                                animationDirection: "reverse",
+                            }}
                         />
                     </div>
 
@@ -81,7 +90,7 @@ const RegisterFormHeader = ({
                             src="/decoration/bunga-mobile-up.svg"
                             alt="Mobile Up Kanan"
                             className="w-24 h-20 animate-spin"
-                            style={{ animationDuration: '4s' }}
+                            style={{ animationDuration: "4s" }}
                         />
                     </div>
 

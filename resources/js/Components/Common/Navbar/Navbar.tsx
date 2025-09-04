@@ -12,7 +12,6 @@ interface NavigationLink {
     id: string;
 }
 
-// Constants - pindahkan ke luar component untuk menghindari re-creation
 const NAVIGATION_LINKS: NavigationLink[] = [
     { id: "home", label: "Beranda", href: "/" },
     { id: "galeri", label: "Galeri", href: "/galeri" },

@@ -16,7 +16,7 @@ interface SocialLink {
 
 // Social Media Icons Components
 const TwitterIcon: React.FC<{ className?: string }> = ({
-    className = "w-8 h-8",
+    className = "w-[3.2vh] h-[3.2vh]",
 }) => (
     <svg
         className={className}
@@ -29,7 +29,7 @@ const TwitterIcon: React.FC<{ className?: string }> = ({
 );
 
 const YouTubeIcon: React.FC<{ className?: string }> = ({
-    className = "w-8 h-8",
+    className = "w-[3.2vh] h-[3.2vh]",
 }) => (
     <svg
         className={className}
@@ -42,7 +42,7 @@ const YouTubeIcon: React.FC<{ className?: string }> = ({
 );
 
 const TikTokIcon: React.FC<{ className?: string }> = ({
-    className = "w-8 h-8",
+    className = "w-[3.2vh] h-[3.2vh]",
 }) => (
     <svg
         className={className}
@@ -55,7 +55,7 @@ const TikTokIcon: React.FC<{ className?: string }> = ({
 );
 
 const InstagramIcon: React.FC<{ className?: string }> = ({
-    className = "w-8 h-8",
+    className = "w-[3.2vh] h-[3.2vh]",
 }) => (
     <svg
         className={className}
@@ -114,7 +114,7 @@ const BrandTitle: React.FC = () => {
             className="block rounded focus:outline-none"
         >
             <h1
-                className="max-w-[18.5rem] lg:max-w-full text-[3.25rem] lg:text-[4rem] text-center leading-[1] lg:text-start font-samsktrigrama transition-opacity duration-200"
+                className="max-w-[29.6vh] lg:max-w-full text-[3.25rem] lg:text-[6.4vh] text-center leading-[1] lg:text-start font-samsktrigrama transition-opacity duration-200"
                 style={{
                     backgroundImage:
                         "",
@@ -139,13 +139,13 @@ const NavigationMenu: React.FC<{ currentPath: string }> = ({ currentPath }) => {
 
     return (
         <nav aria-label="Footer navigation">
-            <ul className="flex flex-col lg:flex-row items-center text-center lg:text-center lg:items-center lg:mt-6 gap-12 lg:gap-16">
+            <ul className="flex flex-col lg:flex-row items-center text-center lg:text-center lg:items-center lg:mt-[2.4vh] gap-[4.8vh] lg:gap-[6.4vh]">
                 {NAVIGATION_LINKS.map((link) => (
                     <li key={link.id}>
                         <Link
                             href={link.href}
                             onClick={handleClick}
-                            className={`transition-colors duration-200 text-3xl rounded px-1 py-1 focus:outline-none ${
+                            className={`transition-colors duration-200 text-[3vh] rounded px-[0.4vh] py-[0.4vh] focus:outline-none ${
                                 isActiveLink(link.href)
                                     ? "text-yellow-400"
                                     : "text-[#FCF0AB] hover:text-yellow-400"
@@ -161,12 +161,12 @@ const NavigationMenu: React.FC<{ currentPath: string }> = ({ currentPath }) => {
 };
 
 const SocialMediaLinks: React.FC = () => (
-    <div className="flex space-x-6" role="list" aria-label="Social media links">
+    <div className="flex space-x-[2.4vh]" role="list" aria-label="Social media links">
         {SOCIAL_LINKS.map((link) => (
             <a
                 key={link.id}
                 href={link.href}
-                className="text-[#CE9C17] bg-white hover:text-yellow-400 transition-colors duration-200 p-3 hover:bg-white/10 rounded-full focus:outline-none"
+                className="text-[#CE9C17] bg-white hover:text-yellow-400 transition-colors duration-200 p-[1.2vh] hover:bg-white/10 rounded-full focus:outline-none"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={link.label}
@@ -182,8 +182,8 @@ const Copyright: React.FC = () => {
     const currentYear = useMemo(() => new Date().getFullYear(), []);
 
     return (
-        <div className="mt-8 pt-6 border-t-2 border-[#CE9C17] text-center">
-            <p className="text-[0.75rem] lg:text-xl text-[#FCF0AB]">
+        <div className="mt-[3.2vh] pt-[2.4vh] border-t-2 border-[#CE9C17] text-center">
+            <p className="text-[0.75rem] lg:text-[2vh] text-[#FCF0AB]">
                 Copyright {currentYear} Made with{" "}
                 <span className="text-red-400" aria-label="love">
                     ♡
@@ -219,20 +219,20 @@ const BatikBackgroundMobile: React.FC = () => (
 // Main Footer Component
 const Footer: React.FC<{ currentPath?: string }> = ({ currentPath = "/" }) => {
     return (
-        <footer className="relative h-[852px] lg:h-[26rem] text-white bg-[linear-gradient(180deg,#3F170D_0%,#5F3313_100%)] overflow-hidden">
+        <footer className="relative h-[85.2vh] lg:h-[41.6vh] text-white bg-[linear-gradient(180deg,#3F170D_0%,#5F3313_100%)] overflow-hidden">
             <BatikBackground />
             <BatikBackgroundMobile />
 
-            <div className="relative z-10 px-12 py-20 lg:py-24 sm:px-20 lg:px-28">
+            <div className="relative z-10 px-[4.8vh] py-[8vh] lg:py-[9.6vh] sm:px-[8vh] lg:px-[11.2vh]">
                 <div className="max-w-full mx-auto">
-                    <div className="flex flex-col items-center space-y-12 lg:flex-row lg:justify-between lg:items-center lg:space-y-0">
+                    <div className="flex flex-col items-center space-y-[4.8vh] lg:flex-row lg:justify-between lg:items-center lg:space-y-0">
                         {/* Brand Section */}
                         <div className="lg:w-1/3">
                             <BrandTitle />
                         </div>
-
+            
                         {/* Navigation and Social Section */}
-                        <div className="flex flex-col sm:flex-col lg:flex-row items-center lg:items-center sm:justify-between lg:justify-between space-y-10 w-full lg:w-2/3 gap-8 sm:gap-16 ">
+                        <div className="flex flex-col sm:flex-col lg:flex-row items-center lg:items-center sm:justify-between lg:justify-between space-y-[4vh] w-full lg:w-2/3 gap-[3.2vh] sm:gap-[6.4vh]">
                             <NavigationMenu currentPath={currentPath} />
                             <SocialMediaLinks />
                         </div>
