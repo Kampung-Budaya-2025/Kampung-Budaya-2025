@@ -11,7 +11,7 @@ const RangkaianKegiatanPB: React.FC = () => {
   
       ref={ref}
       className={`
-        z-50
+        z-30
         relative lg:max-h-screen w-full overflow-visible lg:pt-48
         transform transition-all duration-700 ease-out
         ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
