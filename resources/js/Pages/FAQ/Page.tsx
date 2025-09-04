@@ -23,6 +23,7 @@ const FAQPages: React.FC = () => {
                 alt="Bunga Mahkota"
                 containerClassName="block lg:hidden absolute w-full h-auto top-0 left-1/2 flex justify-center items-center transform -translate-x-1/2 rotate-180 z-20"
                 elementClassName="h-[186px] w-auto animate-spin-clockwise"
+                transition="all 2s ease-in-out 0.5s"
                 yOffset={30}
             />
 

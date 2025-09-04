@@ -36,7 +36,7 @@ const FAQCard: React.FC<CardProps> = ({
 
         return parts.map((part, index) =>
             regex.test(part) ? (
-                <span key={index} className="bg-yellow-200 font-semibold">
+                <span key={index} className="bg-transparent font-semibold">
                     {part}
                 </span>
             ) : (
@@ -96,7 +96,7 @@ const FAQCard: React.FC<CardProps> = ({
                 borderRadius: '0 0 16px 16px'
               }}
             >
-              <p className="text-2xl text-[#CD9C1A] leading-relaxed">
+              <p className="tast-base lg:text-2xl text-[#CD9C1A] leading-relaxed">
                 {highlightText(item.answer, searchQuery)}
               </p>
             </div>
