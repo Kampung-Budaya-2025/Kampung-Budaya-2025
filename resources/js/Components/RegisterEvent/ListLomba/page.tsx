@@ -51,6 +51,8 @@ const ListLomba: React.FC = () => {
                             eventId={card.id}
                             title={card.title}
                             icon={card.icon}
+                            date={card.date}
+                            category={card.category}
                             description={card.description}
                         />
                     ))}
@@ -64,6 +66,8 @@ const ListLomba: React.FC = () => {
                                 eventId={card.id}
                                 title={card.title}
                                 icon={card.icon}
+                                date={card.date}
+                                category={card.category}
                                 description={card.description}
                             />
                             <AnimatedFlower />
