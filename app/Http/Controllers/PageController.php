@@ -35,8 +35,9 @@ class PageController extends Controller
 
     public function galeri()
     {
-        // Sementara redirect ke home karena halaman galeri belum tersedia
-        return redirect()->route('home')->with('message', 'Halaman galeri sedang dalam pengembangan. Anda akan diarahkan ke beranda.');
+        return Inertia::render('ComingSoon/Page', [
+            'title' => 'Galeri - Kampung Budaya 2025'
+        ]);
     }
 
     public function registerForm(Request $request)
