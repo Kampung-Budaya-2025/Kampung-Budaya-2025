@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface SpeechContent {
     left: string;
     right: string;
@@ -13,13 +15,31 @@ const RegisterFormMascots = ({ speechContent, currentStep }: RegisterFormMascots
 
     return (
         <>
-            {/* Maskot Kiri - STATIC DENGAN HOVER EFFECT */}
-            <div className="absolute hidden -translate-y-1/2 -left-40 top-1/2 lg:block">
-                <div 
+            {/* Maskot Kiri - DENGAN ANIMASI MASUK RINGAN */}
+            <motion.div 
+                className="absolute hidden -translate-y-1/2 -left-40 top-1/2 lg:block"
+                initial={{ opacity: 0, x: -30, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ 
+                    duration: 0.8, 
+                    delay: 0.5, 
+                    ease: "easeOut" 
+                }}
+            >
+                <motion.div 
                     className="transition-transform duration-300 hover:-translate-y-2"
                     style={{
                         transform: 'translateZ(0)', // Hardware acceleration
                         willChange: 'transform'
+                    }}
+                    animate={{ 
+                        y: [0, -5, 0] 
+                    }}
+                    transition={{ 
+                        duration: 4, 
+                        repeat: Infinity, 
+                        ease: "easeInOut",
+                        delay: 1.5 
                     }}
                 >
                     <img 
@@ -28,10 +48,19 @@ const RegisterFormMascots = ({ speechContent, currentStep }: RegisterFormMascots
                         className="h-auto w-28 sm:w-36 lg:w-48 xl:w-56"
                         loading="lazy"
                     />
-                </div>
+                </motion.div>
                 
                 {/* Speech Bubble Kiri */}
-                <div className="absolute -top-8 -left-8 sm:-top-12 sm:-left-12">
+                <motion.div 
+                    className="absolute -top-8 -left-8 sm:-top-12 sm:-left-12"
+                    initial={{ opacity: 0, scale: 0, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ 
+                        duration: 0.4, 
+                        delay: 1.2, 
+                        ease: "easeOut" 
+                    }}
+                >
                     <div className="relative">
                         <div 
                             className="px-3 py-2 text-xs font-bold text-center text-white rounded-full shadow-lg sm:px-4 sm:py-2 sm:text-sm whitespace-nowrap"
@@ -48,16 +77,34 @@ const RegisterFormMascots = ({ speechContent, currentStep }: RegisterFormMascots
                             style={{ backgroundColor: '#CC8F12' }}
                         ></div>
                     </div>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
 
-            {/* Maskot Kanan - STATIC DENGAN HOVER EFFECT */}
-            <div className="absolute hidden -translate-y-1/2 -right-40 top-1/2 lg:block">
-                <div 
+            {/* Maskot Kanan - DENGAN ANIMASI MASUK RINGAN */}
+            <motion.div 
+                className="absolute hidden -translate-y-1/2 -right-40 top-1/2 lg:block"
+                initial={{ opacity: 0, x: 30, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ 
+                    duration: 0.8, 
+                    delay: 0.7, 
+                    ease: "easeOut" 
+                }}
+            >
+                <motion.div 
                     className="transition-transform duration-300 hover:-translate-y-2"
                     style={{
                         transform: 'translateZ(0)', // Hardware acceleration
                         willChange: 'transform'
+                    }}
+                    animate={{ 
+                        y: [0, -5, 0] 
+                    }}
+                    transition={{ 
+                        duration: 4, 
+                        repeat: Infinity, 
+                        ease: "easeInOut",
+                        delay: 1.7 
                     }}
                 >
                     <img 
@@ -66,10 +113,19 @@ const RegisterFormMascots = ({ speechContent, currentStep }: RegisterFormMascots
                         className="h-auto w-28 sm:w-36 lg:w-48 xl:w-56"
                         loading="lazy"
                     />
-                </div>
+                </motion.div>
                 
                 {/* Speech Bubble Kanan */}
-                <div className="absolute -top-8 -right-8 sm:-top-12 sm:-right-12">
+                <motion.div 
+                    className="absolute -top-8 -right-8 sm:-top-12 sm:-right-12"
+                    initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ 
+                        duration: 0.6, 
+                        delay: 1.2, 
+                        ease: "easeOut" 
+                    }}
+                >
                     <div className="relative">
                         <div 
                             className="px-3 py-2 text-xs font-bold text-center text-white rounded-full shadow-lg sm:px-4 sm:py-2 sm:text-sm whitespace-nowrap"
@@ -86,8 +142,8 @@ const RegisterFormMascots = ({ speechContent, currentStep }: RegisterFormMascots
                             style={{ backgroundColor: '#CC8F12' }}
                         ></div>
                     </div>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         </>
     );
 };
