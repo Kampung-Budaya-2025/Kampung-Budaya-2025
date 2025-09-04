@@ -44,36 +44,31 @@ const faqData: FAQItem[] = [
     },
     {
       id: 7,
-      question: "Apa itu Triloka Budaya?",
-      answer: `Triloka Budaya adalah rangkaian acara yang mencakup Lomba Gelanggang Tari Nusantara, Seminar Kebudayaan, dan Lomba Teater Cakrawala Budaya. Ketiganya menjadi wadah ekspresi, edukasi, dan pelestarian budaya melalui seni tari, ruang dialog kebudayaan, serta pementasan teater yang mengangkat cerita rakyat nusantara.`
+      question: "Apa itu Triloka Budaya dan siapa saja yang bisa ikut Triloka Budaya?",
+      answer: `Triloka Budaya adalah rangkaian acara yang mencakup Lomba Gelanggang Tari Nusantara, Seminar Kebudayaan, dan Lomba Teater Cakrawala Budaya. Ketiganya menjadi wadah ekspresi, edukasi, dan pelestarian budaya melalui seni tari, ruang dialog kebudayaan, serta pementasan teater yang mengangkat cerita rakyat nusantara.
+      <br><br>Triloka Budaya terbuka untuk semua kalangan. Gelanggang Tari Nusantara khusus diikuti oleh Forum Daerah (FORDA), sementara Seminar Kebudayaan bisa diikuti oleh mahasiswa umum. Untuk Lomba Teater Cakrawala Budaya, pesertanya adalah siswa/i SMA/sederajat se-Malang Raya. Tak hanya itu, masyarakat umum juga bisa ikut meramaikan dengan menyaksikan langsung seluruh rangkaian acaranya.`
     },
     {
       id: 8,
-      question: "Siapa saja yang bisa ikut Triloka Budaya?",
-      answer: `Triloka Budaya terbuka untuk semua kalangan. Gelanggang Tari Nusantara khusus diikuti oleh Forum Daerah (FORDA), sementara Seminar Kebudayaan bisa diikuti oleh mahasiswa umum. Untuk Lomba Teater Cakrawala Budaya, pesertanya adalah siswa/i SMA/sederajat se-Malang Raya. Tak hanya itu, masyarakat umum juga bisa ikut meramaikan dengan menyaksikan langsung seluruh rangkaian acaranya.`
+      question: "Apa itu Gelora Puncak Budaya?",
+      answer: `
+      <li>Apa saja yang ada di Gelora Puncak Budaya?</li>
+      Gelora Puncak Budaya adalah main event sekaligus penutup Kampung Budaya 2025, berisi Panggung Budaya Nusantara, Kampung Interaktif, serta Bazar Kebudayaan dan tenant UMKM yang menampilkan ragam pertunjukan, pengalaman budaya, hingga kuliner dan produk lokal.<br><br>
+      <li>Apa pengunjung bisa hadir?</li>
+      Pastinya seluruh sobat budaya dari berbagai penjuru indonesia dapat menghadiri dan meramaikan Gelora Puncak Budaya 2025.`
     },
     {
       id: 9,
-      question: "Apa itu Gelora Puncak Budaya dan apa saja yang ada di Gelora Puncak Budaya?",
-      answer: `Gelora Puncak Budaya adalah main event sekaligus penutup Kampung Budaya 2025, berisi Panggung Budaya Nusantara, Kampung Interaktif, serta Bazar Kebudayaan dan tenant UMKM yang menampilkan ragam pertunjukan, pengalaman budaya, hingga kuliner dan produk lokal.`
-    },
-    {
-      id: 10,
-      question: "Apakah pengunjung bisa hadir pada Gelora Puncak Budaya?",
-      answer: `Pastinya seluruh sobat budaya dari berbagai penjuru indonesia dapat menghadiri dan meramaikan Gelora Puncak Budaya 2025.`
-    },
-    {
-      id: 11,
       question: "Bagaimana cara pendaftaran lomba Kampung Budaya 2025?",
       answer: `Pendaftaran lomba dapat dilakukan melalui link berikut: <a href="https://linktr.ee/KampungBudaya2025">https://linktr.ee/KampungBudaya2025</a>`
     },
     {
-      id: 12,
+      id: 10,
       question: "Apa hadiah dari perlombaan di Kampung Budaya 2025?",
       answer: `Pemenang akan mendapatkan <strong>piala, sertifikat, serta uang tunai.</strong> Selain itu, juara 1, 2, dan 3 juga berkesempatan untuk tampil pada malam Gelora Puncak Budaya 2025.`
     },
     {
-      id: 13,
+      id: 11,
       question: "Jika ada pertanyaan lebih lanjut, siapa yang dapat dihubungi?",
       answer: `Sobat budaya dapat menghubungi narahubung dibawah ini:
       <li>0895413977649 (Naya)</li>
