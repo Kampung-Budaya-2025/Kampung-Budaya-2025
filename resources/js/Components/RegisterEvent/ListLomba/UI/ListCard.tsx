@@ -100,7 +100,7 @@ const ListCard: React.FC<ListCardProps> = ({
                         <img
                             src={icon}
                             alt={title}
-                            className="w-[7.5rem] h-[7.5rem] md:w-[24vh] md:h-[24vh] object-contain"
+                            className="w-[10rem] h-[10rem] md:w-[24vh] md:h-[24vh] object-contain"
                         />
                     </div>
 

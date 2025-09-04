@@ -163,7 +163,7 @@ const RegisterHero: React.FC = () => {
                 </div>
             </div> */}
 
-            <div className="relative flex items-center flex-col z-10 pt-[18vh]">
+            <div className="relative flex items-center flex-col z-10 pt-0 md:pt-[12vh] lg:pt-[18vh]">
                 <div>
                     <img
                         ref={PATTERN.ref}
@@ -194,11 +194,11 @@ const RegisterHero: React.FC = () => {
                         <div className="relative z-10 flex flex-col items-center text-center px-4">
                             {/* Title Section */}
                             <div className="flex flex-col items-center lg:mb-[2.4vh]">
-                                <h1 className="font-samsktrigrama text-[6.4vh] sm:text-[10vh] lg:text-[15vh] flex justify-center leading-[0.84] lg:leading-normal tracking-[-0.3vh] text-center -ml-16">
+                                <h1 className="font-samsktrigrama text-[4rem] sm:text-[10vh] lg:text-[15vh] flex justify-center leading-[0.84] lg:leading-normal tracking-[-0.3vh] text-center -ml-12 md:-ml-12 lg:-ml-16">
                                     {lombaUmumText.map((char, idx) => (
                                         <span
                                             key={`lomba-${idx}`}
-                                            className={`bg-[linear-gradient(180deg,_#FFC411_0%,_#CD9C1A_22.12%,_#BD6229_44.71%,_#5D2F24_60.58%,_#5D2F24_80.77%)] bg-clip-text text-transparent inline-block transition-all duration-700 ease-[cubic-bezier(0.34,2.5,0.64,1)]
+                                            className={`bg-[linear-gradient(180deg,_#3F170D_0%,_#5F3313_100%)] bg-clip-text text-transparent inline-block transition-all duration-700 ease-[cubic-bezier(0.34,2.5,0.64,1)]
                                         ${
                                             showLombaLetters
                                                 ? "opacity-100 translate-y-0"
@@ -216,17 +216,17 @@ const RegisterHero: React.FC = () => {
                                     ))}
                                 </h1>
                                 <div className="relative">
-                                    <h1 className="font-samsktrigrama text-[6.4vh] sm:text-[10vh] lg:text-[15vh] flex justify-center leading-[0.84] lg:leading-normal tracking-[-0.3vh] text-center -mt-[12vh] z-30">
+                                    <h1 className="font-samsktrigrama text-[4rem] sm:text-[10vh] lg:text-[15vh] flex justify-center leading-[0.84] lg:leading-normal tracking-[-0.3vh] text-center -mt-[1vh] lg:-mt-[12vh] z-40 relative">
                                         {forumDaerahText.map((char, idx) => (
                                             <span
                                                 key={`forum-${idx}`}
-                                                className={`bg-[linear-gradient(180deg,_#FFC411_0%,_#CD9C1A_22.12%,_#BD6229_44.71%,_#5D2F24_60.58%,_#5D2F24_80.77%)] bg-clip-text text-transparent inline-block transition-all duration-700 ease-[cubic-bezier(0.34,2.5,0.64,1)]
-                                            ${
-                                                showForumLetters
-                                                    ? "opacity-100 translate-y-0"
-                                                    : "opacity-0 -translate-y-[10vh]"
-                                            }
-                                        `}
+                                                className={`bg-[linear-gradient(180deg,_#3F170D_0%,_#5F3313_100%)] bg-clip-text text-transparent inline-block transition-all duration-700 ease-[cubic-bezier(0.34,2.5,0.64,1)]
+                ${
+                    showForumLetters
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 -translate-y-[10vh]"
+                }
+            `}
                                                 style={{
                                                     transitionDelay: `${
                                                         idx * 60
@@ -241,7 +241,7 @@ const RegisterHero: React.FC = () => {
                                     <img
                                         src="/icon/icon-and.svg"
                                         alt="And Icon"
-                                        className={`absolute -top-[13vh] -translate-y-1/2 left-[calc(100%+-4.8vh)] h-[6vh] lg:h-[10vh] w-auto transition-all duration-700 ease-[cubic-bezier(0.34,2.5,0.64,1)] z-0
+                                        className={`absolute -top-[4vh] lg:-top-[13vh] -translate-y-1/2 left-[calc(100%+-3vh)] lg:left-[calc(100%+-4.8vh)] h-[6vh] lg:h-[10vh] w-auto transition-all duration-700 ease-[cubic-bezier(0.34,2.5,0.64,1)] z-10
                                             ${
                                                 showForumLetters
                                                     ? "opacity-100 translate-y-0"
@@ -256,7 +256,7 @@ const RegisterHero: React.FC = () => {
                             </div>
 
                             {/* Subtitle */}
-                            <h2 className={`text-[#C88B5F] text-[1.4vh] lg:text-[3.5vh] mb-[4vh] -mt-[7.2vh] max-w-[90%] lg:max-w-[60%] leading-relaxed transition-all duration-700 ease-out
+                            <h2 className={`text-[#C88B5F] text-[0.875rem] md:text-lg lg:text-[3.5vh] mb-2 lg:mb-[4vh] mt-0 lg:-mt-[7.2vh] max-w-[90%] lg:max-w-[60%] leading-relaxed transition-all duration-700 ease-out
     ${showForumLetters ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[2vh]"}`}
                             style={{
                                 transitionDelay: `${forumDaerahText.length * 60 + 300}ms`,
