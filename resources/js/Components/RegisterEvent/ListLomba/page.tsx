@@ -22,7 +22,7 @@ const ListLomba: React.FC = () => {
             {/* Bunga Kiri & Kanan */}
             <FlowerDecorations
                 showPairs={["besar"]}
-                besarClass="block absolute top-1/3 left-1/2 -translate-x-1/2 w-[115vw] h-auto z-10 opacity-30"
+                besarClass="block absolute top-1/3 left-1/2 -translate-x-1/2 w-[115vw] h-auto z-0 opacity-30"
             />
             {/*Batik Kiri & Kanan  */}
             <ElementPairComponent pair={BATIK_PAIR} />
@@ -52,6 +52,8 @@ const ListLomba: React.FC = () => {
                             eventId={card.id}
                             title={card.title}
                             icon={card.icon}
+                            date={card.date}
+                            category={card.category}
                             description={card.description}
                             registrationStart={card.registrationStart}
                             registrationEnd={card.registrationEnd}
@@ -67,6 +69,8 @@ const ListLomba: React.FC = () => {
                                 eventId={card.id}
                                 title={card.title}
                                 icon={card.icon}
+                                date={card.date}
+                                category={card.category}
                                 description={card.description}
                                 registrationStart={card.registrationStart}
                                 registrationEnd={card.registrationEnd}

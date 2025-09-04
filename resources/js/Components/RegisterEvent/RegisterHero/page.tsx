@@ -169,14 +169,14 @@ const RegisterHero: React.FC = () => {
 
                 {/* Bunga Mahkota */}
                 <AnimatedElement src="/icon/bunga-mahkota.svg" alt="Bunga Mahkota"
-                    containerClassName="block lg:hidden absolute w-full h-auto bottom-12 left-1/2 flex justify-center items-center transform -translate-x-1/2 rotate-180 z-20"
+                    containerClassName="block lg:hidden absolute w-full h-auto bottom-12 left-1/2 flex justify-center items-center transform -translate-x-1/2 rotate-180 z-30"
                     elementClassName="h-[64px] w-auto"
                     yOffset={-20}
                 />
 
                 {/* Wayang */}
                 <AnimatedElement src="/background/wayang.svg" alt="Wayang"
-                    containerClassName="hidden lg:hidden absolute w-full h-auto bottom-12 left-1/2 flex justify-center items-center transform -translate-x-1/2 rotate-[152deg] z-30 "
+                    containerClassName="block lg:hidden absolute w-full h-auto bottom-12 left-1/2 flex justify-center items-center transform -translate-x-1/2 rotate-332 z-20 "
                     elementClassName="h-[252px] w-auto"
                     yOffset={20}
                 />

@@ -6,6 +6,8 @@ interface ListCardProps {
     eventId: string;
     title: string;
     icon: string;
+    date: string;
+    category: string;
     description: string;
     className?: string;
     registrationStart?: string;
@@ -16,6 +18,8 @@ const ListCard: React.FC<ListCardProps> = ({
     eventId,
     title = "Kolaborasi Musik",
     icon = "/icon/kolaborasi-musik.svg",
+    date = "",
+    category = "",
     description = "Deskripsi default",
     className = "",
     registrationStart,
@@ -73,7 +77,7 @@ const ListCard: React.FC<ListCardProps> = ({
 
     return (
         <div
-            className={`group perspective-1000 w-[264px] h-[380px] lg:w-[46vh] lg:h-[74vh] ${className}`}
+            className={`group perspective-1000 w-[320px] h-[450px] lg:w-[46vh] lg:h-[74vh] ${className}`}
             onClick={handleCardClick}
         >
             <div
@@ -117,31 +121,33 @@ const ListCard: React.FC<ListCardProps> = ({
                     }}
                 >
                     {/* Title - Fixed position */}
-                    <div className="flex-shrink-0 pt-12 flex flex-row justify-center items-center gap-3">
-                        <img
-                            src="/decoration/list-card-decoration.svg"
-                            alt="decoration"
-                            className="mb-[3.2vh]"
-                        />
+                    <div className="flex-shrink-0 pt-12 flex flex-row justify-center items-center gap-2">
+                        <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[3.2vh] w-[25px] lg:w-[39px] h-auto" />
                         <h2 className="text-center text-[#3F170D] text-lg md:text-[2.8vh] leading-[1.25] mb-[0.8vh] z-10 tracking-[-0.07vh]">
                             {title}
                         </h2>
-                        <img
-                            src="/decoration/list-card-decoration.svg"
-                            alt="decoration"
-                            className="mb-[3.2vh] scale-x-[-1]"
-                        />
+                        <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[3.2vh] w-[25px] lg:w-[39px] h-auto scale-x-[-1]" />
+                    </div> 
+
+                    {/* Date and Category */}
+                    <div className="flex-shrink-0 flex flex-col items-center gap-0 -mt-[0.8vh] mb-[1.2vh]">
+                        <p className="text-center text-[#7A4D17] text-sm md:text-base z-10 font-medium">
+                            {date}
+                        </p>
+                        <p className="text-center text-[#7A4D17] text-sm md:text-base z-10 italic">
+                            {category}
+                        </p>
                     </div>
 
                     {/* Description - Flexible area */}
-                    <div className="flex-1 flex items-start justify-center md:-mt-[0.8vh] overflow-y-auto custom-scrollbar">
-                        <p className="text-justify text-[#7A4D17] text-base lg:text-lg z-10 leading-[1.2] tracking-[-0.2px] whitespace-pre-line pr-2">
+                    <div className="flex-1 flex items-start justify-center -mt-[0.5vh] md:-mt-[0.8vh] overflow-y-auto custom-scrollbar">
+                        <p className="text-justify text-[#7A4D17] text-sm lg:text-lg z-10 leading-[1.2] tracking-[-0.2px] whitespace-pre-line pr-2">
                             {description}
                         </p>
                     </div>
 
                     {/* Daftar Button - Fixed position */}
-                    <div className="flex-shrink-0 pb-[3vh] md:pb-[9.6vh] pt-[2vh] items-center justify-center flex">
+                    <div className="flex-shrink-0 pb-[3.5vh] md:pb-[9.6vh] pt-[1vh] lg:pt-[2vh] items-center justify-center flex">
                         <button
                             onClick={handleDaftarClick}
                             disabled={!registrationStatus.isOpen}
