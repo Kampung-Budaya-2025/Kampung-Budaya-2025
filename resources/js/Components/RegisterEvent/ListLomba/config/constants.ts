@@ -54,7 +54,7 @@ const cardData: CardData[] = [
     {
         id: "karya-citra-inklusif",
         title: "Karya Citra Inklusif",
-        icon: "/icon/lomba-bercerita.svg",
+        icon: "/icon/lomba-cerita.svg",
         description:
             "Lomba bercerita dengan tema legenda dan cerita rakyat dari berbagai daerah di Nusantara.",
     },
