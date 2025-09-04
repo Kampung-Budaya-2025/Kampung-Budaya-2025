@@ -89,6 +89,10 @@ const ListCard: React.FC<ListCardProps> = ({
                         <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[3.2vh] scale-x-[-1]" />
                     </div>
 
+                    <div>
+                        <p></p>
+                    </div>
+
                     {/* Description - Flexible area */}
                     <div className="flex-1 flex items-start justify-center md:-mt-[0.8vh] overflow-y-auto custom-scrollbar">
                         <p className="text-justify text-[#7A4D17] text-base lg:text-lg z-10 leading-[1.2] tracking-[-0.2px] whitespace-pre-line pr-2">

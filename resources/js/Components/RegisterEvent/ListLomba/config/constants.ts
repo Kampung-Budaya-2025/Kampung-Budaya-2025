@@ -49,14 +49,14 @@ const cardData: CardData[] = [
         title: "Panggung Budaya Nusantara",
         icon: "/icon/cerita-nusantara.svg",
         description:
-            "Lomba bercerita dengan tema legenda dan cerita rakyat dari berbagai daerah di Nusantara.",
+            "Rangkaian puncak acara dan penutupan dari Kampung Budaya 2025. Panggung budaya nusantara merupakan kegiatan yang berisi penampilan dari pemenang lomba dan penampilan dari tamu undangan.",
     },
     {
-        id: "karya-citra-inklusif",
-        title: "Karya Citra Inklusif",
-        icon: "/icon/lomba-cerita.svg",
+        id: "teater-cakrawala-budaya",
+        title: "Teater Cakrawala Budaya",
+        icon: "/icon/teater-cakrawala.svg",
         description:
-            "Lomba bercerita dengan tema legenda dan cerita rakyat dari berbagai daerah di Nusantara.",
+            "Teater Cakrawala Budaya adalah sebuah ajang kompetisi seni peran yang berfokus pada pementasan teater dengan mengangkat cerita rakyar dari segala penjuru nusantara. Lomba ini bertujuan untuk melestarikan, mengembangkan, dan mengapresiasi warisan budaya lisan nusantara dengan media teater, ",
     },
 ] as const;
 
