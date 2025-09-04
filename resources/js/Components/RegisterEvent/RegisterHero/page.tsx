@@ -256,7 +256,11 @@ const RegisterHero: React.FC = () => {
                             </div>
 
                             {/* Subtitle */}
-                            <h2 className="text-[#C88B5F] text-[1.4vh] lg:text-[3.5vh] mb-[4vh] -mt-[7.2vh] max-w-[90%]lg:max-w-[60%] leading-relaxed">
+                            <h2 className={`text-[#C88B5F] text-[1.4vh] lg:text-[3.5vh] mb-[4vh] -mt-[7.2vh] max-w-[90%] lg:max-w-[60%] leading-relaxed transition-all duration-700 ease-out
+    ${showForumLetters ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[2vh]"}`}
+                            style={{
+                                transitionDelay: `${forumDaerahText.length * 60 + 300}ms`,
+                            }}>
                                 Panggung terbesar untuk Forda dan komunitas
                                 budaya untuk unjuk kemampuan dan meraih
                                 prestasi.
@@ -266,10 +270,14 @@ const RegisterHero: React.FC = () => {
                             <button
                                 type="button"
                                 onClick={handleScrollToListLomba}
-                                className="relative cursor-pointer transition-transform duration-200 hover:scale-105 rounded-lg pt-6 pb-5 active:scale-95 bg-no-repeat bg-center bg-contain w-[28vh] h-[8.3vh] lg:w-[21.667vw] lg:h-[12.8vh] flex items-center justify-center text-[#FFDA88] font-samsktrigrama text-[3.6vh] lg:text-[5.7vh] tracking-[0.1]"
+                                className={`relative cursor-pointer transition-all duration-200 hover:scale-105 rounded-lg pt-6 pb-5 active:scale-95 bg-no-repeat bg-center bg-contain w-[28vh] h-[8.3vh] lg:w-[21.667vw] lg:h-[12.8vh] flex items-center justify-center text-[#FFDA88] font-samsktrigrama text-[3.6vh] lg:text-[5.7vh] tracking-[0.1]
+        ${showForumLetters ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-[3vh] scale-95"}
+    `}
                                 style={{
-                                    backgroundImage:
-                                        "url('/icon/button-daftar.svg')",
+                                    backgroundImage: "url('/icon/button-daftar.svg')",
+                                    transitionDelay: `${forumDaerahText.length * 60 + 600}ms`,
+                                    transitionDuration: "700ms",
+                                    transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
                                 }}
                             >
                                 <h1 className="mt-1">Daftar</h1>
