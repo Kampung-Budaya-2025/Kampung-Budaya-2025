@@ -14,7 +14,7 @@ const Scrollbar: React.FC<ScrollBarProps> = ({
 }) => {
     return (
         <div
-            className={`flex flex-col items-center justify-center gap-4 h-[300px] ${className}`}
+            className={`flex flex-col items-center justify-center gap-4 h-full ${className}`}
         >
             <Slider
                 defaultValue={defaultValue}

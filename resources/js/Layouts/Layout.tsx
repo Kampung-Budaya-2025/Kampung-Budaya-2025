@@ -10,6 +10,14 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     const { url } = usePage();
 
+    if (url === "/coming-soon") {
+        return (
+            <div className="min-h-screen bg-gray-50">
+                <main className="overflow-hidden">{children}</main>
+            </div>
+        );
+    }
+
     return (
         <div className="h-screen bg-gray-50">
             <Navbar currentPath={url} />
