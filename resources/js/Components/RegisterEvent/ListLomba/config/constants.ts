@@ -1,17 +1,16 @@
 import { ButtonData, CardData } from "../types";
 import { DecorationGroup, DecorationItem } from "../types";
-import { downloadDocument } from "@/Utils/documentUtils";
 
 const buttonData: ButtonData[] = [
     {
         id: "booklet",
         text: "Booklet",
-        onClick: downloadDocument.booklet.download,
+        href: "https://drive.google.com/drive/folders/1uVciYKRaAQKgwp6zye7-HeLMQEUmftgD",
     },
     {
         id: "formulir",
         text: "Formulir",
-        onClick: downloadDocument.form.download,
+        href: "https://drive.google.com/drive/folders/1LL-5aK_JJ6pDeLoj94TOFpQpHtF_lsIk?usp=sharing",
     },
 ] as const;
 

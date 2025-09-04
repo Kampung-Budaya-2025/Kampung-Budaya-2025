@@ -13,7 +13,7 @@ import FlowerDecorations from "@/Components/Common/FlowerDecoration";
 import { AnimatedFlower } from "./UI/AnimatedFlower";
 
 const ListLomba: React.FC = () => {
-     const { BATIK_PAIR, BUNGA_PAIR } = useElementRefs();
+    const { BATIK_PAIR, BUNGA_PAIR } = useElementRefs();
     return (
         <div
             id="list-lomba"
@@ -34,6 +34,7 @@ const ListLomba: React.FC = () => {
                         key={button.id}
                         text={button.text}
                         onClick={button.onClick}
+                        href={button.href}
                     />
                 ))}
             </div>

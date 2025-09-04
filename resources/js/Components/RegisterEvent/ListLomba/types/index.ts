@@ -1,6 +1,7 @@
 interface ButtonProps {
     text: string;
     onClick?: () => void;
+    href?: string;
     className?: string;
 }
 
@@ -8,6 +9,7 @@ interface ButtonData {
     id: string;
     text: string;
     onClick?: () => void;
+    href?: string;
 }
 
 interface CardData {
