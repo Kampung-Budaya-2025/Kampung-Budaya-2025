@@ -53,6 +53,8 @@ const ListLomba: React.FC = () => {
                             title={card.title}
                             icon={card.icon}
                             description={card.description}
+                            registrationStart={card.registrationStart}
+                            registrationEnd={card.registrationEnd}
                         />
                     ))}
                 </div>
@@ -66,6 +68,8 @@ const ListLomba: React.FC = () => {
                                 title={card.title}
                                 icon={card.icon}
                                 description={card.description}
+                                registrationStart={card.registrationStart}
+                                registrationEnd={card.registrationEnd}
                             />
                             <AnimatedFlower />
                         </React.Fragment>
