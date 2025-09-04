@@ -238,6 +238,50 @@
   }
 }
 
+/* Float Smooth */
+.animate-float-8 {
+  animation: floatSmooth-8 3s ease-in-out infinite alternate;
+}
+
+.animate-float-10 {
+  animation: floatSmooth-10 3s ease-in-out infinite alternate;
+}
+
+.animate-float-12 {
+  animation: floatSmooth-12 3s ease-in-out infinite alternate;
+}
+
+/* Float Smooth Right */
+.animate-float-right-8 {
+  animation: floatSmoothRight-8 3s ease-in-out infinite alternate;
+}
+
+.animate-float-right-10 {
+  animation: floatSmoothRight-10 3s ease-in-out infinite alternate;
+}
+
+.animate-float-right-12 {
+  animation: floatSmoothRight-12 3s ease-in-out infinite alternate;
+}
+
+/* Float with Rotate (Left) */
+.animate-float-rotate-12-3 {
+  animation: floatWithRotate-12-3 3s ease-in-out infinite alternate;
+}
+
+.animate-float-rotate-8-2 {
+  animation: floatWithRotate-8-2 3s ease-in-out infinite alternate;
+}
+
+/* Float with Rotate (Right) */
+.animate-float-rotate-right-12-3 {
+  animation: floatWithRotateRight-12-3 3s ease-in-out infinite alternate;
+}
+
+.animate-float-rotate-right-8-2 {
+  animation: floatWithRotateRight-8-2 3s ease-in-out infinite alternate;
+}
+
 
 /* animasi slide */
 .animate-slide-in-left {

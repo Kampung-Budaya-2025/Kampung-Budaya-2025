@@ -134,7 +134,7 @@ const RegisterHero: React.FC = () => {
             {/* Bunga Mobile 1 */}
             <AnimatedFlower
                 // Mengubah kelas container, misalnya margin dan opacity
-                containerClassName="block lg:hidden w-[190vw] absolute  top-0 flex justify-around pointer-events-none my-16"
+                containerClassName="block lg:hidden w-[190vw] absolute top-0 flex justify-around pointer-events-none my-16"
                 leftFlowerClassName="w-[136px] h-[136px] animate-spin-clockwise"
                 rightFlowerClassName="w-[136px] h-[136px] animate-spin-counter"
                 leftFlowerTransition="all 2s ease-in-out 0.1s"
@@ -142,7 +142,7 @@ const RegisterHero: React.FC = () => {
             />
             <AnimatedFlower
                 // Mengubah kelas container, misalnya margin dan opacity
-                containerClassName="block lg:hidden w-[90vw] absolute  top-0 flex justify-around pointer-events-none my-16"
+                containerClassName="block lg:hidden w-[90vw] absolute top-0 flex justify-around pointer-events-none my-16"
                 leftFlowerClassName="w-[87px] h-[87px] animate-spin-clockwise"
                 rightFlowerClassName="w-[87px] h-[87px] animate-spin-counter"
                 leftFlowerTransition="all 2.5s ease-in-out 0.1s"
@@ -170,14 +170,14 @@ const RegisterHero: React.FC = () => {
                 {/* Bunga Mahkota */}
                 <AnimatedElement src="/icon/bunga-mahkota.svg" alt="Bunga Mahkota"
                     containerClassName="block lg:hidden absolute w-full h-auto bottom-12 left-1/2 flex justify-center items-center transform -translate-x-1/2 rotate-180 z-30"
-                    elementClassName="h-[64px] w-auto"
+                    elementClassName="h-[64px] w-auto animate-float-10"
                     yOffset={-20}
                 />
 
                 {/* Wayang */}
                 <AnimatedElement src="/background/wayang.svg" alt="Wayang"
                     containerClassName="block lg:hidden absolute w-full h-auto bottom-12 left-1/2 flex justify-center items-center transform -translate-x-1/2 rotate-332 z-20 "
-                    elementClassName="h-[252px] w-auto"
+                    elementClassName="h-[252px] w-auto animate-float-8"
                     yOffset={20}
                 />
 
@@ -185,17 +185,25 @@ const RegisterHero: React.FC = () => {
                     containerClassName="block lg:hidden absolute w-[130vw] h-auto bottom-18 left-1/2 flex justify-center items-center transform -translate-x-1/2 gap-4 z-0"
                     leftFlowerSrc="/icon/api.svg"
                     rightFlowerSrc="/icon/api.svg"
-                    leftFlowerClassName="h-[171px] w-auto"
-                    rightFlowerClassName="h-[171px] w-auto transform scale-x-[-1]"
+                    leftFlowerClassName="h-[171px] w-auto animate-float-rotate-right-12-3"
+                    rightFlowerClassName="h-[171px] w-auto transform scale-x-[-1] animate-float-rotate-right-12-3"
                 />
 
                 <AnimatedFlower
                     containerClassName="block lg:hidden absolute w-[110vw] h-auto bottom-6 left-1/2 flex justify-center items-center transform -translate-x-1/2 gap-32 z-10"
                     leftFlowerSrc="/background/daun.svg"
                     rightFlowerSrc="/background/daun.svg"
-                    leftFlowerClassName="h-[180px] w-auto scale-x-[-1]"
-                    rightFlowerClassName="h-[180px] w-auto transform"
+                    leftFlowerClassName="h-[180px] w-auto scale-x-[-1] animate-float-rotate-12-3"
+                    rightFlowerClassName="h-[180px] w-auto transform animate-float-rotate-12-3"
                 />
+
+                <AnimatedFlower
+                    containerClassName="block lg:hidden absolute w-[80vw] h-auto bottom-48 left-1/2 flex justify-center items-center transform -translate-x-1/2 gap-64 z-10"
+                    leftFlowerClassName="relative -bottom-2 h-[25px] w-auto animate-spin-clockwise"
+                    rightFlowerClassName="relative left-8 h-[25px] w-auto animate-spin-counter"
+                />
+
+
             </div>
 
             {renderPatternImage()}
