@@ -122,7 +122,7 @@ const ListCard: React.FC<ListCardProps> = ({
                     }}
                 >
                     {/* Title - Fixed position */}
-                    <div className="flex-shrink-0 pt-[min(6vh,50px)] lg:pt-[min(4vh,30px)] flex flex-row justify-center items-center gap-2">
+                    <div className="flex-shrink-0 pt-[min(6vh,50px)] lg:pt-[min(4.8vh,40px)] flex flex-row justify-center items-center gap-2">
                         <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[min(3.2vh,20px)] w-[20px] lg:w-[min(2.5vh,39px)] h-auto" />
                         <h2 className="text-center text-[#3F170D] text-lg lg:text-[min(2.8vh,22px)] leading-[1.25] mb-[min(0.8vh,8px)] z-10 tracking-[-0.5px]">
                             {title}
