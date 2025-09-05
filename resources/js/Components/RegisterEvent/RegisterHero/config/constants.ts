@@ -62,7 +62,7 @@ export const BATIK_BACKGROUND_MOBILE = {
 };
 
 export const CSS_CLASSES = {
-    container: "flex justify-center items-center mb-12 relative w-full min-h-screen",
+    container: "flex justify-center items-center mb-12 relative w-full h-[105vh] lg:min-h-screen",
     mainContent: "relative h-[50vh] lg:h-[110vh] w-[80%] lg:w-[75%] max-w-[1256px] flex flex-col items-center justify-center overflow-y-hidden pt-8 sm:pt-20 md:pt-[8vh] px-0 lg:px-4 z-20",
     titleContainer: "flex flex-col items-center text-center mt-6 sm:mt-8 md:mt-18 justify-center z-20 w-full",
     patternImage: "absolute top-[30vh] lg:top-[20%] h-[3.875rem] lg:h-[15.2vh] z-0",

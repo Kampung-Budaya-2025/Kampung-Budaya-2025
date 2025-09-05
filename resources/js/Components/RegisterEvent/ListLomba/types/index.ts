@@ -16,9 +16,13 @@ interface CardData {
     id: string;
     title: string;
     icon: string;
+    date: string;
+    category: string
+    description: string; // Tambahan untuk deskripsi
     description: string;
     registrationStart?: string;
     registrationEnd?: string;
+
 }
 
 export interface DecorationItem {

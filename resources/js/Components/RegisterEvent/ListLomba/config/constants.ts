@@ -16,9 +16,11 @@ const buttonData: ButtonData[] = [
 
 const cardData: CardData[] = [
     {
-        id: "kolaborasi-musik",
-        title: "Kolaborasi Musik",
+        id: "kolaborasi-musik-nusantara",
+        title: "Kolaborasi Musik Nusantara",
         icon: "/icon/kolaborasi-musik.svg",
+        date: "25 September - 5 Oktober",
+        category: "Lomba Umum",
         description:
             "Kolaborasi Musik Nusantara adalah kompetisi menyanyikan lagu daerah yang menggabungkan unsur alat musik tradisional dan musik modern. Kegiatan ini bertujuan untuk melestarikan kekayaaan budaya musik Indonesia melalui pendekatan kreatif dan inovatif, dengan harapan dapat membangkitkan kecintaan generasi muda terhadap musik tradisional dalam balutan nuansa kekinian",
         registrationStart: "2025-09-25",
@@ -28,6 +30,8 @@ const cardData: CardData[] = [
         id: "bazar-kebudayaan",
         title: "Bazar Kebudayaan",
         icon: "/icon/bazar-kebudayaan.svg",
+        date: "20 agustus - 5 september",
+        category: "Lomba Forum Daerah",
         description:
             "Kegiatan ini berupa perlombaan yang memberikan kebabsan kepada Forum Daerah (FORDA) untuk merancang stand mereka secara kreatif. FORDA juga berkesempatan untuk menjual makanan dan aksesoris khas dari daerah masing-masing. Selain itu, tersedia stand khusus bagi mahasiswa internasional untuk memperkenalkan budaya asal mereka. Tak hanya itu, stand UMKM juga akan disediakan dan dapat disewa oleh masyarakat umum, serta untuk meningkatkan minat wirausaha pada mahasiswa wirausaha juga dapat menyewa stand ini.",
     },
@@ -35,6 +39,8 @@ const cardData: CardData[] = [
         id: "gemilang-busana-adat",
         title: "Gemilang Busana Adat",
         icon: "/icon/busana-adat.svg",
+        date: "20 agustus - 5 september",
+        category: "Lomba Forum Daerah",
         description:
             "Kegiatan lomba yang menampilkan kreativitas mahasiswa dalam memperagakan busana adat khas daerahnya masing-masing, dikemas dengan konsep fashion show. Kegiatan ini ditujukan bagi Forum Daerah (FORDA) dan Universitas Brawijaya sebagai bentuk apresiasi terhadap kekayaan budaya nusantara.",
     },
@@ -42,6 +48,8 @@ const cardData: CardData[] = [
         id: "gelanggang-tari-nusantara",
         title: "Gelanggang Tari Nusantara",
         icon: "/icon/tari-tradisional.svg",
+        date: "20 agustus - 5 september",
+        category: "Lomba Forum Daerah",
         description:
             "Gelanggang tari nusantara adalah ajang perlombaan tari tradisional yang menampilkan keragaman budaya dari berbagai daerah di Indonesia. Kegiatan ini menjadi wadah ekspresi seni, pelestarian budaya. Kegiatan ini ditujukan bagi forum daerah (FORDA) Universitas Brawijaya sebagai bentuk apresiasi terhadap kekayaan tari nusantara.",
     },
@@ -49,17 +57,22 @@ const cardData: CardData[] = [
         id: "panggung-budaya-nusantara",
         title: "Panggung Budaya Nusantara",
         icon: "/icon/cerita-nusantara.svg",
+        date: "21 september - 17 oktober",
+        category: "Lomba Forum Daerah",
         description:
-            "Lomba bercerita dengan tema legenda dan cerita rakyat dari berbagai daerah di Nusantara.",
+            "Rangkaian puncak acara dan penutupan dari Kampung Budaya 2025. Panggung budaya nusantara merupakan kegiatan yang berisi penampilan dari pemenang lomba dan penampilan dari tamu undangan.",
         registrationStart: "2025-09-21",
         registrationEnd: "2025-10-17",
+
     },
     {
-        id: "karya-citra-inklusif",
-        title: "Karya Citra Inklusif",
-        icon: "/icon/lomba-bercerita.svg",
+        id: "teater-cakrawala-budaya",
+        title: "Teater Cakrawala Budaya",
+        icon: "/icon/teater-cakrawala.svg",
+        date: "20 agustus - 5 september",
+        category: "Lomba Umum",
         description:
-            "Lomba bercerita dengan tema legenda dan cerita rakyat dari berbagai daerah di Nusantara.",
+            "Teater Cakrawala Budaya adalah sebuah ajang kompetisi seni peran yang berfokus pada pementasan teater dengan mengangkat cerita rakyar dari segala penjuru nusantara. Lomba ini bertujuan untuk melestarikan, mengembangkan, dan mengapresiasi warisan budaya lisan nusantara dengan media teater, ",
     },
 ] as const;
 
@@ -108,7 +121,7 @@ const bungaMahkotaDecoration: DecorationItem = {
     src: "/icon/bunga-mahkota.svg",
     alt: "Bunga Mahkota",
     className:
-        "absolute w-[80vw] lg:w-[50vw] -bottom-2 left-1/2 transform -translate-x-1/2 translate-y-1/4 z-0",
+        "absolute w-[80vw] lg:w-[50vw] -bottom-2 lg:bottom-4 left-1/2 transform -translate-x-1/2 translate-y-1/4 z-50 lg:z-0",
 } as const;
 
 export {
