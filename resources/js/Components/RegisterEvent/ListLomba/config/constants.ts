@@ -30,7 +30,7 @@ const cardData: CardData[] = [
         id: "bazar-kebudayaan",
         title: "Bazar Kebudayaan",
         icon: "/icon/bazar-kebudayaan.svg",
-        date: "20 agustus - 5 september",
+        date: "20 Agustus - 5 September",
         category: "Lomba Forum Daerah",
         description:
             "Kegiatan ini berupa perlombaan yang memberikan kebabsan kepada Forum Daerah (FORDA) untuk merancang stand mereka secara kreatif. FORDA juga berkesempatan untuk menjual makanan dan aksesoris khas dari daerah masing-masing. Selain itu, tersedia stand khusus bagi mahasiswa internasional untuk memperkenalkan budaya asal mereka. Tak hanya itu, stand UMKM juga akan disediakan dan dapat disewa oleh masyarakat umum, serta untuk meningkatkan minat wirausaha pada mahasiswa wirausaha juga dapat menyewa stand ini.",
@@ -39,7 +39,7 @@ const cardData: CardData[] = [
         id: "gemilang-busana-adat",
         title: "Gemilang Busana Adat",
         icon: "/icon/busana-adat.svg",
-        date: "20 agustus - 5 september",
+        date: "20 Agustus - 5 September",
         category: "Lomba Forum Daerah",
         description:
             "Kegiatan lomba yang menampilkan kreativitas mahasiswa dalam memperagakan busana adat khas daerahnya masing-masing, dikemas dengan konsep fashion show. Kegiatan ini ditujukan bagi Forum Daerah (FORDA) dan Universitas Brawijaya sebagai bentuk apresiasi terhadap kekayaan budaya nusantara.",
@@ -48,7 +48,7 @@ const cardData: CardData[] = [
         id: "gelanggang-tari-nusantara",
         title: "Gelanggang Tari Nusantara",
         icon: "/icon/tari-tradisional.svg",
-        date: "20 agustus - 5 september",
+        date: "20 Agustus - 5 September",
         category: "Lomba Forum Daerah",
         description:
             "Gelanggang tari nusantara adalah ajang perlombaan tari tradisional yang menampilkan keragaman budaya dari berbagai daerah di Indonesia. Kegiatan ini menjadi wadah ekspresi seni, pelestarian budaya. Kegiatan ini ditujukan bagi forum daerah (FORDA) Universitas Brawijaya sebagai bentuk apresiasi terhadap kekayaan tari nusantara.",
@@ -57,7 +57,7 @@ const cardData: CardData[] = [
         id: "panggung-budaya-nusantara",
         title: "Panggung Budaya Nusantara",
         icon: "/icon/cerita-nusantara.svg",
-        date: "21 september - 17 oktober",
+        date: "21 September - 17 Oktober",
         category: "Lomba Forum Daerah",
         description:
             "Rangkaian puncak acara dan penutupan dari Kampung Budaya 2025. Panggung budaya nusantara merupakan kegiatan yang berisi penampilan dari pemenang lomba dan penampilan dari tamu undangan.",
@@ -69,7 +69,7 @@ const cardData: CardData[] = [
         id: "teater-cakrawala-budaya",
         title: "Teater Cakrawala Budaya",
         icon: "/icon/teater-cakrawala.svg",
-        date: "20 agustus - 5 september",
+        date: "20 Agustus - 5 September",
         category: "Lomba Umum",
         description:
             "Teater Cakrawala Budaya adalah sebuah ajang kompetisi seni peran yang berfokus pada pementasan teater dengan mengangkat cerita rakyar dari segala penjuru nusantara. Lomba ini bertujuan untuk melestarikan, mengembangkan, dan mengapresiasi warisan budaya lisan nusantara dengan media teater, ",
