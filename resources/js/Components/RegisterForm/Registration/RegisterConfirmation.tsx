@@ -36,7 +36,7 @@ const RegisterConfirmation = ({
 
 
             <motion.div 
-                className="max-w-2xl p-4 mx-auto mt-5 rounded-lg bg-gray-50 sm:p-6"
+                className="max-w-2xl p-4 mx-auto mt-5 sm:p-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.5 }}

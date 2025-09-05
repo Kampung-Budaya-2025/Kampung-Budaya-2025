@@ -17,7 +17,8 @@ const RegisterFormMascots = ({ speechContent, currentStep }: RegisterFormMascots
         <>
             {/* Maskot Kiri - DENGAN ANIMASI MASUK RINGAN */}
             <motion.div 
-                className="absolute hidden -translate-y-1/2 -left-40 top-1/2 lg:block"
+                className="absolute hidden -left-60 lg:block"
+                style={{ top: '20%', transform: 'translateY(-50%)' }}
                 initial={{ opacity: 0, x: -30, scale: 0.9 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ 
@@ -52,7 +53,7 @@ const RegisterFormMascots = ({ speechContent, currentStep }: RegisterFormMascots
                 
                 {/* Speech Bubble Kiri */}
                 <motion.div 
-                    className="absolute -top-8 -left-8 sm:-top-12 sm:-left-12"
+                    className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6"
                     initial={{ opacity: 0, scale: 0, y: 10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ 
@@ -63,7 +64,7 @@ const RegisterFormMascots = ({ speechContent, currentStep }: RegisterFormMascots
                 >
                     <div className="relative">
                         <div 
-                            className="px-3 py-2 text-xs font-bold text-center text-white rounded-full shadow-lg sm:px-4 sm:py-2 sm:text-sm whitespace-nowrap"
+                            className="px-3 py-2 text-xs text-center text-black rounded-full shadow-lg sm:px-4 sm:py-2 sm:text-sm whitespace-nowrap"
                             style={{
                                 background: 'linear-gradient(180deg, #CE9C17 0%, #CD9514 52.04%, #CC8F12 100%)',
                                 minWidth: '180px',
@@ -82,7 +83,8 @@ const RegisterFormMascots = ({ speechContent, currentStep }: RegisterFormMascots
 
             {/* Maskot Kanan - DENGAN ANIMASI MASUK RINGAN */}
             <motion.div 
-                className="absolute hidden -translate-y-1/2 -right-40 top-1/2 lg:block"
+                className="absolute hidden -right-60 lg:block"
+                style={{ top: '20%', transform: 'translateY(-50%)' }}
                 initial={{ opacity: 0, x: 30, scale: 0.9 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ 
@@ -117,7 +119,7 @@ const RegisterFormMascots = ({ speechContent, currentStep }: RegisterFormMascots
                 
                 {/* Speech Bubble Kanan */}
                 <motion.div 
-                    className="absolute -top-8 -right-8 sm:-top-12 sm:-right-12"
+                    className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6"
                     initial={{ opacity: 0, scale: 0.8, y: 10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ 
@@ -128,7 +130,7 @@ const RegisterFormMascots = ({ speechContent, currentStep }: RegisterFormMascots
                 >
                     <div className="relative">
                         <div 
-                            className="px-3 py-2 text-xs font-bold text-center text-white rounded-full shadow-lg sm:px-4 sm:py-2 sm:text-sm whitespace-nowrap"
+                            className="px-3 py-2 text-xs text-center text-black rounded-full shadow-lg sm:px-4 sm:py-2 sm:text-sm whitespace-nowrap"
                             style={{
                                 background: 'linear-gradient(180deg, #CE9C17 0%, #CD9514 52.04%, #CC8F12 100%)',
                                 minWidth: '120px',
