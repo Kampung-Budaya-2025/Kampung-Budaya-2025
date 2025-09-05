@@ -275,7 +275,7 @@ const ComingSoonSection: React.FC = () => {
                             }}
                         >
                             Kami sedang mengerjakan sesuatu yang menarik di sini
-                            <br /> Halaman ini akan segera tersedia — terima
+                            Halaman ini akan segera tersedia. <br></br>Terima
                             kasih atas kesabarannya!
                         </h2>
                     </div>

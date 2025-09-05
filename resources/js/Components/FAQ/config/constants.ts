@@ -8,7 +8,7 @@ const faqData: FAQItem[] = [
     },
     {
       id: 2,
-      question: "Apa saja rangkaian acara kampung budaya UB 2025?",
+      question: "Apa saja rangkaian acara Kampung Budaya 2025?",
       answer: `Kampung Budaya 2025 terdiri atas tiga rangkaian acara: 
       <li><strong>Pre-event</strong> (Kampung Budaya Blusukan, Lomba Gemilang Busana Adat & Parade, Lomba Gelanggang Tari Nusantara, Seminar Kebudayaan, Teater Cakrawala Budaya, dan Lomba Kolaborasi Musik Nusantara)</li>
       <li><strong>Main Event</strong> Gelora Puncak Budaya dengan Panggung Budaya Nusantara, Kampung Interaktif, Bazar Kebudayaan, dan Tenant UMKM.</li>
@@ -30,13 +30,13 @@ const faqData: FAQItem[] = [
     },
     {
       id: 5,
-      question: "Gemilang busana adat & parade budaya itu apa?",
+      question: "Gemilang Busana Adat & Parade Budaya itu apa?",
       answer: `Gemilang Busana Adat adalah lomba fashion show busana tradisional yang diikuti perwakilan FORDA Universitas Brawijaya sebagai bentuk apresiasi terhadap kekayaan budaya nusantara. Setelah lomba, acara dilanjutkan dengan Parade Budaya, di mana peserta bersama mahasiswa internasional, komunitas budaya, dan masyarakat menampilkan busana adat mengelilingi area Universitas Brawijaya.`
     },
     {
       id: 6,
-      question: "Apa yang saja yang menjadi faktor penilaian lomba gemilang busana adat?",
-      answer: `Sobat budaya yang mengikuti lomba gemilang busana adat akan dinilai oleh dewan juri dengan beberapa kriteria, antara lain:
+      question: "Apa yang saja yang menjadi faktor penilaian lomba Gemilang Busana Adat?",
+      answer: `Sobat budaya yang mengikuti lomba Gemilang Busana Adat akan dinilai oleh dewan juri dengan beberapa kriteria, antara lain:
       <li>Busana adat</li>
       <li>Pembawaan </li>
       <li>Ekspresi</li>
