@@ -33,10 +33,9 @@ const ElementPairComponent: React.FC<ElementPairComponentProps> = ({ pair }) => 
                         : `translateX(-${pair.kiri.translateDistance}px) translateY(0)`,
                     transition: `opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${pair.kiri.transitionDelay}, transform ${pair.kiri.transitionDuration} cubic-bezier(0.25, 0.46, 0.45, 0.94) ${pair.kiri.transitionDelay}`,
                     animation: pair.kiri.isInView 
-                        ? `${getAnimationName(pair.kiri, 'left')} ${pair.kiri.floatDuration} ease-in-out infinite` 
+                        ? `${getAnimationName(pair.kiri, 'left')} ${pair.kiri.floatDuration} ease-in-out infinite both` 
                         : 'none',
                     animationDelay: pair.kiri.isInView ? `calc(${pair.kiri.transitionDuration} + 0.3s)` : '0s',
-                    animationFillMode: 'both',
                 }}
             />
 
@@ -53,10 +52,9 @@ const ElementPairComponent: React.FC<ElementPairComponentProps> = ({ pair }) => 
                         : `translateX(-${pair.kanan.translateDistance}px) translateY(0)`,
                     transition: `opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${pair.kanan.transitionDelay}, transform ${pair.kanan.transitionDuration} cubic-bezier(0.25, 0.46, 0.45, 0.94) ${pair.kanan.transitionDelay}`,
                     animation: pair.kanan.isInView 
-                        ? `${getAnimationName(pair.kanan, 'right')} ${pair.kanan.floatDuration} ease-in-out infinite` 
+                        ? `${getAnimationName(pair.kanan, 'right')} ${pair.kanan.floatDuration} ease-in-out infinite both` 
                         : 'none',
                     animationDelay: pair.kanan.isInView ? `calc(${pair.kanan.transitionDuration} + 0.3s)` : '0s',
-                    animationFillMode: 'both',
                 }}
             />
         </>
