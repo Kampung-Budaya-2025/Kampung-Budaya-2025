@@ -49,7 +49,7 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
 
   return (
     <div
-      className="relative flex h-[650px] w-full items-center justify-center overflow-hidden pt-12"
+      className="relative flex h-[400px] sm:h-[450px] md:h-[650px] w-full items-center justify-center overflow-hidden md:pt-12"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -59,8 +59,8 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
         grabCursor
         centeredSlides
         loop
-        slidesPerView={3}
-        spaceBetween={-100}
+        // Menghapus slidesPerView dan spaceBetween dari properti utama
+        // dan memindahkannya ke dalam `breakpoints` untuk kontrol responsif
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
@@ -78,7 +78,20 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
               }
             : false
         }
- 
+        breakpoints={{
+          0: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+        }}
         modules={[Autoplay, EffectCoverflow]}
         className="h-full w-full"
         style={{ paddingBottom: "20px" }}
@@ -88,8 +101,13 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
             <img
               src={url}
               alt={`Gallery image ${index + 1}`}
-              className="h-[450px] w-[900px] rounded-[15px] object-contain
-                         sm:h-[350px] sm:w-[700px] transition-all duration-300"
+              className="
+                h-[250px] w-[100%]   /* Mobile: lebih kecil */
+                sm:h-[300px] sm:w-[90%] 
+                md:h-[400px] md:w-[700px] 
+                lg:h-[450px] lg:w-[900px] 
+                rounded-[15px] object-contain
+                transition-all duration-300"
             />
           </SwiperSlide>
         ))}

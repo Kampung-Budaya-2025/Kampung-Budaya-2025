@@ -4,9 +4,10 @@ interface FlipCardProps {
   frontImage: string;
   backImage: string;
   index: number;
+  className?: string; // ✅ tambahin ini
 }
 
-const FlipCard: React.FC<FlipCardProps> = ({ frontImage, backImage, index }) => {
+const FlipCard: React.FC<FlipCardProps> = ({ frontImage, backImage, index, className }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleFlip = () => {
@@ -17,7 +18,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ frontImage, backImage, index }) => 
 
   return (
     <div 
-      className="flip-card-container" 
+      className={`flip-card-container ${className ?? ""}`} // ✅ pakai className di sini
       style={{ animationDelay: animationDelay }}
     >
       <div 

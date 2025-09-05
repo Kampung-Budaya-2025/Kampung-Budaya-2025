@@ -15,22 +15,43 @@ const EventTypeSelector = memo(
                 id: "kolaborasi-musik",
                 title: "Kolaborasi Musik",
                 description:
-                    "Lomba yang mempresentasikan dan menampilkan busana tradisional khas daerahnya.",
+                    "Kolaborasi musik yang menggabungkan unsur alat musik tradisional dan musik modern.",
                 icon: "/icon/kolaborasi-musik.svg",
             },
             {
                 id: "bazar-kebudayaan",
                 title: "Bazar Kebudayaan",
                 description:
-                    "Pameran dan penjualan produk kebudayaan lokal dari berbagai daerah di Indonesia.",
+                    "Perlombaan merancang stand kreatif untuk menjual makanan dan aksesoris khas daerah.",
                 icon: "/icon/bazar-kebudayaan.svg",
             },
             {
-                id: "fashion-show",
-                title: "Fashion Show",
+                id: "gemilang-busana-adat",
+                title: "Gemilang Busana Adat",
                 description:
-                    "Pertunjukan busana tradisional dengan konsep modern.",
-                icon: "/icon/fashion-show.svg",
+                    "Lomba fashion show busana adat khas daerah dengan konsep kreatif dan modern.",
+                icon: "/icon/busana-adat.svg",
+            },
+            {
+                id: "gelanggang-tari-nusantara",
+                title: "Gelanggang Tari Nusantara",
+                description:
+                    "Perlombaan tari tradisional yang menampilkan keragaman budaya dari berbagai daerah.",
+                icon: "/icon/tari-tradisional.svg",
+            },
+            {
+                id: "panggung-budaya-nusantara",
+                title: "Panggung Budaya Nusantara",
+                description:
+                    "Lomba bercerita dengan tema legenda dan cerita rakyat dari berbagai daerah di Nusantara.",
+                icon: "/icon/cerita-nusantara.svg",
+            },
+            {
+                id: "karya-citra-inklusif",
+                title: "Karya Citra Inklusif",
+                description:
+                    "Lomba berkarya dengan tema inklusivitas dan keberagaman dalam budaya Indonesia.",
+                icon: "/icon/lomba-bercerita.svg",
             },
         ];
 

@@ -123,4 +123,17 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Maintenance Mode Configuration
+    |--------------------------------------------------------------------------
+    |
+    | These configuration options allow you to control the custom maintenance
+    | mode behavior for showing coming soon page.
+    |
+    */
+
+    'maintenance_mode' => env('MAINTENANCE_MODE', false),
+    'maintenance_exempt_ips' => array_filter(explode(',', env('MAINTENANCE_EXEMPT_IPS', ''))),
+
 ];
