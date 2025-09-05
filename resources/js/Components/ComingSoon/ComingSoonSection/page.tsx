@@ -194,7 +194,7 @@ const ComingSoonSection: React.FC = () => {
                         />
                         <h1 className="font-samsktrigrama text-[15vh] sm:text-[18vh] lg:text-[28.8vh] mt-0 lg:-mt-[8vh] flex justify-center leading-[0.84] lg:leading-normal text-center">
                             {/* Mobile: dua baris */}
-                            <span className="flex flex-col md:hidden">
+                            <span className="flex flex-col md:hidden -space-y-4 lg:-space-y-6">
                                 <span>
                                     {comingText.map((char, idx) => (
                                         <span
@@ -262,7 +262,7 @@ const ComingSoonSection: React.FC = () => {
                         </h1>
                         <h2
                             className={`
-                                text-[#C88B5F] text-[2.4vh] lg:text-[3.5vh] mt-0 lg:-mt-[7.2vh]
+                                text-[#C88B5F] text-[0.875rem] lg:text-[3.5vh] -mt-4 lg:-mt-[7.2vh]
                                 transition-all duration-1500 ease-out
                                 ${
                                     showSubtitle
@@ -293,6 +293,7 @@ const ComingSoonSection: React.FC = () => {
                     />
                 </div>
             </div>
+            <div className='hidden md:block absolute bottom-0 h-[3vh] w-full bg-[#3F170D] rounded-t-4xl z-20'></div>
         </div>
     );
 };
