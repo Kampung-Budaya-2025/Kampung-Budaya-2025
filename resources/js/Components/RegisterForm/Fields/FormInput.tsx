@@ -43,7 +43,7 @@ const FormInput = ({
         <motion.div variants={variants}>
             <label
                 htmlFor={id}
-                className="block mb-1 text-sm font-medium text-gray-700 sm:mb-2"
+                className="block mb-1 text-sm font-medium sm:mb-2 bg-gradient-to-b from-[#3F170D] to-[#5F3313] bg-clip-text text-transparent"
             >
                 {label} {required && <span className="text-red-500">*</span>}
             </label>

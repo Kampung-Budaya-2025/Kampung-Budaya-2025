@@ -18,7 +18,9 @@ const FileUploadInput = ({ label, placeholder, accept, data, inputRef, onPick }:
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.4 }}
     >
-        <label className="block mb-2 text-sm font-medium text-gray-700">
+        <label 
+            className="block mb-2 text-sm font-medium bg-gradient-to-b from-[#3F170D] to-[#5F3313] bg-clip-text text-transparent"
+        >
             {label} <span className="text-red-500">*</span>
         </label>
         <motion.div 

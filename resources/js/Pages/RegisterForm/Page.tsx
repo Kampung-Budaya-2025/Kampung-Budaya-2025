@@ -286,7 +286,22 @@ const RegisterForm = () => {
                         />
                     </div>
                 )}
-                
+
+                {/* Desktop background decoration - paling bawah */}
+                {getDecorationPosition.decoration !== "hidden" && (
+                    <div className="absolute left-0 z-5 justify-center w-full pointer-events-none -bottom-20 hidden min-[480px]:flex">
+                        <img
+                            src="/decoration/back-dekstop.svg"
+                            alt="Desktop Background Bottom"
+                            className="w-full h-auto opacity-80"
+                            style={{
+                                maxWidth: "100vw",
+                                minWidth: "100vw",
+                                objectFit: "cover",
+                            }}
+                        />
+                    </div>
+                )}
             </div>
         </RegisterFormBackground>
     );
