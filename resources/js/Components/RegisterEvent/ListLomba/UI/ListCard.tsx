@@ -77,7 +77,7 @@ const ListCard: React.FC<ListCardProps> = ({
 
     return (
         <div
-            className={`group perspective-1000 w-[280px] h-[380px] lg:w-[min(46vh,300px)] lg:h-[min(74vh,500px)] xl:w-[min(46vh,350px)] xl:h-[min(74vh,580px)] ${className}`}
+            className={`group perspective-1000 w-[280px] h-[400px] lg:w-[min(46vh,300px)] lg:h-[min(74vh,500px)] xl:w-[min(46vh,350px)] xl:h-[min(74vh,580px)] ${className}`}
 
             onClick={handleCardClick}
         >
