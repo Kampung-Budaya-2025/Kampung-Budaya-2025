@@ -77,7 +77,7 @@ const ListLomba: React.FC = () => {
             {/* Grid Container dengan layout responsif */}
             <div className="relative w-full px-[1.6vh] pt-[2.4vh] pb-[24vh] lg:pb-[32vh] lg:px-[9.6vh]">
                 {/* Desktop & Tablet: 3 kolom grid, 6 card */}
-                <div className="hidden lg:grid grid-cols-3 w-[170vh] justify-items-center mx-auto">
+                <div className="hidden lg:grid grid-cols-3 gap-6 max-w-[min(80vw,1200px)] justify-items-center mx-auto">
                     {cardData.slice(0, 6).map((card) => (
                         <ListCard
                             key={card.id}

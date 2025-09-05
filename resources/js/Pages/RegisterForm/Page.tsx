@@ -286,6 +286,7 @@ const RegisterForm = () => {
                         />
                     </div>
                 )}
+                
             </div>
         </RegisterFormBackground>
     );
