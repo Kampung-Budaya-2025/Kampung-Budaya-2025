@@ -293,7 +293,6 @@ const ComingSoonSection: React.FC = () => {
                     />
                 </div>
             </div>
-            <div className='hidden md:block absolute bottom-0 h-[3vh] w-full bg-[#3F170D] rounded-t-4xl z-20'></div>
         </div>
     );
 };
