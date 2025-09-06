@@ -93,12 +93,12 @@ const RangkaianKegiatanPB: React.FC = () => {
             seperti:
           </p>
 
-          <div className="flex flex-col sm:grid sm:grid-cols-3 xl:gap-2 py-6 font-bold text-base md:text-lg lg:text-base xl:text-lg md:text-[20px] text-center lg:text-left">
-            <GradientText>Seminar</GradientText>
-            <GradientText>Lomba Budaya</GradientText>
-            <GradientText>Gelanggang Budaya</GradientText>
-            <GradientText>Teater</GradientText>
-            <GradientText>Parade</GradientText>
+          <div className="text-[#5D2F24] flex flex-col sm:grid sm:grid-cols-3 xl:gap-2 py-6 font-bold text-base md:text-lg lg:text-base xl:text-lg md:text-[20px] text-center lg:text-left">
+            <p>Seminar</p>
+            <p>Lomba Budaya</p>
+            <p>Panggung Budaya Nusantara</p>
+            <p>Teater Cakrawala Budaya</p>
+            <p>Gemilang Busana Adat dan Parade Budaya Mahakarya Pesona Adiluhung</p>
           </div>
 
           <p className="text-base md:text-lg lg:text-base xl:text-xl text-[#7A4D17] text-center lg:text-left">
