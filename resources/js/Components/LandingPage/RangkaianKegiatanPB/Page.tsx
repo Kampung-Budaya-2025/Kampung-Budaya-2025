@@ -98,7 +98,7 @@ const RangkaianKegiatanPB: React.FC = () => {
             <p>Lomba Budaya</p>
             <p>Panggung Budaya Nusantara</p>
             <p>Teater Cakrawala Budaya</p>
-            <p>Gemilang Busana Adat & Parade Budaya</p>
+            <p>Gemilang Busana Adat dan Parade Budaya Mahakarya Pesona Adiluhung</p>
           </div>
 
           <p className="text-base md:text-lg lg:text-base xl:text-xl text-[#7A4D17] text-center lg:text-left">
