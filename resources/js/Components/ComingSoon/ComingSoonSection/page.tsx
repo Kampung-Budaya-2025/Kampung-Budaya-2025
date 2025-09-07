@@ -262,7 +262,7 @@ const ComingSoonSection: React.FC = () => {
                         </h1>
                         <h2
                             className={`
-                                text-[#C88B5F] text-[0.875rem] lg:text-[3.5vh] -mt-4 lg:-mt-[7.2vh]
+                                text-[#C88B5F] text-[0.875rem] lg:text-[3.5vh] -mt-4 lg:-mt-[7.2vh] lg:max-w-[70%]
                                 transition-all duration-1500 ease-out
                                 ${
                                     showSubtitle
