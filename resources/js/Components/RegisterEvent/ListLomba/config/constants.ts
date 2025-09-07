@@ -30,39 +30,46 @@ const cardData: CardData[] = [
         id: "bazar-kebudayaan",
         title: "Bazar Kebudayaan",
         icon: "/icon/bazar-kebudayaan.svg",
-        date: "20 Agustus - 5 September",
+        date: "6 September - 20 September",
         category: "Lomba Forum Daerah",
         description:
             "Kegiatan ini berupa perlombaan yang memberikan kebabsan kepada Forum Daerah (FORDA) untuk merancang stand mereka secara kreatif. FORDA juga berkesempatan untuk menjual makanan dan aksesoris khas dari daerah masing-masing. Selain itu, tersedia stand khusus bagi mahasiswa internasional untuk memperkenalkan budaya asal mereka. Tak hanya itu, stand UMKM juga akan disediakan dan dapat disewa oleh masyarakat umum, serta untuk meningkatkan minat wirausaha pada mahasiswa wirausaha juga dapat menyewa stand ini.",
+        registrationStart: "2025-09-06",
+        registrationEnd: "2025-09-20",
     },
     {
         id: "gemilang-busana-adat",
         title: "Gemilang Busana Adat",
         icon: "/icon/busana-adat.svg",
-        date: "20 Agustus - 5 September",
+        date: "6 September - 20 September",
         category: "Lomba Forum Daerah",
         description:
             "Kegiatan lomba yang menampilkan kreativitas mahasiswa dalam memperagakan busana adat khas daerahnya masing-masing, dikemas dengan konsep fashion show. Kegiatan ini ditujukan bagi Forum Daerah (FORDA) dan Universitas Brawijaya sebagai bentuk apresiasi terhadap kekayaan budaya nusantara.",
+        registrationStart: "2025-09-06",
+        registrationEnd: "2025-09-20",
     },
+
     {
         id: "gelanggang-tari-nusantara",
         title: "Gelanggang Tari Nusantara",
         icon: "/icon/tari-tradisional.svg",
-        date: "20 Agustus - 5 September",
+        date: "6 September - 20 September",
         category: "Lomba Forum Daerah",
         description:
             "Gelanggang tari nusantara adalah ajang perlombaan tari tradisional yang menampilkan keragaman budaya dari berbagai daerah di Indonesia. Kegiatan ini menjadi wadah ekspresi seni, pelestarian budaya. Kegiatan ini ditujukan bagi forum daerah (FORDA) Universitas Brawijaya sebagai bentuk apresiasi terhadap kekayaan tari nusantara.",
+        registrationStart: "2025-09-06",
+        registrationEnd: "2025-09-20",
     },
     {
         id: "panggung-budaya-nusantara",
         title: "Panggung Budaya Nusantara",
         icon: "/icon/cerita-nusantara.svg",
-        date: "21 September - 17 Oktober",
+        date: "6 September - 20 September",
         category: "Lomba Forum Daerah",
         description:
             "Rangkaian puncak acara dan penutupan dari Kampung Budaya 2025. Panggung budaya nusantara merupakan kegiatan yang berisi penampilan dari pemenang lomba dan penampilan dari tamu undangan.",
-        registrationStart: "2025-09-21",
-        registrationEnd: "2025-10-17",
+        registrationStart: "2025-09-06",
+        registrationEnd: "2025-09-20",
 
     },
     {
