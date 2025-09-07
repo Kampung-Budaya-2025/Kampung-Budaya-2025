@@ -61,10 +61,32 @@ const ListCard: React.FC<ListCardProps> = ({
         e.stopPropagation(); // Mencegah card-click event saat tombol di-klik
 
         if (registrationStatus.isOpen) {
-            // Navigate to register form with event type as URL parameter
-            router.visit(`/register-form?eventType=${eventId}`, {
-                method: "get",
-            });
+            // Event IDs yang menggunakan routing internal
+            const internalRoutingEvents = ['kolaborasi-musik-nusantara', 'panggung-budaya-nusantara'];
+            
+            if (internalRoutingEvents.includes(eventId)) {
+                // Navigate to register form with event type as URL parameter
+                router.visit(`/register-form?eventType=${eventId}`, {
+                    method: "get",
+                });
+            } else {
+                // Google Form URLs mapping untuk event lainnya
+                const googleFormUrls: { [key: string]: string } = {
+                    'bazar-kebudayaan': 'https://docs.google.com/forms/d/e/1FAIpQLSdEiS3VK32u-_g2n-bQzWoA8p_9G68PXmIhS5aXGlFI7u_QuA/viewform',
+                    'gemilang-busana-adat': 'https://docs.google.com/forms/d/e/1FAIpQLSfbwFsz_V9u8bPwsVAOJGc6RmuZZHAgxIf94YPhoz_sX_vTCA/viewform',
+                    'gelanggang-tari-nusantara': 'https://docs.google.com/forms/d/e/1FAIpQLSflO8maNX1MVwd5Wa-j9edn3gC-43FHzJn-axFhWr-i-HKlZg/viewform',
+                    'teater-cakrawala-budaya': 'https://docs.google.com/forms/d/e/1FAIpQLSfkUVrHntBQPU2veO76AjijAYOVYopW7WozN89KCmelsPn_rw/viewform',
+                };
+
+                const googleFormUrl = googleFormUrls[eventId];
+                
+                if (googleFormUrl) {
+                    // Redirect ke Google Form
+                    window.open(googleFormUrl, '_blank');
+                } else {
+                    console.warn(`No Google Form URL found for eventId: ${eventId}`);
+                }
+            }
         }
     };
 
