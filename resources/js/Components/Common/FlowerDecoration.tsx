@@ -21,11 +21,11 @@ type FlowerDecorationProps = {
 
 const FlowerDecorations: React.FC<FlowerDecorationProps> = ({
     showPairs = ["besar", "besarMobile", "sedang", "kecil1", "kecil2"],
-    besarClass = "hidden sm:block absolute -top-[2vh] md:-top-[4vh] left-1/2 -translate-x-1/2 w-[102vw] h-auto z-0",
+    besarClass = "hidden md:block absolute -top-[2vh] md:-top-[4vh] left-1/2 -translate-x-1/2 w-[102vw] h-auto z-0",
     besarMobileClass = "block sm:hidden absolute -top-8 sm:-top-4 left-1/2 -translate-x-1/2 w-[109vw] h-auto z-0",
-    sedangClass = "hidden sm:block absolute -top-3 md:top-[0vh] left-1/2 -translate-x-1/2 w-[66vw] h-auto z-0",
-    kecil1Class = "hidden sm:block absolute top-[14vh] left-1/2 -translate-x-1/2 w-[40vw] h-[auto] z-0",
-    kecil2Class = "hidden sm:block absolute top-[26vh] left-1/2 -translate-x-1/2 w-[64vw] h-[auto] z-0",
+    sedangClass = "hidden md:block absolute -top-3 md:top-[0vh] left-1/2 -translate-x-1/2 w-[66vw] h-auto z-0",
+    kecil1Class = "hidden md:block absolute top-[14vh] left-1/2 -translate-x-1/2 w-[40vw] h-[auto] z-0",
+    kecil2Class = "hidden md:block absolute top-[26vh] left-1/2 -translate-x-1/2 w-[64vw] h-[auto] z-0",
     wrapperClass = "flex justify-between items-center w-full",
     customSizes,
 }) => {

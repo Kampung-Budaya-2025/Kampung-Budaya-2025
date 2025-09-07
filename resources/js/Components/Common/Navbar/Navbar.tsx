@@ -38,7 +38,7 @@ const RegisterButton: React.FC<{ isMobile?: boolean }> = ({
         className={`text-white font-medium transition-all duration-200 hover:opacity-90 hover:scale-105 ${
             isMobile
                 ? "w-full px-[2.4vh] py-[1.2vh] rounded-lg mt-4 text-center block"
-                : "hidden lg:block text-[3.6vh] px-[4.8vh] py-[1.2vh] rounded-full"
+                : "hidden md:block text-[2.8vh] md:text-[3vh] lg:text-[3.6vh] px-[3.2vh] md:px-[3.6vh] lg:px-[4.8vh] py-[1vh] md:py-[1.1vh] lg:py-[1.2vh] rounded-full"
         }`}
         style={{
             background:
@@ -55,7 +55,7 @@ const MobileMenuButton: React.FC<{
 }> = ({ isOpen, onClick }) => (
     <button
         onClick={onClick}
-        className="lg:hidden p-1 rounded-md text-[#3F170D] hover:text-[#CE9C17] transition-colors duration-200"
+        className="md:hidden p-1 rounded-md text-[#3F170D] hover:text-[#CE9C17] transition-colors duration-200"
         aria-expanded={isOpen}
         aria-label="Toggle navigation menu"
         type="button"
@@ -88,12 +88,12 @@ const DesktopNavigation: React.FC<{
     links: NavigationLink[];
     currentPath: string;
 }> = ({ links, currentPath }) => (
-    <div className="hidden lg:flex items-center space-x-[8vh]">
+    <div className="hidden md:flex items-center space-x-[4vh] md:space-x-[6vh] lg:space-x-[8vh]">
         {links.map((link) => (
             <Link
                 key={link.id}
                 href={link.href}
-                className={`text-[3.6vh] transition-all duration-200 rounded px-3 py-2 font-medium ${
+                className={`text-[2.8vh] md:text-[3.2vh] lg:text-[3.6vh] transition-all duration-200 rounded px-3 py-2 font-medium ${
                     currentPath === link.href
                         ? "text-[#CE9C17]" // font-semibold dihapus
                         : "text-[#3F170D] hover:text-[#CE9C17]"
@@ -186,7 +186,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = "", currentPath }) => {
             <BatikPattern side="left" />
             <BatikPattern side="right" />
             <div className="mx-6 lg:container lg:mx-auto h-full relative">
-                <div className="flex items-center justify-between lg:justify-center h-full relative z-10">
+                <div className="flex items-center justify-between md:justify-center lg:justify-center h-full relative z-10">
                     <div className="flex items-center space-x-[6.4vh]">
                         <NavbarLogo />
                         <DesktopNavigation

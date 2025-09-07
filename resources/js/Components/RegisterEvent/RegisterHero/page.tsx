@@ -16,9 +16,11 @@ const RegisterHero: React.FC = () => {
 
     const [showLombaLetters, setShowLombaLetters] = useState(false);
     const [showForumLetters, setShowForumLetters] = useState(false);
+    const [showBackground, setShowBackground] = useState(false);
 
     useEffect(() => {
         // Trigger animasi setelah komponen mount
+        const backgroundTimeout = setTimeout(() => setShowBackground(true), 100);
         const lombaTimeout = setTimeout(() => setShowLombaLetters(true), 200);
 
         // Start forum animation after lomba animation completes
@@ -29,6 +31,7 @@ const RegisterHero: React.FC = () => {
         );
 
         return () => {
+            clearTimeout(backgroundTimeout);
             clearTimeout(lombaTimeout);
             clearTimeout(forumTimeout);
         };
@@ -179,7 +182,9 @@ const RegisterHero: React.FC = () => {
                 <div className="flex items-center text-center flex-col w-[75%] md:w-full">
                     <div className="relative z-10 w-full h-full flex flex-col items-center py-4">
                         <div
-                            className="absolute inset-0 pointer-events-none z-0"
+                            className={`absolute inset-0 pointer-events-none z-0 transition-opacity duration-1000 ease-in-out ${
+                                showBackground ? "opacity-100" : "opacity-0"
+                            }`}
                             aria-hidden="true"
                             style={{
                                 backgroundImage:
