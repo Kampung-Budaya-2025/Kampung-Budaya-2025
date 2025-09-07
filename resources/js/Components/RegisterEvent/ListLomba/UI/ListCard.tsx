@@ -144,7 +144,7 @@ const ListCard: React.FC<ListCardProps> = ({
                     </div>
 
                     {/* Description - Flexible area */}
-                    <div className="flex-1 flex items-start justify-center -mt-[0.5vh] md:-mt-[0.8vh] overflow-y-auto custom-scrollbar">
+                    <div className="flex-1 flex items-start justify-center -mt-[0.5vh] md:-mt-[0.8vh] overflow-y-auto custom-cursor-override">
                         <p className="text-justify text-[#7A4D17] text-sm lg:text-[min(24px,2vh)] z-30 leading-[1.2] tracking-[-0.2px] whitespace-pre-line pr-2">
                             {description}
                         </p>
