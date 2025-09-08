@@ -64,22 +64,24 @@ const cardData: CardData[] = [
         id: "panggung-budaya-nusantara",
         title: "Panggung Budaya Nusantara",
         icon: "/icon/cerita-nusantara.svg",
-        date: "6 September - 20 September",
+        date: "21 September - 17 Oktober",
         category: "Lomba Forum Daerah",
         description:
             "Rangkaian puncak acara dan penutupan dari Kampung Budaya 2025. Panggung budaya nusantara merupakan kegiatan yang berisi penampilan dari pemenang lomba dan penampilan dari tamu undangan.",
-        registrationStart: "2025-09-06",
-        registrationEnd: "2025-09-20",
+        registrationStart: "2025-09-21",
+        registrationEnd: "2025-10-17",
 
     },
     {
         id: "teater-cakrawala-budaya",
         title: "Teater Cakrawala Budaya",
         icon: "/icon/teater-cakrawala.svg",
-        date: "20 Agustus - 5 September",
+        date: "6 September - 20 September",
         category: "Lomba Umum",
         description:
             "Teater Cakrawala Budaya adalah sebuah ajang kompetisi seni peran yang berfokus pada pementasan teater dengan mengangkat cerita rakyar dari segala penjuru nusantara. Lomba ini bertujuan untuk melestarikan, mengembangkan, dan mengapresiasi warisan budaya lisan nusantara dengan media teater, ",
+        registrationStart: "2025-09-06",
+        registrationEnd: "2025-09-20",
     },
 ] as const;
 
