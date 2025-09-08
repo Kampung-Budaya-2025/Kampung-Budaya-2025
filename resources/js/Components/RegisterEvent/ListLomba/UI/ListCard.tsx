@@ -60,6 +60,23 @@ const ListCard: React.FC<ListCardProps> = ({
     const handleDaftarClick = (e: React.MouseEvent) => {
         e.stopPropagation(); // Mencegah card-click event saat tombol di-klik
 
+        // Jika di mobile, flip terlebih dahulu
+        if (window.innerWidth < 1024) {
+            setIsFlipped(true);
+            // Tidak langsung eksekusi proceedWithRegistration di sini
+            // Biarkan user melihat back side dan memilih untuk klik button "Daftar" di back side
+        } else {
+            // Di desktop, langsung proses registrasi
+            proceedWithRegistration();
+        }
+    };
+
+    const handleBackDaftarClick = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Mencegah card-click event
+        proceedWithRegistration(); // Langsung eksekusi registrasi
+    };
+
+    const proceedWithRegistration = () => {
         if (registrationStatus.isOpen) {
             // Event IDs yang menggunakan routing internal
             const internalRoutingEvents = ['kolaborasi-musik-nusantara', 'panggung-budaya-nusantara'];
@@ -129,9 +146,19 @@ const ListCard: React.FC<ListCardProps> = ({
                     </div>
 
                     {/* Title */}
-                    <h1 className="text-center text-[#3F170D] text-lg lg:text-[min(3.5vh,28px)] px-[3vh] leading-tight z-20 max-w-full">
+                    <h1 className="text-center text-[#3F170D] text-lg lg:text-[min(3.5vh,28px)] px-[3vh] leading-tight z-20 max-w-full mb-0 lg:mb-0">
                         {title}
                     </h1>
+
+                    {/* Mobile Button - Only visible on mobile */}
+                    <div className="lg:hidden flex items-center justify-center mt-4">
+                        <button
+                            onClick={handleDaftarClick}
+                            className="py-2 px-6 rounded-[40px] transition-colors duration-300 z-30 shadow-lg text-white text-sm font-medium bg-[linear-gradient(180deg,#CE9C17_0%,#CD9514_52.04%,#CC8F12_100%)] hover:bg-[linear-gradient(180deg,#D4A51A_0%,#D39E17_52.04%,#D19515_100%)] cursor-pointer"
+                        >
+                            Klik untuk Daftar
+                        </button>
+                    </div>
                 </div>
 
                 {/* Back Side - Tampilan Baru */}
@@ -175,7 +202,7 @@ const ListCard: React.FC<ListCardProps> = ({
                     {/* Daftar Button - Fixed position */}
                     <div className="flex-shrink-0 pb-[min(2vh,30px)] lg:pb-[min(9.6vh,60px)] pt-[min(2vh,12px)] items-center justify-center flex">
                         <button
-                            onClick={handleDaftarClick}
+                            onClick={handleBackDaftarClick}
                             disabled={!registrationStatus.isOpen}
                             className={`
                                 py-[min(0.8vh,8px)] px-[min(3.2vh,24px)] rounded-[40px] transition-colors duration-300 z-30 shadow-lg text-white text-sm lg:text-base
