@@ -174,7 +174,7 @@ const ListCard: React.FC<ListCardProps> = ({
                     }}
                 >
                     {/* Title - Fixed position */}
-                    <div className="flex-shrink-0 pt-[min(6vh,50px)] lg:pt-[min(4.8vh,40px)] flex flex-row justify-center items-center gap-2">
+                    <div className="flex-shrink-0 pt-[min(6vh,50px)] md:pt-[min(0.2vh,10px)] lg:pt-[min(4.8vh,40px)] flex flex-row justify-center items-center gap-2">
                         <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[min(3.2vh,20px)] w-[20px] lg:w-[min(2.5vh,39px)] h-auto" />
                         <h2 className="text-center text-[#3F170D] text-lg lg:text-[min(2.8vh,22px)] leading-[1.25] mb-[min(0.8vh,8px)] z-30 tracking-[-0.5px]">
                             {title}
@@ -200,7 +200,7 @@ const ListCard: React.FC<ListCardProps> = ({
                     </div>
 
                     {/* Daftar Button - Fixed position */}
-                    <div className="flex-shrink-0 pb-[min(2vh,30px)] lg:pb-[min(9.6vh,60px)] pt-[min(2vh,12px)] items-center justify-center flex">
+                    <div className="flex-shrink-0 pb-[min(2vh,30px)] md:pb-[min(3vh,40px)] lg:pb-[min(9.6vh,60px)] pt-[min(2vh,12px)] items-center justify-center flex">
                         <button
                             onClick={handleBackDaftarClick}
                             disabled={!registrationStatus.isOpen}
