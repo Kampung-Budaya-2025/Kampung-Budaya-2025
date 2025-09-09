@@ -66,37 +66,40 @@ const ComingSoonSection: React.FC = () => {
     const comingSoonText = "Coming Soon".split("");
 
     return (
-        <div className="relative min-h-[130vh] lg:min-h-[110vh] overflow-visible justify-center items-center flex">
+        <div className="relative min-h-[130vh] lg:min-h-[110vh] overflow-visible justify-center items-center flex bg-white">
+            {/* Background putih penuh untuk mobile */}
+            <div className="block md:hidden absolute inset-0 w-full h-full bg-white z-0" />
+            
             <BatikBackground
                 topSrc="/background/batik-horizontal-event.svg"
                 topClassName="absolute -top-[18vh] left-0 w-full h-[6vh] h-auto z-0 pointer-events-none hidden sm:block"
             />
 
             <AnimatedFlower 
-                containerClassName="block w-[190vw] absolute -top-4 lg:-top-20 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16"
-                leftFlowerClassName="h-[8.5rem] lg:h-[36.3vh] lg:w-auto animate-spin-clockwise"
-                rightFlowerClassName="h-[8.5rem] lg:h-[36.3vh] lg:w-auto animate-spin-counter"
+                containerClassName="block w-[190vw] absolute -top-4 lg:-top-20 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16 z-20"
+                leftFlowerClassName="h-[8.5rem] md:h-[24vh] lg:h-[36.3vh] lg:w-auto animate-spin-clockwise"
+                rightFlowerClassName="h-[8.5rem] md:h-[24vh] lg:h-[36.3vh] lg:w-auto animate-spin-counter"
                 leftFlowerTransition="all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
                 rightFlowerTransition="all 1.5s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
                 />
             <AnimatedFlower 
-                containerClassName="block w-[90vw] lg:w-[140vw] absolute top-0 lg:-top-14 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16"
-                leftFlowerClassName="h-[5.4rem] lg:h-[23.2vh] lg:w-auto animate-spin-counter"
-                rightFlowerClassName="h-[5.4rem] lg:h-[23.2vh] lg:w-auto animate-spin-clockwise"
+                containerClassName="block w-[80vw] md:w-[130vw] lg:w-[140vw] absolute top-0 lg:-top-14 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16 z-20"
+                leftFlowerClassName="h-[5.4rem] md:h-[15vh] lg:h-[23.2vh] lg:w-auto animate-spin-counter"
+                rightFlowerClassName="h-[5.4rem] md:h-[15vh] lg:h-[23.2vh] lg:w-auto animate-spin-clockwise"
                 leftFlowerTransition="all 1.3s cubic-bezier(0.17, 0.55, 0.55, 1) 1s"
                 rightFlowerTransition="all 1.3s cubic-bezier(0.17, 0.55, 0.55, 1) 1s"
                 />
             <AnimatedFlower 
-                containerClassName="block w-[110vw] absolute top-24 lg:top-16 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16"
-                leftFlowerClassName="h-[1.75rem] lg:h-[7.6vh] lg:w-auto animate-spin-clockwise"
-                rightFlowerClassName="h-[1.75rem] lg:h-[7.6vh] lg:w-auto animate-spin-counter"
+                containerClassName="block w-[100vw] md:w-[90vw] lg:w-[110vw] absolute top-24 md:top-20 lg:top-16 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16 z-20"
+                leftFlowerClassName="h-[1.75rem] md:h-[7.6vh] lg:h-[7.6vh] lg:w-auto animate-spin-clockwise"
+                rightFlowerClassName="h-[1.75rem] md:h-[7.6vh] lg:h-[7.6vh] lg:w-auto animate-spin-counter"
                 leftFlowerTransition="all 1.3s cubic-bezier(0.17, 0.55, 0.55, 1) 1.5s"
                 rightFlowerTransition="all 1.3s cubic-bezier(0.17, 0.55, 0.55, 1) 1.5s"
                 />
             <AnimatedFlower 
-                containerClassName="block w-[150vw] absolute top-36 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16"
-                leftFlowerClassName="lg:h-[7.6vh] lg:w-auto animate-spin-clockwise"
-                rightFlowerClassName="lg:h-[7.6vh] lg:w-auto animate-spin-counter"
+                containerClassName="block w-[250vw] md:w-[120vw] lg:w-[150vw] absolute top-36 md:top-28 lg:top-36 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16 z-20"
+                leftFlowerClassName="h-[1.75rem] md:h-[7.6vh] lg:h-[7.6vh] lg:w-auto animate-spin-clockwise"
+                rightFlowerClassName="h-[1.75rem] md:h-[7.6vh] lg:h-[7.6vh] lg:w-auto animate-spin-counter"
                 leftFlowerTransition="all 1.3s cubic-bezier(0.17, 0.55, 0.55, 1) 1.8s"
                 rightFlowerTransition="all 1.3s cubic-bezier(0.17, 0.55, 0.55, 1) 1.8s"
             />
@@ -109,16 +112,16 @@ const ComingSoonSection: React.FC = () => {
                 <SingleDecoration decoration={bungaMahkotaDecoration} />
             </div>
 
-            {/* Gradasi Atas */}
+            {/* Gradasi Atas - disesuaikan dengan tinggi container */}
             <div
-                className="block md:hidden absolute top-0 left-0 w-full h-auto"
+                className="block md:hidden absolute top-0 left-0 w-full z-1"
                 aria-hidden="true"
                 style={{
-                    backgroundImage:
-                        "url('/background/gradasi-commingsoon-top.svg')",
+                    backgroundImage: "url('/background/gradasi-commingsoon-top.svg')",
                     backgroundSize: "cover",
-                    backgroundPosition: "center",
+                    backgroundPosition: "center top",
                     backgroundRepeat: "no-repeat",
+                    height: "50vh", // Setengah dari tinggi container
                 }}
             >
                 <div>
@@ -137,17 +140,16 @@ const ComingSoonSection: React.FC = () => {
                 </div>
             </div>
 
-            {/* Gradasi Bawah */}
+            {/* Gradasi Bawah - disesuaikan dengan tinggi container */}
             <div
-                className="block md:hidden absolute bottom-0 left-0 w-full h-auto"
+                className="block md:hidden absolute bottom-0 left-0 w-full z-1"
                 aria-hidden="true"
                 style={{
-                    backgroundImage:
-                        "url('/background/gradasi-commingsoon-bottom.svg')",
+                    backgroundImage: "url('/background/gradasi-commingsoon-bottom.svg')",
                     backgroundSize: "cover",
-                    backgroundPosition: "bottom center",
+                    backgroundPosition: "center bottom",
                     backgroundRepeat: "no-repeat",
-                    minHeight: "80vw", // atur sesuai kebutuhan agar gradasi tidak terpotong
+                    height: "50vh", // Setengah dari tinggi container
                 }}
             >
                 <div className="absolute bottom-0">
@@ -172,7 +174,7 @@ const ComingSoonSection: React.FC = () => {
                         ref={PATTERN.ref}
                         src="/icon/pattern-event-top.svg"
                         alt="pattern-event-top"
-                        className={`h-[9vh] lg:h-[15.1vh] transition-all duration-1000 ease-out ${
+                        className={`h-[9vh] md:h-[14vh] lg:h-[15.1vh] transition-all duration-1000 ease-out ${
                             PATTERN.isInView
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 -translate-y-[8vh]"
@@ -262,7 +264,7 @@ const ComingSoonSection: React.FC = () => {
                         </h1>
                         <h2
                             className={`
-                                text-[#C88B5F] text-[0.875rem] lg:text-[3.5vh] -mt-4 lg:-mt-[7.2vh] lg:max-w-[70%]
+                                text-[#C88B5F] text-[0.875rem] md:text-[1.25rem] lg:text-[3.5vh] -mt-4 md:mt-2 lg:-mt-[7.2vh] md:max-w-[60%] lg:max-w-[70%]
                                 transition-all duration-1500 ease-out
                                 ${
                                     showSubtitle
@@ -285,7 +287,7 @@ const ComingSoonSection: React.FC = () => {
                         ref={PATTERN.ref}
                         src="/icon/pattern-event-bottom.svg"
                         alt="pattern-event-bottom"
-                        className={`h-[6.5vh] lg:h-[9.4vh] transition-all duration-1000 ease-out ${
+                        className={`h-[6.5vh] md:h-[9vh] lg:h-[9.4vh] transition-all duration-1000 ease-out ${
                             PATTERN.isInView
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 translate-y-[8vh]"

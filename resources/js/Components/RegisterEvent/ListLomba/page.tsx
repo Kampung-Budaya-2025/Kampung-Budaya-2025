@@ -28,21 +28,21 @@ const ListLomba: React.FC = () => {
             />
 
             <AnimatedFlower 
-                containerClassName="block lg:hidden w-[190vw] absolute -bottom-18 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16"
+                containerClassName="block lg:hidden w-[190vw] absolute -bottom-18 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16 z-10"
                 leftFlowerClassName="h-[8.5rem] w-auto animate-spin-clockwise"
                 rightFlowerClassName="h-[8.5rem] w-auto animate-spin-counter"
                 leftFlowerTransition="all 2s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
                 rightFlowerTransition="all 2s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
             />
             <AnimatedFlower 
-                containerClassName="block lg:hidden w-[150vw] absolute bottom-16 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16"
+                containerClassName="block lg:hidden w-[150vw] absolute bottom-16 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16 z-10"
                 leftFlowerClassName="h-[3.125rem] w-auto animate-spin-clockwise"
                 rightFlowerClassName="h-[3.125rem] w-auto animate-spin-counter"
                 leftFlowerTransition="all 2s cubic-bezier(0.17, 0.55, 0.55, 1) 1s"
                 rightFlowerTransition="all 2s cubic-bezier(0.17, 0.55, 0.55, 1) 1s"
             />
             <AnimatedFlower 
-                containerClassName="block lg:hidden w-[110vw] absolute bottom-8 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16"
+                containerClassName="block lg:hidden w-[110vw] absolute bottom-8 left-1/2 -translate-x-1/2 flex justify-around pointer-events-none my-16 z-10"
                 leftFlowerClassName="h-[1.75rem] w-auto animate-spin-clockwise"
                 rightFlowerClassName="h-[1.75rem] w-auto animate-spin-counter"
                 leftFlowerTransition="all 2s cubic-bezier(0.17, 0.55, 0.55, 1) 1.5s"
@@ -50,7 +50,7 @@ const ListLomba: React.FC = () => {
             />
 
             <AnimatedElement 
-                containerClassName="block lg:hidden w-screen absolute -bottom-12 left-1/2 -translate-x-1/2 pointer-events-none"
+                containerClassName="block md:hidden w-screen absolute -bottom-12 left-1/2 -translate-x-1/2 pointer-events-none z-0"
                 elementClassName="w-full h-auto"
                 src="/background/batik-horizontal-commingsoon-mobile-2.svg"
                 alt="Batik"
@@ -94,7 +94,7 @@ const ListLomba: React.FC = () => {
                 </div>
 
                 {/* Mobile: Semua cards dalam 1 kolom */}
-                <div className="lg:hidden flex flex-col items-center -gap-[3.2vh] w-full mx-auto">
+                <div className="lg:hidden flex flex-col items-center -gap-[3.2vh] md:-gap-[5.6vh] w-full mx-auto">
                     {cardData.slice(0, 6).map((card, index) => (
                         <React.Fragment key={card.id}>
                             <ListCard
