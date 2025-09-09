@@ -85,30 +85,30 @@ const RegisterHero: React.FC = () => {
             <AnimatedFlower
                 // Mengubah kelas container, misalnya margin dan opacity
                 containerClassName="block lg:hidden w-[190vw] absolute top-0 flex justify-around pointer-events-none my-16"
-                leftFlowerClassName="w-[136px] h-[136px] animate-spin-clockwise"
-                rightFlowerClassName="w-[136px] h-[136px] animate-spin-counter"
+                leftFlowerClassName="w-[136px] md:w-[180px] h-[136px] md:h-[180px] animate-spin-clockwise"
+                rightFlowerClassName="w-[136px] md:w-[180px] h-[136px] md:h-[180px] animate-spin-counter"
                 leftFlowerTransition="all 2s ease-in-out 0.1s"
                 rightFlowerTransition="all 2s ease-in-out 0.1s"
             />
             <AnimatedFlower
                 // Mengubah kelas container, misalnya margin dan opacity
                 containerClassName="block lg:hidden w-[90vw] absolute top-0 flex justify-around pointer-events-none my-16"
-                leftFlowerClassName="w-[87px] h-[87px] animate-spin-clockwise"
-                rightFlowerClassName="w-[87px] h-[87px] animate-spin-counter"
+                leftFlowerClassName="w-[87px] md:w-[130px] h-[87px] md:h-[130px] animate-spin-clockwise"
+                rightFlowerClassName="w-[87px] md:w-[130px] h-[87px] md:h-[130px] animate-spin-counter"
                 leftFlowerTransition="all 2.5s ease-in-out 0.1s"
                 rightFlowerTransition="all 2.5s ease-in-out 0.1s"
             />
             <AnimatedFlower
                 // Mengubah kelas container, misalnya margin dan opacity
-                containerClassName="block lg:hidden w-[110vw] absolute top-24 flex justify-around pointer-events-none my-16"
-                leftFlowerClassName="w-[28px] h-[28px] animate-spin-clockwise"
-                rightFlowerClassName="w-[28px] h-[28px] animate-spin-counter"
+                containerClassName="block lg:hidden w-[110vw] absolute top-24 md:top-32 flex justify-around pointer-events-none my-16"
+                leftFlowerClassName="w-[28px] md:w-[80px] h-[28px] md:h-[80px] animate-spin-clockwise"
+                rightFlowerClassName="w-[28px] md:w-[80px] h-[28px] md:h-[80px] animate-spin-counter"
                 leftFlowerTransition="all 3s ease-in-out 0.1s"
                 rightFlowerTransition="all 3s ease-in-out 0.1s"
             />
 
             <div className="lg:hidden absolute w-full h-auto -bottom-16 left-1/2 flex justify-center items-center transform -translate-x-1/2 z-20">
-                <div className="absolute -bottom-[40px] left-0 w-full">
+                <div className="sm:hidden absolute -bottom-[40px] left-0 w-full">
                     <img
                         src="background/batik-horizontal-commingsoon-mobile-2.svg"
                         alt="Batik"
@@ -166,7 +166,7 @@ const RegisterHero: React.FC = () => {
                 </div>
             </div> */}
 
-            <div className="relative flex items-center flex-col z-10 pt-0 md:pt-[12vh] lg:pt-[18vh]">
+            <div className="relative flex items-center flex-col z-10 pt-0 md:pt-[0] lg:pt-[18vh]">
                 <div>
                     <img
                         ref={PATTERN.ref}
