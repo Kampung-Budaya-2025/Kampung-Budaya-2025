@@ -1,4 +1,4 @@
-import DecorativeHeader from "@/Components/RegisterForm/Layout/DecorativeHeader";
+﻿import DecorativeHeader from "@/Components/RegisterForm/Layout/DecorativeHeader";
 import { motion } from "framer-motion";
 
 interface RegisterFormHeaderProps {
@@ -40,7 +40,7 @@ const RegisterFormHeader = ({
         >
             <DecorativeHeader
                 title={getEventTitle(eventType)}
-                titleClassName="lg:my-0 my-2 font-amaranth font-normal leading-tight tracking-[-0.03125rem] text-xl xl:text-2xl 2xl:text-3xl bg-gradient-to-b from-[#FFC411] via-[#CD9C1A] via-[36.22%] to-[#BD6229] to-[101%] bg-clip-text text-transparent whitespace-nowrap"
+                titleClassName="lg:my-0 my-2 font-amaranth font-normal leading-tight tracking-[-0.03125rem] text-xl xl:text-2xl 2xl:text-3xl bg-gradient-to-b from-[#FFC411] via-[#CD9C1A] via-[36.22%] to-[#BD6229] to-[101%] bg-clip-text text-transparent whitespace-normal lg:whitespace-nowrap"
                 showLeafIcons={true}
                 mobileDecorationsOnly={true}
             />
@@ -49,3 +49,4 @@ const RegisterFormHeader = ({
 };
 
 export default RegisterFormHeader;
+
