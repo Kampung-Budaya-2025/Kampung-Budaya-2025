@@ -19,7 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }
 
     return (
-        <div className="h-screen bg-gray-50">
+        <div className="h-screen bg-white">
             <Navbar currentPath={url} />
             <main className="overflow-hidden">{children}</main>
             <Footer currentPath={url} />

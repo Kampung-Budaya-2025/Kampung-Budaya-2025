@@ -13,7 +13,7 @@ const SuccessDecorativeHeader = ({
 }: SuccessDecorativeHeaderProps) => {
     return (
         <motion.header 
-            className="relative z-20 pt-16 mb-2 text-center sm:mb-3 lg:mb-4 xl:mb-5 sm:pt-15 lg:pt-25 xl:pt-28"
+            className="relative z-20 pt-8 mb-2 text-center sm:mb-3 lg:mb-4 xl:mb-5 sm:pt-10 lg:pt-15 xl:pt-18"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -25,10 +25,10 @@ const SuccessDecorativeHeader = ({
                 transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
             >
                 {/* Mobile only decorative flowers with animation */}
-                <div className="relative w-full pt-20 mb-2 min-[480px]:hidden">
+                <div className="relative w-full pt-0 -mt-16 mb-2 overflow-visible min-[480px]:hidden">
                     {/* Left side flowers - NAIKKAN SEDIKIT */}
                     <motion.div 
-                        className="absolute -top-32 -left-28"
+                        className="fixed -top-40 -left-28"
                         initial={{ opacity: 0, x: -50, scale: 0.8 }}
                         animate={{ opacity: 1, x: 0, scale: 1 }}
                         transition={{ delay: 0.2, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
@@ -49,7 +49,7 @@ const SuccessDecorativeHeader = ({
 
                     {/* Left mobile-up terpisah - NAIKKAN SEDIKIT */}
                     <motion.div 
-                        className="absolute -top-28 left-4"
+                        className="fixed -top-36 left-4"
                         initial={{ opacity: 0, y: -30, rotate: -20 }}
                         animate={{ opacity: 1, y: 0, rotate: 0 }}
                         transition={{ delay: 0.4, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
@@ -64,7 +64,7 @@ const SuccessDecorativeHeader = ({
 
                     {/* Center mobile-up decoration */}
                     <motion.div 
-                        className="flex justify-center pt-16"
+                        className="fixed left-1/2 -translate-x-1/2 pt-2"
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
@@ -79,7 +79,7 @@ const SuccessDecorativeHeader = ({
 
                     {/* Right mobile-up terpisah - NAIKKAN SEDIKIT */}
                     <motion.div 
-                        className="absolute -top-28 right-4"
+                        className="fixed -top-36 right-4"
                         initial={{ opacity: 0, y: -30, rotate: 20 }}
                         animate={{ opacity: 1, y: 0, rotate: 0 }}
                         transition={{ delay: 0.5, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
@@ -94,7 +94,7 @@ const SuccessDecorativeHeader = ({
 
                     {/* Right side flowers - NAIKKAN SEDIKIT */}
                     <motion.div 
-                        className="absolute flex flex-col items-end -top-32 -right-28"
+                        className="fixed flex flex-col items-end -top-40 -right-28"
                         initial={{ opacity: 0, x: 50, scale: 0.8 }}
                         animate={{ opacity: 1, x: 0, scale: 1 }}
                         transition={{ delay: 0.6, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}

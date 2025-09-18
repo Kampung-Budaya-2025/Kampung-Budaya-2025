@@ -222,6 +222,7 @@ const Footer: React.FC<{ currentPath?: string }> = ({ currentPath = "/" }) => {
         <footer className="relative h-[85.2vh] lg:h-[41.6vh] text-white bg-[linear-gradient(180deg,#3F170D_0%,#5F3313_100%)] overflow-hidden">
             <BatikBackground />
             <BatikBackgroundMobile />
+            {/* Register-form specific mobile decoration moved back to page for overlap behavior */}
 
             <div className="relative z-10 px-[4.8vh] py-[8vh] lg:py-[9.6vh] sm:px-[8vh] lg:px-[11.2vh]">
                 <div className="max-w-full mx-auto">

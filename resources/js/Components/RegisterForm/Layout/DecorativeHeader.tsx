@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 
 interface DecorativeHeaderProps {
     title: string;
+    mobileTitle?: string; // Optional mobile title
     titleClassName?: string;
     titleStyle?: React.CSSProperties;
     showLeafIcons?: boolean;
@@ -11,6 +12,7 @@ interface DecorativeHeaderProps {
 
 const DecorativeHeader = ({ 
     title,
+    mobileTitle,
     titleClassName = "",
     titleStyle = {},
     showLeafIcons = false,
@@ -132,8 +134,9 @@ const DecorativeHeader = ({
                         </div>
                     )}
 
+                    {/* Desktop Title */}
                     <motion.h1
-                        className={`text-center ${titleClassName}`}
+                        className={`text-center ${titleClassName} ${mobileTitle ? 'hidden min-[480px]:block' : ''}`}
                         style={titleStyle}
                         initial={{ opacity: 0, y: -30, scale: 0.9 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -145,6 +148,23 @@ const DecorativeHeader = ({
                     >
                         {title}
                     </motion.h1>
+
+                    {/* Mobile Title (if provided) */}
+                    {mobileTitle && (
+                        <motion.h1
+                            className={`text-center ${titleClassName} min-[480px]:hidden`}
+                            style={titleStyle}
+                            initial={{ opacity: 0, y: -30, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{ 
+                                delay: 0.8, 
+                                duration: 0.8, 
+                                ease: [0.25, 0.1, 0.25, 1]
+                            }}
+                        >
+                            {mobileTitle}
+                        </motion.h1>
+                    )}
 
                     {showLeafIcons && (
                         <div className="flex-shrink-0 ml-1 md:ml-2 lg:ml-3">

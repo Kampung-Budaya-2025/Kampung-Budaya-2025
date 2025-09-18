@@ -25,7 +25,7 @@ const RegisterFormContainer = ({
     return (
         <div
             ref={cardRef}
-            className="relative w-full max-w-lg p-3 mx-auto bg-white border shadow-lg rounded-2xl border-amber-100 sm:max-w-xl sm:rounded-3xl sm:p-4 md:max-w-2xl md:p-5 lg:max-w-2xl lg:p-5 xl:max-w-3xl xl:p-6"
+            className= "relative w-full max-w-lg p-3 mx-auto bg-white border shadow-lg rounded-2xl border-amber-100 sm:max-w-xl sm:rounded-3xl sm:p-4 md:max-w-2xl md:p-5 lg:max-w-2xl lg:p-5 xl:max-w-3xl xl:p-6"
         >
             {/* SIMPLE LOADING */}
             {isTransitioning && (

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 
 interface SpeechContent {
     left: string;
@@ -17,7 +17,7 @@ const RegisterFormMascots = ({ speechContent, currentStep }: RegisterFormMascots
         <>
             {/* Maskot Kiri - DENGAN ANIMASI MASUK RINGAN */}
             <motion.div 
-                className="absolute hidden -left-60 lg:block"
+                className="absolute hidden min-[1058px]:block min-[1230px]:-left-32 xl:-left-48 2xl:-left-60"
                 style={{ top: '20%', transform: 'translateY(-50%)' }}
                 initial={{ opacity: 0, x: -30, scale: 0.9 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -83,7 +83,7 @@ const RegisterFormMascots = ({ speechContent, currentStep }: RegisterFormMascots
 
             {/* Maskot Kanan - DENGAN ANIMASI MASUK RINGAN */}
             <motion.div 
-                className="absolute hidden -right-60 lg:block"
+                className="absolute hidden min-[1058px]:block min-[1230px]:-right-32 xl:-right-48 2xl:-right-60"
                 style={{ top: '20%', transform: 'translateY(-50%)' }}
                 initial={{ opacity: 0, x: 30, scale: 0.9 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}

@@ -47,7 +47,7 @@ const SuccessMascots = () => {
                 }}
             >
                 <div
-                    className="w-[26rem] h-[26rem] sm:w-[34rem] sm:h-[34rem] md:w-[36rem] md:h-[36rem] lg:w-[38rem] lg:h-[38rem] xl:w-[40rem] xl:h-[40rem]"
+                    className="w-[20rem] h-[20rem] sm:w-[26rem] sm:h-[26rem] md:w-[28rem] md:h-[28rem] lg:w-[30rem] lg:h-[30rem] xl:w-[32rem] xl:h-[32rem]"
                     style={{
                         backgroundImage: "url('/decoration/back-mascot.svg')",
                         backgroundSize: "contain",

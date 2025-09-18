@@ -1,7 +1,6 @@
 import { router } from "@inertiajs/react";
-import SuccessTitle from "@/Components/RegisterForm/Success/SuccessTitle";
-import SuccessMascots from "@/Components/RegisterForm/Success/SuccessMascots";
 import SuccessContent from "@/Components/RegisterForm/Success/SuccessContent";
+import SuccessHeader from "../Success/SuccessHeader";
 
 interface RegisterSuccessProps {
     onFinish?: () => void;
@@ -21,10 +20,11 @@ const RegisterSuccess = ({ onFinish }: RegisterSuccessProps = {}) => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen px-2 py-12 text-center sm:px-4 sm:py-16 md:px-6 md:py-20">
-            <SuccessTitle />
-            <SuccessMascots />
-            <SuccessContent onFinish={handleFinish} />
+        <div className="relative min-h-screen min-h-[100svh] min-h-[100dvh] grid grid-rows-[auto,1fr] px-2 py-0 text-center sm:px-4 sm:py-0 md:px-6 md:py-0 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
+            <SuccessHeader />
+            <div className="flex items-center justify-center w-full">
+                <SuccessContent onFinish={handleFinish} />
+            </div>
         </div>
     );
 };
