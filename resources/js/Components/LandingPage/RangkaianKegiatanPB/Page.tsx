@@ -11,7 +11,7 @@ const RangkaianKegiatanPB: React.FC = () => {
   
       ref={ref}
       className={`
-        z-50
+        z-30
         relative lg:max-h-screen w-full overflow-visible lg:pt-48
         transform transition-all duration-700 ease-out
         ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
@@ -93,12 +93,12 @@ const RangkaianKegiatanPB: React.FC = () => {
             seperti:
           </p>
 
-          <div className="flex flex-col sm:grid sm:grid-cols-3 xl:gap-2 py-6 font-bold text-base md:text-lg lg:text-base xl:text-lg md:text-[20px] text-center lg:text-left">
-            <GradientText>Talkshow</GradientText>
-            <GradientText>Lomba Budaya</GradientText>
-            <GradientText>Gelanggang Budaya</GradientText>
-            <GradientText>Workshop Membatik</GradientText>
-            <GradientText>Parade</GradientText>
+          <div className="text-[#5D2F24] flex flex-col sm:grid sm:grid-cols-3 gap-4 sm:gap-2 xl:gap-2 py-6 font-bold text-base md:text-lg lg:text-base xl:text-lg md:text-[20px] text-center lg:text-left">
+            <p>Seminar</p>
+            <p>Lomba Budaya</p>
+            <p>Panggung Budaya Nusantara</p>
+            <p>Teater Cakrawala Budaya</p>
+            <p>Gemilang Busana Adat dan Parade Budaya Mahakarya Pesona Adiluhung</p>
           </div>
 
           <p className="text-base md:text-lg lg:text-base xl:text-xl text-[#7A4D17] text-center lg:text-left">

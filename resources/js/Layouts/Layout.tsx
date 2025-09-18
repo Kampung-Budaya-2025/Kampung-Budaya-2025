@@ -8,9 +8,14 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-    const { url } = usePage();
+    const { url, props } = usePage();
 
-    if (url === "/coming-soon") {
+    const isMaintenanceMode = (props as any)?.title?.includes(
+        "Maintenance Mode"
+    );
+    const isDirectComingSoon = url === "/coming-soon";
+
+    if (isMaintenanceMode || isDirectComingSoon) {
         return (
             <div className="min-h-screen bg-gray-50">
                 <main className="overflow-hidden">{children}</main>

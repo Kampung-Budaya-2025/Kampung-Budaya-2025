@@ -6,24 +6,24 @@ const LeftFlowers = () => (
     <FlowerDecoration
       position="left-0 top-0 -translate-x-2/5 -translate-y-1/5 md:-translate-x-1/3"
       size="w-42 sm:w-48 md:w-56 lg:w-60 xl:w-64"
-      className='animate-slide-in-left'
+      className='opacity-0 animate-slide-in-left'
       animation="animate-spin-cw"
     />
     <FlowerDecoration
       position="left-36 top-4"
       size="w-32 lg:w-36 xl:w-42"
-      className="hidden md:block animate-slide-in-left delay-100"
+      className="hidden md:block opacity-0 animate-slide-in-left delay-100"
     />
     <FlowerDecoration
       position="left-28 top-42 lg:left-36 xl:left-42 xl:top-46"
       size="w-10 lg:w-12 xl:w-14"
-      className="hidden md:block animate-slide-in-left delay-500"
+      className="hidden md:block opacity-0 animate-slide-in-left delay-500"
       animation="animate-spin-cw"
     />
     <FlowerDecoration
       position="left-64 lg:left-72 xl:left-80 top-28"
       size="w-10 lg:w-12 xl:w-14"
-      className="hidden md:block animate-slide-in-left delay-200"
+      className="hidden md:block opacity-0 animate-slide-in-left delay-200"
     />
   </div>
 );
@@ -46,7 +46,7 @@ const LeftFlowers = () => (
 //     <FlowerDecoration
 //       position="right-1/2 -translate-x-1/2 translate-y-1/2"
 //       size="w-32"
-//       className="animate-slide-in-top delay-500"
+//       className="opacity-0 animate-slide-in-top delay-500"
 //     />
 //   </div>
 // );
@@ -58,7 +58,7 @@ const MiddleFlowers = () => (
     <FlowerDecoration
       position="right-1/2 translate-x-48 translate-y-1/2 bottom-0 bottom-[22vh]"
       size="w-24"
-      className='animate-slide-in-bottom delay-500'
+      className='opacity-0 animate-slide-in-bottom delay-500'
       z-Index="z-0"
 
       animation='animate-spin-counter'
@@ -67,14 +67,14 @@ const MiddleFlowers = () => (
     <FlowerDecoration
       position="left-1/2 -translate-x-48 translate-y-1/2 bottom-0 bottom-[22vh]"
       size="w-24"
-      className='animate-slide-in-bottom delay-500'
+      className='opacity-0 animate-slide-in-bottom delay-500'
       z-Index="z-0"
 
     />
     <FlowerDecoration
       position="right-1/2 translate-x-1/2 translate-y-1/2 bottom-[22vh]"
       size="w-48"
-      className='animate-slide-in-bottom'
+      className='opacity-0 animate-slide-in-bottom'
       z-Index="z-0"
     />
 
@@ -86,24 +86,24 @@ const RightFlowers = () => (
     <FlowerDecoration
       position="right-0 top-0 translate-x-2/5 -translate-y-1/5 md:translate-x-1/3"
       size="w-42 sm:w-48 md:w-56 lg:w-60 xl:w-64"
-      className='animate-slide-in-right'
+      className='opacity-0 animate-slide-in-right'
     />
     <FlowerDecoration
       position="right-36 top-4"
       animation="animate-spin-cw"
       size="w-32 lg:w-36 xl:w-42"
-      className="hidden md:block animate-slide-in-right delay-100"
+      className="hidden md:block opacity-0 animate-slide-in-right delay-100"
     />
     <FlowerDecoration
       position="right-28 top-42 lg:right-36 xl:right-42 xl:top-46"
       size="w-10 lg:w-12 xl:w-14"
-      className="hidden md:block animate-slide-in-right delay-500"
+      className="hidden md:block opacity-0 animate-slide-in-right delay-500"
       animation="animate-spin-counter"
     />
     <FlowerDecoration
       position="right-64 lg:right-72 xl:right-80 top-28"
       size="w-10 lg:w-12 xl:w-14"
-      className="hidden md:block animate-slide-in-right delay-200"
+      className="hidden md:block opacity-0 animate-slide-in-right delay-200"
     />
   </div>
 );
@@ -115,7 +115,7 @@ const MobileFlowers = () => (
       size="w-42"
       animation="animate-spin-cw"
       zIndex="z-20"
-      className='animate-slide-in-top md:hidden'
+      className='opacity-0 animate-slide-in-top md:hidden'
     />
   </div>
 );

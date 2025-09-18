@@ -5,7 +5,7 @@
 *:hover,
 *:active,
 *:focus {
-    cursor: url("/icon/mouse-arrow.svg") 12 0, auto !important;
+    cursor: url("/icon/mouse-arrow.svg") 0 0, auto !important;
 }
 
 @font-face {
@@ -238,6 +238,50 @@
   }
 }
 
+/* Float Smooth */
+.animate-float-8 {
+  animation: floatSmooth-8 3s ease-in-out infinite alternate;
+}
+
+.animate-float-10 {
+  animation: floatSmooth-10 3s ease-in-out infinite alternate;
+}
+
+.animate-float-12 {
+  animation: floatSmooth-12 3s ease-in-out infinite alternate;
+}
+
+/* Float Smooth Right */
+.animate-float-right-8 {
+  animation: floatSmoothRight-8 3s ease-in-out infinite alternate;
+}
+
+.animate-float-right-10 {
+  animation: floatSmoothRight-10 3s ease-in-out infinite alternate;
+}
+
+.animate-float-right-12 {
+  animation: floatSmoothRight-12 3s ease-in-out infinite alternate;
+}
+
+/* Float with Rotate (Left) */
+.animate-float-rotate-12-3 {
+  animation: floatWithRotate-12-3 3s ease-in-out infinite alternate;
+}
+
+.animate-float-rotate-8-2 {
+  animation: floatWithRotate-8-2 3s ease-in-out infinite alternate;
+}
+
+/* Float with Rotate (Right) */
+.animate-float-rotate-right-12-3 {
+  animation: floatWithRotateRight-12-3 3s ease-in-out infinite alternate;
+}
+
+.animate-float-rotate-right-8-2 {
+  animation: floatWithRotateRight-8-2 3s ease-in-out infinite alternate;
+}
+
 
 /* animasi slide */
 .animate-slide-in-left {
@@ -250,7 +294,7 @@
   animation: slideInTop 3s ease-out forwards;
 }
 .animate-slide-in-top-quick {
-  animation: slideInTop 2s ease-out forwards;
+  animation: slideInTop 1s ease-out forwards;
 }
 .animate-slide-in-bottom {
   animation: slideInBottom 3s ease-out forwards;
@@ -400,4 +444,32 @@
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: #CE9C17; /* Warna lebih terang saat di-hover */
+}
+
+/* Tambahkan di file CSS global */
+.custom-cursor-override,
+.custom-cursor-override *,
+.custom-cursor-override::-webkit-scrollbar,
+.custom-cursor-override::-webkit-scrollbar-track,
+.custom-cursor-override::-webkit-scrollbar-thumb,
+.custom-cursor-override::-webkit-scrollbar-corner {
+    cursor: inherit !important;
+}
+
+.custom-cursor-override::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-cursor-override::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.custom-cursor-override::-webkit-scrollbar-thumb {
+    background: rgba(122, 77, 23, 0.5);
+    border-radius: 3px;
+}
+
+.custom-cursor-override::-webkit-scrollbar-thumb:hover {
+    background: rgba(122, 77, 23, 0.7);
 }

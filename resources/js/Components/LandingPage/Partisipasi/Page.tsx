@@ -63,12 +63,12 @@ const Partisipasi = () => {
           {/* Maskot + dekorasi */}
           <div className='flex flex-1 w-full items-center justify-center relative py-4 lg:py-12'>
             <img
-              className='hover-zoom-slow absolute w-18 sm:w-24 md:w-26 xl:w-32 right-42 sm:right-36 md:right-56 lg:bottom-48 lg:right-0 z-15'
+              className='hover-zoom-slow absolute w-18 sm:w-24 md:w-26 xl:w-32 right-[20%] sm:right-36 md:right-36 lg:bottom-48 lg:right-0 z-15'
               src="img/card/bubble-daftar.svg"
               alt=""
             />
             <img
-              className='hover-zoom-slow absolute w-18 sm:w-24 md:w-26 xl:w-32 left-42 sm:left-36 md:left-56 lg:top-56 lg:left-0 z-15'
+              className='hover-zoom-slow absolute w-18 sm:w-24 md:w-26 xl:w-32 left-[20%] sm:left-36 md:left-36 lg:top-56 lg:left-0 z-15'
               src="img/card/bubble-lupa.svg"
               alt=""
             />
@@ -106,6 +106,7 @@ const Partisipasi = () => {
         src="img/decoration/visi-footer.svg"
         alt=""
       />
+      <div className='hidden md:block absolute bottom-0 left-0 h-[3vh] w-full bg-[#3F170D] rounded-t-4xl z-20'></div>
     </div>
   )
 }

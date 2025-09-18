@@ -1,17 +1,18 @@
 import React from 'react'
 
 const MediaPartnerData: string[] = [
-    "img/logo/medpart-1.svg",
-    "img/logo/medpart-2.svg",
-    "img/logo/medpart-3.svg",
-    "img/logo/medpart-4.svg",
-    "img/logo/medpart-5.svg",
-    "img/logo/medpart-6.svg"
+    "img/logo/sponsor/sponsor-1.svg",
+    "img/logo/sponsor/sponsor-1.svg",
+    "img/logo/sponsor/sponsor-1.svg",
+    "img/logo/sponsor/sponsor-1.svg",
+    "img/logo/sponsor/sponsor-1.svg",
+    "img/logo/sponsor/sponsor-1.svg",
+    "img/logo/sponsor/sponsor-1.svg",
 ]
 
 const MediaPartner: React.FC = () => {
     return (
-        <section className='bg-gradient-to-b from-[#E1C476] to-[#B1811B] flex flex-col justify-center items-center gap-8 lg:gap-24 pt-12 pb-24'>
+        <section className='bg-gradient-to-b from-[#E1C476] to-[#B1811B] flex flex-col justify-center items-center gap-8 lg:gap-24 pt-12'>
             <p
                 className="text-5xl px-24 text-center lg:text-8xl font-samsktrigrama text-transparent bg-clip-text bg-gradient-to-b from-[#5F3313] to-[#3F170D]">
                 Sponsors and Media Partner
@@ -121,6 +122,8 @@ const MediaPartner: React.FC = () => {
                         </div>
                     ))}
                 </div>
+            </div>
+            <div className='h-[10vh] w-full bg-[#3F170D] rounded-t-4xl'>
             </div>
 
             <style>{`

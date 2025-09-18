@@ -114,7 +114,7 @@ const BrandTitle: React.FC = () => {
             className="block rounded focus:outline-none"
         >
             <h1
-                className="max-w-[29.6vh] lg:max-w-full text-[3.25rem] lg:text-[6.4vh] text-center leading-[1] lg:text-start font-samsktrigrama transition-opacity duration-200"
+                className="max-w-full lg:max-w-full text-[3.5rem] lg:text-[6.4vh] text-center leading-[1] lg:text-start font-samsktrigrama transition-opacity duration-200"
                 style={{
                     backgroundImage:
                         "",

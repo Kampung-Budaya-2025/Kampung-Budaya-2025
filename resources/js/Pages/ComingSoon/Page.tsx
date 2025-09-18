@@ -13,10 +13,5 @@ const ComingSoonPage: ComingSoonPageComponent = () => {
     );
 };
 
-ComingSoonPage.layout = (page: React.ReactNode) => (
-    <div className="min-h-screen bg-gray-50">
-        <main className="overflow-hidden">{page}</main>
-    </div>
-);
-
+// Tidak ada layout custom, biarkan Layout.tsx yang menangani logic layoutnya
 export default ComingSoonPage;

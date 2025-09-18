@@ -5,10 +5,10 @@ import FlowerDecoration from '@/Components/Common/Flower/FlowerDecoration';
 import { useInView } from '@/Hooks/UseInView';
 
 const Misi = [
-  "Menjadi perusahaan teknologi terdepan di Asia Tenggara.",
-  "Memberikan solusi inovatif yang mempermudah kehidupan jutaan orang.",
-  "Menciptakan lingkungan kerja yang inklusif dan mendukung pertumbuhan karyawan.",
-  "Berkontribusi secara positif terhadap masyarakat dan lingkungan."
+  "Mendorong partisipasi aktif masyarakat dan generasi muda dalam pelestarian budaya melalui pendekatan edukatif, interaktif, dan inklusif.",
+  "Mengemas kegiatan kampung budaya secara inovatif dan menarik dengan memanfaatkan teknologi serta pendekatan kreatif agar tetap relevan di masa kini.",
+  "Menjaga kesinambungan budaya melalui dokumentasi, regenerasi, dan kolaborasi lintas sektor untuk pelestarian jangka panjang.",
+  "Menjadikan Kampung Budaya sebagai wadah pelestarian dan apresiasi budaya yang dikenal luas, tidak hanya di Universitas Brawijaya namun juga di Kota Malang."
 ];
 
 const VisiMisi = () => {
