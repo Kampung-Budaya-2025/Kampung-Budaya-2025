@@ -1,5 +1,5 @@
 <svg width="1925" height="276" viewBox="0 0 1925 276" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g opacity="0.5">
+<g opacity="1">
 <mask id="mask0_3668_3088" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="967" y="0" width="958" height="276">
 <mask id="path-1-outside-1_3668_3088" maskUnits="userSpaceOnUse" x="966.557" y="135.129" width="141" height="141" fill="black">
 <rect fill="white" x="966.557" y="135.129" width="141" height="141"/>
@@ -76,7 +76,7 @@
 <rect x="964.593" y="-4.44531" width="962.927" height="284.411" fill="url(#paint0_linear_3668_3088)"/>
 </g>
 </g>
-<g opacity="0.5">
+<g opacity="1">
 <mask id="mask1_3668_3088" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="958" height="276">
 <mask id="path-16-outside-15_3668_3088" maskUnits="userSpaceOnUse" x="-0.442871" y="135.129" width="141" height="141" fill="black">
 <rect fill="white" x="-0.442871" y="135.129" width="141" height="141"/>
@@ -164,3 +164,10 @@
 </linearGradient>
 </defs>
 </svg>
+
+
+
+
+
+
+

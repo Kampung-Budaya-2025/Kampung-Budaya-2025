@@ -64,27 +64,27 @@ const RegisterForm = () => {
             case 1:
                 return {
                     batik: "-bottom-10",
-                    decoration: "-bottom-15"
+                    mobileDecoration: "-bottom-15",
                 };
             case 2:
                 return {
                     batik: "-bottom-10", // Upload form lebih panjang
-                    decoration: "-bottom-15"
+                    mobileDecoration: "-bottom-15",
                 };
             case 3:
                 return {
                     batik: "-bottom-10",
-                    decoration: "-bottom-15"
+                    mobileDecoration: "-bottom-15",
                 };
             case 4:
                 return {
                     batik: "hidden", // Hide on success page
-                    decoration: "-bottom-15"
+                    mobileDecoration: "hidden",
                 };
             default:
                 return {
                     batik: "-bottom-10",
-                    decoration: "-bottom-15"
+                    mobileDecoration: "-bottom-15",
                 };
         }
     }, [currentStep]);
@@ -225,7 +225,7 @@ const RegisterForm = () => {
     ]);
 
     return (
-        <RegisterFormBackground>
+        <RegisterFormBackground showDesktopDecoration={currentStep !== 4}>
             <RegisterFormHeader
                 currentStep={currentStep}
                 eventType={formData.eventType}
@@ -271,8 +271,10 @@ const RegisterForm = () => {
                 )}
 
                 {/* Mobile only bottom decoration, nyelip ke footer Kampung Budaya */}
-                {getDecorationPosition.decoration !== "hidden" && (
-                    <div className={`absolute left-0 z-30 flex justify-center w-full pointer-events-none ${getDecorationPosition.decoration} min-[480px]:hidden`}>
+                {getDecorationPosition.mobileDecoration !== "hidden" && (
+                    <div
+                        className={`absolute left-0 z-30 flex justify-center w-full pointer-events-none ${getDecorationPosition.mobileDecoration} min-[480px]:hidden`}
+                    >
                         <img
                             src="/decoration/mobile-decoration-down.svg"
                             alt="Dekorasi Bawah Mobile"
@@ -287,21 +289,6 @@ const RegisterForm = () => {
                     </div>
                 )}
 
-                {/* Desktop background decoration - paling bawah */}
-                {getDecorationPosition.decoration !== "hidden" && (
-                    <div className="absolute left-0 z-5 justify-center w-full pointer-events-none -bottom-20 hidden min-[480px]:flex">
-                        <img
-                            src="/decoration/back-dekstop.svg"
-                            alt="Desktop Background Bottom"
-                            className="w-full h-auto opacity-80"
-                            style={{
-                                maxWidth: "100vw",
-                                minWidth: "100vw",
-                                objectFit: "cover",
-                            }}
-                        />
-                    </div>
-                )}
             </div>
         </RegisterFormBackground>
     );
