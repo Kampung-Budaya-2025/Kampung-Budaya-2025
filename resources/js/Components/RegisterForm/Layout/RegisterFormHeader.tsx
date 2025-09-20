@@ -16,7 +16,7 @@ const RegisterFormHeader = ({
     const getEventTitle = (eventType?: string) => {
         switch (eventType) {
             case "kolaborasi-musik":
-                return "Pendaftaran Lomba Kolaborasi Musik";
+                return "Pendaftaran Lomba Kolaborasi Musik Nusantara";
             case "bazar-kebudayaan":
                 return "Pendaftaran Bazar Kebudayaan";
             case "gemilang-busana-adat":
@@ -70,6 +70,4 @@ const RegisterFormHeader = ({
 };
 
 export default RegisterFormHeader;
-
-
 
