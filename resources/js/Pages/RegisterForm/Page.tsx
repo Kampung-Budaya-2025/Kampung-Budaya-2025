@@ -69,7 +69,7 @@ const RegisterForm = () => {
             case 2:
                 return {
                     batik: "-bottom-10", // Upload form lebih panjang
-                    mobileDecoration: "-bottom-15",
+                    mobileDecoration: "hidden",
                 };
             case 3:
                 return {
@@ -270,7 +270,7 @@ const RegisterForm = () => {
                     </div>
                 )}
 
-                {/* Mobile only bottom decoration, nyelip ke footer Kampung Budaya */}
+                {/* Mobile only bottom decoration, tetap untuk step selain upload */}
                 {getDecorationPosition.mobileDecoration !== "hidden" && (
                     <div
                         className={`absolute left-0 z-30 flex justify-center w-full pointer-events-none ${getDecorationPosition.mobileDecoration} min-[480px]:hidden`}

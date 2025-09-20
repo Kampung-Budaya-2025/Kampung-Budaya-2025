@@ -37,13 +37,13 @@ const SuccessDecorativeHeader = ({
                             src="/decoration/bunga-mobile-up.svg"
                             alt="Bunga Mobile Up Kiri"
                             className="w-32 h-32 animate-spin"
-                            style={{ animationDuration: '3s', animationDirection: 'reverse' }}
+                            style={{ animationDuration: '9s', animationDirection: 'reverse' }}
                         />
                         <img
                             src="/decoration/bunga-mobile-small.svg"
                             alt="Bunga Kecil Kiri"
                             className="w-10 h-8 -mt-10 ml-30 animate-spin"
-                            style={{ animationDuration: '2s' }}
+                            style={{ animationDuration: '7s' }}
                         />
                     </motion.div>
 
@@ -58,7 +58,7 @@ const SuccessDecorativeHeader = ({
                             src="/decoration/bunga-mobile-up.svg"
                             alt="Mobile Up Kiri"
                             className="w-24 h-20 animate-spin"
-                            style={{ animationDuration: '4s', animationDirection: 'reverse' }}
+                            style={{ animationDuration: '10s', animationDirection: 'reverse' }}
                         />
                     </motion.div>
 
@@ -88,7 +88,7 @@ const SuccessDecorativeHeader = ({
                             src="/decoration/bunga-mobile-up.svg"
                             alt="Mobile Up Kanan"
                             className="w-24 h-20 animate-spin"
-                            style={{ animationDuration: '4s' }}
+                            style={{ animationDuration: '10s' }}
                         />
                     </motion.div>
 
@@ -103,13 +103,13 @@ const SuccessDecorativeHeader = ({
                             src="/decoration/bunga-mobile-up.svg"
                             alt="Bunga Mobile Up Kanan"
                             className="w-32 h-32 animate-spin"
-                            style={{ animationDuration: '3s' }}
+                            style={{ animationDuration: '9s' }}
                         />
                         <img
                             src="/decoration/bunga-mobile-small.svg"
                             alt="Bunga Kecil Kanan"
                             className="w-10 h-8 -mt-10 mr-30 animate-spin"
-                            style={{ animationDuration: '2s', animationDirection: 'reverse' }}
+                            style={{ animationDuration: '7s', animationDirection: 'reverse' }}
                         />
                     </motion.div>
                 </div>

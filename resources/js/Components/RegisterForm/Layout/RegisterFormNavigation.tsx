@@ -21,13 +21,15 @@ const RegisterFormNavigation = ({
 }: RegisterFormNavigationProps) => {
     if (currentStep === 4) return null;
 
+    const isUploadStep = currentStep === 2;
+
     return (
         <div
             className={`relative flex items-center max-w-lg gap-3 mx-auto mt-4 sm:max-w-xl sm:gap-4 sm:mt-5 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl z-40 ${
                 currentStep === 1
                     ? "justify-center"
                     : "flex-col-reverse sm:flex-row sm:justify-between"
-            }`}
+            } ${isUploadStep ? "pb-[10rem] sm:pb-0" : ""}`}
         >
             {currentStep > 1 && (
                 <button
@@ -60,6 +62,19 @@ const RegisterFormNavigation = ({
                     {nextButtonText}
                 </div>
             </button>
+
+            {isUploadStep && (
+                <div
+                    className="absolute inset-x-0 pointer-events-none min-[480px]:hidden"
+                    style={{ bottom: "-13rem" }}
+                >
+                    <img
+                        src="/decoration/mobile-decoration-down.svg"
+                        alt="Dekorasi Navigasi Mobile"
+                        className="w-full h-auto"
+                    />
+                </div>
+            )}
         </div>
     );
 };
