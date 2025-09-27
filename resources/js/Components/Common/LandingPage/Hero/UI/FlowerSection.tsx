@@ -1,5 +1,5 @@
 import React from 'react';
-import FlowerDecoration from '../../../Common/Flower/FlowerDecoration';
+import FlowerDecoration from '../../../Flower/FlowerDecoration';
 
 const LeftFlowers = () => (
   <div id="flower_left" >

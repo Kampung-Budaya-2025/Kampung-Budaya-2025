@@ -1,7 +1,7 @@
 import FlowerDecoration from '@/Components/Common/Flower/FlowerDecoration';
 import GradientText from '@/Components/Common/GradientText';
 import React from 'react';
-import { useInView } from '../../../Hooks/UseInView';
+import { useInView } from '../../../../Hooks/UseInView';
 
 const RangkaianKegiatanPB: React.FC = () => {
   const { ref, isInView } = useInView<HTMLDivElement>();
