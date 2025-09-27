@@ -3,7 +3,7 @@ import FlowerSection from './UI/FlowerSection';
 import CandiSection from './UI/CandiSection';
 import TitleSection from './UI/TitleSectionn';
 import BackgroundSection from './UI/BackgroundSection';
-import { flowerAnimation } from '../../Common/Flower/FlowerAnimation';
+import { flowerAnimation } from '../../Flower/FlowerAnimation';
 import VisiMisi from '../VisiMisi/Page';
 
 const Hero = () => {

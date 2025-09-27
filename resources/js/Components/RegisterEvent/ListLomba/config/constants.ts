@@ -53,12 +53,12 @@ const cardData: CardData[] = [
         id: "gelanggang-tari-nusantara",
         title: "Gelanggang Tari Nusantara",
         icon: "/icon/tari-tradisional.svg",
-        date: "6 September - 20 September",
+        date: "27 September - 02 Oktober",
         category: "Lomba Forum Daerah",
         description:
             "Gelanggang tari nusantara adalah ajang perlombaan tari tradisional yang menampilkan keragaman budaya dari berbagai daerah di Indonesia. Kegiatan ini menjadi wadah ekspresi seni, pelestarian budaya. Kegiatan ini ditujukan bagi forum daerah (FORDA) Universitas Brawijaya sebagai bentuk apresiasi terhadap kekayaan tari nusantara.",
-        registrationStart: "2025-09-06",
-        registrationEnd: "2025-09-20",
+        registrationStart: "2025-09-27",
+        registrationEnd: "2025-10-02",
     },
     {
         id: "panggung-budaya-nusantara",
