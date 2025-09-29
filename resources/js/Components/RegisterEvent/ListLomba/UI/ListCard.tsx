@@ -79,7 +79,7 @@ const ListCard: React.FC<ListCardProps> = ({
     const proceedWithRegistration = () => {
         if (registrationStatus.isOpen) {
             // Event IDs yang menggunakan routing internal
-            const internalRoutingEvents = ['kolaborasi-musik-nusantara', 'panggung-budaya-nusantara'];
+            const internalRoutingEvents = ['kolaborasi-musik-nusantara', 'gelanggang-tari-nusantara', 'panggung-budaya-nusantara'];
             
             if (internalRoutingEvents.includes(eventId)) {
                 // Navigate to register form with event type as URL parameter
@@ -91,7 +91,6 @@ const ListCard: React.FC<ListCardProps> = ({
                 const googleFormUrls: { [key: string]: string } = {
                     'bazar-kebudayaan': 'https://docs.google.com/forms/d/e/1FAIpQLSdEiS3VK32u-_g2n-bQzWoA8p_9G68PXmIhS5aXGlFI7u_QuA/viewform',
                     'gemilang-busana-adat': 'https://docs.google.com/forms/d/e/1FAIpQLSfbwFsz_V9u8bPwsVAOJGc6RmuZZHAgxIf94YPhoz_sX_vTCA/viewform',
-                    'gelanggang-tari-nusantara': 'https://docs.google.com/forms/d/e/1FAIpQLSflO8maNX1MVwd5Wa-j9edn3gC-43FHzJn-axFhWr-i-HKlZg/viewform',
                     'teater-cakrawala-budaya': 'https://docs.google.com/forms/d/e/1FAIpQLSfkUVrHntBQPU2veO76AjijAYOVYopW7WozN89KCmelsPn_rw/viewform',
                 };
 

@@ -16,12 +16,20 @@ const RegisterConfirmation = ({
     // Helper function to get event type display name
     const getEventTypeDisplayName = (eventType?: string) => {
         switch (eventType) {
-            case "kolaborasi-musik":
-                return "Kolaborasi Musik";
+            case "kolaborasi-musik-nusantara":
+                return "Kolaborasi Musik Nusantara";
             case "bazar-kebudayaan":
                 return "Bazar Kebudayaan";
-            case "fashion-show":
-                return "Fashion Show";
+            case "gemilang-busana-adat":
+                return "Gemilang Busana Adat";
+            case "gelanggang-tari-nusantara":
+                return "Gelanggang Tari Nusantara";
+            case "panggung-budaya-nusantara":
+                return "Panggung Budaya Nusantara";
+            case "teater-cakrawala-budaya":
+                return "Teater Cakrawala Budaya";
+            case "karya-citra-inklusif":
+                return "Karya Citra Inklusif";
             default:
                 return eventType || "Tidak dipilih";
         }

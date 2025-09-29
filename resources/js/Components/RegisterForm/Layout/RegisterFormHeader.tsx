@@ -15,7 +15,7 @@ const RegisterFormHeader = ({
     // Function to get event title based on eventType
     const getEventTitle = (eventType?: string) => {
         switch (eventType) {
-            case "kolaborasi-musik":
+            case "kolaborasi-musik-nusantara":
                 return "Pendaftaran Lomba Kolaborasi Musik Nusantara";
             case "bazar-kebudayaan":
                 return "Pendaftaran Bazar Kebudayaan";
@@ -25,6 +25,8 @@ const RegisterFormHeader = ({
                 return "Pendaftaran Lomba Gelanggang Tari Nusantara";
             case "panggung-budaya-nusantara":
                 return "Pendaftaran Lomba Panggung Budaya Nusantara";
+            case "teater-cakrawala-budaya":
+                return "Pendaftaran Lomba Teater Cakrawala Budaya";
             case "karya-citra-inklusif":
                 return "Pendaftaran Lomba Karya Citra Inklusif";
             default:
@@ -34,7 +36,7 @@ const RegisterFormHeader = ({
 
     const getMobileEventTitle = (eventType?: string) => {
         switch (eventType) {
-            case "kolaborasi-musik":
+            case "kolaborasi-musik-nusantara":
                 return "Pendaftaran Lomba Kolaborasi Musik";
             case "bazar-kebudayaan":
                 return "Pendaftaran Bazar Kebudayaan";
@@ -44,6 +46,8 @@ const RegisterFormHeader = ({
                 return "Pendaftaran Lomba Gelanggang Tari";
             case "panggung-budaya-nusantara":
                 return "Pendaftaran Lomba Panggung Budaya";
+            case "teater-cakrawala-budaya":
+                return "Pendaftaran Lomba Teater Cakrawala";
             case "karya-citra-inklusif":
                 return "Pendaftaran Lomba Karya Citra Inklusif";
             default:

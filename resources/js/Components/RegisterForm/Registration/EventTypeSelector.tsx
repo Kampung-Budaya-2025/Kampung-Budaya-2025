@@ -12,8 +12,8 @@ const EventTypeSelector = memo(
     ({ formData, onDataChange }: EventTypeSelectorProps) => {
         const eventTypes = [
             {
-                id: "kolaborasi-musik",
-                title: "Kolaborasi Musik",
+                id: "kolaborasi-musik-nusantara",
+                title: "Kolaborasi Musik Nusantara",
                 description:
                     "Kolaborasi musik yang menggabungkan unsur alat musik tradisional dan musik modern.",
                 icon: "/icon/kolaborasi-musik.svg",

@@ -52,11 +52,12 @@ class PageController extends Controller
         
         // Validasi eventType yang diperbolehkan
         $allowedEventTypes = [
-            'kolaborasi-musik', 
+            'kolaborasi-musik-nusantara', 
             'bazar-kebudayaan', 
             'gemilang-busana-adat', 
             'gelanggang-tari-nusantara', 
             'panggung-budaya-nusantara', 
+            'teater-cakrawala-budaya',
             'karya-citra-inklusif'
         ];
         if (!in_array($eventType, $allowedEventTypes)) {
