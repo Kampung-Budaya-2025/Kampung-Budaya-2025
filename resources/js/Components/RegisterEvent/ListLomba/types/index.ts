@@ -19,7 +19,6 @@ interface CardData {
     date: string;
     category: string
     description: string; // Tambahan untuk deskripsi
-    description: string;
     registrationStart?: string;
     registrationEnd?: string;
 
