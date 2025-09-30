@@ -60,7 +60,7 @@ const ListLomba: React.FC = () => {
             <ElementPairComponent pair={BATIK_PAIR} />
 
             {/* Button Section */}
-            <div className="flex flex-1 items-center justify-center w-full h-screen gap-6">
+            <div className="flex flex-1 items-center justify-center w-full h-screen gap-6 flex-col sm:flex-row">
                 {buttonData.map((button) => (
                     <Button
                         key={button.id}
