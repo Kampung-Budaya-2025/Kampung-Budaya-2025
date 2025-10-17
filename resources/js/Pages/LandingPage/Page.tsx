@@ -21,7 +21,7 @@ const LandingPage = () => (
     <KilasBalik />
     <RangkaianKegiatan />
     <Partisipasi />
-    {/* <MediaPartner /> */}
+    <MediaPartner />
   </div>
 
 );

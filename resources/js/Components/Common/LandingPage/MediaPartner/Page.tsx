@@ -2,12 +2,19 @@ import React from 'react'
 
 const MediaPartnerData: string[] = [
     "img/logo/sponsor/sponsor-1.svg",
-    "img/logo/sponsor/sponsor-1.svg",
-    "img/logo/sponsor/sponsor-1.svg",
-    "img/logo/sponsor/sponsor-1.svg",
-    "img/logo/sponsor/sponsor-1.svg",
-    "img/logo/sponsor/sponsor-1.svg",
-    "img/logo/sponsor/sponsor-1.svg",
+    "img/logo/sponsor/sponsor-2.svg",
+    "img/logo/sponsor/sponsor-3.svg",
+    "img/logo/sponsor/sponsor-4.svg",
+    "img/logo/sponsor/sponsor-5.svg",
+    "img/logo/sponsor/sponsor-6.svg",
+    "img/logo/sponsor/sponsor-7.svg",
+    "img/logo/sponsor/sponsor-8.svg",
+    "img/logo/sponsor/sponsor-9.svg",
+    "img/logo/sponsor/sponsor-10.svg",
+    "img/logo/sponsor/sponsor-11.svg",
+    "img/logo/sponsor/sponsor-12.svg",
+    "img/logo/sponsor/sponsor-13.svg",
+    "img/logo/sponsor/sponsor-14.svg",
 ]
 
 const MediaPartner: React.FC = () => {
