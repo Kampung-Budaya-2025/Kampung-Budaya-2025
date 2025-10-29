@@ -15,6 +15,7 @@ const MediaPartnerData: string[] = [
     "img/logo/sponsor/sponsor-12.svg",
     "img/logo/sponsor/sponsor-13.svg",
     "img/logo/sponsor/sponsor-14.svg",
+    "img/logo/sponsor/sponsor-15.svg",
 ]
 
 const MediaPartner: React.FC = () => {
