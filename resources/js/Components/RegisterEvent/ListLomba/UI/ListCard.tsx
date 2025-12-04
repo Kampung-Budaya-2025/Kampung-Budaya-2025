@@ -28,31 +28,8 @@ const ListCard: React.FC<ListCardProps> = ({
     const [isFlipped, setIsFlipped] = useState(false);
 
     const getRegistrationStatus = (): { isOpen: boolean; message: string } => {
-        if (!registrationStart || !registrationEnd) {
-            return { isOpen: false, message: "Tutup" };
-        }
-
-        const today = new Date();
-        const startDate = new Date(registrationStart);
-        const endDate = new Date(registrationEnd);
-
-        today.setHours(0, 0, 0, 0);
-        startDate.setHours(0, 0, 0, 0);
-        endDate.setHours(23, 59, 59, 999);
-
-        if (today < startDate) {
-            return {
-                isOpen: false,
-                message: `Buka ${new Intl.DateTimeFormat("id-ID", {
-                    day: "numeric",
-                    month: "long",
-                }).format(startDate)}`,
-            };
-        } else if (today > endDate) {
-            return { isOpen: false, message: "Tutup" };
-        } else {
-            return { isOpen: true, message: "Daftar" };
-        }
+        // Registration is always open
+        return { isOpen: true, message: "Daftar" };
     };
 
     const registrationStatus = getRegistrationStatus();
@@ -79,8 +56,12 @@ const ListCard: React.FC<ListCardProps> = ({
     const proceedWithRegistration = () => {
         if (registrationStatus.isOpen) {
             // Event IDs yang menggunakan routing internal
-            const internalRoutingEvents = ['kolaborasi-musik-nusantara', 'gelanggang-tari-nusantara', 'panggung-budaya-nusantara'];
-            
+            const internalRoutingEvents = [
+                "kolaborasi-musik-nusantara",
+                "gelanggang-tari-nusantara",
+                "panggung-budaya-nusantara",
+            ];
+
             if (internalRoutingEvents.includes(eventId)) {
                 // Navigate to register form with event type as URL parameter
                 router.visit(`/register-form?eventType=${eventId}`, {
@@ -89,18 +70,23 @@ const ListCard: React.FC<ListCardProps> = ({
             } else {
                 // Google Form URLs mapping untuk event lainnya
                 const googleFormUrls: { [key: string]: string } = {
-                    'bazar-kebudayaan': 'https://docs.google.com/forms/d/e/1FAIpQLSdEiS3VK32u-_g2n-bQzWoA8p_9G68PXmIhS5aXGlFI7u_QuA/viewform',
-                    'gemilang-busana-adat': 'https://docs.google.com/forms/d/e/1FAIpQLSfbwFsz_V9u8bPwsVAOJGc6RmuZZHAgxIf94YPhoz_sX_vTCA/viewform',
-                    'teater-cakrawala-budaya': 'https://docs.google.com/forms/d/e/1FAIpQLSfkUVrHntBQPU2veO76AjijAYOVYopW7WozN89KCmelsPn_rw/viewform',
+                    "bazar-kebudayaan":
+                        "https://docs.google.com/forms/d/e/1FAIpQLSdEiS3VK32u-_g2n-bQzWoA8p_9G68PXmIhS5aXGlFI7u_QuA/viewform",
+                    "gemilang-busana-adat":
+                        "https://docs.google.com/forms/d/e/1FAIpQLSfbwFsz_V9u8bPwsVAOJGc6RmuZZHAgxIf94YPhoz_sX_vTCA/viewform",
+                    "teater-cakrawala-budaya":
+                        "https://docs.google.com/forms/d/e/1FAIpQLSfkUVrHntBQPU2veO76AjijAYOVYopW7WozN89KCmelsPn_rw/viewform",
                 };
 
                 const googleFormUrl = googleFormUrls[eventId];
-                
+
                 if (googleFormUrl) {
                     // Redirect ke Google Form
-                    window.open(googleFormUrl, '_blank');
+                    window.open(googleFormUrl, "_blank");
                 } else {
-                    console.warn(`No Google Form URL found for eventId: ${eventId}`);
+                    console.warn(
+                        `No Google Form URL found for eventId: ${eventId}`
+                    );
                 }
             }
         }
@@ -174,12 +160,20 @@ const ListCard: React.FC<ListCardProps> = ({
                 >
                     {/* Title - Fixed position */}
                     <div className="flex-shrink-0 pt-[min(6vh,50px)] md:pt-[min(0.2vh,10px)] lg:pt-[min(4.8vh,40px)] flex flex-row justify-center items-center gap-2">
-                        <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[min(3.2vh,20px)] w-[20px] lg:w-[min(2.5vh,39px)] h-auto" />
+                        <img
+                            src="/decoration/list-card-decoration.svg"
+                            alt="decoration"
+                            className="mb-[min(3.2vh,20px)] w-[20px] lg:w-[min(2.5vh,39px)] h-auto"
+                        />
                         <h2 className="text-center text-[#3F170D] text-lg lg:text-[min(2.8vh,22px)] leading-[1.25] mb-[min(0.8vh,8px)] z-30 tracking-[-0.5px]">
                             {title}
                         </h2>
-                        <img src="/decoration/list-card-decoration.svg" alt="decoration" className="mb-[min(3.2vh,20px)] w-[20px] lg:w-[min(2.5vh,39px)] h-auto scale-x-[-1]" />
-                    </div> 
+                        <img
+                            src="/decoration/list-card-decoration.svg"
+                            alt="decoration"
+                            className="mb-[min(3.2vh,20px)] w-[20px] lg:w-[min(2.5vh,39px)] h-auto scale-x-[-1]"
+                        />
+                    </div>
 
                     {/* Date and Category */}
                     <div className="flex-shrink-0 flex flex-col items-center gap-0 -mt-[0.8vh] mb-[1.2vh]">
