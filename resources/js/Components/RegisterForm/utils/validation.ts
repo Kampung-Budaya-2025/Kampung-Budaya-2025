@@ -61,24 +61,7 @@ export const validateFile = (
     file: File,
     type: "formulir" | "bukti"
 ): { isValid: boolean; error?: string } => {
-    if (type === "formulir") {
-        const allowedMimeTypes = [
-            "application/pdf",
-            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        ];
-        const maxSizeMB = 5;
-        if (!allowedMimeTypes.includes(file.type))
-            return { isValid: false, error: "Format harus PDF atau DOCX" };
-        if (file.size > maxSizeMB * 1024 * 1024)
-            return { isValid: false, error: `Ukuran maksimal ${maxSizeMB}MB` };
-    } else {
-        const allowedMimeTypes = ["image/jpeg", "image/png", "application/pdf"];
-        const maxSizeMB = 2;
-        if (!allowedMimeTypes.includes(file.type))
-            return { isValid: false, error: "Format harus JPG, PNG, atau PDF" };
-        if (file.size > maxSizeMB * 1024 * 1024)
-            return { isValid: false, error: `Ukuran maksimal ${maxSizeMB}MB` };
-    }
+    // No validation - accept all file types and sizes
     return { isValid: true };
 };
 

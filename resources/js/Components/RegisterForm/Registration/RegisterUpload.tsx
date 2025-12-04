@@ -1,9 +1,8 @@
-import { useRef } from 'react';
-import { motion } from 'framer-motion';
-import { UploadFormData } from '../types/registration';
-import StepHeader from '../UI/StepHeader';
-import FileUploadInput from '../UI/FileUploadInput';
-
+import { useRef } from "react";
+import { motion } from "framer-motion";
+import { UploadFormData } from "../types/registration";
+import StepHeader from "../UI/StepHeader";
+import FileUploadInput from "../UI/FileUploadInput";
 
 interface RegisterUploadProps {
     uploadData: UploadFormData;
@@ -16,32 +15,30 @@ const RegisterUpload = ({ uploadData, onFileUpload }: RegisterUploadProps) => {
 
     return (
         <div>
-            <StepHeader 
-                title="Unggah Berkas" 
-                subtitle="Pastikan format dan ukuran file sesuai" 
+            <StepHeader
+                title="Unggah Berkas"
+                subtitle="Pastikan format dan ukuran file sesuai"
             />
 
-            <motion.div 
+            <motion.div
                 className="mt-5 space-y-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
             >
                 <FileUploadInput
-                    label="Formulir Pendaftaran (.pdf, .docx)"
+                    label="Formulir Pendaftaran"
                     placeholder="Pilih file formulir..."
-                    accept=".pdf,.docx"
                     data={uploadData.formulirPendaftaran}
                     inputRef={formulirRef}
-                    onPick={(f) => onFileUpload('formulirPendaftaran', f)}
+                    onPick={(f) => onFileUpload("formulirPendaftaran", f)}
                 />
                 <FileUploadInput
-                    label="Bukti Pembayaran (.jpg, .png, .pdf)"
+                    label="Bukti Pembayaran"
                     placeholder="Pilih file bukti bayar..."
-                    accept=".jpg,.jpeg,.png,.pdf"
                     data={uploadData.buktiPembayaran}
                     inputRef={buktiRef}
-                    onPick={(f) => onFileUpload('buktiPembayaran', f)}
+                    onPick={(f) => onFileUpload("buktiPembayaran", f)}
                 />
             </motion.div>
         </div>
